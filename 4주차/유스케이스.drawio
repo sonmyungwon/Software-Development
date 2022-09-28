@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-09-28T00:54:41.373Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36" etag="xxw2JD8u26zUZpvFDEgp" version="18.1.1" type="github">
+<mxfile host="app.diagrams.net" modified="2022-09-28T01:09:02.290Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36" etag="sNavYaR8_ouamZh4KotM" version="20.3.7" type="github">
   <diagram id="NCL2p-JWgOGxsxKp1H8N" name="페이지-1">
-    <mxGraphModel dx="1038" dy="539" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1038" dy="547" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -11,19 +11,37 @@
           <mxGeometry x="650" y="90" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="VMQcNs2NsHs9lcobG29F-7" value="디바이스" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="650" y="295" width="120" height="60" as="geometry" />
+          <mxGeometry x="650" y="170" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="VMQcNs2NsHs9lcobG29F-11" value="관찰일지를 열람한다." style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="349" y="110" width="130" height="70" as="geometry" />
         </mxCell>
         <mxCell id="VMQcNs2NsHs9lcobG29F-12" value="로그인 한다." style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="359" y="390" width="110" height="40" as="geometry" />
+          <mxGeometry x="650" y="260" width="110" height="40" as="geometry" />
         </mxCell>
         <mxCell id="VMQcNs2NsHs9lcobG29F-13" value="환경제어에 들어간다." style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="349" y="195" width="130" height="70" as="geometry" />
+          <mxGeometry x="260" y="210" width="130" height="70" as="geometry" />
         </mxCell>
         <mxCell id="VMQcNs2NsHs9lcobG29F-14" value="실시간 cctv 접속한다." style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="349" y="280" width="130" height="70" as="geometry" />
+          <mxGeometry x="260" y="340" width="130" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="7xkepa5mnOWRhtYiWadu-4" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="VMQcNs2NsHs9lcobG29F-11" target="VMQcNs2NsHs9lcobG29F-6">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="500" y="220" as="sourcePoint" />
+            <mxPoint x="660" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7xkepa5mnOWRhtYiWadu-6" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="VMQcNs2NsHs9lcobG29F-11" target="VMQcNs2NsHs9lcobG29F-7">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="489" y="155" as="sourcePoint" />
+            <mxPoint x="660" y="130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7xkepa5mnOWRhtYiWadu-7" value="Include" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="VMQcNs2NsHs9lcobG29F-12" target="VMQcNs2NsHs9lcobG29F-11">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="489" y="155" as="sourcePoint" />
+            <mxPoint x="660" y="210" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
