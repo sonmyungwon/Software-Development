@@ -1,7 +1,0 @@
-<resources>
-    <string name="app_name">My Application</string>
-    <string name = "main_title">SMART FARM</string>
-    <string name = "author_name">공대 농부</string>
-    <string name = "login">LOGIN</string>
-    <string name = "welcome">Welcome!</string>
-</resources>
