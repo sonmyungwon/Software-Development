@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.151" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.151" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.21536102294921877" />
+        <entry key="app/src/main/res/layout/fragment_cctv.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/fragment_hand_control.xml" value="0.2653985507246377" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.5578353881835938" />
+        <entry key="app/src/main/res/layout/fragment_main.xml" value="0.24790649414062504" />
+        <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.2653985507246377" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$USER_HOME$/Documents/GitHub/Software-Development/MyApplication/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.21221771240234374" />
+      </ProjectState>
+    </option>
+  </component>
+</project>
