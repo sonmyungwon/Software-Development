@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.myapplication.R
+import com.example.myapplication.navController
+import kotlinx.android.synthetic.main.fragment_greeting.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +23,9 @@ private const val ARG_PARAM2 = "param2"
  */
 class GreetingFragment : Fragment() {
     // TODO: Rename and change types of parameters
+
+    lateinit var navController: NavController
+
     private var param1: String? = null
     private var param2: String? = null
 
@@ -58,6 +63,20 @@ class GreetingFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        navController = Navigation.findNavController(view)
+
+        btn_sign_in.setOnClickListener{
+            navController.navigate(R.id.action_greetingFragment_to_loginFragment)
+        }
+        btn_sign_up.setOnClickListener{
+            navController.navigate(R.id.action_greetingFragment_to_registerFragment)
+        }
     }
 
 }

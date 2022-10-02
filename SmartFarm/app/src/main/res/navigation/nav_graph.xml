@@ -9,7 +9,14 @@
     <fragment
         android:id="@+id/greetingFragment"
         android:name="com.example.myapplication.fragment.GreetingFragment"
-        android:label="GreetingFragment" />
+        android:label="GreetingFragment" >
+        <action
+            android:id="@+id/action_greetingFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_greetingFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.myapplication.fragment.LoginFragment"
