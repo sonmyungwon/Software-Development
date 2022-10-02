@@ -5,7 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.example.myapplication.R
+import kotlinx.android.synthetic.*
+import kotlinx.android.synthetic.main.fragment_greeting.*
+import kotlinx.android.synthetic.main.fragment_register.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -19,6 +25,9 @@ private const val ARG_PARAM2 = "param2"
  */
 class RegisterFragment : Fragment() {
     // TODO: Rename and change types of parameters
+
+    lateinit var navController: NavController
+
     private var param1: String? = null
     private var param2: String? = null
 
@@ -57,4 +66,15 @@ class RegisterFragment : Fragment() {
                 }
             }
     }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        navController = Navigation.findNavController(view)
+
+        joinBtn.setOnClickListener{
+
+
+        }
+    }
+
 }

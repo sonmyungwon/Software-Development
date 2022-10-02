@@ -12,7 +12,7 @@
         android:id="@+id/textInputLayout"
         android:layout_width="232dp"
         android:layout_height="42dp"
-        android:hint="account"
+        android:hint="email"
         app:helperText="required"
         app:helperTextTextColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,6 +23,7 @@
         app:layout_constraintVertical_bias="0.26">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="42dp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -31,7 +32,7 @@
         android:id="@+id/textInputLayout4"
         android:layout_width="232dp"
         android:layout_height="42dp"
-        android:hint="account"
+        android:hint="name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -40,6 +41,7 @@
         app:layout_constraintVertical_bias="0.423">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="42dp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -48,7 +50,7 @@
         android:id="@+id/textInputLayout3"
         android:layout_width="232dp"
         android:layout_height="42dp"
-        android:hint="account"
+        android:hint="password"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -57,6 +59,7 @@
         app:layout_constraintVertical_bias="0.339">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="42dp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -78,7 +81,7 @@
         android:id="@+id/textInputLayout5"
         android:layout_width="232dp"
         android:layout_height="42dp"
-        android:hint="account"
+        android:hint="age"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -87,6 +90,7 @@
         app:layout_constraintVertical_bias="0.499">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/age"
             android:layout_width="match_parent"
             android:layout_height="42dp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -154,6 +158,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+
+    <Button
+        android:id="@+id/joinBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="260dp"
@@ -165,6 +179,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
+        android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Done!"
