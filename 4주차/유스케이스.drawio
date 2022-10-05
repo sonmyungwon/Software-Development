@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-10-05T01:40:24.396Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" etag="aM-74caNW_GqUURc8ZC7" version="20.4.0" type="github">
+<mxfile host="app.diagrams.net" modified="2022-10-05T01:41:11.640Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" etag="_5KI4hPBp7e_25E68DCM" version="20.4.0" type="github">
   <diagram id="NCL2p-JWgOGxsxKp1H8N" name="페이지-1">
     <mxGraphModel dx="1283" dy="687" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -74,7 +74,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="pRRUhXzyRBsDFOCAXH3B-6" value="관찰일지를 기록한다.." style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="gYhQfILOeX3ABxQb6qOJ-9">
-          <mxGeometry x="180" y="80" width="120" height="50" as="geometry" />
+          <mxGeometry x="220" y="80" width="120" height="50" as="geometry" />
         </mxCell>
         <mxCell id="Q8g0ZSMfcJW7LGg8qXzG-1" value="토양 습도 센서" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="960" y="265" width="90" height="40" as="geometry" />
