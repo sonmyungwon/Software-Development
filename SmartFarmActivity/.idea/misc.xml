@@ -10,7 +10,8 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.27769927978515624" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.285302734375" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.32880198160807295" />
-        <entry key="app/src/main/res/layout/custom_dialog.xml" value="0.42173767089843744" />
+        <entry key="app/src/main/res/layout/auto_control_custom_dialog.xml" value="0.2927139282226562" />
+        <entry key="app/src/main/res/layout/custom_dialog.xml" value="0.29937744140624994" />
         <entry key="app/src/main/res/layout/layout.xml" value="0.28229166666666666" />
       </map>
     </option>
