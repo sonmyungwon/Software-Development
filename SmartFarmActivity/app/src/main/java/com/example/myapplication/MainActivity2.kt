@@ -23,11 +23,20 @@ class MainActivity2 : AppCompatActivity() {
         val startBtn = findViewById<Button>(R.id.startBtn)
         startBtn.setOnClickListener{
             val database = FirebaseDatabase.getInstance()
-            val myRef = database.getReference("message")
+            val myRef = database.getReference("/on_off/fan")
 
-            myRef.push().setValue("Hello, World!")
+            myRef.setValue(1)
 
         }
+        val startBtn2 = findViewById<Button>(R.id.startBtn2)
+        startBtn2.setOnClickListener{
+            val database = FirebaseDatabase.getInstance()
+            val myRef = database.getReference("/on_off/fan")
+
+            myRef.setValue(0)
+
+        }
+
 
     }
 }
