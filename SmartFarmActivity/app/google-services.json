@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "296804721521",
+    "firebase_url": "https://smartfarmactivity-default-rtdb.firebaseio.com",
     "project_id": "smartfarmactivity",
     "storage_bucket": "smartfarmactivity.appspot.com"
   },
