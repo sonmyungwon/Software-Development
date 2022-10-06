@@ -61,7 +61,11 @@ const int freq = 30000;
 const int pwmChannel = 0;
 const int resolution = 8;
 int dutyCycle = 200;
-/////////////////////////////////////////////
+//////////////////pump add///////////////////////////
+
+int Relaypin = 12;
+/////////////
+
 void setup(){
   Serial.begin(115200);
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
@@ -114,7 +118,7 @@ void setup(){
   // testing
   Serial.print("Testing DC Motor...");
 //////////////////////////////
-
+  pinMode(Relaypin,OUTPUT);
 }
 
 void loop(){
@@ -128,24 +132,12 @@ void loop(){
   }
   float hif = dht.computeHeatIndex(f, h);
   float hic = dht.computeHeatIndex(t, h, false);
-  //Serial.print("Humidity: ");
-//  Serial.print(h);
- // Serial.print(" %\t");
-  //Serial.print("Temperature: ");
- // Serial.print(t);
-  //Serial.print(" *C ");
-//  Serial.print(f);
-//  Serial.print(" *F\t");
- // Serial.print("Heat index: ");
- // Serial.print(hic);
- // Serial.print(" *C ");
-//  Serial.print(hif);
-//  Serial.println(" *F");
 
   if (Firebase.ready() && signupOK && (millis() - sendDataPrevMillis > 15000 || sendDataPrevMillis == 0)){
     sendDataPrevMillis = millis();
     // Write an Int number on the database path test/int
-    if (Firebase.RTDB.pushFloat(&fbdo, "/sensorDB/temperature", t)){
+    
+    if (Firebase.RTDB.pushFloat(&fbdo, "/auto/sensorDB/temperature", t)){
      Serial.println("PASSED");
       Serial.println("PATH: " + fbdo.dataPath());
      Serial.println("TYPE: " + fbdo.dataType());
@@ -157,7 +149,7 @@ void loop(){
 
     
     // Write an Float number on the database path test/float
-    if (Firebase.RTDB.pushInt(&fbdo, "/sensorDB/humidity", h)){
+    if (Firebase.RTDB.pushInt(&fbdo, "/auto/sensorDB/humidity", h)){
       Serial.println("PASSED");
       Serial.println("PATH: " + fbdo.dataPath());
       Serial.println("TYPE: " + fbdo.dataType());
@@ -166,21 +158,24 @@ void loop(){
       Serial.println("FAILED");
       Serial.println("REASON: " + fbdo.errorReason());
     }
-       if (Firebase.RTDB.setInt(&fbdo, "/on_off2/fan", h)){
-      Serial.println("PASSED");
-      Serial.println("PATH: " + fbdo.dataPath());
-      Serial.println("TYPE: " + fbdo.dataType());
-    }
-    else {
-      Serial.println("FAILED");
-      Serial.println("REASON: " + fbdo.errorReason());
-    }
+
     
-    if (Firebase.RTDB.getInt(&fbdo, "/on_off/fan")) {
+    if (Firebase.RTDB.setInt(&fbdo, "/auro/senor/fan", h)){
+      Serial.println("PASSED");
+      Serial.println("PATH: " + fbdo.dataPath());
+      Serial.println("TYPE: " + fbdo.dataType());
+    }
+    else {
+      Serial.println("FAILED");
+      Serial.println("REASON: " + fbdo.errorReason());
+    }
+
+    
+    if (Firebase.RTDB.getInt(&fbdo, "/manual/sensor/fan")) {
       if(fbdo.dataType() == "int"){
         intValue = fbdo.intData();
         Serial.println(intValue);
-      if (intValue == 1) {
+        if (intValue == 1) {
         Serial.println(intValue);
         Serial.println("motor on");
         //here motor code
@@ -188,19 +183,38 @@ void loop(){
         digitalWrite(motor1Pin2, LOW);
         ledcWrite(pwmChannel, 100);   //세기조절 가능
        }
-      else{
+       else{
           Serial.println("Motor stopped");
           digitalWrite(motor1Pin1, LOW);
           digitalWrite(motor1Pin2, LOW);
-        
+       }
+      }
+     }
+     if (Firebase.RTDB.getInt(&fbdo, "/manual/sensor/pump")) {
+      if(fbdo.dataType() == "int"){
+        intValue = fbdo.intData();
+        Serial.println(intValue);
+        if (intValue == 1) {
+        Serial.println(intValue);
+        Serial.println("pump on");
+        digitalWrite(Relaypin,HIGH);
+        delay(5000);
+        digitalWrite(Relaypin,LOW);
+        delay(5000);
+        Serial.println("pump off");
+       }
+       else{
+          Serial.println("pump stopped");
+          digitalWrite(Relaypin, LOW);
+       }
       }
       }
-      
-      }else{
+     else{
         Serial.println("jotTham");
         }
     }
-    else {
+    else 
+    {
       Serial.println(fbdo.errorReason());
     }
 }
