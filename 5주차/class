@@ -1,38 +1,69 @@
-<mxfile host="app.diagrams.net" modified="2022-10-07T07:45:44.397Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36" etag="7kIVBGUx3Q163hZAEWLB" version="20.4.0" type="github">
+<mxfile host="app.diagrams.net" modified="2022-10-07T14:34:08.402Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36" etag="yHR2q6agTmOKvDKBFBiP" version="20.4.0" type="github">
   <diagram id="6TX-XT-vFVQvuUCe4hZ7" name="페이지-1">
     <mxGraphModel dx="1038" dy="579" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="Y3Pj-WLaADzDlHSHwthP-3" value="사용자가 팬, 물펌프, 조명을 수동제어한다." style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+        <mxCell id="Y3Pj-WLaADzDlHSHwthP-3" value="사용자가 팬, 물펌프, 조명을 수동제어한다." style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="15" y="15" width="250" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="Y3Pj-WLaADzDlHSHwthP-5" value="농부" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
-          <mxGeometry x="110" y="100" width="100" height="300" as="geometry" />
+        <mxCell id="Y3Pj-WLaADzDlHSHwthP-5" value="농부" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" parent="1" vertex="1">
+          <mxGeometry x="80" y="100" width="100" height="390" as="geometry" />
         </mxCell>
-        <mxCell id="Y3Pj-WLaADzDlHSHwthP-8" value="팬, 물펌프, 조명 &lt;br&gt;On 버튼 클릭" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="Y3Pj-WLaADzDlHSHwthP-5" target="Y3Pj-WLaADzDlHSHwthP-6">
+        <mxCell id="Y3Pj-WLaADzDlHSHwthP-8" value="팬, 물펌프, 조명 &lt;br&gt;On/Off 버튼 클릭" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="Y3Pj-WLaADzDlHSHwthP-5" target="MLz0-pZ_YKNuc3sx6lej-1" edge="1">
           <mxGeometry width="80" relative="1" as="geometry">
             <mxPoint x="50" y="110" as="sourcePoint" />
-            <mxPoint x="130" y="110" as="targetPoint" />
+            <mxPoint x="180" y="110" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Y3Pj-WLaADzDlHSHwthP-6" value="수동장치제어 DB" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" parent="1" vertex="1">
+          <mxGeometry x="314" y="100" width="100" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="Y3Pj-WLaADzDlHSHwthP-7" value="수동장치제어&amp;nbsp;" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" parent="1" vertex="1">
+          <mxGeometry x="450" y="100" width="100" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="Y3Pj-WLaADzDlHSHwthP-10" value="팬, 물펌프, 조명" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" parent="1" vertex="1">
+          <mxGeometry x="600" y="100" width="100" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="MLz0-pZ_YKNuc3sx6lej-1" value="&amp;nbsp;수동조절 인터페이스" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="200" y="100" width="100" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="Y3Pj-WLaADzDlHSHwthP-9" value="팬, 물펌프, 조명 &lt;br&gt;On /Off신호 저장" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" target="Y3Pj-WLaADzDlHSHwthP-6" edge="1" source="MLz0-pZ_YKNuc3sx6lej-1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="500" y="280" as="sourcePoint" />
+            <mxPoint x="500" y="280" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="240" y="110" />
+              <mxPoint x="310" y="280" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Y3Pj-WLaADzDlHSHwthP-6" value="수동장치제어 DB" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
-          <mxGeometry x="400" y="100" width="100" height="300" as="geometry" />
-        </mxCell>
-        <mxCell id="Y3Pj-WLaADzDlHSHwthP-7" value="수동장치제어&amp;nbsp;" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
-          <mxGeometry x="260" y="100" width="100" height="300" as="geometry" />
-        </mxCell>
-        <mxCell id="Y3Pj-WLaADzDlHSHwthP-9" value="팬, 물펌프, 조명 &lt;br&gt;On 신호 저장" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="Y3Pj-WLaADzDlHSHwthP-7" target="Y3Pj-WLaADzDlHSHwthP-6">
+        <mxCell id="MLz0-pZ_YKNuc3sx6lej-2" value="팬, 물펌프, 조명 &lt;br&gt;On/Off 명령" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="Y3Pj-WLaADzDlHSHwthP-6" target="Y3Pj-WLaADzDlHSHwthP-7">
           <mxGeometry width="80" relative="1" as="geometry">
-            <mxPoint x="50" y="180" as="sourcePoint" />
-            <mxPoint x="50" y="180" as="targetPoint" />
+            <mxPoint x="259.5" y="260" as="sourcePoint" />
+            <mxPoint x="373.5" y="260" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="410" y="320" />
+            </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Y3Pj-WLaADzDlHSHwthP-10" value="팬, 물펌프, 조명" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
-          <mxGeometry x="550" y="100" width="100" height="300" as="geometry" />
+        <mxCell id="MLz0-pZ_YKNuc3sx6lej-3" value="확인 메세지 출력" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" edge="1" parent="1" source="MLz0-pZ_YKNuc3sx6lej-1" target="Y3Pj-WLaADzDlHSHwthP-5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="240" y="290" as="sourcePoint" />
+            <mxPoint x="370" y="290" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="220" y="240" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="MLz0-pZ_YKNuc3sx6lej-4" value="팬, 물펌프, 조명 &lt;br&gt;On/Off" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="Y3Pj-WLaADzDlHSHwthP-7" target="Y3Pj-WLaADzDlHSHwthP-10">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="373.5" y="330" as="sourcePoint" />
+            <mxPoint x="509.5" y="330" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="510" y="370" />
+            </Array>
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
