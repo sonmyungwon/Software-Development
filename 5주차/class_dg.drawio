@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-10-08T06:49:01.265Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36" etag="XkINNlqMGAmeTYSGRcBe" version="20.4.0" type="github">
+<mxfile host="app.diagrams.net" modified="2022-10-08T07:47:12.816Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36" etag="2PaMyH5bz-jvMQkrqrsJ" version="20.4.0" type="github">
   <diagram id="FxXh_qyI8c8mg8j4aweR" name="페이지-1">
-    <mxGraphModel dx="1038" dy="521" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1038" dy="579" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -83,12 +83,6 @@
         </mxCell>
         <mxCell id="zbahY2p51AuoQjmVbx6N-70" value="+ pump_onoff(boolean)&#xa;+ fan_onoff(boolean)&#xa;+ led_onoff(boolean)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="zbahY2p51AuoQjmVbx6N-67">
           <mxGeometry y="98" width="160" height="62" as="geometry" />
-        </mxCell>
-        <mxCell id="zbahY2p51AuoQjmVbx6N-75" value="" style="endArrow=none;html=1;rounded=0;entryX=1;entryY=0.008;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.003;exitY=0.008;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="zbahY2p51AuoQjmVbx6N-70">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="450" y="380" as="sourcePoint" />
-            <mxPoint x="390" y="182.20799999999997" as="targetPoint" />
-          </mxGeometry>
         </mxCell>
         <mxCell id="zbahY2p51AuoQjmVbx6N-76" value="Select manual mode" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="90" y="115" width="130" height="30" as="geometry" />
