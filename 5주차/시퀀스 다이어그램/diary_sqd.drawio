@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-10-09T07:16:30.023Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36" etag="iD3jPIWvUuSUxrg237Oq" version="20.4.0" type="github">
+<mxfile host="app.diagrams.net" modified="2022-10-09T07:17:53.541Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36" etag="dQHmdhW5aRJa_uZnuwMm" version="20.4.0" type="github">
   <diagram id="ibOZRkEERhT8VrmGGIWO" name="페이지-1">
     <mxGraphModel dx="1038" dy="579" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -15,6 +15,9 @@
         </mxCell>
         <mxCell id="LfJQejW4wEZQG6NsD9H3-4" value="관찰일지&lt;br&gt;인터페이스" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" parent="1" vertex="1">
           <mxGeometry x="174" y="50" width="100" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="peh3bpObvGaAzJVg23kE-16" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="LfJQejW4wEZQG6NsD9H3-4">
+          <mxGeometry x="45" y="220" width="10" height="180" as="geometry" />
         </mxCell>
         <mxCell id="LfJQejW4wEZQG6NsD9H3-5" value="관찰일지&lt;br&gt;날짜 선택" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" source="LfJQejW4wEZQG6NsD9H3-1" target="LfJQejW4wEZQG6NsD9H3-4" edge="1">
           <mxGeometry width="80" relative="1" as="geometry">
@@ -94,6 +97,15 @@
         </mxCell>
         <mxCell id="peh3bpObvGaAzJVg23kE-14" value="if now == 00:00:00" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="400" y="130" width="116" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="peh3bpObvGaAzJVg23kE-15" value="Show" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="226" y="450" as="sourcePoint" />
+            <mxPoint x="100" y="450" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="176.5" y="450" />
+            </Array>
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
