@@ -6,48 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity2">
 
-    <Button
-        android:id="@+id/startBtn4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="112dp"
-        android:background="@android:color/transparent"
-        android:text="0"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.681"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/startBtn3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="112dp"
-        android:background="@android:color/transparent"
-        android:text="1"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.312"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/startBtn2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
-        android:background="@android:color/transparent"
-        android:text="0"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.681"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <ImageView
         android:id="@+id/autoControlImage"
         android:layout_width="276dp"
@@ -60,14 +18,35 @@
 
     <Button
         android:id="@+id/autoControlBtn"
-        android:layout_width="276dp"
-        android:layout_height="50dp"
+        android:layout_width="275dp"
+        android:layout_height="46dp"
         android:background="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="@+id/autoControlImage"
         app:layout_constraintEnd_toEndOf="@+id/autoControlImage"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/autoControlImage"
         app:layout_constraintTop_toTopOf="@+id/autoControlImage"
+        app:layout_constraintVertical_bias="0.0" />
+    <ImageView
+        android:id="@+id/manualControlImage"
+        android:layout_width="276dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/login_btn"
+        app:layout_constraintBottom_toTopOf="@+id/autoControlImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/manualControlBtn"
+        android:layout_width="275dp"
+        android:layout_height="46dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="@+id/manualControlImage"
+        app:layout_constraintEnd_toEndOf="@+id/manualControlImage"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/manualControlImage"
+        app:layout_constraintTop_toTopOf="@+id/manualControlImage"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
@@ -89,20 +68,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/diary"
         app:layout_constraintEnd_toEndOf="@+id/diary"
         app:layout_constraintStart_toStartOf="@+id/diary" />
-
-    <Button
-        android:id="@+id/startBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
-        android:background="@android:color/transparent"
-        android:text="1"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.312"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/settingImage"
@@ -155,6 +120,15 @@
         app:layout_constraintEnd_toEndOf="@+id/autoControlImage"
         app:layout_constraintStart_toStartOf="@+id/autoControlImage"
         app:layout_constraintTop_toTopOf="@+id/autoControlImage" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="수동 제어"
+        app:layout_constraintBottom_toBottomOf="@+id/manualControlBtn"
+        app:layout_constraintEnd_toEndOf="@+id/manualControlImage"
+        app:layout_constraintStart_toStartOf="@+id/manualControlImage"
+        app:layout_constraintTop_toTopOf="@+id/manualControlImage" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -42,8 +42,6 @@ int green = 2;
 int blue = 1;
 int red = 3;
 
-
-
 #define DHTTYPE DHT11   // DHT 22  (AM2302), AM2321
 
 
@@ -141,8 +139,9 @@ void loop(){
   if (Firebase.ready() && signupOK && (millis() - sendDataPrevMillis > 15000 || sendDataPrevMillis == 0)){
     sendDataPrevMillis = millis();
     // Write an Int number on the database path test/int
-    
-    if (Firebase.RTDB.pushFloat(&fbdo, "/auto/sensorDB/temperature", t)){
+    Serial.println(t);
+    if (Firebase.RTDB.pushInt(&fbdo, "auto/sensorDB/temperature",t)){
+      Firebase.RTDB.pushInt(&fbdo,"/auto/sensorDB/test",1234);
      Serial.println("PASSED");
       Serial.println("PATH: " + fbdo.dataPath());
      Serial.println("TYPE: " + fbdo.dataType());
@@ -175,7 +174,7 @@ void loop(){
       Serial.println("REASON: " + fbdo.errorReason());
     }
 
-    
+    /*
     if (Firebase.RTDB.getInt(&fbdo, "/manual/sensor/fan")) {
       if(fbdo.dataType() == "int"){
         intValue = fbdo.intData();
@@ -232,12 +231,13 @@ void loop(){
             digitalWrite(blue, LOW);
             digitalWrite(red, LOW);
             delay(1000);
+         }
        }
-      }
-      } 
+     } 
      else{
         Serial.println("jotTham");
         }
+        */
     }
     else 
     {

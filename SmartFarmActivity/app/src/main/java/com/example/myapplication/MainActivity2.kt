@@ -1,13 +1,21 @@
 package com.example.myapplication
 
+import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Button
+import android.widget.Switch
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 
 
@@ -22,62 +30,109 @@ class MainActivity2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
 
-        val startBtn = findViewById<Button>(R.id.startBtn)
-        startBtn.setOnClickListener{
-            val database = FirebaseDatabase.getInstance()
-            val myRef = database.getReference("/manual/sensor/pump")
 
-            myRef.setValue(1)
-
-        }
-        val startBtn2 = findViewById<Button>(R.id.startBtn2)
-        startBtn2.setOnClickListener{
-            val database = FirebaseDatabase.getInstance()
-            val myRef = database.getReference("/manual/sensor/pump")
-
-            myRef.setValue(0)
-
-        }
-        val startBtn3 = findViewById<Button>(R.id.startBtn3)
-        startBtn3.setOnClickListener{
-            val database = FirebaseDatabase.getInstance()
-            val myRef = database.getReference("/manual/sensor/fan")
-
-            myRef.setValue(1)
-
-        }
-        val startBtn4 = findViewById<Button>(R.id.startBtn4)
-        startBtn4.setOnClickListener{
-            val database = FirebaseDatabase.getInstance()
-            val myRef = database.getReference("/manual/sensor/fan")
-
-            myRef.setValue(0)
-
-        }
+        //자동제어 버튼을 눌렀을때 자동제어 액티비티(AutoControlActivity)로 넘어감
         val autoControlBtn = findViewById<Button>(R.id.autoControlBtn)
-        autoControlBtn.setOnClickListener(){
-            val mDialogView = LayoutInflater.from(this).inflate(R.layout.auto_control_custom_dialog, null)
+        autoControlBtn.setOnClickListener() {
+            val intent = Intent(this, AutoControlActivity::class.java)
+            startActivity(intent)
+        }
+
+
+        //수동제어 버튼을 눌렀을때 나오는 다이얼로그
+        val manualControlBtn = findViewById<Button>(R.id.manualControlBtn)
+
+        manualControlBtn.setOnClickListener() {
+
+            val mDialogView = LayoutInflater.from(this).inflate(R.layout.manual_control_dialog, null)
             val mBuilder = AlertDialog.Builder(this)
                 .setView(mDialogView)
-                .setTitle("자동 제어 설정")
+                .setTitle("수동 제어 설정")
 
             val mAlertDialog = mBuilder.show()
-            mAlertDialog.findViewById<Button>(R.id.button2)?.setOnClickListener(){
+
+            mAlertDialog.findViewById<Switch>(R.id.ledSwitch)?.setOnCheckedChangeListener{_, onSwitch->
                 val database = FirebaseDatabase.getInstance()
-                val myRef = database.getReference("/manual/sensor/fan")
+                val myRef = database.getReference("user/manual/device/led")
+                val myRef1 = database.getReference("user/mode")
 
-                myRef.setValue(1)
+                if(onSwitch){
+                    Toast.makeText(this, "switch on", Toast.LENGTH_SHORT).show()
+                    myRef1.setValue(1)
+                    myRef.setValue(1)
+
+                }else {
+                    Toast.makeText(this, "switch off", Toast.LENGTH_SHORT).show()
+                    myRef1.setValue(1)
+                    myRef.setValue(0)
+                }
             }
-            mAlertDialog.findViewById<Button>(R.id.button3)?.setOnClickListener(){
+
+            mAlertDialog.findViewById<Switch>(R.id.fanSwitch)?.setOnCheckedChangeListener(){_, onSwitch->
                 val database = FirebaseDatabase.getInstance()
-                val myRef = database.getReference("/manual/sensor/fan")
+                val myRef = database.getReference("user/manual/device/fan")
+                val myRef1 = database.getReference("user/mode")
 
-                myRef.setValue(0)
+                if(onSwitch){
+                    Toast.makeText(this, "switch on", Toast.LENGTH_SHORT).show()
+                    myRef1.setValue(1)
+                    myRef.setValue(1)
+                }else{
+                    Toast.makeText(this, "switch off", Toast.LENGTH_SHORT).show()
+                    myRef1.setValue(1)
+                    myRef.setValue(0)
+                }
+            }
+            mAlertDialog.findViewById<Switch>(R.id.pumpSwitch)?.setOnCheckedChangeListener() { _, onSwitch->
+                val database = FirebaseDatabase.getInstance()
+                val myRef = database.getReference("user/manual/device/pump")
+                val myRef1 = database.getReference("user/mode")
+
+                if(onSwitch){
+                    Toast.makeText(this, "switch on", Toast.LENGTH_SHORT).show()
+                    myRef1.setValue(1)
+                    myRef.setValue(1)
+                }else{
+                    Toast.makeText(this, "switch off", Toast.LENGTH_SHORT).show()
+                    myRef1.setValue(1)
+                    myRef.setValue(0)
+                }
             }
 
+            val database = FirebaseDatabase.getInstance()
+            val myRef = database.getReference("user/manual/exception")
+
+
+                //로그에 띄우기
+            myRef.addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    Log.d("Data", snapshot.value.toString())
+
+                    if(snapshot.value.toString().toInt() == 1){
+                        val builder = AlertDialog.Builder(this@MainActivity2)
+                        builder
+                            .setTitle("알림")
+                            .setMessage("exception! \n과다수분공급으로 인해 물펌프가 정지되었습니다.")
+                            .setCancelable(false)
+
+                            .setPositiveButton("확인", object : DialogInterface.OnClickListener{
+                                override fun onClick(p0: DialogInterface?, p1: Int) {
+                                    myRef.setValue(0)
+                                    Toast.makeText(baseContext, "확인", Toast.LENGTH_SHORT).show()
+                                }
+                            })
+
+                            .create()
+                        builder.show()
+
+                    }
+                }
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
 
         }
-
 
     }
 }

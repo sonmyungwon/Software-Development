@@ -27,5 +27,12 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
+
+        val anonymousBtn = findViewById<Button>(R.id.anonymous_btn)
+
+        anonymousBtn.setOnClickListener(){
+            val intent = Intent(this, MainActivity2::class.java)
+            startActivity(intent)
+        }
     }
 }

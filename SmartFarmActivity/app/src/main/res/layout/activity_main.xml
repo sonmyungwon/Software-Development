@@ -9,6 +9,16 @@
     tools:layout_editor_absoluteY="64dp">
 
     <ImageView
+        android:id="@+id/anonymous_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/login_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -71,6 +81,18 @@
         app:layout_constraintEnd_toEndOf="@+id/imageView3"
         app:layout_constraintStart_toStartOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
+    <Button
+        android:id="@+id/anonymous_btn"
+        android:layout_width="261dp"
+        android:layout_height="42dp"
+        android:background="#00ff0000"
+        android:text="anonymous"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/anonymous_image"
+        app:layout_constraintEnd_toEndOf="@+id/anonymous_image"
+        app:layout_constraintStart_toStartOf="@+id/anonymous_image"
+        app:layout_constraintTop_toTopOf="@+id/anonymous_image" />
 
     <Button
         android:id="@+id/sign_up_btn"

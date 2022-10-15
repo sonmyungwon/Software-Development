@@ -23,8 +23,8 @@
 #include "addons/RTDBHelper.h"
 
 // Insert your network credentials
-#define WIFI_SSID "407_601-2"
-#define WIFI_PASSWORD "bigsys601"
+#define WIFI_SSID "son"
+#define WIFI_PASSWORD "123456789"
 
 // Insert Firebase project API Key
 #define API_KEY "AIzaSyDqFzxgzics8NUugrOKBHB1lemosv32QUM"
@@ -37,7 +37,7 @@ FirebaseData fbdo;
 
 FirebaseAuth auth;
 FirebaseConfig config;
-#define DHTPIN 17        // GPIO23
+#define DHTPIN 19        // GPIO23
 
 
 
