@@ -82,10 +82,10 @@ class AutoControlActivity : AppCompatActivity() {
             val builder = AlertDialog.Builder(this)
             builder
                 .setTitle("알림")
-                .setMessage("Are you sure? \n" +
-                            "                Temperature: $tempNumber\n" +
-                            "                Soil Humidity : $humidNumber\n" +
-                            "                Lightness : $illumNumber")
+                .setMessage("설정 값을 바꾸시겠습니까? \n" +
+                            "                온도 : $tempNumber\n" +
+                            "                토양 습도 : $humidNumber\n" +
+                            "                밝기 : $illumNumber")
                 .setCancelable(false)
 
                 .setPositiveButton("확인", object : DialogInterface.OnClickListener{

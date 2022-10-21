@@ -8,14 +8,15 @@
         <entry key="app/src/main/res/drawable/buttonstyle.xml" value="0.2125" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2125" />
         <entry key="app/src/main/res/layout/activity_auto_control.xml" value="0.2917246500651042" />
+        <entry key="app/src/main/res/layout/activity_first_main.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.27019283488645396" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.27769927978515624" />
-        <entry key="app/src/main/res/layout/activity_main2.xml" value="0.285302734375" />
-        <entry key="app/src/main/res/layout/activity_register.xml" value="0.32880198160807295" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2394615364355612" />
+        <entry key="app/src/main/res/layout/activity_main2.xml" value="0.24225006103515626" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.13774210611979168" />
         <entry key="app/src/main/res/layout/auto_control_custom_dialog.xml" value="0.2927139282226562" />
         <entry key="app/src/main/res/layout/custom_dialog.xml" value="0.29937744140624994" />
         <entry key="app/src/main/res/layout/layout.xml" value="0.28229166666666666" />
-        <entry key="app/src/main/res/layout/manual_control_dialog.xml" value="0.2693237304687501" />
+        <entry key="app/src/main/res/layout/manual_control_dialog.xml" value="0.3926071166992188" />
       </map>
     </option>
   </component>

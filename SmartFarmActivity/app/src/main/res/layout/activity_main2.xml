@@ -10,10 +10,11 @@
         android:id="@+id/autoControlImage"
         android:layout_width="276dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:src="@drawable/login_btn"
-        app:layout_constraintBottom_toTopOf="@+id/settingImage"
+        app:layout_constraintBottom_toTopOf="@+id/diaryBtn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -27,14 +28,16 @@
         app:layout_constraintStart_toStartOf="@+id/autoControlImage"
         app:layout_constraintTop_toTopOf="@+id/autoControlImage"
         app:layout_constraintVertical_bias="0.0" />
+
     <ImageView
         android:id="@+id/manualControlImage"
         android:layout_width="276dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="12dp"
         android:src="@drawable/login_btn"
         app:layout_constraintBottom_toTopOf="@+id/autoControlImage"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -47,18 +50,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/manualControlImage"
         app:layout_constraintTop_toTopOf="@+id/manualControlImage"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/settingBtn"
-        android:layout_width="276dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="8dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintBottom_toBottomOf="@+id/settingImage"
-        app:layout_constraintEnd_toEndOf="@+id/settingImage"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/settingImage" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/diaryBtn"
@@ -68,27 +60,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/diary"
         app:layout_constraintEnd_toEndOf="@+id/diary"
         app:layout_constraintStart_toStartOf="@+id/diary" />
-
-    <ImageView
-        android:id="@+id/settingImage"
-        android:layout_width="276dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="16dp"
-        android:src="@drawable/login_btn"
-        app:layout_constraintBottom_toTopOf="@+id/diary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="텃밭 환경 설정"
-        app:layout_constraintBottom_toBottomOf="@+id/settingImage"
-        app:layout_constraintEnd_toEndOf="@+id/settingImage"
-        app:layout_constraintStart_toStartOf="@+id/settingImage"
-        app:layout_constraintTop_toTopOf="@+id/settingImage" />
 
     <TextView
         android:id="@+id/textView12"
@@ -129,6 +100,16 @@
         app:layout_constraintEnd_toEndOf="@+id/manualControlImage"
         app:layout_constraintStart_toStartOf="@+id/manualControlImage"
         app:layout_constraintTop_toTopOf="@+id/manualControlImage" />
+
+    <TextView
+        android:layout_width="119dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="32dp"
+        android:gravity="center"
+        android:text="@string/author"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

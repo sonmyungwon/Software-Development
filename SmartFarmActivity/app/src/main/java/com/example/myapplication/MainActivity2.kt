@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.Switch
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -50,18 +51,20 @@ class MainActivity2 : AppCompatActivity() {
                 .setTitle("수동 제어 설정")
 
             val mAlertDialog = mBuilder.show()
-
+            //val ledText = findViewById<TextView>(R.id.led_text)
             mAlertDialog.findViewById<Switch>(R.id.ledSwitch)?.setOnCheckedChangeListener{_, onSwitch->
                 val database = FirebaseDatabase.getInstance()
                 val myRef = database.getReference("user/manual/device/led")
                 val myRef1 = database.getReference("user/mode")
 
                 if(onSwitch){
+
                     Toast.makeText(this, "switch on", Toast.LENGTH_SHORT).show()
                     myRef1.setValue(1)
                     myRef.setValue(1)
 
                 }else {
+
                     Toast.makeText(this, "switch off", Toast.LENGTH_SHORT).show()
                     myRef1.setValue(1)
                     myRef.setValue(0)
@@ -69,6 +72,7 @@ class MainActivity2 : AppCompatActivity() {
             }
 
             mAlertDialog.findViewById<Switch>(R.id.fanSwitch)?.setOnCheckedChangeListener(){_, onSwitch->
+
                 val database = FirebaseDatabase.getInstance()
                 val myRef = database.getReference("user/manual/device/fan")
                 val myRef1 = database.getReference("user/mode")
@@ -83,6 +87,7 @@ class MainActivity2 : AppCompatActivity() {
                     myRef.setValue(0)
                 }
             }
+            //val pumpText = findViewById<TextView>(R.id.pump_text)
             mAlertDialog.findViewById<Switch>(R.id.pumpSwitch)?.setOnCheckedChangeListener() { _, onSwitch->
                 val database = FirebaseDatabase.getInstance()
                 val myRef = database.getReference("user/manual/device/pump")
