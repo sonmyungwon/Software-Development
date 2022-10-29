@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-10-29T12:37:58.578Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" etag="cjJmQvc9tPnEA8FF6_3i" version="20.4.0" type="github">
+<mxfile host="app.diagrams.net" modified="2022-10-29T12:38:47.312Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" etag="Bx3ylSns-whVNlhuUzmi" version="20.4.0" type="github">
   <diagram id="Z_jb_i1OUhFMdzfZDqN_" name="페이지-1">
     <mxGraphModel dx="1038" dy="513" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -115,7 +115,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="ybVhzSZ3yJq0IbKlZSbC-21" value="팬/ 물펌프/ 조명" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" parent="1" vertex="1">
-          <mxGeometry x="770" y="90" width="100" height="450" as="geometry" />
+          <mxGeometry x="770" y="100" width="100" height="450" as="geometry" />
         </mxCell>
         <mxCell id="2I6JDyK-s7J--lfPWRVq-1" value="User setting &lt;br&gt;데이터" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" parent="1" vertex="1">
           <mxGeometry x="410" y="100" width="100" height="460" as="geometry" />
