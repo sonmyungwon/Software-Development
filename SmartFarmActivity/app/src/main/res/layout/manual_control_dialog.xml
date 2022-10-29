@@ -7,34 +7,49 @@
     tools:ignore="MissingClass">
 
     <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="on"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.115"
-        app:layout_constraintStart_toEndOf="@+id/fanSwitch"
-        app:layout_constraintTop_toTopOf="@+id/fan_text" />
+        android:id="@+id/textView21"
+        android:layout_width="71dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="196dp"
+        android:gravity="center"
+        android:text="조명 : "
+        app:layout_constraintEnd_toStartOf="@+id/ledSwitch"
+        app:layout_constraintHorizontal_bias="0.74"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/fan_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="on"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.13"
-        app:layout_constraintStart_toEndOf="@+id/pumpSwitch"
-        app:layout_constraintTop_toTopOf="@+id/pump_text" />
+        android:layout_marginTop="12dp"
+        android:text="off"
+        app:layout_constraintEnd_toStartOf="@+id/fanSwitch"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textView22"
+        app:layout_constraintTop_toTopOf="@+id/fanSwitch" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="71dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="48dp"
+        android:gravity="center"
+        android:text="환풍기 : "
+        app:layout_constraintEnd_toStartOf="@+id/fanSwitch"
+        app:layout_constraintHorizontal_bias="0.74"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:text="on"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.13"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/ledSwitch"
-        app:layout_constraintTop_toTopOf="@+id/led_text" />
+        app:layout_constraintTop_toTopOf="@+id/ledSwitch" />
 
     <TextView
         android:id="@+id/pump_text"
@@ -43,20 +58,62 @@
         android:layout_marginTop="12dp"
         android:text="off"
         app:layout_constraintEnd_toStartOf="@+id/pumpSwitch"
-        app:layout_constraintHorizontal_bias="0.73"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView23"
         app:layout_constraintTop_toTopOf="@+id/pumpSwitch" />
 
     <TextView
-        android:id="@+id/fan_text"
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="off"
-        app:layout_constraintEnd_toStartOf="@+id/fanSwitch"
-        app:layout_constraintHorizontal_bias="0.655"
-        app:layout_constraintStart_toEndOf="@+id/textView22"
+        android:layout_marginTop="16dp"
+        android:text="on"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/fanSwitch"
         app:layout_constraintTop_toTopOf="@+id/fanSwitch" />
+
+    <ImageView
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:layout_marginEnd="4dp"
+        android:src="@drawable/fan_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/textView22"
+        app:layout_constraintEnd_toStartOf="@+id/textView22"
+        app:layout_constraintTop_toTopOf="@+id/textView22"
+        app:layout_constraintVertical_bias="0.571" />
+
+    <Switch
+        android:id="@+id/ledSwitch"
+        android:layout_width="58dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="188dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.66"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Switch
+        android:id="@+id/fanSwitch"
+        android:layout_width="58dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.66"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ledSwitch" />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="71dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="52dp"
+        android:gravity="center"
+        android:text="물 펌프 : "
+        app:layout_constraintEnd_toStartOf="@+id/pumpSwitch"
+        app:layout_constraintHorizontal_bias="0.74"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
     <TextView
         android:id="@+id/led_text"
@@ -65,72 +122,50 @@
         android:layout_marginTop="12dp"
         android:text="off"
         app:layout_constraintEnd_toStartOf="@+id/ledSwitch"
-        app:layout_constraintHorizontal_bias="0.692"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView21"
         app:layout_constraintTop_toTopOf="@+id/ledSwitch" />
 
-    <Switch
-        android:id="@+id/ledSwitch"
-        android:layout_width="58dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="132dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.627"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
-        android:id="@+id/textView23"
+        android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:text="물 펌프 : "
-        app:layout_constraintEnd_toStartOf="@+id/pumpSwitch"
-        app:layout_constraintHorizontal_bias="0.743"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView22" />
-
-    <Switch
-        android:id="@+id/fanSwitch"
-        android:layout_width="58dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="12dp"
+        android:text="on"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.633"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ledSwitch" />
-
-    <TextView
-        android:id="@+id/textView22"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:text="환풍기 : "
-        app:layout_constraintEnd_toStartOf="@+id/fanSwitch"
-        app:layout_constraintHorizontal_bias="0.721"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView21" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/pumpSwitch"
+        app:layout_constraintTop_toTopOf="@+id/pumpSwitch" />
 
     <Switch
         android:id="@+id/pumpSwitch"
         android:layout_width="58dp"
         android:layout_height="51dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.628"
+        app:layout_constraintHorizontal_bias="0.66"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fanSwitch" />
 
-    <TextView
-        android:id="@+id/textView21"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="144dp"
-        android:text="조명 : "
-        app:layout_constraintEnd_toStartOf="@+id/ledSwitch"
-        app:layout_constraintHorizontal_bias="0.764"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:layout_marginEnd="4dp"
+        android:src="@drawable/led_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/textView21"
+        app:layout_constraintEnd_toStartOf="@+id/textView21"
+        app:layout_constraintTop_toTopOf="@+id/textView21"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:layout_marginEnd="4dp"
+        android:src="@drawable/water_drop_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/textView23"
+        app:layout_constraintEnd_toStartOf="@+id/textView23"
+        app:layout_constraintTop_toTopOf="@+id/textView23"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:layout_width="116dp"
@@ -142,5 +177,15 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pumpSwitch" />
+
+    <TextView
+        android:layout_width="210dp"
+        android:layout_height="37dp"
+        android:gravity="center"
+        android:text="manual control"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="100dp"
+        tools:layout_editor_absoluteY="84dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

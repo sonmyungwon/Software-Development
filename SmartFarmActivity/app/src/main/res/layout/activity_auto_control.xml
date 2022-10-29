@@ -6,78 +6,403 @@
     android:layout_height="match_parent"
     tools:context=".AutoControlActivity">
 
-    <Button
-        android:id="@+id/temp_minus_btn"
-        android:layout_width="53dp"
-        android:layout_height="47dp"
-        android:layout_marginEnd="40dp"
-        android:text="-"
-        app:layout_constraintEnd_toStartOf="@+id/tempText"
+    <TextView
+        android:id="@+id/per26"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="3dp"
+        android:background="#009688"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/per25"
+        app:layout_constraintTop_toBottomOf="@+id/illumText" />
+
+    <TextView
+        android:id="@+id/per30"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="3dp"
+        android:background="#009688"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toStartOf="@+id/illum_plus_btn"
+        app:layout_constraintStart_toEndOf="@+id/per29"
+        app:layout_constraintTop_toBottomOf="@+id/illumText" />
+
+    <TextView
+        android:id="@+id/per21"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="3dp"
+        android:background="#009688"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/illum_minus_btn"
+        app:layout_constraintTop_toBottomOf="@+id/illumText" />
+
+    <TextView
+        android:id="@+id/per24"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="3dp"
+        android:background="#009688"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/per23"
+        app:layout_constraintTop_toBottomOf="@+id/illumText" />
+
+    <TextView
+        android:id="@+id/per22"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="3dp"
+        android:background="#009688"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/per21"
+        app:layout_constraintTop_toBottomOf="@+id/illumText" />
+
+    <TextView
+        android:id="@+id/per29"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="3dp"
+        android:background="#009688"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/per28"
+        app:layout_constraintTop_toBottomOf="@+id/illumText" />
+
+    <TextView
+        android:id="@+id/per27"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="3dp"
+        android:background="#009688"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/per26"
+        app:layout_constraintTop_toBottomOf="@+id/illumText" />
+
+    <TextView
+        android:id="@+id/per25"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="3dp"
+        android:background="#009688"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/per24"
+        app:layout_constraintTop_toBottomOf="@+id/illumText" />
+
+    <TextView
+        android:id="@+id/per28"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="3dp"
+        android:background="#009688"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/per27"
+        app:layout_constraintTop_toBottomOf="@+id/illumText" />
+
+    <TextView
+        android:id="@+id/per23"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="3dp"
+        android:background="#009688"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/per22"
+        app:layout_constraintTop_toBottomOf="@+id/illumText" />
+
+    <TextView
+        android:id="@+id/per16"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="3dp"
+        android:background="#009688"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/per15"
+        app:layout_constraintTop_toBottomOf="@+id/humidText" />
+
+    <TextView
+        android:id="@+id/per20"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="3dp"
+        android:background="#009688"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toStartOf="@+id/humid_plus_btn"
+        app:layout_constraintStart_toEndOf="@+id/per19"
+        app:layout_constraintTop_toBottomOf="@+id/humidText" />
+
+    <TextView
+        android:id="@+id/per11"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="3dp"
+        android:background="#009688"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/humid_minus_btn"
+        app:layout_constraintTop_toBottomOf="@+id/humidText" />
+
+    <TextView
+        android:id="@+id/per14"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="3dp"
+        android:background="#009688"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/per13"
+        app:layout_constraintTop_toBottomOf="@+id/humidText" />
+
+    <TextView
+        android:id="@+id/per12"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="3dp"
+        android:background="#009688"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/per11"
+        app:layout_constraintTop_toBottomOf="@+id/humidText" />
+
+    <TextView
+        android:id="@+id/per19"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="3dp"
+        android:background="#009688"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/per18"
+        app:layout_constraintTop_toBottomOf="@+id/humidText" />
+
+    <TextView
+        android:id="@+id/per17"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="3dp"
+        android:background="#009688"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/per16"
+        app:layout_constraintTop_toBottomOf="@+id/humidText" />
+
+    <TextView
+        android:id="@+id/per15"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="3dp"
+        android:background="#009688"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/per14"
+        app:layout_constraintTop_toBottomOf="@+id/humidText" />
+
+    <TextView
+        android:id="@+id/per18"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="3dp"
+        android:background="#009688"
+        app:layout_constraintStart_toEndOf="@+id/per17"
+        app:layout_constraintTop_toBottomOf="@+id/humidText"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/per13"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="3dp"
+        android:background="#009688"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/per12"
+        app:layout_constraintTop_toBottomOf="@+id/humidText" />
+
+    <TextView
+        android:id="@+id/per9"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="3dp"
+        android:background="#009688"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/per8"
+        app:layout_constraintTop_toBottomOf="@+id/tempText" />
+
+    <TextView
+        android:id="@+id/per10"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="3dp"
+        android:background="#009688"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toStartOf="@+id/temp_plus_btn"
+        app:layout_constraintStart_toEndOf="@+id/per9"
+        app:layout_constraintTop_toBottomOf="@+id/tempText" />
+
+    <TextView
+        android:id="@+id/per8"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="3dp"
+        android:background="#009688"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/per7"
+        app:layout_constraintTop_toBottomOf="@+id/tempText" />
+
+    <TextView
+        android:id="@+id/per7"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="3dp"
+        android:background="#009688"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/per6"
+        app:layout_constraintTop_toBottomOf="@+id/tempText" />
+
+    <TextView
+        android:id="@+id/per6"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="3dp"
+        android:background="#009688"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/per5"
+        app:layout_constraintTop_toBottomOf="@+id/tempText" />
+
+    <TextView
+        android:id="@+id/per5"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="3dp"
+        android:background="#009688"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/per4"
+        app:layout_constraintTop_toBottomOf="@+id/tempText" />
+
+    <TextView
+        android:id="@+id/per2"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="3dp"
+        android:background="#009688"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/per1"
+        app:layout_constraintTop_toBottomOf="@+id/tempText" />
+
+    <TextView
+        android:id="@+id/per3"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="3dp"
+        android:background="#009688"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/per2"
+        app:layout_constraintTop_toBottomOf="@+id/tempText" />
+
+    <TextView
+        android:id="@+id/per1"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="3dp"
+        android:background="#009688"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/temp_minus_btn"
+        app:layout_constraintTop_toBottomOf="@+id/tempText" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="112dp"
+        android:text="온도 설정 : "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView20" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"/>
 
     <TextView
         android:id="@+id/tempText"
         android:layout_width="61dp"
         android:layout_height="30dp"
-        android:layout_marginTop="132dp"
         android:gravity="center"
-        android:text="20"
+        android:text="0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
     <TextView
         android:id="@+id/textView19"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="204dp"
+        android:layout_marginTop="212dp"
+        android:gravity="center"
         android:text="토양 습도 설정 : "
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/illum_minus_btn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        android:text="-"
+        app:layout_constraintEnd_toStartOf="@+id/illumText"
+        app:layout_constraintHorizontal_bias="0.458"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
     <TextView
         android:id="@+id/textView18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="308dp"
+        android:layout_marginTop="328dp"
+        android:gravity="center"
         android:text="조도 설정 : "
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/humid_plus_btn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="24dp"
+        android:text="+"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.547"
+        app:layout_constraintStart_toEndOf="@+id/humidText"
+        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+    <Button
+        android:id="@+id/humid_minus_btn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:text="-"
+        app:layout_constraintEnd_toStartOf="@+id/humidText"
+        app:layout_constraintHorizontal_bias="0.406"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
     <TextView
         android:id="@+id/illumText"
         android:layout_width="62dp"
         android:layout_height="30dp"
-        android:layout_marginTop="64dp"
-        android:text="50"
         android:gravity="center"
+        android:text="0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/humidText" />
-
-    <Button
-        android:id="@+id/illum_minus_btn"
-        android:layout_width="53dp"
-        android:layout_height="47dp"
-        android:layout_marginEnd="40dp"
-        android:text="-"
-        app:layout_constraintEnd_toStartOf="@+id/illumText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
     <Button
         android:id="@+id/illum_plus_btn"
-        android:layout_width="53dp"
-        android:layout_height="47dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginStart="48dp"
+        android:layout_marginTop="20dp"
         android:text="+"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toEndOf="@+id/illumText"
         app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
@@ -85,66 +410,77 @@
         android:id="@+id/humidText"
         android:layout_width="71dp"
         android:layout_height="36dp"
-        android:layout_marginTop="72dp"
-        android:text="60"
         android:gravity="center"
+        android:text="0"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tempText" />
-
-    <Button
-        android:id="@+id/humid_minus_btn"
-        android:layout_width="53dp"
-        android:layout_height="47dp"
-        android:layout_marginEnd="24dp"
-        android:text="-"
-        app:layout_constraintEnd_toStartOf="@+id/humidText"
-        app:layout_constraintHorizontal_bias="0.44"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
     <Button
-        android:id="@+id/humid_plus_btn"
-        android:layout_width="53dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="36dp"
+        android:id="@+id/temp_plus_btn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="20dp"
         android:text="+"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.567"
-        app:layout_constraintStart_toEndOf="@+id/humidText"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+        app:layout_constraintHorizontal_bias="0.479"
+        app:layout_constraintStart_toEndOf="@+id/tempText"
+        app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
-    <TextView
-        android:id="@+id/textView20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
-        android:text="온도 설정 : "
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+    <Button
+        android:id="@+id/temp_minus_btn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        android:text="-"
+        app:layout_constraintEnd_toStartOf="@+id/tempText"
+        app:layout_constraintHorizontal_bias="0.46"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
     <Button
         android:id="@+id/save_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
+        android:layout_marginBottom="144dp"
         android:text="save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/temp_plus_btn"
-        android:layout_width="53dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="52dp"
-        android:text="+"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="@string/author"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tempText"
-        app:layout_constraintTop_toBottomOf="@+id/textView20" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView32"
+        android:layout_width="185dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="Auto Control"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/per4"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="3dp"
+        android:background="#009688"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/per3"
+        app:layout_constraintTop_toBottomOf="@+id/tempText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

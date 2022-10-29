@@ -6,60 +6,62 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity2">
 
-    <ImageView
-        android:id="@+id/autoControlImage"
-        android:layout_width="276dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="8dp"
-        android:src="@drawable/login_btn"
-        app:layout_constraintBottom_toTopOf="@+id/diaryBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/autoControlBtn"
-        android:layout_width="275dp"
-        android:layout_height="46dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintBottom_toBottomOf="@+id/autoControlImage"
-        app:layout_constraintEnd_toEndOf="@+id/autoControlImage"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/autoControlImage"
-        app:layout_constraintTop_toTopOf="@+id/autoControlImage"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ImageView
-        android:id="@+id/manualControlImage"
-        android:layout_width="276dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="12dp"
-        android:src="@drawable/login_btn"
-        app:layout_constraintBottom_toTopOf="@+id/autoControlImage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <Button
         android:id="@+id/manualControlBtn"
-        android:layout_width="275dp"
-        android:layout_height="46dp"
+        android:layout_width="253dp"
+        android:layout_height="49dp"
         android:background="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="@+id/manualControlImage"
         app:layout_constraintEnd_toEndOf="@+id/manualControlImage"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/manualControlImage"
         app:layout_constraintTop_toTopOf="@+id/manualControlImage"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.25" />
 
-    <Button
-        android:id="@+id/diaryBtn"
-        android:layout_width="276dp"
-        android:layout_height="50dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintBottom_toBottomOf="@+id/diary"
-        app:layout_constraintEnd_toEndOf="@+id/diary"
-        app:layout_constraintStart_toStartOf="@+id/diary" />
+    <ImageView
+        android:id="@+id/diary"
+        android:layout_width="253dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="172dp"
+        android:src="@drawable/login_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.563"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/manualControlImage"
+        android:layout_width="253dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="12dp"
+        android:src="@drawable/login_btn"
+        app:layout_constraintBottom_toTopOf="@+id/autoControlImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.56"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="수동 제어"
+        app:layout_constraintBottom_toBottomOf="@+id/manualControlBtn"
+        app:layout_constraintEnd_toEndOf="@+id/manualControlImage"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="@+id/manualControlImage"
+        app:layout_constraintTop_toTopOf="@+id/manualControlImage"
+        app:layout_constraintVertical_bias="0.464" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="자동제어"
+        app:layout_constraintBottom_toBottomOf="@+id/autoControlImage"
+        app:layout_constraintEnd_toEndOf="@+id/autoControlImage"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="@+id/autoControlImage"
+        app:layout_constraintTop_toTopOf="@+id/autoControlImage"
+        app:layout_constraintVertical_bias="0.419" />
 
     <TextView
         android:id="@+id/textView12"
@@ -69,37 +71,42 @@
         app:layout_constraintBottom_toBottomOf="@+id/diary"
         app:layout_constraintEnd_toEndOf="@+id/diary"
         app:layout_constraintStart_toStartOf="@+id/diary"
-        app:layout_constraintTop_toTopOf="@+id/diary" />
+        app:layout_constraintTop_toTopOf="@+id/diary"
+        app:layout_constraintVertical_bias="0.483" />
 
     <ImageView
-        android:id="@+id/diary"
-        android:layout_width="276dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="168dp"
+        android:id="@+id/autoControlImage"
+        android:layout_width="253dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="8dp"
         android:src="@drawable/login_btn"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/diaryBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.563"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="자동제어"
+    <Button
+        android:id="@+id/autoControlBtn"
+        android:layout_width="253dp"
+        android:layout_height="49dp"
+        android:background="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="@+id/autoControlImage"
         app:layout_constraintEnd_toEndOf="@+id/autoControlImage"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/autoControlImage"
-        app:layout_constraintTop_toTopOf="@+id/autoControlImage" />
+        app:layout_constraintTop_toTopOf="@+id/autoControlImage"
+        app:layout_constraintVertical_bias="1.0" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="수동 제어"
-        app:layout_constraintBottom_toBottomOf="@+id/manualControlBtn"
-        app:layout_constraintEnd_toEndOf="@+id/manualControlImage"
-        app:layout_constraintStart_toStartOf="@+id/manualControlImage"
-        app:layout_constraintTop_toTopOf="@+id/manualControlImage" />
+    <Button
+        android:id="@+id/diaryBtn"
+        android:layout_width="253dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="4dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="@+id/diary"
+        app:layout_constraintEnd_toEndOf="@+id/diary"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/diary" />
 
     <TextView
         android:layout_width="119dp"
@@ -110,6 +117,45 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:layout_width="158dp"
+        android:layout_height="162dp"
+        android:src="@drawable/smart_farm_logo"
+        app:layout_constraintBottom_toBottomOf="@+id/manualControlImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="29dp"
+        android:layout_height="33dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/manual_control_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/manualControlImage"
+        app:layout_constraintEnd_toStartOf="@+id/manualControlImage"
+        app:layout_constraintTop_toTopOf="@+id/manualControlImage"
+        app:layout_constraintVertical_bias="0.437" />
+
+    <ImageView
+        android:layout_width="28dp"
+        android:layout_height="29dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/auto_control_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/autoControlImage"
+        app:layout_constraintEnd_toStartOf="@+id/autoControlImage"
+        app:layout_constraintTop_toTopOf="@+id/autoControlImage"
+        app:layout_constraintVertical_bias="0.1" />
+
+    <ImageView
+        android:layout_width="29dp"
+        android:layout_height="31dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/diary_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/diary"
+        app:layout_constraintEnd_toStartOf="@+id/diary"
+        app:layout_constraintTop_toTopOf="@+id/diary"
+        app:layout_constraintVertical_bias="0.166" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,36 +8,25 @@
 
     <TextView
         android:id="@+id/textView15"
-        android:layout_width="122dp"
-        android:layout_height="93dp"
-        android:layout_marginTop="120dp"
-        android:gravity="center"
-        android:text="Hello!"
-        android:textSize="36dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="184dp"
-        android:layout_height="251dp"
-        android:src="@drawable/sprout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
-
-    <TextView
         android:layout_width="156dp"
         android:layout_height="56dp"
-        android:layout_marginBottom="72dp"
+        android:layout_marginBottom="312dp"
         android:gravity="center"
         android:text="@string/author"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:layout_width="140dp"
+        android:layout_height="130dp"
+        android:src="@drawable/smart_farm_logo"
+        app:layout_constraintBottom_toTopOf="@+id/textView15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.935" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
