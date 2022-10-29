@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-10-29T13:04:41.881Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" etag="uUhEHVx2_A8OAce0CGpU" version="20.4.0" type="github">
+<mxfile host="app.diagrams.net" modified="2022-10-29T13:05:42.084Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" etag="3U6laAb4o4dzlkvDlNpY" version="20.4.0" type="github">
   <diagram id="ibOZRkEERhT8VrmGGIWO" name="페이지-1">
     <mxGraphModel dx="1038" dy="513" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -6,6 +6,9 @@
         <mxCell id="1" parent="0" />
         <mxCell id="LfJQejW4wEZQG6NsD9H3-1" value="사용자" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" parent="1" vertex="1">
           <mxGeometry x="50" y="50" width="100" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="wvFJZ_0LhpV8LD1nnm7J-1" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="LfJQejW4wEZQG6NsD9H3-1">
+          <mxGeometry x="45" y="220" width="10" height="180" as="geometry" />
         </mxCell>
         <mxCell id="LfJQejW4wEZQG6NsD9H3-2" value="관찰일지" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" parent="1" vertex="1">
           <mxGeometry x="300" y="50" width="100" height="440" as="geometry" />
@@ -48,7 +51,7 @@
           <mxGeometry x="-360" y="45" width="450" height="245" as="geometry" />
         </mxCell>
         <mxCell id="peh3bpObvGaAzJVg23kE-6" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" parent="peh3bpObvGaAzJVg23kE-5" vertex="1">
-          <mxGeometry x="45" y="70" width="10" height="170" as="geometry" />
+          <mxGeometry x="45" y="70" width="10" height="180" as="geometry" />
         </mxCell>
         <mxCell id="peh3bpObvGaAzJVg23kE-7" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.14;entryY=0.014;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="peh3bpObvGaAzJVg23kE-1" target="peh3bpObvGaAzJVg23kE-6" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
