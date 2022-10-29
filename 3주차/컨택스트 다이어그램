@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-10-29T06:53:40.624Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" etag="twyl8_RPbceQ3L1ulsPm" version="20.5.1" type="github">
+<mxfile host="app.diagrams.net" modified="2022-10-29T06:58:05.825Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" etag="j5p4v2UmxYqUcOHgd9QN" version="20.5.1" type="github">
   <diagram id="24UFbg9cDkoVI7KzYtd3" name="페이지-1">
     <mxGraphModel dx="839" dy="476" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -88,7 +88,7 @@
           <mxGeometry x="160" y="390" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="03f0EkuZRkOrzpye335a-31" value="관찰일지" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="240" y="420" width="60" height="30" as="geometry" />
+          <mxGeometry x="210" y="420" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="03f0EkuZRkOrzpye335a-33" value="센서데이터" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="570" y="420" width="70" height="30" as="geometry" />
