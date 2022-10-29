@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-10-09T06:33:48.931Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36" etag="0qluzT7WoQT2660nAPn2" version="20.4.0" type="github">
+<mxfile host="app.diagrams.net" modified="2022-10-29T12:37:58.578Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" etag="cjJmQvc9tPnEA8FF6_3i" version="20.4.0" type="github">
   <diagram id="Z_jb_i1OUhFMdzfZDqN_" name="페이지-1">
-    <mxGraphModel dx="1278" dy="579" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1038" dy="513" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -36,12 +36,12 @@
           <mxGeometry x="45" y="110" width="10" height="40" as="geometry" />
         </mxCell>
         <mxCell id="ybVhzSZ3yJq0IbKlZSbC-9" value="센서 데이터" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" parent="1" vertex="1">
-          <mxGeometry x="620" y="100" width="100" height="460" as="geometry" />
+          <mxGeometry x="530" y="100" width="100" height="460" as="geometry" />
         </mxCell>
-        <mxCell id="2I6JDyK-s7J--lfPWRVq-5" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="ybVhzSZ3yJq0IbKlZSbC-9">
+        <mxCell id="2I6JDyK-s7J--lfPWRVq-5" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" parent="ybVhzSZ3yJq0IbKlZSbC-9" vertex="1">
           <mxGeometry x="50" y="210" width="10" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="2I6JDyK-s7J--lfPWRVq-6" value="값 비교 후&amp;nbsp;&lt;br&gt;장치 작동 여부 결정" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;entryX=0.96;entryY=1.022;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" target="2I6JDyK-s7J--lfPWRVq-5" parent="ybVhzSZ3yJq0IbKlZSbC-9">
+        <mxCell id="2I6JDyK-s7J--lfPWRVq-6" value="값 비교 후&amp;nbsp;&lt;br&gt;장치 작동 여부 결정" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;entryX=0.96;entryY=1.022;entryDx=0;entryDy=0;entryPerimeter=0;" parent="ybVhzSZ3yJq0IbKlZSbC-9" target="2I6JDyK-s7J--lfPWRVq-5" edge="1">
           <mxGeometry x="-0.4915" y="5" relative="1" as="geometry">
             <mxPoint x="55" y="270" as="sourcePoint" />
             <Array as="points">
@@ -52,13 +52,16 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="ybVhzSZ3yJq0IbKlZSbC-10" value="장치제어&amp;nbsp;" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" parent="1" vertex="1">
-          <mxGeometry x="740" y="100" width="100" height="460" as="geometry" />
+          <mxGeometry x="660" y="100" width="100" height="460" as="geometry" />
         </mxCell>
         <mxCell id="ybVhzSZ3yJq0IbKlZSbC-25" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" parent="ybVhzSZ3yJq0IbKlZSbC-10" vertex="1">
           <mxGeometry x="45" y="350" width="10" height="40" as="geometry" />
         </mxCell>
         <mxCell id="ybVhzSZ3yJq0IbKlZSbC-11" value="온도/ 토양습도/ &lt;br&gt;조도 센서" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" parent="1" vertex="1">
           <mxGeometry x="290" y="100" width="100" height="450" as="geometry" />
+        </mxCell>
+        <mxCell id="WnHvljfLEf6mzswlZwCw-1" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="ybVhzSZ3yJq0IbKlZSbC-11">
+          <mxGeometry x="45" y="220" width="10" height="200" as="geometry" />
         </mxCell>
         <mxCell id="ybVhzSZ3yJq0IbKlZSbC-22" value="if 센서값 != 설정값" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;" parent="ybVhzSZ3yJq0IbKlZSbC-11" vertex="1">
           <mxGeometry x="-35" y="215" width="120" height="30" as="geometry" />
@@ -92,30 +95,30 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="ybVhzSZ3yJq0IbKlZSbC-15" value="사용자 설정 값 전송" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" source="ybVhzSZ3yJq0IbKlZSbC-9" edge="1">
-          <mxGeometry x="0.5444" y="10" width="80" relative="1" as="geometry">
+          <mxGeometry x="0.5643" width="80" relative="1" as="geometry">
             <mxPoint x="259.5" y="290" as="sourcePoint" />
-            <mxPoint x="670" y="350" as="targetPoint" />
+            <mxPoint x="570" y="350" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="560" y="350" />
+              <mxPoint x="460" y="350" />
             </Array>
-            <mxPoint x="1" as="offset" />
+            <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="ybVhzSZ3yJq0IbKlZSbC-20" value="팬/ 물펌프/ 조명 작동 명령" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" source="ybVhzSZ3yJq0IbKlZSbC-10" target="ybVhzSZ3yJq0IbKlZSbC-21" edge="1">
+        <mxCell id="ybVhzSZ3yJq0IbKlZSbC-20" value="팬/ 물펌프/ 조명 &lt;br&gt;작동 명령" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" source="ybVhzSZ3yJq0IbKlZSbC-10" target="ybVhzSZ3yJq0IbKlZSbC-21" edge="1">
           <mxGeometry x="-0.0029" width="80" relative="1" as="geometry">
             <mxPoint x="519.5" y="380" as="sourcePoint" />
             <mxPoint x="649.5" y="380" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="590" y="500" />
+              <mxPoint x="770" y="510" />
             </Array>
             <mxPoint x="1" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="ybVhzSZ3yJq0IbKlZSbC-21" value="팬/ 물펌프/ 조명" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" parent="1" vertex="1">
-          <mxGeometry x="400" y="100" width="100" height="450" as="geometry" />
+          <mxGeometry x="770" y="90" width="100" height="450" as="geometry" />
         </mxCell>
-        <mxCell id="2I6JDyK-s7J--lfPWRVq-1" value="User setting &lt;br&gt;데이터" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
-          <mxGeometry x="510" y="100" width="100" height="460" as="geometry" />
+        <mxCell id="2I6JDyK-s7J--lfPWRVq-1" value="User setting &lt;br&gt;데이터" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" parent="1" vertex="1">
+          <mxGeometry x="410" y="100" width="100" height="460" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
