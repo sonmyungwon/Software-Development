@@ -3,11 +3,13 @@ package com.example.myapplication
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.os.CountDownTimer
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.Switch
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +25,7 @@ import com.google.firebase.ktx.Firebase
 class MainActivity2 : AppCompatActivity() {
 
     private lateinit var auth : FirebaseAuth
+    private lateinit var timer: CountDownTimer
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -51,25 +54,37 @@ class MainActivity2 : AppCompatActivity() {
                 .setTitle("수동 제어 설정")
 
             val mAlertDialog = mBuilder.show()
+
             //val ledText = findViewById<TextView>(R.id.led_text)
             mAlertDialog.findViewById<Switch>(R.id.ledSwitch)?.setOnCheckedChangeListener{_, onSwitch->
+
                 val database = FirebaseDatabase.getInstance()
                 val myRef = database.getReference("user/manual/device/led")
                 val myRef1 = database.getReference("user/mode")
+                //val myRef2 = database.getReference("user/manual/device/real_led")
 
                 if(onSwitch){
-
-                    Toast.makeText(this, "switch on", Toast.LENGTH_SHORT).show()
                     myRef1.setValue(1)
                     myRef.setValue(1)
+                    Toast.makeText(this, "switch on", Toast.LENGTH_SHORT).show()
+                    PauseActivity.LoadingDialog(this@MainActivity2).show()
 
-                }else {
-
-                    Toast.makeText(this, "switch off", Toast.LENGTH_SHORT).show()
+                    /*CoroutineScope(Main).launch {
+                        PauseActivity.LoadingDialog(this@MainActivity2).show()
+                        delay(2000)
+                        PauseActivity.LoadingDialog(this@MainActivity2).dismiss()
+                    }*/
+                }
+                else {
                     myRef1.setValue(1)
                     myRef.setValue(0)
+                    Toast.makeText(this, "switch off", Toast.LENGTH_SHORT).show()
+                    PauseActivity.LoadingDialog(this@MainActivity2).show()
+
                 }
+
             }
+
 
             mAlertDialog.findViewById<Switch>(R.id.fanSwitch)?.setOnCheckedChangeListener(){_, onSwitch->
 
@@ -81,12 +96,15 @@ class MainActivity2 : AppCompatActivity() {
                     Toast.makeText(this, "switch on", Toast.LENGTH_SHORT).show()
                     myRef1.setValue(1)
                     myRef.setValue(1)
+                    PauseActivity.LoadingDialog(this@MainActivity2).show()
                 }else{
                     Toast.makeText(this, "switch off", Toast.LENGTH_SHORT).show()
                     myRef1.setValue(1)
                     myRef.setValue(0)
+                    PauseActivity.LoadingDialog(this@MainActivity2).show()
                 }
             }
+
             //val pumpText = findViewById<TextView>(R.id.pump_text)
             mAlertDialog.findViewById<Switch>(R.id.pumpSwitch)?.setOnCheckedChangeListener() { _, onSwitch->
                 val database = FirebaseDatabase.getInstance()
@@ -97,10 +115,12 @@ class MainActivity2 : AppCompatActivity() {
                     Toast.makeText(this, "switch on", Toast.LENGTH_SHORT).show()
                     myRef1.setValue(1)
                     myRef.setValue(1)
+                    PauseActivity.LoadingDialog(this@MainActivity2).show()
                 }else{
                     Toast.makeText(this, "switch off", Toast.LENGTH_SHORT).show()
                     myRef1.setValue(1)
                     myRef.setValue(0)
+                    PauseActivity.LoadingDialog(this@MainActivity2).show()
                 }
             }
 
@@ -126,10 +146,8 @@ class MainActivity2 : AppCompatActivity() {
                                     Toast.makeText(baseContext, "확인", Toast.LENGTH_SHORT).show()
                                 }
                             })
-
                             .create()
                         builder.show()
-
                     }
                 }
                 override fun onCancelled(error: DatabaseError) {
@@ -138,6 +156,5 @@ class MainActivity2 : AppCompatActivity() {
             })
 
         }
-
     }
 }

@@ -483,4 +483,30 @@
         app:layout_constraintStart_toEndOf="@+id/per3"
         app:layout_constraintTop_toBottomOf="@+id/tempText" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="%"
+        app:layout_constraintBottom_toBottomOf="@+id/tempText"
+        app:layout_constraintStart_toEndOf="@+id/tempText"
+        app:layout_constraintTop_toBottomOf="@+id/textView20" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="%"
+        app:layout_constraintBottom_toBottomOf="@+id/humidText"
+        app:layout_constraintStart_toEndOf="@+id/humidText"
+        app:layout_constraintTop_toTopOf="@+id/humidText" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="%"
+        app:layout_constraintBottom_toBottomOf="@+id/illumText"
+        app:layout_constraintStart_toEndOf="@+id/illumText"
+        app:layout_constraintTop_toTopOf="@+id/illumText" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -38,17 +38,12 @@ class AutoControlActivity : AppCompatActivity() {
         tempMinusBtn.setOnClickListener{
             tempNumber-=5
             tempView.setText("$tempNumber")
-
             showGauge(tempNumber, 1)
-
-//            num.setText(num1.text)
         }
         tempPlusBtn.setOnClickListener {
             tempNumber+=5
             tempView.setText("$tempNumber")
             showGauge(tempNumber ,1)
-
-
         }
 
         var humidNumber: Int = humidView.text.toString().toInt()
@@ -57,7 +52,6 @@ class AutoControlActivity : AppCompatActivity() {
             humidNumber-=5
             humidView.setText("$humidNumber")
             showGauge(humidNumber, 2)
-//            num.setText(num1.text)
         }
         humidPlusBtn.setOnClickListener {
             humidNumber+=5
@@ -71,7 +65,6 @@ class AutoControlActivity : AppCompatActivity() {
             illumNumber-=5
             illumView.setText("$illumNumber")
             showGauge(illumNumber ,3)
-//            num.setText(num1.text)
         }
         illumPlusBtn.setOnClickListener {
             illumNumber+=5
