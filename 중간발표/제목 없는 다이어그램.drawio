@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-10-30T07:32:13.233Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" etag="TjvFwrInSnWUItQQM8bN" version="20.5.1" type="github">
+<mxfile host="app.diagrams.net" modified="2022-10-30T07:32:22.080Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" etag="3Yf3Be9bK0LrA7DdTfUE" version="20.5.1" type="github">
   <diagram id="N8YceiyxnaoCASCBBXYR" name="페이지-1">
     <mxGraphModel dx="1038" dy="571" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -82,18 +82,6 @@
         </mxCell>
         <mxCell id="yDjFSKNVrX93qsdxlj6S-31" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;관찰일지 DB&lt;br&gt;구축&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;strokeWidth=1;strokeColor=#d6b656;fillColor=#fff2cc;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="702.5" y="260" width="100" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="yDjFSKNVrX93qsdxlj6S-34" value="" style="endArrow=none;html=1;rounded=0;fontSize=12;strokeWidth=5;strokeColor=#FF0000;" parent="1" edge="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="18" y="20" as="sourcePoint" />
-            <mxPoint x="50" y="20" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="yDjFSKNVrX93qsdxlj6S-35" value="" style="endArrow=none;html=1;rounded=0;fontSize=12;strokeWidth=5;strokeColor=#3333FF;" parent="1" edge="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="18" y="32" as="sourcePoint" />
-            <mxPoint x="50" y="32" as="targetPoint" />
-          </mxGeometry>
         </mxCell>
         <mxCell id="yDjFSKNVrX93qsdxlj6S-36" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;토양습도센서&lt;br&gt;및 물펌프&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;strokeWidth=1;strokeColor=#d6b656;fillColor=#fff2cc;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="380" y="410" width="100" height="50" as="geometry" />
