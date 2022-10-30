@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-10-30T07:15:50.440Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" etag="bpHYZqqW5eQ1CyYBKylA" version="20.5.1" type="github">
+<mxfile host="app.diagrams.net" modified="2022-10-30T07:16:12.071Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" etag="K1GqxTyxIBapvt0P1gs7" version="20.5.1" type="github">
   <diagram id="rKK-p3RnTFNg6Qc2BHnT" name="페이지-1">
     <mxGraphModel dx="1221" dy="672" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -145,7 +145,7 @@
         <mxCell id="4r2bhQpFpnbTQLCeLvzo-32" value="센서 및&lt;br&gt;모듈 배치" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="406" y="260" width="80" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="4r2bhQpFpnbTQLCeLvzo-33" value="DB 구축" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" parent="1" vertex="1">
+        <mxCell id="4r2bhQpFpnbTQLCeLvzo-33" value="센서 DB 구축" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="414" y="160" width="80" height="50" as="geometry" />
         </mxCell>
         <mxCell id="4r2bhQpFpnbTQLCeLvzo-34" value="앱 DB&lt;br&gt;연결" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" parent="1" vertex="1">
