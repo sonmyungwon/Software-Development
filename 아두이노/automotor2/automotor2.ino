@@ -37,7 +37,7 @@ FirebaseData fbdo;
 
 FirebaseAuth auth;
 FirebaseConfig config;
-#define DHTPIN 17        // GPIO23
+#define DHTPIN 19        // GPIO23
 
 
 

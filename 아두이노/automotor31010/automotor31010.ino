@@ -23,14 +23,14 @@
 #include "addons/RTDBHelper.h"
 
 // Insert your network credentials
-#define WIFI_SSID "407_601-2"
-#define WIFI_PASSWORD "bigsys601"
+#define WIFI_SSID "son"
+#define WIFI_PASSWORD "123456789"
 
 // Insert Firebase project API Key
-#define API_KEY "AIzaSyDqFzxgzics8NUugrOKBHB1lemosv32QUM"
+#define API_KEY "AIzaSyAdrZ_olCS_icU8npGZqwyXcvqsarzb0Lg"
 
 // Insert RTDB URLefine the RTDB URL */
-#define DATABASE_URL "https://smartfarmactivity-default-rtdb.firebaseio.com/" 
+#define DATABASE_URL "https://sw-test-21277-default-rtdb.firebaseio.com/" 
 
 //Define Firebase Data object
 FirebaseData fbdo;
@@ -126,8 +126,8 @@ void setup(){
 
 void loop(){
    delay(2000);
-  float h = dht.readHumidity();
-  float t = dht.readTemperature();
+  int h = dht.readHumidity();
+  int t = dht.readTemperature();
   float f = dht.readTemperature(true);
   if (isnan(h) || isnan(t) || isnan(f)) {
     Serial.println("Failed to read from DHT sensor!");
