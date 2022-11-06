@@ -256,7 +256,7 @@
         android:id="@+id/per6"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginStart="3dp"
+        android:layout_marginStart="4dp"
         android:background="#009688"
         android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/per5"

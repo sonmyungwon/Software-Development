@@ -3,9 +3,6 @@ package com.example.myapplication
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.os.CountDownTimer
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Button
@@ -25,7 +22,6 @@ import com.google.firebase.ktx.Firebase
 class MainActivity2 : AppCompatActivity() {
 
     private lateinit var auth : FirebaseAuth
-    private lateinit var timer: CountDownTimer
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -37,7 +33,7 @@ class MainActivity2 : AppCompatActivity() {
 
         //자동제어 버튼을 눌렀을때 자동제어 액티비티(AutoControlActivity)로 넘어감
         val autoControlBtn = findViewById<Button>(R.id.autoControlBtn)
-        autoControlBtn.setOnClickListener() {
+        autoControlBtn.setOnClickListener{
             val intent = Intent(this, AutoControlActivity::class.java)
             startActivity(intent)
         }
@@ -46,7 +42,7 @@ class MainActivity2 : AppCompatActivity() {
         //수동제어 버튼을 눌렀을때 나오는 다이얼로그
         val manualControlBtn = findViewById<Button>(R.id.manualControlBtn)
 
-        manualControlBtn.setOnClickListener() {
+        manualControlBtn.setOnClickListener {
 
             val mDialogView = LayoutInflater.from(this).inflate(R.layout.manual_control_dialog, null)
             val mBuilder = AlertDialog.Builder(this)
@@ -86,7 +82,7 @@ class MainActivity2 : AppCompatActivity() {
             }
 
 
-            mAlertDialog.findViewById<Switch>(R.id.fanSwitch)?.setOnCheckedChangeListener(){_, onSwitch->
+            mAlertDialog.findViewById<Switch>(R.id.fanSwitch)?.setOnCheckedChangeListener{_, onSwitch->
 
                 val database = FirebaseDatabase.getInstance()
                 val myRef = database.getReference("user/manual/device/fan")
@@ -106,7 +102,7 @@ class MainActivity2 : AppCompatActivity() {
             }
 
             //val pumpText = findViewById<TextView>(R.id.pump_text)
-            mAlertDialog.findViewById<Switch>(R.id.pumpSwitch)?.setOnCheckedChangeListener() { _, onSwitch->
+            mAlertDialog.findViewById<Switch>(R.id.pumpSwitch)?.setOnCheckedChangeListener { _, onSwitch->
                 val database = FirebaseDatabase.getInstance()
                 val myRef = database.getReference("user/manual/device/pump")
                 val myRef1 = database.getReference("user/mode")
@@ -155,6 +151,13 @@ class MainActivity2 : AppCompatActivity() {
                 }
             })
 
+        }
+
+        //관찰일지 버튼을 눌렀을때 넘어감
+        val diaryBtn = findViewById<Button>(R.id.diaryBtn)
+        diaryBtn.setOnClickListener{
+            val intent = Intent(this, DiaryActivity::class.java)
+            startActivity(intent)
         }
     }
 }
