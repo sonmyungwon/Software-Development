@@ -12,8 +12,8 @@
 #include "addons/RTDBHelper.h"
 
 // Insert your network credentials
-#define WIFI_SSID "202"
-#define WIFI_PASSWORD "anse407202"
+#define WIFI_SSID "407_601-2"
+#define WIFI_PASSWORD "bigsys601"
 
 // Insert Firebase project API Key
 #define API_KEY "AIzaSyDqFzxgzics8NUugrOKBHB1lemosv32QUM"
@@ -59,6 +59,12 @@ int Relaypin2 = 4;
 int soil_humi = 33;
 int light = 32;
 
+int s0 = analogRead(soil_humi);
+int s = s0 / 4;
+int h = dht.readHumidity();
+int t = dht.readTemperature();
+int value = analogRead(light);
+int l = map(value, 0, 4095, 255, 0);
 
 void setup() {
   Serial.begin(115200);
@@ -101,12 +107,13 @@ void setup() {
   pinMode(Dir2Pin_A, OUTPUT);             // 제어 2번핀 출력모드 설정
   pinMode(SpeedPin_A, OUTPUT);            // PWM제어핀 출력모드 설정
 
-  pinMode(Relaypin, OUTPUT);
-  pinMode(Relaypin2, OUTPUT);
+  pinMode(Relaypin, OUTPUT);// pump
+  pinMode(Relaypin2, OUTPUT);// led
 }
 
+
 void loop() {
-  // delay(2000);
+
   int s = analogRead(soil_humi);
   s = s / 4;
   int h = dht.readHumidity();
@@ -115,6 +122,7 @@ void loop() {
     Serial.println("Failed to read from DHT sensor!");
     return;
   }
+  
   int value = analogRead(light);
   Serial.print("read sensor value : ");
   Serial.println(value);
@@ -122,6 +130,17 @@ void loop() {
   Serial.println(l);
   Serial.print("read sensor value : ");
   Serial.print(s);
+
+  database();
+
+  if (Firebase.RTDB.getInt(&fbdo, "/user/mode") && fbdo.dataType() == "int") {
+      intmode = fbdo.intData();
+      control(intmode);
+  }
+}
+
+
+void database(){
   if (Firebase.ready() && signupOK && (millis() - sendDataPrevMillis > 3000 || sendDataPrevMillis == 0)) {
     sendDataPrevMillis = millis();
     if (Firebase.RTDB.pushInt(&fbdo, "/user/auto/sensor/temp", t)) {
@@ -174,12 +193,54 @@ void loop() {
       Serial.println("FAILED");
       Serial.println("REASON: " + fbdo.errorReason());
     }
-    // 자동제어
+  }
+}
 
-    if (Firebase.RTDB.getInt(&fbdo, "/user/mode")) {
-      if (fbdo.dataType() == "int") {
-        intmode = fbdo.intData();
-        if (intmode == 2) {
+void control(int a){
+  if (a == 1) {
+        if (Firebase.RTDB.getInt(&fbdo, "/user/manual/device/fan") && fbdo.dataType() == "int") {
+          intfan = fbdo.intData();
+          if (intfan == 1) {
+            Serial.println("motor on");
+            digitalWrite(Dir1Pin_A, HIGH);         //모터가 시계 방향으로 회전
+            digitalWrite(Dir2Pin_A, LOW);
+            analogWrite(SpeedPin_A, 255); // 세기조절 가능
+          }
+          else {
+            Serial.println("Motor stopped");
+            digitalWrite(Dir1Pin_A, LOW);
+            digitalWrite(Dir2Pin_A, LOW);
+          }
+        }
+        if (Firebase.RTDB.getInt(&fbdo, "/user/manual/device/pump") && fbdo.dataType() == "int") {
+          intpump = fbdo.intData();
+          Serial.println(intValue);
+          if (intpump == 1) {
+            Serial.println(intpump);
+            Serial.println("pump on");
+            digitalWrite(Relaypin, HIGH);
+          }
+          else {
+            Serial.println("pump stopped");
+            digitalWrite(Relaypin, LOW);
+          }
+        }
+        if (Firebase.RTDB.getInt(&fbdo, "/user/manual/device/led") && fbdo.dataType() == "int") {
+          intled = fbdo.intData();
+          if (intled == 1) {
+            Serial.println("led on");
+            digitalWrite(Relaypin2, HIGH);
+          }
+          else {
+            Serial.println("led off");
+            digitalWrite(Relaypin2, LOW);
+          }
+       }
+        else {
+          Serial.println(fbdo.errorReason());
+        }
+  }
+  if (a == 2) { 
           if (Firebase.RTDB.getInt(&fbdo, "/user/auto/userdata/temp") && fbdo.dataType() == "int") {
             inttemp = fbdo.intData();
             if (inttemp < t) {
@@ -228,54 +289,4 @@ void loop() {
 
           }
         }
-      }
-    }
-    // 수동제어
-    if (Firebase.RTDB.getInt(&fbdo, "/user/mode") && fbdo.dataType() == "int") {
-      intmode = fbdo.intData();
-      if (intmode == 1) {
-        if (Firebase.RTDB.getInt(&fbdo, "/user/manual/device/fan") && fbdo.dataType() == "int") {
-          intfan = fbdo.intData();
-          if (intfan == 1) {
-            Serial.println("motor on");
-            digitalWrite(Dir1Pin_A, HIGH);         //모터가 시계 방향으로 회전
-            digitalWrite(Dir2Pin_A, LOW);
-            analogWrite(SpeedPin_A, 255); // 세기조절 가능
-          }
-          else {
-            Serial.println("Motor stopped");
-            digitalWrite(Dir1Pin_A, LOW);
-            digitalWrite(Dir2Pin_A, LOW);
-          }
-        }
-        if (Firebase.RTDB.getInt(&fbdo, "/user/manual/device/pump") && fbdo.dataType() == "int") {
-          intpump = fbdo.intData();
-          Serial.println(intValue);
-          if (intpump == 1) {
-            Serial.println(intpump);
-            Serial.println("pump on");
-            digitalWrite(Relaypin, HIGH);
-          }
-          else {
-            Serial.println("pump stopped");
-            digitalWrite(Relaypin, LOW);
-          }
-        }
-        if (Firebase.RTDB.getInt(&fbdo, "/user/manual/device/led") && fbdo.dataType() == "int") {
-          intled = fbdo.intData();
-          if (intled == 1) {
-            Serial.println("led on");
-            digitalWrite(Relaypin2, HIGH);
-          }
-          else {
-            Serial.println("led off");
-            digitalWrite(Relaypin2, LOW);
-          }
-        }
-        else {
-          Serial.println(fbdo.errorReason());
-        }
-      }
-    }//manual control part end
-  }
 }
