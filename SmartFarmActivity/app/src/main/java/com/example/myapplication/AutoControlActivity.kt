@@ -141,6 +141,7 @@ class AutoControlActivity : AppCompatActivity() {
         val per29 = findViewById<TextView>(R.id.per29)
         val per30 = findViewById<TextView>(R.id.per30)
 
+
         if (typeNum == 1) {
             if (num <= 0) {
                 per1.visibility = View.INVISIBLE
