@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.annotation.SuppressLint
 import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,9 +11,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import org.w3c.dom.Text
 
 class AutoControlActivity : AppCompatActivity() {
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auto_control)
@@ -20,14 +23,20 @@ class AutoControlActivity : AppCompatActivity() {
         val tempView : TextView = findViewById<TextView>(R.id.tempText)
         val tempPlusBtn : Button = findViewById<Button>(R.id.temp_plus_btn)
         val tempMinusBtn = findViewById<Button>(R.id.temp_minus_btn)
+        val state_temp_text : TextView = findViewById<TextView>(R.id.state_temp)
 
         val humidView : TextView = findViewById<TextView>(R.id.humidText)
         val humidPlusBtn  = findViewById<Button>(R.id.humid_plus_btn)
         val humidMinusBtn = findViewById<Button>(R.id.humid_minus_btn)
+        val state_soil_humi_text : TextView = findViewById<TextView>(R.id.state_soil_humi)
+
+
 
         val illumView : TextView = findViewById<TextView>(R.id.illumText)
         val illumPlusBtn  = findViewById<Button>(R.id.illum_plus_btn)
         val illumMinusBtn = findViewById<Button>(R.id.illum_minus_btn)
+        val state_light_text : TextView = findViewById<TextView>(R.id.state_light)
+
 
         val saveBtn = findViewById<Button>(R.id.save_btn)
 
@@ -39,11 +48,14 @@ class AutoControlActivity : AppCompatActivity() {
             tempNumber-=5
             tempView.setText("$tempNumber")
             showGauge(tempNumber, 1)
+            show_state(tempNumber,state_temp_text)
+
         }
         tempPlusBtn.setOnClickListener {
             tempNumber+=5
             tempView.setText("$tempNumber")
             showGauge(tempNumber ,1)
+            show_state(tempNumber,state_temp_text)
         }
 
         var humidNumber: Int = humidView.text.toString().toInt()
@@ -52,11 +64,13 @@ class AutoControlActivity : AppCompatActivity() {
             humidNumber-=5
             humidView.setText("$humidNumber")
             showGauge(humidNumber, 2)
+            show_state(humidNumber,state_soil_humi_text)
         }
         humidPlusBtn.setOnClickListener {
             humidNumber+=5
             humidView.setText("$humidNumber")
             showGauge(humidNumber, 2)
+            show_state(humidNumber,state_soil_humi_text)
         }
 
         var illumNumber: Int = illumView.text.toString().toInt()
@@ -65,11 +79,13 @@ class AutoControlActivity : AppCompatActivity() {
             illumNumber-=5
             illumView.setText("$illumNumber")
             showGauge(illumNumber ,3)
+            show_state(illumNumber,state_light_text)
         }
         illumPlusBtn.setOnClickListener {
             illumNumber+=5
             illumView.setText("$illumNumber")
             showGauge(illumNumber ,3)
+            show_state(illumNumber,state_light_text)
         }
 
         saveBtn.setOnClickListener(){
@@ -84,9 +100,9 @@ class AutoControlActivity : AppCompatActivity() {
             builder
                 .setTitle("알림")
                 .setMessage("설정 값을 바꾸시겠습니까? \n" +
-                            "                온도 : $tempNumber\n" +
-                            "                토양 습도 : $humidNumber\n" +
-                            "                밝기 : $illumNumber")
+                        "                온도 : $tempNumber\n" +
+                        "                토양 습도 : $humidNumber\n" +
+                        "                밝기 : $illumNumber")
                 .setCancelable(false)
 
                 .setPositiveButton("확인", object : DialogInterface.OnClickListener{
@@ -109,6 +125,25 @@ class AutoControlActivity : AppCompatActivity() {
         }
     }
 
+    private fun show_state(num: Int, txtview: TextView){
+        if(num>=80)
+            txtview.setText("아주 높음")
+
+        else if(num>=60)
+            txtview.setText("조금 높음")
+
+        else if(num>=40)
+            txtview.setText("적당")
+
+        else if(num>=20)
+            txtview.setText("조금 낮음")
+
+        else if(num>=0)
+            txtview.setText("아주 낮음")
+
+
+
+    }
     private fun showGauge(num: Int, typeNum: Int): Boolean {
         val per1 = findViewById<TextView>(R.id.per1)
         val per2 = findViewById<TextView>(R.id.per2)
@@ -140,7 +175,6 @@ class AutoControlActivity : AppCompatActivity() {
         val per28 = findViewById<TextView>(R.id.per28)
         val per29 = findViewById<TextView>(R.id.per29)
         val per30 = findViewById<TextView>(R.id.per30)
-
 
         if (typeNum == 1) {
             if (num <= 0) {
@@ -242,104 +276,104 @@ class AutoControlActivity : AppCompatActivity() {
             }
         }
         if (typeNum == 2) {
-                if (num <= 0) {
-                    per11.visibility = View.INVISIBLE
-                    per12.visibility = View.INVISIBLE
-                    per13.visibility = View.INVISIBLE
-                    per14.visibility = View.INVISIBLE
-                    per15.visibility = View.INVISIBLE
-                    per16.visibility = View.INVISIBLE
-                    per17.visibility = View.INVISIBLE
-                    per18.visibility = View.INVISIBLE
-                    per19.visibility = View.INVISIBLE
-                    per20.visibility = View.INVISIBLE
-                }
-                if (num in 6..15) {
-                    per11.visibility = View.VISIBLE
-                    per12.visibility = View.INVISIBLE
-                    per13.visibility = View.INVISIBLE
-                    per14.visibility = View.INVISIBLE
-                    per15.visibility = View.INVISIBLE
-                    per16.visibility = View.INVISIBLE
-                    per17.visibility = View.INVISIBLE
-                    per18.visibility = View.INVISIBLE
-                    per19.visibility = View.INVISIBLE
-                    per20.visibility = View.INVISIBLE
-                    return true
-                }
-                if (num in 16..25) {
-                    per12.visibility = View.VISIBLE
-                    per13.visibility = View.INVISIBLE
-                    per14.visibility = View.INVISIBLE
-                    per15.visibility = View.INVISIBLE
-                    per16.visibility = View.INVISIBLE
-                    per17.visibility = View.INVISIBLE
-                    per18.visibility = View.INVISIBLE
-                    per19.visibility = View.INVISIBLE
-                    per20.visibility = View.INVISIBLE
-                    return true
-                }
-                if (num in 26..35) {
-                    per13.visibility = View.VISIBLE
-                    per14.visibility = View.INVISIBLE
-                    per15.visibility = View.INVISIBLE
-                    per16.visibility = View.INVISIBLE
-                    per17.visibility = View.INVISIBLE
-                    per18.visibility = View.INVISIBLE
-                    per19.visibility = View.INVISIBLE
-                    per20.visibility = View.INVISIBLE
-                    return true
-                }
-                if (num in 36..45) {
-                    per14.visibility = View.VISIBLE
-                    per15.visibility = View.INVISIBLE
-                    per16.visibility = View.INVISIBLE
-                    per17.visibility = View.INVISIBLE
-                    per18.visibility = View.INVISIBLE
-                    per19.visibility = View.INVISIBLE
-                    per20.visibility = View.INVISIBLE
-                    return true
-                }
-                if (num in 46..55) {
-                    per15.visibility = View.VISIBLE
-                    per16.visibility = View.INVISIBLE
-                    per17.visibility = View.INVISIBLE
-                    per18.visibility = View.INVISIBLE
-                    per19.visibility = View.INVISIBLE
-                    per20.visibility = View.INVISIBLE
-                    return true
-                }
-                if (num in 56..65) {
-                    per16.visibility = View.VISIBLE
-                    per17.visibility = View.INVISIBLE
-                    per18.visibility = View.INVISIBLE
-                    per19.visibility = View.INVISIBLE
-                    per20.visibility = View.INVISIBLE
-                    return true
-                }
-                if (num in 66..75) {
-                    per17.visibility = View.VISIBLE
-                    per18.visibility = View.INVISIBLE
-                    per19.visibility = View.INVISIBLE
-                    per20.visibility = View.INVISIBLE
-                    return true
-                }
-                if (num in 76..85) {
-                    per18.visibility = View.VISIBLE
-                    per19.visibility = View.INVISIBLE
-                    per20.visibility = View.INVISIBLE
-                    return true
-                }
-                if (num in 86..95) {
-                    per19.visibility = View.VISIBLE
-                    per20.visibility = View.INVISIBLE
-                    return true
-                }
-                if (num in 96..100) {
-                    per20.visibility = View.VISIBLE
-                    return true
-                }
+            if (num <= 0) {
+                per11.visibility = View.INVISIBLE
+                per12.visibility = View.INVISIBLE
+                per13.visibility = View.INVISIBLE
+                per14.visibility = View.INVISIBLE
+                per15.visibility = View.INVISIBLE
+                per16.visibility = View.INVISIBLE
+                per17.visibility = View.INVISIBLE
+                per18.visibility = View.INVISIBLE
+                per19.visibility = View.INVISIBLE
+                per20.visibility = View.INVISIBLE
             }
+            if (num in 6..15) {
+                per11.visibility = View.VISIBLE
+                per12.visibility = View.INVISIBLE
+                per13.visibility = View.INVISIBLE
+                per14.visibility = View.INVISIBLE
+                per15.visibility = View.INVISIBLE
+                per16.visibility = View.INVISIBLE
+                per17.visibility = View.INVISIBLE
+                per18.visibility = View.INVISIBLE
+                per19.visibility = View.INVISIBLE
+                per20.visibility = View.INVISIBLE
+                return true
+            }
+            if (num in 16..25) {
+                per12.visibility = View.VISIBLE
+                per13.visibility = View.INVISIBLE
+                per14.visibility = View.INVISIBLE
+                per15.visibility = View.INVISIBLE
+                per16.visibility = View.INVISIBLE
+                per17.visibility = View.INVISIBLE
+                per18.visibility = View.INVISIBLE
+                per19.visibility = View.INVISIBLE
+                per20.visibility = View.INVISIBLE
+                return true
+            }
+            if (num in 26..35) {
+                per13.visibility = View.VISIBLE
+                per14.visibility = View.INVISIBLE
+                per15.visibility = View.INVISIBLE
+                per16.visibility = View.INVISIBLE
+                per17.visibility = View.INVISIBLE
+                per18.visibility = View.INVISIBLE
+                per19.visibility = View.INVISIBLE
+                per20.visibility = View.INVISIBLE
+                return true
+            }
+            if (num in 36..45) {
+                per14.visibility = View.VISIBLE
+                per15.visibility = View.INVISIBLE
+                per16.visibility = View.INVISIBLE
+                per17.visibility = View.INVISIBLE
+                per18.visibility = View.INVISIBLE
+                per19.visibility = View.INVISIBLE
+                per20.visibility = View.INVISIBLE
+                return true
+            }
+            if (num in 46..55) {
+                per15.visibility = View.VISIBLE
+                per16.visibility = View.INVISIBLE
+                per17.visibility = View.INVISIBLE
+                per18.visibility = View.INVISIBLE
+                per19.visibility = View.INVISIBLE
+                per20.visibility = View.INVISIBLE
+                return true
+            }
+            if (num in 56..65) {
+                per16.visibility = View.VISIBLE
+                per17.visibility = View.INVISIBLE
+                per18.visibility = View.INVISIBLE
+                per19.visibility = View.INVISIBLE
+                per20.visibility = View.INVISIBLE
+                return true
+            }
+            if (num in 66..75) {
+                per17.visibility = View.VISIBLE
+                per18.visibility = View.INVISIBLE
+                per19.visibility = View.INVISIBLE
+                per20.visibility = View.INVISIBLE
+                return true
+            }
+            if (num in 76..85) {
+                per18.visibility = View.VISIBLE
+                per19.visibility = View.INVISIBLE
+                per20.visibility = View.INVISIBLE
+                return true
+            }
+            if (num in 86..95) {
+                per19.visibility = View.VISIBLE
+                per20.visibility = View.INVISIBLE
+                return true
+            }
+            if (num in 96..100) {
+                per20.visibility = View.VISIBLE
+                return true
+            }
+        }
         if(typeNum == 3){
             if (num <= 0) {
                 per21.visibility = View.INVISIBLE
@@ -439,6 +473,6 @@ class AutoControlActivity : AppCompatActivity() {
                 return true
             }
         }
-          return false
-        }
+        return false
+    }
 }
