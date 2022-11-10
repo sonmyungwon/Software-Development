@@ -24,11 +24,14 @@ class AutoControlActivity : AppCompatActivity() {
         val tempPlusBtn : Button = findViewById<Button>(R.id.temp_plus_btn)
         val tempMinusBtn = findViewById<Button>(R.id.temp_minus_btn)
         val state_temp_text : TextView = findViewById<TextView>(R.id.state_temp)
+        val data_temp_text : TextView = findViewById<TextView>(R.id.data_temp)
+
 
         val humidView : TextView = findViewById<TextView>(R.id.humidText)
         val humidPlusBtn  = findViewById<Button>(R.id.humid_plus_btn)
         val humidMinusBtn = findViewById<Button>(R.id.humid_minus_btn)
         val state_soil_humi_text : TextView = findViewById<TextView>(R.id.state_soil_humi)
+        val data_soil_humi_text : TextView = findViewById<TextView>(R.id.data_soil_humi)
 
 
 
@@ -36,6 +39,7 @@ class AutoControlActivity : AppCompatActivity() {
         val illumPlusBtn  = findViewById<Button>(R.id.illum_plus_btn)
         val illumMinusBtn = findViewById<Button>(R.id.illum_minus_btn)
         val state_light_text : TextView = findViewById<TextView>(R.id.state_light)
+        val data_light_text : TextView = findViewById<TextView>(R.id.data_light)
 
 
         val saveBtn = findViewById<Button>(R.id.save_btn)
@@ -45,47 +49,104 @@ class AutoControlActivity : AppCompatActivity() {
         var tempNumber: Int = tempView.text.toString().toInt()
 
         tempMinusBtn.setOnClickListener{
-            tempNumber-=5
-            tempView.setText("$tempNumber")
-            showGauge(tempNumber, 1)
-            show_state(tempNumber,state_temp_text)
+            tempNumber -= 5
 
+            if(tempNumber in 0..100) {
+                tempView.setText("$tempNumber")
+                showGauge(tempNumber, 1)
+                show_state(tempNumber, state_temp_text)
+                convert_data(10.0, 30.0, tempNumber, data_temp_text)
+            }
+            else{
+                Toast.makeText(this@AutoControlActivity, "범위 초과", Toast.LENGTH_SHORT).show()
+                tempNumber += 5
+
+            }
         }
         tempPlusBtn.setOnClickListener {
-            tempNumber+=5
-            tempView.setText("$tempNumber")
-            showGauge(tempNumber ,1)
-            show_state(tempNumber,state_temp_text)
+            tempNumber += 5
+
+            if(tempNumber in 0..100) {
+
+                tempView.setText("$tempNumber")
+                showGauge(tempNumber, 1)
+                show_state(tempNumber, state_temp_text)
+                convert_data(10.0, 30.0, tempNumber, data_temp_text)
+            }
+            else{
+                Toast.makeText(this@AutoControlActivity, "범위 초과", Toast.LENGTH_SHORT).show()
+                tempNumber -= 5
+
+            }
         }
 
         var humidNumber: Int = humidView.text.toString().toInt()
 
         humidMinusBtn.setOnClickListener{
-            humidNumber-=5
-            humidView.setText("$humidNumber")
-            showGauge(humidNumber, 2)
-            show_state(humidNumber,state_soil_humi_text)
+            humidNumber -= 5
+
+            if(humidNumber in 0..100) {
+
+                humidView.setText("$humidNumber")
+                showGauge(humidNumber, 2)
+                show_state(humidNumber, state_soil_humi_text)
+                convert_data(10.0, 30.0, humidNumber, data_soil_humi_text)
+            }
+            else{
+                Toast.makeText(this@AutoControlActivity, "범위 초과", Toast.LENGTH_SHORT).show()
+                humidNumber += 5
+
+            }
         }
         humidPlusBtn.setOnClickListener {
-            humidNumber+=5
-            humidView.setText("$humidNumber")
-            showGauge(humidNumber, 2)
-            show_state(humidNumber,state_soil_humi_text)
+            humidNumber += 5
+
+            if(humidNumber in 0..100) {
+
+                humidView.setText("$humidNumber")
+                showGauge(humidNumber, 2)
+                show_state(humidNumber, state_soil_humi_text)
+                convert_data(10.0, 30.0, humidNumber, data_soil_humi_text)
+            }
+            else{
+                Toast.makeText(this@AutoControlActivity, "범위 초과", Toast.LENGTH_SHORT).show()
+                humidNumber -= 5
+
+            }
         }
 
         var illumNumber: Int = illumView.text.toString().toInt()
 
         illumMinusBtn.setOnClickListener{
-            illumNumber-=5
-            illumView.setText("$illumNumber")
-            showGauge(illumNumber ,3)
-            show_state(illumNumber,state_light_text)
+            illumNumber -= 5
+
+            if(illumNumber in 0..100) {
+
+                illumView.setText("$illumNumber")
+                showGauge(illumNumber, 3)
+                show_state(illumNumber, state_light_text)
+                convert_data(10.0, 30.0, illumNumber, data_light_text)
+            }
+            else{
+                Toast.makeText(this@AutoControlActivity, "범위 초과", Toast.LENGTH_SHORT).show()
+                illumNumber += 5
+            }
         }
         illumPlusBtn.setOnClickListener {
-            illumNumber+=5
-            illumView.setText("$illumNumber")
-            showGauge(illumNumber ,3)
-            show_state(illumNumber,state_light_text)
+            illumNumber += 5
+
+            if(illumNumber in 0..100) {
+
+                illumView.setText("$illumNumber")
+                showGauge(illumNumber, 3)
+                show_state(illumNumber, state_light_text)
+                convert_data(10.0, 30.0, illumNumber, data_light_text)
+            }
+            else{
+                Toast.makeText(this@AutoControlActivity, "범위 초과", Toast.LENGTH_SHORT).show()
+                illumNumber -= 5
+
+            }
         }
 
         saveBtn.setOnClickListener(){
@@ -129,6 +190,7 @@ class AutoControlActivity : AppCompatActivity() {
         if(num>=80)
             txtview.setText("아주 높음")
 
+
         else if(num>=60)
             txtview.setText("조금 높음")
 
@@ -144,6 +206,13 @@ class AutoControlActivity : AppCompatActivity() {
 
 
     }
+
+    private fun convert_data(min: Double, max: Double, num: Int,txtview: TextView){
+        var rate : Double = (max - min)/100
+        var convert_num : Double = min + rate * num
+        txtview.setText("$convert_num")
+    }
+
     private fun showGauge(num: Int, typeNum: Int): Boolean {
         val per1 = findViewById<TextView>(R.id.per1)
         val per2 = findViewById<TextView>(R.id.per2)
@@ -177,7 +246,7 @@ class AutoControlActivity : AppCompatActivity() {
         val per30 = findViewById<TextView>(R.id.per30)
 
         if (typeNum == 1) {
-            if (num <= 0) {
+            if (num <= 5) {
                 per1.visibility = View.INVISIBLE
                 per2.visibility = View.INVISIBLE
                 per3.visibility = View.INVISIBLE
@@ -276,7 +345,7 @@ class AutoControlActivity : AppCompatActivity() {
             }
         }
         if (typeNum == 2) {
-            if (num <= 0) {
+            if (num <= 5) {
                 per11.visibility = View.INVISIBLE
                 per12.visibility = View.INVISIBLE
                 per13.visibility = View.INVISIBLE
@@ -375,7 +444,7 @@ class AutoControlActivity : AppCompatActivity() {
             }
         }
         if(typeNum == 3){
-            if (num <= 0) {
+            if (num <= 5) {
                 per21.visibility = View.INVISIBLE
                 per22.visibility = View.INVISIBLE
                 per23.visibility = View.INVISIBLE
