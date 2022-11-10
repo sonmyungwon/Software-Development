@@ -12,8 +12,8 @@
 #include "addons/RTDBHelper.h"
 
 // Insert your network credentials
-#define WIFI_SSID "202"
-#define WIFI_PASSWORD "anse407202"
+#define WIFI_SSID "407_601-2"
+#define WIFI_PASSWORD "bigsys601"
 
 // Insert Firebase project API Key
 #define API_KEY "AIzaSyDqFzxgzics8NUugrOKBHB1lemosv32QUM"
@@ -101,20 +101,7 @@ void setup() {
   pinMode(Relaypin, OUTPUT);
   pinMode(Relaypin2, OUTPUT);
 }
-void push(&fbdo,String adress, int value) {
-    if (Firebase.RTDB.pushInt(&fbdo, adress, value)) {
-      Serial.println(value);
-      Serial.println("PASSED");
-      Serial.println("PATH: " + fbdo.dataPath());
-      Serial.println("TYPE: " + fbdo.dataType());
-    }
-    else {
-      Serial.println("FAILED");
-      Serial.println("REASON: " + fbdo.errorReason());
-    }
-  }
-  return;
-}
+
 void loop() {
   delay(2000);
   int h = dht.readHumidity();
