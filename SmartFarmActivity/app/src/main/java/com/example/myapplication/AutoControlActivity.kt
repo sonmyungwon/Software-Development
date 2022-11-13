@@ -62,7 +62,7 @@ class AutoControlActivity : AppCompatActivity() {
         var humidNumber: Int = humidView.text.toString().toInt()
         var illumNumber: Int = illumView.text.toString().toInt()
 
-        //로그에 띄우기
+        //사용자 설정 데이터 파이어베이스로부터 불러오기
         myRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 Log.d("@@@@@ tempView @@@@@@", snapshot.value.toString())

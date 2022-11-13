@@ -120,6 +120,7 @@
                 android:id="@+id/linechart_temp"
                 android:layout_width="match_parent"
                 android:layout_height="221dp" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
