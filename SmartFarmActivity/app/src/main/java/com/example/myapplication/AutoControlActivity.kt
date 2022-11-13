@@ -213,6 +213,7 @@ class AutoControlActivity : AppCompatActivity() {
         txtview.setText("$convert_num")
     }
 
+<<<<<<< Updated upstream
     private fun showGauge(num: Int, typeNum: Int): Boolean {
         val per1 = findViewById<TextView>(R.id.per1)
         val per2 = findViewById<TextView>(R.id.per2)
@@ -544,4 +545,7 @@ class AutoControlActivity : AppCompatActivity() {
         }
         return false
     }
+=======
+
+>>>>>>> Stashed changes
 }
