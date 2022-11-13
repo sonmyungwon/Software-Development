@@ -1,36 +1,40 @@
 package com.example.myapplication
 
 import android.app.DatePickerDialog
+import android.graphics.BitmapFactory
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.DatePicker
 import android.widget.ImageView
 import android.widget.TextView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
+import android.widget.Toast
+import com.github.mikephil.charting.charts.LineChart
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.google.firebase.storage.FirebaseStorage
+import java.io.File
 import java.util.Calendar
 import java.util.GregorianCalendar
 
 class DiaryActivity : AppCompatActivity() {
 
-    private lateinit var auth : FirebaseAuth
+    private val TAG = this.javaClass.simpleName
+    lateinit var lineChart: LineChart
+    private val chartData_humidity = ArrayList<ChartData>()
+    private val chartData_soil_humi = ArrayList<ChartData>()
+    private val chartData_light = ArrayList<ChartData>()
+    private val chartData_temp = ArrayList<ChartData>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_diary)
-
-        val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference("user/diary/avg_led")
-
-        val avgTemp = findViewById<TextView>(R.id.avgTemp)
-        val avgLight = findViewById<TextView>(R.id.avgLight)
-        val water = findViewById<TextView>(R.id.water)
-        val growth = findViewById<TextView>(R.id.growth)
 
         val dateBtn = findViewById<ImageView>(R.id.dateBtn)
         val textDay = findViewById<TextView>(R.id.dayText)
@@ -55,21 +59,123 @@ class DiaryActivity : AppCompatActivity() {
             dlg.show()
         }
 
-        var imageUrl:String = ""
+        val getImage = findViewById<ImageView>(R.id.getImage)
+        val imageView = findViewById<ImageView>(R.id.storageImage)
 
-        val storage: FirebaseStorage = FirebaseStorage.getInstance("gs://smartfarmactivity.appspot.com/text_bar.png")
-        var storageRef = storage.reference
-        val pathReference = storageRef.child("images/text_bar.png")
+        getImage.setOnClickListener{
+            val imageName = textDay.text.toString()
+            val storageRef = FirebaseStorage.getInstance().reference.child("images/$imageName.png")
+            val localFile = File.createTempFile("tempImage", "png")
 
-        fun loadImage(imageView: ImageView, url: String){
-            pathReference.downloadUrl.addOnSuccessListener { uri ->
-                Glide.with(imageView.context)
-                    .load(uri)
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
-                    .centerCrop()
-                    .into(imageView)
+            storageRef.getFile(localFile).addOnSuccessListener {
+
+                val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
+                imageView.setImageBitmap(bitmap)
+
+            }.addOnFailureListener{
+
+                Toast.makeText(this, "Failed ", Toast.LENGTH_SHORT).show()
             }
+
+
         }
+        //차트 만들기
+        chartData_humidity.clear()
+        addChartItem("12.5", 7.9,chartData_humidity)
+        addChartItem("13.00", 8.2,chartData_humidity)
+        addChartItem("13.5", 8.3,chartData_humidity)
+        addChartItem("14.00", 8.5,chartData_humidity)
+        addChartItem("14.5", 7.3,chartData_humidity)
+
+        LineChart(chartData_humidity,"humidity")
+
+        addChartItem("12.5", 5.9,chartData_soil_humi)
+        addChartItem("13.00", 6.2,chartData_soil_humi)
+        addChartItem("13.5", 7.3,chartData_soil_humi)
+        addChartItem("14.00", 8.5,chartData_soil_humi)
+        addChartItem("14.5", 3.3,chartData_soil_humi)
+
+        // 그래프 그릴 자료 넘기기
+        LineChart(chartData_soil_humi,"soil_humi")
+
+        addChartItem("12.5", 5.9,chartData_temp)
+        addChartItem("13.00", 5.3,chartData_temp)
+        addChartItem("13.5", 8.6,chartData_temp)
+        addChartItem("14.00", 6.2,chartData_temp)
+        addChartItem("14.5", 3.9,chartData_temp)
+
+        // 그래프 그릴 자료 넘기기
+        LineChart(chartData_temp,"temp")
+
+        addChartItem("12.5", 7.0,chartData_light)
+        addChartItem("13.00", 5.2,chartData_light)
+        addChartItem("13.5", 5.3,chartData_light)
+        addChartItem("14.00", 8.5,chartData_light)
+        addChartItem("14.5", 7.3,chartData_light)
+
+        // 그래프 그릴 자료 넘기기
+        LineChart(chartData_light,"light")
 
     }
+
+    private fun addChartItem(lableitem: String, dataitem: Double,chartData: ArrayList<ChartData>) {
+        val item = ChartData()
+        item.lableData = lableitem
+        item.lineData = dataitem
+        chartData.add(item)
+    }
+
+    private fun LineChart(chartData: ArrayList<ChartData>, name : String) {
+        if(name == "humidity")
+            lineChart = findViewById(R.id.linechart_humidity)
+        else if(name == "soil_humi")
+            lineChart = findViewById(R.id.linechart_soil_humi)
+        else if(name == "light")
+            lineChart = findViewById(R.id.linechart_light)
+        else if(name == "temp")
+            lineChart = findViewById(R.id.linechart_temp)
+        //  lineChart = findViewById(R.id.linechart_temp)
+
+        val entries = mutableListOf<Entry>()  //차트 데이터 셋에 담겨질 데이터
+
+        for (item in chartData) {
+            entries.add(Entry(item.lableData.replace(("[^\\d.]").toRegex(), "").toFloat(), item.lineData.toFloat()))
+        }
+
+        //LineDataSet 선언
+        val lineDataSet: LineDataSet
+        lineDataSet = LineDataSet(entries, name)
+        if(name == "humidity")
+            lineDataSet.color = Color.BLUE  //LineChart에서 Line Color 설정
+        else if(name == "soil_humi")
+            lineDataSet.color = Color.RED
+        else if(name == "light")
+            lineDataSet.color = Color.GREEN
+        else if(name == "temp")
+            lineDataSet.color = Color.YELLOW
+
+        lineDataSet.setCircleColor(Color.DKGRAY)  // LineChart에서 Line Circle Color 설정
+        lineDataSet.setCircleHoleColor(Color.DKGRAY) // LineChart에서 Line Hole Circle Color 설정
+
+        val dataSets = ArrayList<ILineDataSet>()
+        dataSets.add(lineDataSet) // add the data sets
+
+        // create a data object with the data sets
+        val data = LineData(dataSets)
+
+        // set data
+        lineChart.setData(data)
+        lineChart.setDescription(null); //차트에서 Description 설정 삭제
+        //XAxis.XAxisPosition.BOTTOM // 라벨 위치 설정
+        val xAxis = lineChart.xAxis
+        xAxis.position = XAxis.XAxisPosition.BOTTOM
+
+        lineChart.invalidate();
+    }
+
 }
+data class ChartData(
+    var lableData: String = "",
+    var valData: Double = 0.0,
+    var lineData: Double = 0.0
+)
