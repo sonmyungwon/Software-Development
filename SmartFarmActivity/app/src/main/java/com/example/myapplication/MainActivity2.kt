@@ -65,11 +65,6 @@ class MainActivity2 : AppCompatActivity() {
                     Toast.makeText(this, "switch on", Toast.LENGTH_SHORT).show()
                     PauseActivity.LoadingDialog(this@MainActivity2).show()
 
-                    /*CoroutineScope(Main).launch {
-                        PauseActivity.LoadingDialog(this@MainActivity2).show()
-                        delay(2000)
-                        PauseActivity.LoadingDialog(this@MainActivity2).dismiss()
-                    }*/
                 }
                 else {
                     myRef1.setValue(1)
@@ -124,7 +119,7 @@ class MainActivity2 : AppCompatActivity() {
             val myRef = database.getReference("user/manual/exception")
 
 
-                //로그에 띄우기
+            //수분 과다 공급시 펌프 정지
             myRef.addValueEventListener(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     Log.d("Data", snapshot.value.toString())
