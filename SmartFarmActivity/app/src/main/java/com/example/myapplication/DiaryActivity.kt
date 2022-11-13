@@ -20,9 +20,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.getValue
 import com.google.firebase.storage.FirebaseStorage
-import kotlinx.coroutines.joinAll
 import java.io.File
 import java.util.Calendar
 import java.util.GregorianCalendar
@@ -88,67 +86,16 @@ class DiaryActivity : AppCompatActivity() {
         }
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference("user/auto/sensor/20221112/humi")
-        val myRef1 = database.getReference("user/auto/sensor/20221112/soil_humi")
-        val myRef2 = database.getReference("user/auto/sensor/20221112/temp")
-        val myRef3 = database.getReference("user/auto/sensor/20221112/light")
 
         myRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+                Log.d("@@@@@ tempView @@@@@@", snapshot.value.toString())
 
-                val split = snapshot.value.toString().split("=", ", ", "}")
-                for(i:Int in 0..10){
-                    //Log.d("@@@@datata@@@@@", split[i*2 + 1])
-                    addChartItem("$i", split[i*2+1].toDouble()+0 , chartData_humidity)
+                for (i: Int in 0..10){
+                    addChartItem("$i", snapshot.value.toString().toDouble(), chartData_humidity)
+                    Log.d("@@@@@ tempView @@@@@@", "$i")
                 }
 
-                LineChart(chartData_humidity,"humidity")
-
-            }
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        })
-        myRef1.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-
-                val split = snapshot.value.toString().split("=", ", ", "}")
-                for(i:Int in 0..10){
-                    //Log.d("@@@@datata@@@@@", split[i*2 + 1])
-                    addChartItem("$i", split[i*2+1].toDouble()+0 , chartData_soil_humi)
-                }
-
-                LineChart(chartData_soil_humi,"soil_humi")
-
-            }
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        })
-        myRef2.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-
-                val split = snapshot.value.toString().split("=", ", ", "}")
-                for(i:Int in 0..10){
-                    //Log.d("@@@@datata@@@@@", split[i*2 + 1])
-                    addChartItem("$i", split[i*2+1].toDouble()+0 , chartData_temp)
-                }
-
-                LineChart(chartData_temp,"temp")
-            }
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        })
-        myRef3.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-
-                val split = snapshot.value.toString().split("=", ", ", "}")
-                for(i:Int in 0..10){
-                    //Log.d("@@@@datata@@@@@", split[i*2 + 1])
-                    addChartItem("$i", split[i*2+1].toDouble()+0 , chartData_light)
-                }
-
-                LineChart(chartData_light,"light")
 
             }
             override fun onCancelled(error: DatabaseError) {
@@ -164,9 +111,9 @@ class DiaryActivity : AppCompatActivity() {
         addChartItem("14.00", 8.5,chartData_humidity)
         addChartItem("14.5", 7.3,chartData_humidity)*/
 
-        //LineChart(chartData_humidity,"humidity")
+        LineChart(chartData_humidity,"humidity")
 
-        /*addChartItem("12.5", 5.9,chartData_soil_humi)
+        addChartItem("12.5", 5.9,chartData_soil_humi)
         addChartItem("13.00", 6.2,chartData_soil_humi)
         addChartItem("13.5", 7.3,chartData_soil_humi)
         addChartItem("14.00", 8.5,chartData_soil_humi)
@@ -191,7 +138,7 @@ class DiaryActivity : AppCompatActivity() {
         addChartItem("14.5", 7.3,chartData_light)
 
         // 그래프 그릴 자료 넘기기
-        LineChart(chartData_light,"light")*/
+        LineChart(chartData_light,"light")
 
     }
 
