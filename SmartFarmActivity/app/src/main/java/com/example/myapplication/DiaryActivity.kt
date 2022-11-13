@@ -96,7 +96,8 @@ class DiaryActivity : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
 
                 val split = snapshot.value.toString().split("=", ", ", "}")
-                for(i:Int in 0..10){
+                Log.d("@@@ humidity value @@@", snapshot.value.toString())
+                for(i:Int in 0..5){
                     //Log.d("@@@@datata@@@@@", split[i*2 + 1])
                     addChartItem("$i", split[i*2+1].toDouble()+0 , chartData_humidity)
                 }
@@ -108,13 +109,15 @@ class DiaryActivity : AppCompatActivity() {
                 TODO("Not yet implemented")
             }
         })
+
         myRef1.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
-                val split = snapshot.value.toString().split("=", ", ", "}")
-                for(i:Int in 0..10){
-                    //Log.d("@@@@datata@@@@@", split[i*2 + 1])
-                    addChartItem("$i", split[i*2+1].toDouble()+0 , chartData_soil_humi)
+                val split1 = snapshot.value.toString().split("=", ", ", "}")
+                Log.d("@@@ all soil humi value @@@", snapshot.value.toString())
+                for(i:Int in 0..5){
+
+                    addChartItem("$i", split1[i*2+1].toDouble()+0 , chartData_soil_humi)
                 }
 
                 LineChart(chartData_soil_humi,"soil_humi")
@@ -127,10 +130,11 @@ class DiaryActivity : AppCompatActivity() {
         myRef2.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
-                val split = snapshot.value.toString().split("=", ", ", "}")
-                for(i:Int in 0..10){
+                val split2 = snapshot.value.toString().split("=", ", ", "}")
+                Log.d("@@@ all temp value @@@", snapshot.value.toString())
+                for(i:Int in 0..5){
                     //Log.d("@@@@datata@@@@@", split[i*2 + 1])
-                    addChartItem("$i", split[i*2+1].toDouble()+0 , chartData_temp)
+                    addChartItem("$i", split2[i*2+1].toDouble()+0 , chartData_temp)
                 }
 
                 LineChart(chartData_temp,"temp")
@@ -142,10 +146,11 @@ class DiaryActivity : AppCompatActivity() {
         myRef3.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
-                val split = snapshot.value.toString().split("=", ", ", "}")
-                for(i:Int in 0..10){
+                val split3 = snapshot.value.toString().split("=", ", ", "}")
+                Log.d("@@@ all light value @@@", snapshot.value.toString())
+                for(i:Int in 0..7){
                     //Log.d("@@@@datata@@@@@", split[i*2 + 1])
-                    addChartItem("$i", split[i*2+1].toDouble()+0 , chartData_light)
+                    addChartItem("$i", split3[i*2+1].toDouble()+0 , chartData_light)
                 }
 
                 LineChart(chartData_light,"light")
@@ -211,7 +216,6 @@ class DiaryActivity : AppCompatActivity() {
             lineChart = findViewById(R.id.linechart_light)
         else if(name == "temp")
             lineChart = findViewById(R.id.linechart_temp)
-        //  lineChart = findViewById(R.id.linechart_temp)
 
         val entries = mutableListOf<Entry>()  //차트 데이터 셋에 담겨질 데이터
 
