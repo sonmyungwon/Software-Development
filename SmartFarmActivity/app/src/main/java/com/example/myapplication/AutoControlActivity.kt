@@ -81,7 +81,7 @@ class AutoControlActivity : AppCompatActivity() {
         }
 
         var humidNumber: Int = humidView.text.toString().toInt()
-0
+
         humidMinusBtn.setOnClickListener{
             humidNumber -= 5
 
