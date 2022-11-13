@@ -138,8 +138,8 @@
         app:layout_constraintVertical_bias="0.466" />
 
     <ImageView
-        android:layout_width="23dp"
-        android:layout_height="18dp"
+        android:layout_width="24dp"
+        android:layout_height="16dp"
         android:src="@drawable/auto_control_icon"
         app:layout_constraintBottom_toBottomOf="@+id/autoControlImage"
         app:layout_constraintEnd_toStartOf="@+id/textView14"
@@ -147,13 +147,13 @@
         app:layout_constraintVertical_bias="0.46" />
 
     <ImageView
-        android:layout_width="20dp"
-        android:layout_height="18dp"
+        android:layout_width="19dp"
+        android:layout_height="16dp"
         android:src="@drawable/diary_icon"
         app:layout_constraintBottom_toBottomOf="@+id/diary"
         app:layout_constraintEnd_toStartOf="@+id/textView12"
         app:layout_constraintTop_toTopOf="@+id/diary"
-        app:layout_constraintVertical_bias="0.535" />
+        app:layout_constraintVertical_bias="0.5" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
