@@ -119,9 +119,14 @@ void loop() {
   Serial.print("read sensor value : ");
   Serial.println(value);
   int l = map(value, 0, 4095, 255, 0);
+  Serial.print("humidity : ");
+  Serial.println(h);
+  Serial.print("temp : ");
+  Serial.println(t);
+  Serial.print("light : ");
   Serial.println(l);
-  Serial.print("read sensor value : ");
-  Serial.print(s);
+  Serial.print("soil : ");
+  Serial.println(s);
   if (Firebase.ready() && signupOK && (millis() - sendDataPrevMillis > 3000 || sendDataPrevMillis == 0)) {
     sendDataPrevMillis = millis();
     if (Firebase.RTDB.pushInt(&fbdo, "/user/auto/sensor/temp", t)) {
