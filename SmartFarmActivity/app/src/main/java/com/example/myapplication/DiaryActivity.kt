@@ -16,19 +16,14 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import java.io.File
 import java.util.Calendar
 import java.util.GregorianCalendar
-import kotlin.concurrent.timer
 
 class DiaryActivity : AppCompatActivity() {
 
-    //private val TAG = this.javaClass.simpleName
+    private val TAG = this.javaClass.simpleName
     lateinit var lineChart: LineChart
     private val chartData_humidity = ArrayList<ChartData>()
     private val chartData_soil_humi = ArrayList<ChartData>()
@@ -84,32 +79,13 @@ class DiaryActivity : AppCompatActivity() {
 
 
         }
-        val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference("user/auto/sensor/20221112/humi")
-
-        myRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                Log.d("@@@@@ tempView @@@@@@", snapshot.value.toString())
-
-                for (i: Int in 0..10){
-                    addChartItem("$i", snapshot.value.toString().toDouble(), chartData_humidity)
-                    Log.d("@@@@@ tempView @@@@@@", "$i")
-                }
-
-
-            }
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        })
-
-        //차트 만들기 값을 가져오려면? 파이어베이스의  값을 불러오고, 변수를 addchartitem메서드에 인자로 넣기
-        /*chartData_humidity.clear()
+        //차트 만들기
+        chartData_humidity.clear()
         addChartItem("12.5", 7.9,chartData_humidity)
         addChartItem("13.00", 8.2,chartData_humidity)
         addChartItem("13.5", 8.3,chartData_humidity)
         addChartItem("14.00", 8.5,chartData_humidity)
-        addChartItem("14.5", 7.3,chartData_humidity)*/
+        addChartItem("14.5", 7.3,chartData_humidity)
 
         LineChart(chartData_humidity,"humidity")
 
@@ -142,7 +118,7 @@ class DiaryActivity : AppCompatActivity() {
 
     }
 
-    private fun addChartItem(lableitem: String, dataitem: Double, chartData: ArrayList<ChartData>) {
+    private fun addChartItem(lableitem: String, dataitem: Double,chartData: ArrayList<ChartData>) {
         val item = ChartData()
         item.lableData = lableitem
         item.lineData = dataitem
