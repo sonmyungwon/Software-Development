@@ -53,18 +53,18 @@ int Dir1Pin_A = 25;      // 제어신호 1핀
 int Dir2Pin_A = 26;      // 제어신호 2핀
 int SpeedPin_A = 27;    // PWM제어를 위한 핀
 
-int Relaypin = 2;
-int Relaypin2 = 4;
+int Relaypin = 1;
+int Relaypin2 = 10;
 
-int soil_humi = 33;
-int light = 32;
+int soil_humi = 5;
+int light = 0;
 
 int s0 = analogRead(soil_humi);
 int s = s0 / 4;
 int h = dht.readHumidity();
 int t = dht.readTemperature();
-int value = analogRead(light);
-int l = map(value, 0, 4095, 255, 0);
+int l0 = analogRead(light);
+int l = map(l0, 0, 4095, 255, 0);
 
 void setup() {
   Serial.begin(115200);
