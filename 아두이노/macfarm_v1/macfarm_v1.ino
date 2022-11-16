@@ -187,7 +187,7 @@ void database(String path, int data) {
       Serial.println("REASON: " + fbdo.errorReason());
     }
   }
-  else if ((String(timeinfo.min) == "3" || String(timeinfo.min) == "33" ) && real_push = true) {
+  else if ((String(timeinfo.tm_min) == "3" || String(timeinfo.tm_min) == "33" ) && real_push = true) {
     real_push = false;
   }
 }
@@ -341,7 +341,7 @@ bool isday() {//현재 낮인지 판단하는 함수
    getLocalTime(&timeinfo);
 
   if((String(timeinfo.min) =="1" || String(timeinfo.min) == "31" )&& real_push = false){
-  if (Firebase.RTDB.pushInt(&fbdo, pass[], data)) {
+   if (Firebase.RTDB.pushInt(&fbdo, pass[], data)) {
       Serial.println(data);
       Serial.println("PASSED");
       Serial.println("PATH: " + fbdo.dataPath());
