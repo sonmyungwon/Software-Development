@@ -16,6 +16,10 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import java.io.File
 import java.util.Calendar
@@ -79,8 +83,80 @@ class DiaryActivity : AppCompatActivity() {
 
 
         }
+
+        val database = FirebaseDatabase.getInstance()
+        val myRef = database.getReference("user/auto/sensor/20221112/humi")
+        val myRef1 = database.getReference("user/auto/sensor/20221112/soil_humi")
+        val myRef2 = database.getReference("user/auto/sensor/20221112/temp")
+        val myRef3 = database.getReference("user/auto/sensor/221116/light")
+
+        myRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                val split = snapshot.value.toString().split("=", ", ", "}")
+                for(i:Int in 0..5){
+                    //Log.d("@@@@datata@@@@@", split[i*2 + 1])
+                    addChartItem("$i", split[i*2+1].toDouble()+0 , chartData_humidity)
+                }
+                LineChart(chartData_humidity,"humidity")
+            }
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+
+        myRef1.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val split = snapshot.value.toString().split("=", ", ", "}")
+                for(i:Int in 0..5){
+                    //Log.d("@@@@datata@@@@@", split[i*2 + 1])
+                    addChartItem("$i", split[i*2+1].toDouble()+0 , chartData_soil_humi)
+                }
+
+                LineChart(chartData_soil_humi,"soil_humi")
+            }
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+
+        myRef2.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val split = snapshot.value.toString().split("=", ", ", "}")
+                Log.d("@@@@ all value @@@@@", snapshot.value.toString())
+                for(i:Int in 0..5){
+                    //Log.d("@@@@datata@@@@@", split[i*2 + 1])
+                    addChartItem("$i", split[i*2+1].toDouble()+0 , chartData_temp)
+                }
+
+                LineChart(chartData_temp,"temp")
+            }
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+
+        myRef3.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val split = snapshot.value.toString().split("=", ", ", "}")
+                Log.d("@@@@ all value @@@@@", snapshot.value.toString())
+
+                for(i:Int in 0 until split.size/2-1){
+                    Log.d("@@@@datata@@@@@", split[i])
+
+                    Log.d("split size",(split.size/2-1).toString())
+                    addChartItem("$i", split[i*2+1].toDouble()+0 , chartData_light)
+                }
+
+                LineChart(chartData_light,"light")
+            }
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+
         //차트 만들기
-        chartData_humidity.clear()
+        /*chartData_humidity.clear()
         addChartItem("12.5", 7.9,chartData_humidity)
         addChartItem("13.00", 8.2,chartData_humidity)
         addChartItem("13.5", 8.3,chartData_humidity)
@@ -114,7 +190,7 @@ class DiaryActivity : AppCompatActivity() {
         addChartItem("14.5", 7.3,chartData_light)
 
         // 그래프 그릴 자료 넘기기
-        LineChart(chartData_light,"light")
+        LineChart(chartData_light,"light")*/
 
     }
 
@@ -154,8 +230,8 @@ class DiaryActivity : AppCompatActivity() {
         else if(name == "temp")
             lineDataSet.color = Color.YELLOW
 
-        lineDataSet.setCircleColor(Color.DKGRAY)  // LineChart에서 Line Circle Color 설정
-        lineDataSet.setCircleHoleColor(Color.DKGRAY) // LineChart에서 Line Hole Circle Color 설정
+        lineDataSet.setCircleColor(Color.TRANSPARENT)  // LineChart에서 Line Circle Color 설정
+        lineDataSet.setCircleHoleColor(Color.TRANSPARENT) // LineChart에서 Line Hole Circle Color 설정
 
         val dataSets = ArrayList<ILineDataSet>()
         dataSets.add(lineDataSet) // add the data sets
