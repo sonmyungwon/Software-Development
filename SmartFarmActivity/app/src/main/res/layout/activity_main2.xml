@@ -41,6 +41,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
+        android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="수동 제어"
@@ -128,34 +129,31 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:layout_width="29dp"
-        android:layout_height="33dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="17dp"
+        android:layout_height="19dp"
         android:src="@drawable/manual_control_icon"
         app:layout_constraintBottom_toBottomOf="@+id/manualControlImage"
-        app:layout_constraintEnd_toStartOf="@+id/manualControlImage"
+        app:layout_constraintEnd_toStartOf="@+id/textView9"
         app:layout_constraintTop_toTopOf="@+id/manualControlImage"
-        app:layout_constraintVertical_bias="0.437" />
+        app:layout_constraintVertical_bias="0.466" />
 
     <ImageView
-        android:layout_width="28dp"
-        android:layout_height="29dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="24dp"
+        android:layout_height="16dp"
         android:src="@drawable/auto_control_icon"
         app:layout_constraintBottom_toBottomOf="@+id/autoControlImage"
-        app:layout_constraintEnd_toStartOf="@+id/autoControlImage"
+        app:layout_constraintEnd_toStartOf="@+id/textView14"
         app:layout_constraintTop_toTopOf="@+id/autoControlImage"
-        app:layout_constraintVertical_bias="0.1" />
+        app:layout_constraintVertical_bias="0.46" />
 
     <ImageView
-        android:layout_width="29dp"
-        android:layout_height="31dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="19dp"
+        android:layout_height="16dp"
         android:src="@drawable/diary_icon"
         app:layout_constraintBottom_toBottomOf="@+id/diary"
-        app:layout_constraintEnd_toStartOf="@+id/diary"
+        app:layout_constraintEnd_toStartOf="@+id/textView12"
         app:layout_constraintTop_toTopOf="@+id/diary"
-        app:layout_constraintVertical_bias="0.166" />
+        app:layout_constraintVertical_bias="0.5" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
