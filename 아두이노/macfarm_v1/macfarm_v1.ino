@@ -13,8 +13,8 @@
 #include "addons/RTDBHelper.h"
 
 // Insert your network credentials
-#define WIFI_SSID "407_601-2"
-#define WIFI_PASSWORD "bigsys601"
+#define WIFI_SSID "son"
+#define WIFI_PASSWORD "123456789"
 const char* ntpServer = "pool.ntp.org";
 uint8_t timeZone = 9;
 uint8_t summerTime = 0; // 3600
@@ -32,7 +32,7 @@ FirebaseData fbdo;
 
 FirebaseAuth auth;
 FirebaseConfig config;
-#define DHTPIN 3        // GPIO23
+#define DHTPIN 13        // GPIO23
 
 
 
@@ -50,6 +50,7 @@ int inttemp;
 int inthumi;
 int intlight;
 float floatValue;
+bool real_push = false;
 DHT dht(DHTPIN, DHTTYPE);
 
 ////////motor code add/////////////
@@ -57,13 +58,13 @@ DHT dht(DHTPIN, DHTTYPE);
 
 int Dir1Pin_A = 25;      // 제어신호 1핀
 int Dir2Pin_A = 26;      // 제어신호 2핀
-int SpeedPin_A = 27;    // PWM제어를 위한 핀
+int SpeedPin_A = 13;    // PWM제어를 위한 핀
 
-int Relaypin = 1;
-int Relaypin2 = 10;
+int Relaypin = 33;//pump
+int Relaypin2 = 32;//led
 
-int soil_humi = 5;
-int light = 0;
+int soil_humi = 27;
+int light = 14;
 
 
 void setup() {
@@ -171,12 +172,12 @@ void print_data(int h, int t, int l, int s) {
 
 
 
-void database(String path, int data) {
+void database(String path, int sensordata) {
   getLocalTime(&timeinfo);
 
-  if ((String(timeinfo.tm_min) == "1" || String(timeinfo.tm_min) == "31" ) && real_push = false) {
-    if (Firebase.RTDB.pushInt(&fbdo, path, data)) {
-      Serial.println(data);
+  if ((String(timeinfo.tm_min) == "1" || String(timeinfo.tm_min) == "31" ) && real_push == false) {
+    if (Firebase.RTDB.pushInt(&fbdo, path, sensordata)) {
+      Serial.println(sensordata);
       Serial.println("PASSED");
       Serial.println("PATH: " + fbdo.dataPath());
       Serial.println("TYPE: " + fbdo.dataType());
@@ -187,7 +188,7 @@ void database(String path, int data) {
       Serial.println("REASON: " + fbdo.errorReason());
     }
   }
-  else if ((String(timeinfo.tm_min) == "3" || String(timeinfo.tm_min) == "33" ) && real_push = true) {
+  else if ((String(timeinfo.tm_min) == "3" || String(timeinfo.tm_min) == "33" ) && real_push == true) {
     real_push = false;
   }
 }
