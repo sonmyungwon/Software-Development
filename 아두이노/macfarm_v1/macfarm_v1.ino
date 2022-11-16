@@ -139,7 +139,7 @@ void loop() {
     intmode = fbdo.intData();
     if (intmode == 1) {
       fan_manual(intfan);
-      pump_manual(intpump);
+      pump_manual(intpump, s);
       led_manual(intled);
     }
     else {
