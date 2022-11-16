@@ -153,7 +153,7 @@ void loop() {
 
 void check(int h, int t) {
   if (isnan(h) || isnan(t)) {
-    Serial.println("Failed to read from DHT sensor!");
+    Serial.println("Failed to read from DHT  sensor!");
     return;
   }
 }
