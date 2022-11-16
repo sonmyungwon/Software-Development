@@ -139,7 +139,7 @@ void loop() {
     intmode = fbdo.intData();
     if (intmode == 1) {
       fan_manual(intfan);
-      pump_manual(intpump);
+      pump_manual(intpump,s);
       led_manual(intled);
     }
     else {
@@ -208,7 +208,7 @@ void fan_manual(int intfan) {
   }
 }
 
-void pump_manual(int intpump int s) {
+void pump_manual(int intpump, int s) {
   if (Firebase.RTDB.getInt(&fbdo, "/user/manual/device/pump") && fbdo.dataType() == "int") {
     intpump = fbdo.intData();
     if (s > 800) {//물 넘치지 않은 상태
