@@ -13,8 +13,8 @@
 #include "addons/RTDBHelper.h"
 
 // Insert your network credentials
-#define WIFI_SSID "WIFI"
-#define WIFI_PASSWORD "PASSWORD"
+#define WIFI_SSID "407_601-2"
+#define WIFI_PASSWORD "bigsys601"
 const char* ntpServer = "pool.ntp.org";
 uint8_t timeZone = 9;
 uint8_t summerTime = 0; // 3600
@@ -114,7 +114,7 @@ void setup() {
 }
 
 void loop() {
-  
+
   int h = dht.readHumidity();
   int t = dht.readTemperature();
   int value = analogRead(light);
@@ -122,43 +122,43 @@ void loop() {
   int s0 = analogRead(soil_humi);
   int s = s0 / 4;
 
-  check(h,t);
+  check(h, t);
 
-  print_data(h,t,l,s);
-  
+  print_data(h, t, l, s);
+
   if (Firebase.ready() && signupOK && (millis() - sendDataPrevMillis > 3000 || sendDataPrevMillis == 0)) {
     sendDataPrevMillis = millis();
-    date= get_push_path();
-    database("/user/auto/sensor/"+date+"/temp", t);
-    database("/user/auto/sensor/"+date+"/humi", h);
-    database("/user/auto/sensor/"+date+"/soilhumi", s);
-    database("/user/auto/sensor/"+date+"/light", l);
+    date = get_push_path();
+    database("/user/auto/sensor/" + date + "/temp", t);
+    database("/user/auto/sensor/" + date + "/humi", h);
+    database("/user/auto/sensor/" + date + "/soilhumi", s);
+    database("/user/auto/sensor/" + date + "/light", l);
   }
 
   if (Firebase.RTDB.getInt(&fbdo, "/user/mode") && fbdo.dataType() == "int") {
-      intmode = fbdo.intData();
-      if (intmode == 1) {
-        fan_manual(intfan);
-        pump_manual(intpump);
-        led_manual(intled);
-      }
-      else{
-        fan_auto(inttemp, t);
-        pump_auto(inthumi, s);
-        led_auto(intled, l);
-      }
+    intmode = fbdo.intData();
+    if (intmode == 1) {
+      fan_manual(intfan);
+      pump_manual(intpump);
+      led_manual(intled);
+    }
+    else {
+      fan_auto(inttemp, t);
+      pump_auto(inthumi, s);
+      led_auto(intled, l);
+    }
   }
-  
+
 }
 
-void check(int h, int t){
+void check(int h, int t) {
   if (isnan(h) || isnan(t)) {
     Serial.println("Failed to read from DHT sensor!");
     return;
   }
 }
 
-void print_data(int h, int t, int l, int s){
+void print_data(int h, int t, int l, int s) {
   Serial.print("humidity : ");
   Serial.println(h);
   Serial.print("temp : ");
@@ -169,20 +169,29 @@ void print_data(int h, int t, int l, int s){
   Serial.println(s);
 }
 
-void database(String path, int data){
-  if (Firebase.RTDB.pushInt(&fbdo, path, data)) {
+
+
+void database(String path, int data) {
+  getLocalTime(&timeinfo);
+
+  if ((String(timeinfo.min) == "1" || String(timeinfo.min) == "31" ) && real_push = false) {
+    if (Firebase.RTDB.pushInt(&fbdo, path, data)) {
       Serial.println(data);
       Serial.println("PASSED");
       Serial.println("PATH: " + fbdo.dataPath());
       Serial.println("TYPE: " + fbdo.dataType());
+      real_push = true; //loop 시작하자마자 false로 고치는거 필요할듯
+    }
+    else {
+      Serial.println("FAILED");
+      Serial.println("REASON: " + fbdo.errorReason());
+    }
   }
-  else {
-    Serial.println("FAILED");
-    Serial.println("REASON: " + fbdo.errorReason());
+  else if ((String(timeinfo.min) == "3" || String(timeinfo.min) == "33" ) && real_push = true) {
+    real_push = false;
   }
 }
-
-void fan_manual(int intfan){
+void fan_manual(int intfan) {
   if (Firebase.RTDB.getInt(&fbdo, "/user/manual/device/fan") && fbdo.dataType() == "int") {
     intfan = fbdo.intData();
     if (intfan == 1) {
@@ -199,21 +208,36 @@ void fan_manual(int intfan){
   }
 }
 
-void pump_manual(int intpump){
+void pump_manual(int intpump int s) {
   if (Firebase.RTDB.getInt(&fbdo, "/user/manual/device/pump") && fbdo.dataType() == "int") {
     intpump = fbdo.intData();
-    if (intpump == 1) {
-      Serial.println("pump on");
-      digitalWrite(Relaypin, HIGH);
+    if (s > 800) {//물 넘치지 않은 상태
+      if (intpump == 1) {
+        Serial.println("pump on");
+        digitalWrite(Relaypin, HIGH);
+      }
+      else {
+        Serial.println("pump stopped");
+        digitalWrite(Relaypin, LOW);
+      }
     }
-    else {
-      Serial.println("pump stopped");
+    else {//물넘침 감지
+      Serial.println("over water");
       digitalWrite(Relaypin, LOW);
+
+      if (Firebase.RTDB.setInt(&fbdo, "/user/manual/exception", 1)) {
+
+        Serial.println("EXCEPTION OCCUR");
+        Serial.println("PATH: " + fbdo.dataPath());
+        Serial.println("TYPE: " + fbdo.dataType());
+
+      }
+
     }
   }
 }
 
-void led_manual(int intled){
+void led_manual(int intled) {
   if (Firebase.RTDB.getInt(&fbdo, "/user/manual/device/led") && fbdo.dataType() == "int") {
     intled = fbdo.intData();
     if (intled == 1) {
@@ -227,7 +251,7 @@ void led_manual(int intled){
   }
 }
 
-void fan_auto(int inttemp, int t){
+void fan_auto(int inttemp, int t) {
   if (Firebase.RTDB.getInt(&fbdo, "/user/auto/userdata/temp") && fbdo.dataType() == "int") {
     inttemp = fbdo.intData();
     if (inttemp < t) {
@@ -246,7 +270,7 @@ void fan_auto(int inttemp, int t){
   }
 }
 
-void pump_auto(int inthumi, int s){
+void pump_auto(int inthumi, int s) {
   if (Firebase.RTDB.getInt(&fbdo, "/user/auto/userdata/soil_humi") && fbdo.dataType() == "int") {
     inthumi = fbdo.intData();
     Serial.println(intValue);
@@ -266,7 +290,7 @@ void pump_auto(int inthumi, int s){
   }
 }
 
-void led_auto(int intled, int l){
+void led_auto(int intled, int l) {
   if (Firebase.RTDB.getInt(&fbdo, "/user/auto/userdata/light") && fbdo.dataType() == "int") {        //차후 센서값보면서 수정필요
     intlight = fbdo.intData();
     Serial.println(intValue);
@@ -283,52 +307,52 @@ void led_auto(int intled, int l){
 
 void printLocalTime() {
   struct tm timeinfo;
-  if(!getLocalTime(&timeinfo)){
+  if (!getLocalTime(&timeinfo)) {
     Serial.println("Failed to obtain time");
     return;
   }
   Serial.println(&timeinfo, "%A, %B %d %Y %H:%M:%S");
 
 }
-String get_push_path(){
+String get_push_path() {
   getLocalTime(&timeinfo);
   String path;
-  path = String(timeinfo.tm_year+1900-2000)+String(timeinfo.tm_mon+1)+String(timeinfo.tm_mday);
+  path = String(timeinfo.tm_year + 1900 - 2000) + String(timeinfo.tm_mon + 1) + String(timeinfo.tm_mday);  //2022년 11월 16일 -> 221116
   return path;
 }
 
-bool isday(){
+bool isday() {//현재 낮인지 판단하는 함수
   getLocalTime(&timeinfo);
-  if(timeinfo.tm_hour<18 ||timeinfo.tm_hour>6){
+  if (timeinfo.tm_hour < 18 || timeinfo.tm_hour > 6) { 
     return true;
   }
-  else{
+  else {
     return false;
   }
 }
 
 
 /*
-bool real_push false; 선언해두고
+  bool real_push false; 선언해두고
 
 
 
- void database(char pass[], int data){
+  void database(char pass[], int data){
    getLocalTime(&timeinfo);
 
- if((String(timeinfo.min) =="1" || String(timeinfo.min) == "31" )&& real_push = false){
+  if((String(timeinfo.min) =="1" || String(timeinfo.min) == "31" )&& real_push = false){
   if (Firebase.RTDB.pushInt(&fbdo, pass[], data)) {
       Serial.println(data);
       Serial.println("PASSED");
       Serial.println("PATH: " + fbdo.dataPath());
       Serial.println("TYPE: " + fbdo.dataType());
-      real_push = true; //loop 시작하자마자 false로 고치는거 필요할듯 
+      real_push = true; //loop 시작하자마자 false로 고치는거 필요할듯
   }
   else {
     Serial.println("FAILED");
     Serial.println("REASON: " + fbdo.errorReason());
   }
   }
-}
+  }
 
- */
+*/
