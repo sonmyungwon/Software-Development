@@ -139,7 +139,7 @@ void loop() {
     intmode = fbdo.intData();
     if (intmode == 1) {
       fan_manual(intfan);
-      pump_manual(intpump,s);
+      pump_manual(intpump, s);
       led_manual(intled);
     }
     else {
@@ -174,7 +174,7 @@ void print_data(int h, int t, int l, int s) {
 void database(String path, int data) {
   getLocalTime(&timeinfo);
 
-  if ((String(timeinfo.min) == "1" || String(timeinfo.min) == "31" ) && real_push = false) {
+  if ((String(timeinfo.tm_min) == "1" || String(timeinfo.tm_min) == "31" ) && real_push = false) {
     if (Firebase.RTDB.pushInt(&fbdo, path, data)) {
       Serial.println(data);
       Serial.println("PASSED");
