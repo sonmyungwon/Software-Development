@@ -32,7 +32,7 @@ FirebaseData fbdo;
 
 FirebaseAuth auth;
 FirebaseConfig config;
-#define DHTPIN 13        // GPIO23
+#define DHTPIN 15        // GPIO23
 
 
 
@@ -56,15 +56,15 @@ DHT dht(DHTPIN, DHTTYPE);
 ////////motor code add/////////////
 
 
-int Dir1Pin_A = 25;      // 제어신호 1핀
+int Dir1Pin_A = 27;      // 제어신호 1핀
 int Dir2Pin_A = 26;      // 제어신호 2핀
-int SpeedPin_A = 13;    // PWM제어를 위한 핀
+int SpeedPin_A = 14;    // PWM제어를 위한 핀
 
-int Relaypin = 33;//pump
-int Relaypin2 = 32;//led
+int Relaypin = 12;//pump
+int Relaypin2 = 13;//led
 
-int soil_humi = 27;
-int light = 14;
+int soil_humi = 32;
+int light =4;
 
 
 void setup() {
@@ -119,7 +119,7 @@ void loop() {
   int h = dht.readHumidity();
   int t = dht.readTemperature();
   int value = analogRead(light);
-  int l = map(value, 0, 4095, 255, 0);
+
   int s0 = analogRead(soil_humi);
   int s = s0 / 4;
 
@@ -212,7 +212,7 @@ void fan_manual(int intfan) {
 void pump_manual(int intpump, int s) {
   if (Firebase.RTDB.getInt(&fbdo, "/user/manual/device/pump") && fbdo.dataType() == "int") {
     intpump = fbdo.intData();
-    if (s > 800) {//물 넘치지 않은 상태
+    if (s < 800) {//물 넘치지 않은 상태
       if (intpump == 1) {
         Serial.println("pump on");
         digitalWrite(Relaypin, HIGH);
