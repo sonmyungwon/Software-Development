@@ -6,6 +6,8 @@
 #endif
 #include <Firebase_ESP_Client.h>
 #include "time.h"
+#include <Wire.h>
+#include <BH1750.h>
 
 //Provide the token generation process info.
 #include "addons/TokenHelper.h"
@@ -31,8 +33,11 @@ String date;
 FirebaseData fbdo;
 
 FirebaseAuth auth;
+
 FirebaseConfig config;
+BH1750 lightMeter;
 #define DHTPIN 15        // GPIO23
+
 
 
 
@@ -64,7 +69,7 @@ int Relaypin = 12;//pump
 int Relaypin2 = 13;//led
 
 int soil_humi = 32;
-int light =4;
+
 
 
 void setup() {
@@ -112,14 +117,18 @@ void setup() {
 
   pinMode(Relaypin, OUTPUT);
   pinMode(Relaypin2, OUTPUT);
+  
+  Wire.begin();
+  
+  lightMeter.begin();
+
 }
 
 void loop() {
 
   int h = dht.readHumidity();
   int t = dht.readTemperature();
-  int value = analogRead(light);
-
+  int l = lightMeter.readLightLevel();
   int s0 = analogRead(soil_humi);
   int s = s0 / 4;
 
