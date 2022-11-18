@@ -12,8 +12,8 @@
 #include "addons/RTDBHelper.h"
 
 // Insert your network credentials
-#define WIFI_SSID "202"
-#define WIFI_PASSWORD "anse407202"
+#define WIFI_SSID "407_601-2"
+#define WIFI_PASSWORD "bigsys601"
 
 // Insert Firebase project API Key
 #define API_KEY "AIzaSyDqFzxgzics8NUugrOKBHB1lemosv32QUM"
@@ -26,7 +26,7 @@ FirebaseData fbdo;
 
 FirebaseAuth auth;
 FirebaseConfig config;
-#define DHTPIN 19        // GPIO23
+#define DHTPIN 3        // GPIO23
 
 
 
@@ -53,11 +53,11 @@ int Dir1Pin_A = 25;      // 제어신호 1핀
 int Dir2Pin_A = 26;      // 제어신호 2핀
 int SpeedPin_A = 27;    // PWM제어를 위한 핀
 
-int Relaypin = 2;
-int Relaypin2 = 4;
+int Relaypin = 1;
+int Relaypin2 = 10;
 
-int soil_humi = 33;
-int light = 32;
+int soil_humi = 5;
+int light = 0;
 
 
 void setup() {
@@ -119,9 +119,14 @@ void loop() {
   Serial.print("read sensor value : ");
   Serial.println(value);
   int l = map(value, 0, 4095, 255, 0);
+  Serial.print("humidity : ");
+  Serial.println(h);
+  Serial.print("temp : ");
+  Serial.println(t);
+  Serial.print("light : ");
   Serial.println(l);
-  Serial.print("read sensor value : ");
-  Serial.print(s);
+  Serial.print("soil : ");
+  Serial.println(s);
   if (Firebase.ready() && signupOK && (millis() - sendDataPrevMillis > 3000 || sendDataPrevMillis == 0)) {
     sendDataPrevMillis = millis();
     if (Firebase.RTDB.pushInt(&fbdo, "/user/auto/sensor/temp", t)) {
