@@ -94,7 +94,7 @@ class DiaryActivity : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
 
                 val split = snapshot.value.toString().split("=", ", ", "}")
-                for(i:Int in 0..5){
+                for(i:Int in 0 until split.size/2){
                     //Log.d("@@@@datata@@@@@", split[i*2 + 1])
                     addChartItem("$i", split[i*2+1].toDouble()+0 , chartData_humidity)
                 }
@@ -108,7 +108,7 @@ class DiaryActivity : AppCompatActivity() {
         myRef1.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val split = snapshot.value.toString().split("=", ", ", "}")
-                for(i:Int in 0..5){
+                for(i:Int in 0 until split.size/2-1){
                     //Log.d("@@@@datata@@@@@", split[i*2 + 1])
                     addChartItem("$i", split[i*2+1].toDouble()+0 , chartData_soil_humi)
                 }
@@ -124,7 +124,7 @@ class DiaryActivity : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val split = snapshot.value.toString().split("=", ", ", "}")
                 Log.d("@@@@ all value @@@@@", snapshot.value.toString())
-                for(i:Int in 0..5){
+                for(i:Int in 0 until split.size/2-1){
                     //Log.d("@@@@datata@@@@@", split[i*2 + 1])
                     addChartItem("$i", split[i*2+1].toDouble()+0 , chartData_temp)
                 }
