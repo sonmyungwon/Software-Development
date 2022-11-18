@@ -24,25 +24,29 @@ class MainActivity2 : AppCompatActivity() {
     private lateinit var auth : FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         auth = Firebase.auth
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
 
-
         //자동제어 버튼을 눌렀을때 자동제어 액티비티(AutoControlActivity)로 넘어감
         val autoControlBtn = findViewById<Button>(R.id.autoControlBtn)
+
         autoControlBtn.setOnClickListener{
             val intent = Intent(this, AutoControlActivity::class.java)
             startActivity(intent)
         }
 
-
         //수동제어 버튼을 눌렀을때 나오는 다이얼로그
         val manualControlBtn = findViewById<Button>(R.id.manualControlBtn)
 
         manualControlBtn.setOnClickListener {
+
+            val database = FirebaseDatabase.getInstance()
+            val modeRef = database.getReference("user/mode")
+            val ledRef = database.getReference("user/manual/device/led")
+            val fanRef = database.getReference("user/manual/device/fan")
+            val pumpRef = database.getReference("user/manual/device/pump")
+            val exceptRef = database.getReference("user/manual/exception")
 
             val mDialogView = LayoutInflater.from(this).inflate(R.layout.manual_control_dialog, null)
             val mBuilder = AlertDialog.Builder(this)
@@ -51,76 +55,84 @@ class MainActivity2 : AppCompatActivity() {
 
             val mAlertDialog = mBuilder.show()
 
-            //val ledText = findViewById<TextView>(R.id.led_text)
+            //만약 이미 켜져있다면 값을 가져와 스위치 상태 바꾸기
+            ledRef.addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    Log.d("led@@@@@@@@@@", snapshot.value.toString())
+                    if (snapshot.value.toString().toInt() == 1) {
+                        mAlertDialog.findViewById<Switch>(R.id.ledSwitch)?.setChecked(true)
+                    }
+                }
+                override fun onCancelled(error: DatabaseError) {
+                }
+            })
+            fanRef.addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    Log.d("fan@@@@@@@@@@", snapshot.value.toString())
+                    if(snapshot.value.toString().toInt() == 1){
+                        mAlertDialog.findViewById<Switch>(R.id.fanSwitch)?.setChecked(true)
+                    }
+                }
+                override fun onCancelled(error: DatabaseError) {
+                }
+            })
+            pumpRef.addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    Log.d("pump@@@@@@@@@@", snapshot.value.toString())
+                    if(snapshot.value.toString().toInt() == 1){
+                        mAlertDialog.findViewById<Switch>(R.id.pumpSwitch)?.setChecked(true)
+                    }
+                }
+                override fun onCancelled(error: DatabaseError) {
+                }
+            })
+
+            //각각의 스위치를 눌렀을때 on off 하기
             mAlertDialog.findViewById<Switch>(R.id.ledSwitch)?.setOnCheckedChangeListener{_, onSwitch->
-
-                val database = FirebaseDatabase.getInstance()
-                val myRef = database.getReference("user/manual/device/led")
-                val myRef1 = database.getReference("user/mode")
-                //val myRef2 = database.getReference("user/manual/device/real_led")
-
                 if(onSwitch){
-                    myRef1.setValue(1)
-                    myRef.setValue(1)
+                    modeRef.setValue(1)
+                    ledRef.setValue(1)
                     Toast.makeText(this, "switch on", Toast.LENGTH_SHORT).show()
                     PauseActivity.LoadingDialog(this@MainActivity2).show()
-
                 }
                 else {
-                    myRef1.setValue(1)
-                    myRef.setValue(0)
+                    ledRef.setValue(0)
+                    modeRef.setValue(1)
                     Toast.makeText(this, "switch off", Toast.LENGTH_SHORT).show()
                     PauseActivity.LoadingDialog(this@MainActivity2).show()
-
                 }
-
             }
-
 
             mAlertDialog.findViewById<Switch>(R.id.fanSwitch)?.setOnCheckedChangeListener{_, onSwitch->
-
-                val database = FirebaseDatabase.getInstance()
-                val myRef = database.getReference("user/manual/device/fan")
-                val myRef1 = database.getReference("user/mode")
-
                 if(onSwitch){
                     Toast.makeText(this, "switch on", Toast.LENGTH_SHORT).show()
-                    myRef1.setValue(1)
-                    myRef.setValue(1)
+                    fanRef.setValue(1)
+                    modeRef.setValue(1)
                     PauseActivity.LoadingDialog(this@MainActivity2).show()
                 }else{
                     Toast.makeText(this, "switch off", Toast.LENGTH_SHORT).show()
-                    myRef1.setValue(1)
-                    myRef.setValue(0)
+                    fanRef.setValue(0)
+                    modeRef.setValue(1)
                     PauseActivity.LoadingDialog(this@MainActivity2).show()
                 }
             }
 
-            //val pumpText = findViewById<TextView>(R.id.pump_text)
             mAlertDialog.findViewById<Switch>(R.id.pumpSwitch)?.setOnCheckedChangeListener { _, onSwitch->
-                val database = FirebaseDatabase.getInstance()
-                val myRef = database.getReference("user/manual/device/pump")
-                val myRef1 = database.getReference("user/mode")
-
                 if(onSwitch){
                     Toast.makeText(this, "switch on", Toast.LENGTH_SHORT).show()
-                    myRef1.setValue(1)
-                    myRef.setValue(1)
+                    pumpRef.setValue(1)
+                    modeRef.setValue(1)
                     PauseActivity.LoadingDialog(this@MainActivity2).show()
                 }else{
                     Toast.makeText(this, "switch off", Toast.LENGTH_SHORT).show()
-                    myRef1.setValue(1)
-                    myRef.setValue(0)
+                    pumpRef.setValue(0)
+                    modeRef.setValue(1)
                     PauseActivity.LoadingDialog(this@MainActivity2).show()
                 }
             }
-
-            val database = FirebaseDatabase.getInstance()
-            val myRef = database.getReference("user/manual/exception")
-
 
             //수분 과다 공급시 펌프 정지
-            myRef.addValueEventListener(object : ValueEventListener{
+            exceptRef.addValueEventListener(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     Log.d("Data", snapshot.value.toString())
 
@@ -133,7 +145,7 @@ class MainActivity2 : AppCompatActivity() {
 
                             .setPositiveButton("확인", object : DialogInterface.OnClickListener{
                                 override fun onClick(p0: DialogInterface?, p1: Int) {
-                                    myRef.setValue(0)
+                                    exceptRef.setValue(0)
                                     Toast.makeText(baseContext, "확인", Toast.LENGTH_SHORT).show()
                                 }
                             })
@@ -145,7 +157,6 @@ class MainActivity2 : AppCompatActivity() {
                     TODO("Not yet implemented")
                 }
             })
-
         }
 
         //관찰일지 버튼을 눌렀을때 넘어감
