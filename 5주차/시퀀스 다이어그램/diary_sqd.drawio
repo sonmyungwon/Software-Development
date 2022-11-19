@@ -1,77 +1,117 @@
-<mxfile host="app.diagrams.net" modified="2022-11-19T11:17:01.458Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="GY0i5Rt9rzZz2eagfltz" version="20.5.3" type="github">
+<mxfile host="app.diagrams.net" modified="2022-11-19T12:19:52.258Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="fXLyO_c3XkohQzUPDrCE" version="20.5.1" type="github">
   <diagram id="ibOZRkEERhT8VrmGGIWO" name="페이지-1">
-    <mxGraphModel dx="1038" dy="571" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="748" dy="358" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="LfJQejW4wEZQG6NsD9H3-4" value="관찰일지&lt;br&gt;인터페이스" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" parent="1" vertex="1">
-          <mxGeometry x="230" y="30" width="100" height="400" as="geometry" />
-        </mxCell>
-        <mxCell id="peh3bpObvGaAzJVg23kE-16" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" parent="LfJQejW4wEZQG6NsD9H3-4" vertex="1">
-          <mxGeometry x="45" y="93" width="10" height="237" as="geometry" />
-        </mxCell>
-        <mxCell id="LfJQejW4wEZQG6NsD9H3-5" value="1. 관찰일지&lt;br&gt;날짜 선택" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" target="LfJQejW4wEZQG6NsD9H3-4" edge="1">
-          <mxGeometry width="80" relative="1" as="geometry">
-            <mxPoint x="99.5" y="143" as="sourcePoint" />
-            <mxPoint x="223.5" y="143" as="targetPoint" />
-            <Array as="points" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="LfJQejW4wEZQG6NsD9H3-7" value="해당 데이터 제공" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" parent="1" edge="1" target="LfJQejW4wEZQG6NsD9H3-4">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="489.5" y="226" as="sourcePoint" />
-            <mxPoint x="230" y="226" as="targetPoint" />
-            <Array as="points" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="LfJQejW4wEZQG6NsD9H3-6" value="2.해당 날짜 데이터&lt;br&gt;요청" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" edge="1" source="LfJQejW4wEZQG6NsD9H3-4">
-          <mxGeometry width="80" relative="1" as="geometry">
-            <mxPoint x="229" y="196" as="sourcePoint" />
-            <mxPoint x="489.5" y="196" as="targetPoint" />
-            <Array as="points" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="peh3bpObvGaAzJVg23kE-15" value="Show" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" parent="1" edge="1" target="994aDq8Yq_QeE993UNUj-1" source="LfJQejW4wEZQG6NsD9H3-4">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="226" y="324" as="sourcePoint" />
-            <mxPoint x="100" y="324" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="180" y="360" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="peh3bpObvGaAzJVg23kE-17" value="사용자가 관찰일지를 열람한다." style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+        <mxCell id="peh3bpObvGaAzJVg23kE-17" value="사용자가 관찰일지를 작성한다." style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry width="190" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="d3AjCsMdX__2Pnssnm50-1" value="3. 해당 날짜 사진&lt;br&gt;요청" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" source="peh3bpObvGaAzJVg23kE-16" target="994aDq8Yq_QeE993UNUj-14" edge="1">
-          <mxGeometry width="80" relative="1" as="geometry">
-            <mxPoint x="223.5" y="263" as="sourcePoint" />
-            <mxPoint x="739.5" y="263" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="390" y="280" />
-            </Array>
-          </mxGeometry>
+        <mxCell id="NRH6VJc-1BkPfjaN9cYA-1" value="" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="615" y="80" width="20" height="390" as="geometry" />
         </mxCell>
-        <mxCell id="d3AjCsMdX__2Pnssnm50-7" value="해당 사진 제공" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" parent="1" source="994aDq8Yq_QeE993UNUj-14" target="LfJQejW4wEZQG6NsD9H3-4" edge="1">
+        <mxCell id="NRH6VJc-1BkPfjaN9cYA-2" value="파이어 베이스" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="575" y="50" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NRH6VJc-1BkPfjaN9cYA-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="739.5" y="303" as="sourcePoint" />
-            <mxPoint x="223.5" y="303" as="targetPoint" />
+            <mxPoint x="739.5" y="350" as="targetPoint" />
+            <mxPoint x="739.5" y="390" as="sourcePoint" />
             <Array as="points">
-              <mxPoint x="400" y="320" />
+              <mxPoint x="770" y="390" />
+              <mxPoint x="770" y="350" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="994aDq8Yq_QeE993UNUj-1" value="" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;" vertex="1" parent="1">
-          <mxGeometry x="90" y="50" width="20" height="380" as="geometry" />
+        <mxCell id="NRH6VJc-1BkPfjaN9cYA-34" value="4.식물사진 저장" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="739.5" y="410" as="sourcePoint" />
+            <mxPoint x="624.6666666666665" y="410" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="700" y="410" />
+              <mxPoint x="700" y="410" />
+            </Array>
+          </mxGeometry>
         </mxCell>
-        <mxCell id="994aDq8Yq_QeE993UNUj-10" value="사용자" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="70" y="20" width="60" height="30" as="geometry" />
+        <mxCell id="NRH6VJc-1BkPfjaN9cYA-4" value="" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="730" y="80" width="20" height="390" as="geometry" />
         </mxCell>
-        <mxCell id="994aDq8Yq_QeE993UNUj-14" value="" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;" vertex="1" parent="1">
-          <mxGeometry x="480" y="50" width="20" height="390" as="geometry" />
+        <mxCell id="NRH6VJc-1BkPfjaN9cYA-22" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="NRH6VJc-1BkPfjaN9cYA-4">
+          <mxGeometry x="5" y="270" width="10" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="994aDq8Yq_QeE993UNUj-15" value="파이어 베이스" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="440" y="20" width="100" height="30" as="geometry" />
+        <mxCell id="NRH6VJc-1BkPfjaN9cYA-6" value="카메라&lt;br&gt;&amp;nbsp;아두이노" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="710" y="50" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NRH6VJc-1BkPfjaN9cYA-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="89.5" y="140" as="targetPoint" />
+            <mxPoint x="89.5" y="190" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="120" y="190" />
+              <mxPoint x="120" y="140" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NRH6VJc-1BkPfjaN9cYA-9" value="1.시간이 정각 or30분인지 확인" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="120" y="140" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NRH6VJc-1BkPfjaN9cYA-21" value="&lt;span style=&quot;font-size: 12px; background-color: rgb(248, 249, 250);&quot;&gt;2.3 토양습도센서값 &lt;br&gt;파이어베이스에 저장&lt;/span&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NRH6VJc-1BkPfjaN9cYA-10" target="NRH6VJc-1BkPfjaN9cYA-26">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NRH6VJc-1BkPfjaN9cYA-10" value="" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="220" y="80" width="20" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="NRH6VJc-1BkPfjaN9cYA-20" value="&lt;span style=&quot;font-size: 12px; background-color: rgb(248, 249, 250);&quot;&gt;조도센서값 전송&lt;/span&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NRH6VJc-1BkPfjaN9cYA-11" target="NRH6VJc-1BkPfjaN9cYA-26">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="330" y="240" />
+              <mxPoint x="330" y="240" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NRH6VJc-1BkPfjaN9cYA-11" value="" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="350" y="80" width="20" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="NRH6VJc-1BkPfjaN9cYA-19" value="&lt;span style=&quot;font-size: 12px; background-color: rgb(248, 249, 250);&quot;&gt;토양습도센서값전송&lt;/span&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NRH6VJc-1BkPfjaN9cYA-12" target="NRH6VJc-1BkPfjaN9cYA-26">
+          <mxGeometry x="-0.075" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="280" y="210" />
+              <mxPoint x="280" y="210" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NRH6VJc-1BkPfjaN9cYA-12" value="" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="475" y="80" width="20" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="NRH6VJc-1BkPfjaN9cYA-13" value="토양 습도 센서" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="180" y="50" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NRH6VJc-1BkPfjaN9cYA-14" value="조도 센서" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="325" y="50" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NRH6VJc-1BkPfjaN9cYA-15" value="온습도 센서" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="450" y="50" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NRH6VJc-1BkPfjaN9cYA-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NRH6VJc-1BkPfjaN9cYA-4" target="NRH6VJc-1BkPfjaN9cYA-4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="735" y="170" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="750" y="200" />
+              <mxPoint x="750" y="170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NRH6VJc-1BkPfjaN9cYA-26" value="아두이노" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="100" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="NRH6VJc-1BkPfjaN9cYA-27" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="NRH6VJc-1BkPfjaN9cYA-26">
+          <mxGeometry x="45" y="60" width="10" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="NRH6VJc-1BkPfjaN9cYA-28" value="3.시간이 12시 인지 확인" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="770" y="350" width="80" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
