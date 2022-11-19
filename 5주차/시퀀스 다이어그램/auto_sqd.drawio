@@ -1,22 +1,22 @@
-<mxfile host="app.diagrams.net" modified="2022-11-18T17:54:19.086Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="yC1xbk1JjIWnrZokflJ9" version="20.5.3" type="github">
+<mxfile host="app.diagrams.net" modified="2022-11-19T09:02:15.614Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="VSb-jT495WWxNn2zd6FH" version="20.5.1" type="github">
   <diagram id="Z_jb_i1OUhFMdzfZDqN_" name="페이지-1">
-    <mxGraphModel dx="1038" dy="571" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1283" dy="613" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="ybVhzSZ3yJq0IbKlZSbC-16" value="loop" style="shape=umlFrame;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="260" y="280" width="510" height="250" as="geometry" />
+          <mxGeometry x="340" y="280" width="580" height="250" as="geometry" />
         </mxCell>
         <mxCell id="ybVhzSZ3yJq0IbKlZSbC-1" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(248, 249, 250); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;사용자가 팬, 물펌프, 조명을 자동제어한다.&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="50" y="30" width="260" height="40" as="geometry" />
+          <mxGeometry x="15" width="260" height="40" as="geometry" />
         </mxCell>
         <mxCell id="ybVhzSZ3yJq0IbKlZSbC-7" value="&amp;nbsp;자동조절 인터페이스" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" parent="1" vertex="1">
-          <mxGeometry x="170" y="100" width="100" height="450" as="geometry" />
+          <mxGeometry x="210" y="100" width="100" height="460" as="geometry" />
         </mxCell>
-        <mxCell id="ybVhzSZ3yJq0IbKlZSbC-8" value="확인 메세지 출력" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" parent="ybVhzSZ3yJq0IbKlZSbC-7" target="n0njOLkOn22POL2NZcef-1" edge="1">
+        <mxCell id="ybVhzSZ3yJq0IbKlZSbC-8" value="확인 메세지 출력" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" parent="ybVhzSZ3yJq0IbKlZSbC-7" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="49.5" y="150" as="sourcePoint" />
-            <mxPoint x="-80" y="150" as="targetPoint" />
+            <mxPoint x="-70.5" y="150" as="targetPoint" />
             <Array as="points">
               <mxPoint x="20" y="150" />
             </Array>
@@ -25,8 +25,8 @@
         <mxCell id="ybVhzSZ3yJq0IbKlZSbC-27" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" parent="ybVhzSZ3yJq0IbKlZSbC-7" vertex="1">
           <mxGeometry x="45" y="110" width="10" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="ybVhzSZ3yJq0IbKlZSbC-10" value="물펌프_장치제어&amp;nbsp;" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" parent="1" vertex="1">
-          <mxGeometry x="550" y="100" width="100" height="460" as="geometry" />
+        <mxCell id="ybVhzSZ3yJq0IbKlZSbC-10" value="ESP 32" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" parent="1" vertex="1">
+          <mxGeometry x="680" y="100" width="100" height="460" as="geometry" />
         </mxCell>
         <mxCell id="kuCBZX1RvtrEEPZ2ifss-1" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" parent="ybVhzSZ3yJq0IbKlZSbC-10" vertex="1">
           <mxGeometry x="45" y="240" width="10" height="60" as="geometry" />
@@ -44,77 +44,72 @@
         </mxCell>
         <mxCell id="ybVhzSZ3yJq0IbKlZSbC-12" value="사용자 설정 값 저장" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" source="ybVhzSZ3yJq0IbKlZSbC-7" edge="1">
           <mxGeometry width="80" relative="1" as="geometry">
-            <mxPoint x="249.5" y="280" as="sourcePoint" />
-            <mxPoint x="459.5" y="270" as="targetPoint" />
+            <mxPoint x="289.5" y="280" as="sourcePoint" />
+            <mxPoint x="454.5" y="270" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="310" y="270" />
+              <mxPoint x="350" y="270" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="ybVhzSZ3yJq0IbKlZSbC-13" value="현재 토양 습도 센서&lt;br&gt;&amp;nbsp;값 전송" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" source="n0njOLkOn22POL2NZcef-8" target="ybVhzSZ3yJq0IbKlZSbC-10" edge="1">
+        <mxCell id="ybVhzSZ3yJq0IbKlZSbC-13" value="온도/토양습도/ 조도센서&lt;br&gt;&amp;nbsp;값 전송" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" source="7uDiEInkqKDjhfE1Xtkq-3" target="ybVhzSZ3yJq0IbKlZSbC-10" edge="1">
           <mxGeometry width="80" relative="1" as="geometry">
-            <mxPoint x="339.5" y="320" as="sourcePoint" />
-            <mxPoint x="579.5" y="320" as="targetPoint" />
+            <mxPoint x="419.5" y="320" as="sourcePoint" />
+            <mxPoint x="659.5" y="320" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="440" y="320" />
+              <mxPoint x="520" y="320" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="ybVhzSZ3yJq0IbKlZSbC-15" value="사용자 설정 값 전송" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" target="ybVhzSZ3yJq0IbKlZSbC-10" edge="1" source="n0njOLkOn22POL2NZcef-3">
+        <mxCell id="ybVhzSZ3yJq0IbKlZSbC-15" value="사용자 설정 값 전송" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" target="ybVhzSZ3yJq0IbKlZSbC-10" edge="1">
           <mxGeometry x="0.5643" width="80" relative="1" as="geometry">
-            <mxPoint x="579.5" y="350" as="sourcePoint" />
-            <mxPoint x="570" y="350" as="targetPoint" />
+            <mxPoint x="627" y="360" as="sourcePoint" />
+            <mxPoint x="717" y="360" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="540" y="340" />
+              <mxPoint x="577" y="360" />
             </Array>
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="ybVhzSZ3yJq0IbKlZSbC-20" value="팬/ 물펌프/ 조명 &lt;br&gt;작동 명령" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" source="ybVhzSZ3yJq0IbKlZSbC-10" edge="1">
-          <mxGeometry x="-0.0029" width="80" relative="1" as="geometry">
-            <mxPoint x="409.5" y="380" as="sourcePoint" />
-            <mxPoint x="709.5" y="460" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="660" y="460" />
-            </Array>
-            <mxPoint x="1" as="offset" />
-          </mxGeometry>
+        <mxCell id="7uDiEInkqKDjhfE1Xtkq-2" value="" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="860" y="100" width="20" height="460" as="geometry" />
         </mxCell>
-        <mxCell id="n0njOLkOn22POL2NZcef-1" value="" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;" vertex="1" parent="1">
-          <mxGeometry x="80" y="100" width="30" height="460" as="geometry" />
+        <mxCell id="7uDiEInkqKDjhfE1Xtkq-3" value="" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="390" y="100" width="20" height="460" as="geometry" />
         </mxCell>
-        <mxCell id="n0njOLkOn22POL2NZcef-2" value="원하는 토양 습도&lt;br&gt;&amp;nbsp;값 설정" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="n0njOLkOn22POL2NZcef-1" target="ybVhzSZ3yJq0IbKlZSbC-7">
-          <mxGeometry width="80" relative="1" as="geometry">
-            <mxPoint x="90" y="209" as="sourcePoint" />
-            <mxPoint x="170" y="209" as="targetPoint" />
+        <mxCell id="7uDiEInkqKDjhfE1Xtkq-15" value="설정값 입력" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.191;entryY=0.091;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;" edge="1" parent="1" source="7uDiEInkqKDjhfE1Xtkq-4" target="ybVhzSZ3yJq0IbKlZSbC-27">
+          <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="150" y="210" />
+              <mxPoint x="140" y="214" />
+              <mxPoint x="140" y="214" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="n0njOLkOn22POL2NZcef-3" value="" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;" vertex="1" parent="1">
-          <mxGeometry x="460" y="100" width="30" height="470" as="geometry" />
+        <mxCell id="7uDiEInkqKDjhfE1Xtkq-4" value="" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;size=40;" vertex="1" parent="1">
+          <mxGeometry x="90" y="100" width="20" height="450" as="geometry" />
         </mxCell>
-        <mxCell id="n0njOLkOn22POL2NZcef-4" value="" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;" vertex="1" parent="1">
-          <mxGeometry x="740" y="100" width="30" height="480" as="geometry" />
+        <mxCell id="7uDiEInkqKDjhfE1Xtkq-7" value="사용자" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="70" y="70" width="60" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="n0njOLkOn22POL2NZcef-5" value="사용자" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="80" y="75" width="60" height="30" as="geometry" />
+        <mxCell id="7uDiEInkqKDjhfE1Xtkq-8" value="물펌프" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="840" y="70" width="60" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="n0njOLkOn22POL2NZcef-6" value="파이어베이스" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="440" y="65" width="100" height="30" as="geometry" />
+        <mxCell id="7uDiEInkqKDjhfE1Xtkq-9" value="토양습도 센서" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="355" y="70" width="90" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="n0njOLkOn22POL2NZcef-7" value="물펌프" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="750" y="65" width="60" height="30" as="geometry" />
+        <mxCell id="7uDiEInkqKDjhfE1Xtkq-10" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="ybVhzSZ3yJq0IbKlZSbC-10" target="7uDiEInkqKDjhfE1Xtkq-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="790" y="600" as="sourcePoint" />
+            <mxPoint x="840" y="550" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="790" y="460" />
+            </Array>
+          </mxGeometry>
         </mxCell>
-        <mxCell id="ybVhzSZ3yJq0IbKlZSbC-22" value="if 센서값 != 설정값" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="210" y="330" width="120" height="30" as="geometry" />
+        <mxCell id="7uDiEInkqKDjhfE1Xtkq-13" value="" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="540" y="100" width="20" height="460" as="geometry" />
         </mxCell>
-        <mxCell id="n0njOLkOn22POL2NZcef-8" value="" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;" vertex="1" parent="1">
-          <mxGeometry x="330" y="100" width="30" height="460" as="geometry" />
-        </mxCell>
-        <mxCell id="n0njOLkOn22POL2NZcef-9" value="토양 습도 센서" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="290" y="65" width="100" height="30" as="geometry" />
+        <mxCell id="7uDiEInkqKDjhfE1Xtkq-14" value="파이어베이스" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="502" y="70" width="96" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
