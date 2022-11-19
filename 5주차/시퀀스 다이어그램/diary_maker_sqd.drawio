@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-11-19T13:25:00.071Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="sx3-6-gmTFxs9QsC8w5D" version="20.5.3" type="github">
+<mxfile host="app.diagrams.net" modified="2022-11-19T13:26:56.753Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="zBXhovV1O8_jlinuRf2Q" version="20.5.3" type="github">
   <diagram id="7VTsDJ_XSaAIJs9YWt-o" name="페이지-1">
     <mxGraphModel dx="1038" dy="571" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="4681" math="0" shadow="0">
       <root>
@@ -28,7 +28,7 @@
         <mxCell id="J3Kr5sSDvwF1lpIXGCPc-8" value="온습도센서" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="90" y="35" width="80" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="J3Kr5sSDvwF1lpIXGCPc-9" value="Sensor_Data" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+        <mxCell id="J3Kr5sSDvwF1lpIXGCPc-9" value="센서 데이터" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
           <mxGeometry x="430" y="70" width="100" height="500" as="geometry" />
         </mxCell>
         <mxCell id="J3Kr5sSDvwF1lpIXGCPc-10" value="" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;" vertex="1" parent="1">
