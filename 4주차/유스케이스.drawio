@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-11-19T08:00:38.786Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="epopJ0SxIrg-NvUub7cd" version="20.5.1" type="github">
+<mxfile host="app.diagrams.net" modified="2022-11-19T08:07:16.246Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="5l_0LJrWKAQrzKe7JVs_" version="20.5.1" type="github">
   <diagram id="NCL2p-JWgOGxsxKp1H8N" name="페이지-1">
-    <mxGraphModel dx="1283" dy="613" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2245" dy="1073" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -241,23 +241,53 @@
         <mxCell id="WL1JIH_-fXWyUaX3hJ5p-4" value="카메라" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="1080" y="40" width="30" height="50" as="geometry" />
         </mxCell>
+        <mxCell id="ykTPU1ibWU2kqlm8Ec5O-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.3333333333333333;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=block;endFill=0;fontColor=#FF33FF;fillColor=#e51400;strokeColor=#B20000;" edge="1" parent="1" source="9SMeVR1Imt7hrCLU2ti4-1" target="ykTPU1ibWU2kqlm8Ec5O-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="9SMeVR1Imt7hrCLU2ti4-1" value="토양 습도 센서" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="1080" y="110" width="30" height="52.75" as="geometry" />
+        </mxCell>
+        <mxCell id="ykTPU1ibWU2kqlm8Ec5O-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.3333333333333333;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=block;endFill=0;fillColor=#008a00;strokeColor=#0000FF;strokeWidth=2;" edge="1" parent="1" source="9SMeVR1Imt7hrCLU2ti4-5" target="ykTPU1ibWU2kqlm8Ec5O-5">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="9SMeVR1Imt7hrCLU2ti4-5" value="물 펌프&lt;br&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="1080" y="190" width="30" height="50" as="geometry" />
         </mxCell>
+        <mxCell id="ykTPU1ibWU2kqlm8Ec5O-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.3333333333333333;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=block;endFill=0;fontColor=#FF33FF;fillColor=#e51400;strokeColor=#B20000;" edge="1" parent="1" source="9SMeVR1Imt7hrCLU2ti4-6" target="ykTPU1ibWU2kqlm8Ec5O-8">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1210" y="239.9999999999999" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
         <mxCell id="9SMeVR1Imt7hrCLU2ti4-6" value="온습도 센서&lt;br&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="1080" y="265.77" width="30" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ykTPU1ibWU2kqlm8Ec5O-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.3333333333333333;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=block;endFill=0;fillColor=#008a00;strokeColor=#0000FF;strokeWidth=2;" edge="1" parent="1" source="9SMeVR1Imt7hrCLU2ti4-7" target="ykTPU1ibWU2kqlm8Ec5O-5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1220" y="430" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="9SMeVR1Imt7hrCLU2ti4-7" value="팬" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="1080" y="340" width="30" height="50" as="geometry" />
         </mxCell>
+        <mxCell id="ykTPU1ibWU2kqlm8Ec5O-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.3333333333333333;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=block;endFill=0;fontColor=#FF33FF;fillColor=#e51400;strokeColor=#B20000;" edge="1" parent="1" source="9SMeVR1Imt7hrCLU2ti4-8" target="ykTPU1ibWU2kqlm8Ec5O-8">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1180" y="285.6363525390625" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
         <mxCell id="9SMeVR1Imt7hrCLU2ti4-8" value="조도 센서" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="1080" y="410" width="30" height="50" as="geometry" />
         </mxCell>
+        <mxCell id="ykTPU1ibWU2kqlm8Ec5O-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.3333333333333333;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=block;endFill=0;fillColor=#008a00;strokeColor=#0000FF;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;strokeWidth=2;" edge="1" parent="1" source="9SMeVR1Imt7hrCLU2ti4-9" target="ykTPU1ibWU2kqlm8Ec5O-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="9SMeVR1Imt7hrCLU2ti4-9" value="LED&lt;br&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="1080" y="480" width="30" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ykTPU1ibWU2kqlm8Ec5O-5" value="장치" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1250" y="340" width="30" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ykTPU1ibWU2kqlm8Ec5O-8" value="센서" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1219" y="111.38" width="31" height="50" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
