@@ -1,11 +1,11 @@
-<mxfile host="app.diagrams.net" modified="2022-11-19T11:08:57.430Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="ydc3uEWWew_oGL_jBltI" version="20.5.3" type="github">
+<mxfile host="app.diagrams.net" modified="2022-11-19T11:17:01.458Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="GY0i5Rt9rzZz2eagfltz" version="20.5.3" type="github">
   <diagram id="ibOZRkEERhT8VrmGGIWO" name="페이지-1">
     <mxGraphModel dx="1038" dy="571" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="LfJQejW4wEZQG6NsD9H3-4" value="관찰일지&lt;br&gt;인터페이스" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" parent="1" vertex="1">
-          <mxGeometry x="230" y="30" width="100" height="440" as="geometry" />
+          <mxGeometry x="230" y="30" width="100" height="400" as="geometry" />
         </mxCell>
         <mxCell id="peh3bpObvGaAzJVg23kE-16" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" parent="LfJQejW4wEZQG6NsD9H3-4" vertex="1">
           <mxGeometry x="45" y="93" width="10" height="237" as="geometry" />
@@ -62,13 +62,13 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="994aDq8Yq_QeE993UNUj-1" value="" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;" vertex="1" parent="1">
-          <mxGeometry x="90" y="50" width="20" height="440" as="geometry" />
+          <mxGeometry x="90" y="50" width="20" height="380" as="geometry" />
         </mxCell>
         <mxCell id="994aDq8Yq_QeE993UNUj-10" value="사용자" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="70" y="20" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="994aDq8Yq_QeE993UNUj-14" value="" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;" vertex="1" parent="1">
-          <mxGeometry x="480" y="50" width="20" height="450" as="geometry" />
+          <mxGeometry x="480" y="50" width="20" height="390" as="geometry" />
         </mxCell>
         <mxCell id="994aDq8Yq_QeE993UNUj-15" value="파이어 베이스" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="440" y="20" width="100" height="30" as="geometry" />
