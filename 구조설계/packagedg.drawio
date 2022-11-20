@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-11-20T10:20:58.849Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="ypjliinE3fChazzdcyPE" version="20.5.3" type="github">
+<mxfile host="app.diagrams.net" modified="2022-11-20T10:21:52.149Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="codZucczDWnWVJxV8MF4" version="20.5.3" type="github">
   <diagram id="fnLHk5_FQdHGoSxvLHbr" name="페이지-1">
     <mxGraphModel dx="4783" dy="733" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="4681" math="0" shadow="0">
       <root>
@@ -52,7 +52,7 @@
           <mxGeometry y="58" width="190" height="132" as="geometry" />
         </mxCell>
         <mxCell id="D5vVqQVgLM8rnLh1jBMB-48" value="장치 제어 패키지" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="-1300" y="160" width="110" height="30" as="geometry" />
+          <mxGeometry x="-1300" y="80" width="110" height="30" as="geometry" />
         </mxCell>
         <mxCell id="D5vVqQVgLM8rnLh1jBMB-49" value="" style="group" vertex="1" connectable="0" parent="1">
           <mxGeometry x="-1300" y="510" width="540" height="440" as="geometry" />
