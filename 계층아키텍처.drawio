@@ -1,1 +1,97 @@
-<mxfile host="app.diagrams.net" modified="2022-11-20T04:45:50.982Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" version="20.5.3" etag="IPk1iQ2HptejLhL9culQ" type="github"><diagram id="5TFY0RSoF_oyEnKReRna">UzV2zq1wL0osyPDNT0nNUTV2VTV2LsrPL4GwciucU3NyVI0MMlNUjV1UjYwMgFjVyA2HrCFY1qAgsSg1rwSLBiADYTaQg2Y1AA==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2022-11-20T05:09:52.515Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="9ObzmFWoIwm7LVJv2BY0" version="20.5.3" type="github">
+  <diagram id="5TFY0RSoF_oyEnKReRna" name="페이지-1">
+    <mxGraphModel dx="903" dy="497" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="4681" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="81hpgJaHbPO_6i5AqK1I-1" value="" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="50" width="290" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="81hpgJaHbPO_6i5AqK1I-2" value="" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;" vertex="1" parent="1">
+          <mxGeometry x="730" y="530" width="290" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="81hpgJaHbPO_6i5AqK1I-3" value="" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;" vertex="1" parent="1">
+          <mxGeometry x="730" y="50" width="290" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="81hpgJaHbPO_6i5AqK1I-4" value="" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;" vertex="1" parent="1">
+          <mxGeometry x="430" y="290" width="840" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="81hpgJaHbPO_6i5AqK1I-5" value="" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="560" width="290" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="81hpgJaHbPO_6i5AqK1I-12" value="온습도센서" style="html=1;" vertex="1" parent="1">
+          <mxGeometry x="740" y="100" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="81hpgJaHbPO_6i5AqK1I-13" value="&amp;nbsp;Sensor 계층&amp;nbsp;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="720" y="60" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="81hpgJaHbPO_6i5AqK1I-14" value="토양습도센서" style="html=1;" vertex="1" parent="1">
+          <mxGeometry x="870" y="100" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="81hpgJaHbPO_6i5AqK1I-15" value="조도센서" style="html=1;" vertex="1" parent="1">
+          <mxGeometry x="740" y="180" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="81hpgJaHbPO_6i5AqK1I-16" value="팬" style="html=1;" vertex="1" parent="1">
+          <mxGeometry x="750" y="570" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="81hpgJaHbPO_6i5AqK1I-17" value="물펌프" style="html=1;" vertex="1" parent="1">
+          <mxGeometry x="880" y="570" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="81hpgJaHbPO_6i5AqK1I-18" value="LED 조명" style="html=1;" vertex="1" parent="1">
+          <mxGeometry x="750" y="650" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="81hpgJaHbPO_6i5AqK1I-19" value="수동 조절 인터페이스" style="html=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="90" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="81hpgJaHbPO_6i5AqK1I-20" value="자동 조절 인터페이스" style="html=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="90" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="81hpgJaHbPO_6i5AqK1I-21" value="관찰일지 인터페이스" style="html=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="170" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="81hpgJaHbPO_6i5AqK1I-22" value="&amp;nbsp;Computation&amp;nbsp;&lt;span style=&quot;color: rgba(0, 0, 0, 0); font-family: monospace; font-size: 0px; text-align: start;&quot;&gt;CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20value%3D%22%26amp%3Bnbsp%3B%EC%84%BC%EC%84%9C%20%EA%B3%84%EC%B8%B5%26amp%3Bnbsp%3B%22%20style%3D%22text%3Bhtml%3D1%3Balign%3Dcenter%3BverticalAlign%3Dmiddle%3Bresizable%3D0%3Bpoints%3D%5B%5D%3Bautosize%3D1%3BstrokeColor%3Dnone%3BfillColor%3Dnone%3B%22%20vertex%3D%221%22%20parent%3D%221%22%3E%3CmxGeometry%20x%3D%22730%22%20y%3D%2260%22%20width%3D%2280%22%20height%3D%2230%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E&amp;nbsp;&lt;/span&gt;계층&amp;nbsp;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="720" y="300" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="81hpgJaHbPO_6i5AqK1I-23" value="&amp;nbsp;Actuator&amp;nbsp;&lt;span style=&quot;color: rgba(0, 0, 0, 0); font-family: monospace; font-size: 0px; text-align: start;&quot;&gt;3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20value%3D%22%26amp%3Bnbsp%3B%EC%84%BC%EC%84%9C%20%EA%B3%84%EC%B8%B5%26amp%3Bnbsp%3B%22%20style%3D%22text%3Bhtml%3D1%3Balign%3Dcenter%3BverticalAlign%3Dmiddle%3Bresizable%3D0%3Bpoints%3D%5B%5D%3Bautosize%3D1%3BstrokeColor%3Dnone%3BfillColor%3Dnone%3B%22%20vertex%3D%221%22%20parent%3D%221%22%3E%3CmxGeometry%20x%3D%22730%22%20y%3D%2260%22%20width%3D%2280%22%20height%3D%2230%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E&amp;nbsp;&amp;nbsp;&lt;/span&gt;계층&amp;nbsp;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="730" y="540" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="81hpgJaHbPO_6i5AqK1I-25" value="HCI 계층&amp;nbsp;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="265" y="60" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="81hpgJaHbPO_6i5AqK1I-26" value="DM 계층&amp;nbsp;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="250" y="570" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="81hpgJaHbPO_6i5AqK1I-27" value="파이어베이스" style="html=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="650" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="81hpgJaHbPO_6i5AqK1I-28" value="파이어베이스 &lt;br&gt;이미지 스토리지" style="html=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="650" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="81hpgJaHbPO_6i5AqK1I-30" value="Device_ctrl" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+          <mxGeometry x="740" y="340" width="270" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="81hpgJaHbPO_6i5AqK1I-31" value="- int : mode&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="81hpgJaHbPO_6i5AqK1I-30">
+          <mxGeometry y="26" width="270" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="81hpgJaHbPO_6i5AqK1I-32" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="81hpgJaHbPO_6i5AqK1I-30">
+          <mxGeometry y="50" width="270" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="81hpgJaHbPO_6i5AqK1I-33" value="+ modecheck(int mode): boolean&#xa;+retrieve_data(String path): boolean&#xa;+exception_check(String path): boolean&#xa;+ send_realon(String path, boolean onoff) :" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="81hpgJaHbPO_6i5AqK1I-30">
+          <mxGeometry y="58" width="270" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="81hpgJaHbPO_6i5AqK1I-34" value="Sensor_data" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+          <mxGeometry x="55" y="295" width="375" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="81hpgJaHbPO_6i5AqK1I-35" value="+ usersetting: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="81hpgJaHbPO_6i5AqK1I-34">
+          <mxGeometry y="26" width="375" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="81hpgJaHbPO_6i5AqK1I-36" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="81hpgJaHbPO_6i5AqK1I-34">
+          <mxGeometry y="52" width="375" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="81hpgJaHbPO_6i5AqK1I-37" value="+ push_sensor_data(String path, int data):&#xa;+ get_sensor_data(String path):&#xa;                                   int data&#xa;+ get_user_setting(String path):&#xa;                          int usersetting)&#xa;+ compare_data_with_setting&#xa;            (int data, int usersetting):&#xa;                                boolean onoff&#xa;+ check_time_sensor(datetime time):&#xa;                                 boolean check" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="81hpgJaHbPO_6i5AqK1I-34">
+          <mxGeometry y="60" width="375" height="160" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
