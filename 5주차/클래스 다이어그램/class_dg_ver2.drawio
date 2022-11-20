@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-11-20T04:06:51.616Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="mGAlUcq_WugYC_yffpbS" version="20.5.3" type="github">
+<mxfile host="app.diagrams.net" modified="2022-11-20T04:44:00.144Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="l126F45jzApgld-iOy8o" version="20.5.3" type="github">
   <diagram id="1XaObp9uDBfdOyjk7Z0H" name="페이지-1">
-    <mxGraphModel dx="1865" dy="571" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2310" dy="816" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -198,7 +198,7 @@
         <mxCell id="COGvVzHrgGLiA8UMYfeR-42" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="COGvVzHrgGLiA8UMYfeR-40" vertex="1">
           <mxGeometry y="52" width="215" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="COGvVzHrgGLiA8UMYfeR-43" value="+ push_data(String path, int data):&#xa;+ get_sensor_data(String path):&#xa;                                   int data&#xa;+ get_user_setting(String path):&#xa;                          int usersetting)&#xa;+ compare_data_with_setting&#xa;            (int data, int usersetting):&#xa;                                boolean onoff&#xa;+ check_time_sensor(datetime time):&#xa;                                 boolean check" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="COGvVzHrgGLiA8UMYfeR-40" vertex="1">
+        <mxCell id="COGvVzHrgGLiA8UMYfeR-43" value="+ push_sensor_data(String path, int data):&#xa;+ get_sensor_data(String path):&#xa;                                   int data&#xa;+ get_user_setting(String path):&#xa;                          int usersetting)&#xa;+ compare_data_with_setting&#xa;            (int data, int usersetting):&#xa;                                boolean onoff&#xa;+ check_time_sensor(datetime time):&#xa;                                 boolean check" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="COGvVzHrgGLiA8UMYfeR-40" vertex="1">
           <mxGeometry y="60" width="215" height="160" as="geometry" />
         </mxCell>
         <mxCell id="4LXqGNSN8FMaUc9a0r_w-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.25;exitDx=0;exitDy=0;endArrow=block;endFill=0;" parent="1" source="COGvVzHrgGLiA8UMYfeR-27" target="COGvVzHrgGLiA8UMYfeR-40" edge="1">
