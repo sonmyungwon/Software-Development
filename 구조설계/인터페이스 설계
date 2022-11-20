@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-11-20T06:43:09.060Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="DMTrgwLLVHwu4TLGiKwt" version="20.5.3" type="github">
+<mxfile host="app.diagrams.net" modified="2022-11-20T06:43:37.678Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="JVKB_NESYM2J-GdD8gOL" version="20.5.3" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="2404" dy="1077" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1400" dy="392" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -140,6 +140,9 @@
         </mxCell>
         <mxCell id="7h-DOMuzVD-T8Um9l0uU-32" value="&amp;lt;&amp;lt;button&amp;gt;&amp;gt;&lt;br&gt;apply button" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="7h-DOMuzVD-T8Um9l0uU-38">
           <mxGeometry x="25" y="160" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="7h-DOMuzVD-T8Um9l0uU-55" value="&amp;lt;&amp;lt;dairy activity&amp;gt;&amp;gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="7h-DOMuzVD-T8Um9l0uU-38">
+          <mxGeometry x="25" width="120" height="30" as="geometry" />
         </mxCell>
         <mxCell id="7h-DOMuzVD-T8Um9l0uU-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="7h-DOMuzVD-T8Um9l0uU-32" target="7h-DOMuzVD-T8Um9l0uU-41">
           <mxGeometry relative="1" as="geometry" />
