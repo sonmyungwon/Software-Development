@@ -15,8 +15,8 @@
 #include "addons/RTDBHelper.h"
 
 // Insert your network credentials
-#define WIFI_SSID "son"
-#define WIFI_PASSWORD "123456789"
+#define WIFI_SSID "YOURWIFI"
+#define WIFI_PASSWORD "YOURPASSWORD"
 const char* ntpServer = "pool.ntp.org";
 uint8_t timeZone = 9;
 uint8_t summerTime = 0; // 3600
@@ -24,10 +24,10 @@ struct tm timeinfo;
 String date;
 
 // Insert Firebase project API Key
-#define API_KEY "AIzaSyDqFzxgzics8NUugrOKBHB1lemosv32QUM"
+#define API_KEY "YOURAPI"
 
 // Insert RTDB URLefine the RTDB URL */
-#define DATABASE_URL "https://smartfarmactivity-default-rtdb.firebaseio.com/"
+#define DATABASE_URL "YOURURL"
 
 //Define Firebase Data object
 FirebaseData fbdo;
@@ -117,9 +117,9 @@ void setup() {
 
   pinMode(Relaypin, OUTPUT);
   pinMode(Relaypin2, OUTPUT);
-  
+
   Wire.begin();
-  
+
   lightMeter.begin();
 
 }
@@ -183,23 +183,22 @@ void print_data(int h, int t, int l, int s) {
 
 void database(String path, int sensordata) {
   getLocalTime(&timeinfo);
-
-  if ((String(timeinfo.tm_min) == "1" || String(timeinfo.tm_min) == "31" ) && real_push == false) {
-    if (Firebase.RTDB.pushInt(&fbdo, path, sensordata)) {
-      Serial.println(sensordata);
-      Serial.println("PASSED");
-      Serial.println("PATH: " + fbdo.dataPath());
-      Serial.println("TYPE: " + fbdo.dataType());
-      real_push = true; //loop 시작하자마자 false로 고치는거 필요할듯
-    }
-    else {
-      Serial.println("FAILED");
-      Serial.println("REASON: " + fbdo.errorReason());
+  while (real_push == false) {
+    if (String(timeinfo.tm_min) == "0" || String(timeinfo.tm_min) == "30" ) {
+      if (Firebase.RTDB.pushInt(&fbdo, path, sensordata)) {
+        Serial.println(sensordata);
+        Serial.println("PASSED");
+        Serial.println("PATH: " + fbdo.dataPath());
+        Serial.println("TYPE: " + fbdo.dataType());
+        real_push = true; //loop 시작하자마자 false로 고치는거 필요할듯
+      }
+      else {
+        Serial.println("FAILED");
+        Serial.println("REASON: " + fbdo.errorReason());
+      }
     }
   }
-  else if ((String(timeinfo.tm_min) == "3" || String(timeinfo.tm_min) == "33" ) && real_push == true) {
-    real_push = false;
-  }
+  real_push == false;
 }
 void fan_manual(int intfan) {
   if (Firebase.RTDB.getInt(&fbdo, "/user/manual/device/fan") && fbdo.dataType() == "int") {
@@ -221,7 +220,7 @@ void fan_manual(int intfan) {
 void pump_manual(int intpump, int s) {
   if (Firebase.RTDB.getInt(&fbdo, "/user/manual/device/pump") && fbdo.dataType() == "int") {
     intpump = fbdo.intData();
-    if (s < 800) {//물 넘치지 않은 상태
+    if (s > 500) {//물 넘치지 않은 상태
       if (intpump == 1) {
         Serial.println("pump on");
         digitalWrite(Relaypin, HIGH);
@@ -283,9 +282,9 @@ void fan_auto(int inttemp, int t) {
 void pump_auto(int inthumi, int s) {
   if (Firebase.RTDB.getInt(&fbdo, "/user/auto/userdata/soil_humi") && fbdo.dataType() == "int") {
     inthumi = fbdo.intData();
-    Serial.println(intValue);
+    Serial.println(inthumi);
     if ( inthumi < s) {                             //센서값받아보고 비교필요
-      Serial.println(intValue);
+      Serial.println(inthumi);
       Serial.println("pump on");
       digitalWrite(Relaypin, HIGH);
       delay(5000);
@@ -293,7 +292,7 @@ void pump_auto(int inthumi, int s) {
       delay(5000);
       Serial.println("pump off");
     }
-    else if (inthumi < 450) {
+    else if (inthumi > s) {
       Serial.println("pump stopped");
       digitalWrite(Relaypin, LOW);
     }
@@ -304,7 +303,7 @@ void led_auto(int intled, int l) {
   if (Firebase.RTDB.getInt(&fbdo, "/user/auto/userdata/light") && fbdo.dataType() == "int") {        //차후 센서값보면서 수정필요
     intlight = fbdo.intData();
     Serial.println(intValue);
-    if (intlight < l && isday()) {
+    if (intlight > l && isday()) {
       Serial.println("led on");
       digitalWrite(Relaypin2, HIGH);
     }
@@ -333,7 +332,7 @@ String get_push_path() {
 
 bool isday() {//현재 낮인지 판단하는 함수
   getLocalTime(&timeinfo);
-  if (timeinfo.tm_hour < 18 || timeinfo.tm_hour > 6) { 
+  if (timeinfo.tm_hour < 18 || timeinfo.tm_hour > 6) {
     return true;
   }
   else {
