@@ -93,7 +93,7 @@ class MainActivity2 : AppCompatActivity() {
                     modeRef.setValue(1)
                     ledRef.setValue(1)
                     Toast.makeText(this, "switch on", Toast.LENGTH_SHORT).show()
-                    PauseActivity.LoadingDialog(this@MainActivity2).show()
+                    
                 }
                 else {
                     ledRef.setValue(0)
