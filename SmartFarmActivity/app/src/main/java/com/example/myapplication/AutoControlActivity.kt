@@ -31,13 +31,11 @@ class AutoControlActivity : AppCompatActivity() {
         val state_temp_text : TextView = findViewById<TextView>(R.id.state_temp)
         val data_temp_text : TextView = findViewById<TextView>(R.id.data_temp)
 
-
         val humidView : TextView = findViewById<TextView>(R.id.humidText)
         val humidPlusBtn  = findViewById<Button>(R.id.humid_plus_btn)
         val humidMinusBtn = findViewById<Button>(R.id.humid_minus_btn)
         val state_soil_humi_text : TextView = findViewById<TextView>(R.id.state_soil_humi)
         val data_soil_humi_text : TextView = findViewById<TextView>(R.id.data_soil_humi)
-
 
         val illumView : TextView = findViewById<TextView>(R.id.illumText)
         val illumPlusBtn  = findViewById<Button>(R.id.illum_plus_btn)
@@ -45,13 +43,11 @@ class AutoControlActivity : AppCompatActivity() {
         val state_light_text : TextView = findViewById<TextView>(R.id.state_light)
         val data_light_text : TextView = findViewById<TextView>(R.id.data_light)
 
-
         val saveBtn = findViewById<Button>(R.id.save_btn)
 
         val tempProgressBar = findViewById<ProgressBar>(R.id.temp_progress_bar)
         val soilProgressBar = findViewById<ProgressBar>(R.id.soil_progress_bar)
         val lightProgressBar = findViewById<ProgressBar>(R.id.light_progress_bar)
-
 
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference("user/auto/userdata/temp")
@@ -95,8 +91,6 @@ class AutoControlActivity : AppCompatActivity() {
             }
         })
 
-        Log.d("@@@@@ tempNumber @@@@@@", tempNumber.toString())
-
         tempMinusBtn.setOnClickListener{
             tempNumber -= 5
 
@@ -128,8 +122,6 @@ class AutoControlActivity : AppCompatActivity() {
 
             }
         }
-
-
         humidMinusBtn.setOnClickListener{
             humidNumber -= 5
 

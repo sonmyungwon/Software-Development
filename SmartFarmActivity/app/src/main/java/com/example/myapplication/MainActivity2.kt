@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.app.ProgressDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
@@ -17,6 +18,8 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class MainActivity2 : AppCompatActivity() {
@@ -30,6 +33,11 @@ class MainActivity2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
 
+        val long_now = System.currentTimeMillis()
+        val t_date = Date(long_now)
+        val t_dateFormat = SimpleDateFormat("yyyy-MM-dd kk:mm:ss E", Locale("ko", "KR"))
+        var timeStamp = t_dateFormat.format(t_date)
+        println("현재 시간 : " + timeStamp )
 
         //자동제어 버튼을 눌렀을때 자동제어 액티비티(AutoControlActivity)로 넘어감
         val autoControlBtn = findViewById<Button>(R.id.autoControlBtn)
@@ -37,7 +45,6 @@ class MainActivity2 : AppCompatActivity() {
             val intent = Intent(this, AutoControlActivity::class.java)
             startActivity(intent)
         }
-
 
         //수동제어 버튼을 눌렀을때 나오는 다이얼로그
         val manualControlBtn = findViewById<Button>(R.id.manualControlBtn)
@@ -57,7 +64,6 @@ class MainActivity2 : AppCompatActivity() {
                 val database = FirebaseDatabase.getInstance()
                 val myRef = database.getReference("user/manual/device/led")
                 val myRef1 = database.getReference("user/mode")
-                //val myRef2 = database.getReference("user/manual/device/real_led")
 
                 if(onSwitch){
                     myRef1.setValue(1)
@@ -76,12 +82,15 @@ class MainActivity2 : AppCompatActivity() {
 
             }
 
-
             mAlertDialog.findViewById<Switch>(R.id.fanSwitch)?.setOnCheckedChangeListener{_, onSwitch->
 
                 val database = FirebaseDatabase.getInstance()
                 val myRef = database.getReference("user/manual/device/fan")
                 val myRef1 = database.getReference("user/mode")
+                val progressDialog =  ProgressDialog(this)
+                progressDialog.setMessage("Fetching")
+                progressDialog.setCancelable(false)
+                progressDialog.show()
 
                 if(onSwitch){
                     Toast.makeText(this, "switch on", Toast.LENGTH_SHORT).show()

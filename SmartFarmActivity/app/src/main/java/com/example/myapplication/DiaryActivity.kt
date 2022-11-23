@@ -154,44 +154,6 @@ class DiaryActivity : AppCompatActivity() {
                 TODO("Not yet implemented")
             }
         })
-
-        //차트 만들기
-        /*chartData_humidity.clear()
-        addChartItem("12.5", 7.9,chartData_humidity)
-        addChartItem("13.00", 8.2,chartData_humidity)
-        addChartItem("13.5", 8.3,chartData_humidity)
-        addChartItem("14.00", 8.5,chartData_humidity)
-        addChartItem("14.5", 7.3,chartData_humidity)
-
-        LineChart(chartData_humidity,"humidity")
-
-        addChartItem("12.5", 5.9,chartData_soil_humi)
-        addChartItem("13.00", 6.2,chartData_soil_humi)
-        addChartItem("13.5", 7.3,chartData_soil_humi)
-        addChartItem("14.00", 8.5,chartData_soil_humi)
-        addChartItem("14.5", 3.3,chartData_soil_humi)
-
-        // 그래프 그릴 자료 넘기기
-        LineChart(chartData_soil_humi,"soil_humi")
-
-        addChartItem("12.5", 5.9,chartData_temp)
-        addChartItem("13.00", 5.3,chartData_temp)
-        addChartItem("13.5", 8.6,chartData_temp)
-        addChartItem("14.00", 6.2,chartData_temp)
-        addChartItem("14.5", 3.9,chartData_temp)
-
-        // 그래프 그릴 자료 넘기기
-        LineChart(chartData_temp,"temp")
-
-        addChartItem("12.5", 7.0,chartData_light)
-        addChartItem("13.00", 5.2,chartData_light)
-        addChartItem("13.5", 5.3,chartData_light)
-        addChartItem("14.00", 8.5,chartData_light)
-        addChartItem("14.5", 7.3,chartData_light)
-
-        // 그래프 그릴 자료 넘기기
-        LineChart(chartData_light,"light")*/
-
     }
 
     private fun addChartItem(lableitem: String, dataitem: Double,chartData: ArrayList<ChartData>) {
@@ -210,7 +172,6 @@ class DiaryActivity : AppCompatActivity() {
             lineChart = findViewById(R.id.linechart_light)
         else if(name == "temp")
             lineChart = findViewById(R.id.linechart_temp)
-        //  lineChart = findViewById(R.id.linechart_temp)
 
         val entries = mutableListOf<Entry>()  //차트 데이터 셋에 담겨질 데이터
 
