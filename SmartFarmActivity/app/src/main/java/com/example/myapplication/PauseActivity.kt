@@ -21,9 +21,9 @@ class PauseActivity : AppCompatActivity() {
             window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             setContentView(R.layout.activity_pause)
             //초 뒤 dismiss 하기?
-            Handler(Looper.getMainLooper()).postDelayed({
+            /*Handler(Looper.getMainLooper()).postDelayed({
                 this.dismiss()
-            }, 3000)
+            }, 3000)*/
         }
 
     }

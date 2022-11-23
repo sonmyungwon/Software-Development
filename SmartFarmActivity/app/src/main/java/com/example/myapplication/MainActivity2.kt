@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.app.ProgressDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
@@ -43,10 +44,11 @@ class MainActivity2 : AppCompatActivity() {
 
             val database = FirebaseDatabase.getInstance()
             val modeRef = database.getReference("user/mode")
-            val ledRef = database.getReference("user/manual/device/led")
-            val fanRef = database.getReference("user/manual/device/fan")
-            val pumpRef = database.getReference("user/manual/device/pump")
-            val exceptRef = database.getReference("user/manual/exception")
+            val ledRef = database.getReference("user/device/led")
+            val fanRef = database.getReference("user/device/fan")
+            val pumpRef = database.getReference("user/device/pump")
+            val exceptRef = database.getReference("user/exception")
+            val realLedRef = database.getReference("user/device/real_led_on")
 
             val mDialogView = LayoutInflater.from(this).inflate(R.layout.manual_control_dialog, null)
             val mBuilder = AlertDialog.Builder(this)
@@ -87,19 +89,36 @@ class MainActivity2 : AppCompatActivity() {
                 }
             })
 
+            val progressDialog = ProgressDialog(this)
             //각각의 스위치를 눌렀을때 on off 하기
             mAlertDialog.findViewById<Switch>(R.id.ledSwitch)?.setOnCheckedChangeListener{_, onSwitch->
                 if(onSwitch){
                     modeRef.setValue(1)
                     ledRef.setValue(1)
+
+                    progressDialog.setMessage("Fetching")
+                    progressDialog.setCancelable(false)
+                    progressDialog.show()
+
+                    realLedRef.addValueEventListener(object : ValueEventListener{
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            if(snapshot.value.toString().toInt() == 1){
+                                progressDialog.dismiss()
+                            }
+                        }
+
+                        override fun onCancelled(error: DatabaseError) {
+                            TODO("Not yet implemented")
+                        }
+                    })
                     Toast.makeText(this, "switch on", Toast.LENGTH_SHORT).show()
-                    PauseActivity.LoadingDialog(this@MainActivity2).show()
                 }
                 else {
                     ledRef.setValue(0)
                     modeRef.setValue(1)
                     Toast.makeText(this, "switch off", Toast.LENGTH_SHORT).show()
-                    PauseActivity.LoadingDialog(this@MainActivity2).show()
+
+
                 }
             }
 
