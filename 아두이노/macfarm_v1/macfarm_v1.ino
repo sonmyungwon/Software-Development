@@ -65,8 +65,8 @@ int Dir1Pin_A = 27;      // 제어신호 1핀
 int Dir2Pin_A = 26;      // 제어신호 2핀
 int SpeedPin_A = 14;    // PWM제어를 위한 핀
 
-int Relaypin = 12;//pump
-int Relaypin2 = 13;//led
+int pumpRelaypin = 12;//pump
+int ledRelaypin = 13;//led
 
 int soil_humi = 32;
 
@@ -115,8 +115,8 @@ void setup() {
   pinMode(Dir2Pin_A, OUTPUT);             // 제어 2번핀 출력모드 설정
   pinMode(SpeedPin_A, OUTPUT);            // PWM제어핀 출력모드 설정
 
-  pinMode(Relaypin, OUTPUT);
-  pinMode(Relaypin2, OUTPUT);
+  pinMode(pumpRelaypin, OUTPUT);
+  pinMode(ledRelaypin, OUTPUT);
 
   Wire.begin();
 
@@ -126,57 +126,57 @@ void setup() {
 
 void loop() {
 
-  int h = dht.readHumidity();
-  int t = dht.readTemperature();
-  int l = lightMeter.readLightLevel();
+  int humi = dht.readHumidity();
+  int temp = dht.readTemperature();
+  int light = lightMeter.readLightLevel();
   int s0 = analogRead(soil_humi);
-  int s = s0 / 4;
+  int soilhumi = s0 / 4;
 
-  check(h, t);
+  check(humi, temp);
 
-  print_data(h, t, l, s);
+  print_data(humi, temp, light, sdilHumi);
 
   if (Firebase.ready() && signupOK && (millis() - sendDataPrevMillis > 3000 || sendDataPrevMillis == 0)) {
     sendDataPrevMillis = millis();
     date = get_push_path();
-    database("/user/auto/sensor/" + date + "/temp", t);
-    database("/user/auto/sensor/" + date + "/humi", h);
-    database("/user/auto/sensor/" + date + "/soilhumi", s);
-    database("/user/auto/sensor/" + date + "/light", l);
+    database("/user/sensor/" + date + "/temp", temp);
+    database("/user/sensor/" + date + "/humi", humi);
+    database("/user/sensor/" + date + "/soilhumi", soilhumi);
+    database("/user/sensor/" + date + "/light", light);
   }
 
   if (Firebase.RTDB.getInt(&fbdo, "/user/mode") && fbdo.dataType() == "int") {
     intmode = fbdo.intData();
     if (intmode == 1) {
       fan_manual(intfan);
-      pump_manual(intpump, s);
+      pump_manual(intpump, soilhumi);
       led_manual(intled);
     }
     else {
-      fan_auto(inttemp, t);
-      pump_auto(inthumi, s);
-      led_auto(intled, l);
+      fan_auto(inttemp, temp);
+      pump_auto(inthumi, soilhumi);
+      led_auto(intled, light);
     }
   }
 
 }
 
-void check(int h, int t) {
-  if (isnan(h) || isnan(t)) {
+void check(int humi, int temp) {
+  if (isnan(humi) || isnan(temp)) {
     Serial.println("Failed to read from DHT  sensor!");
     return;
   }
 }
 
-void print_data(int h, int t, int l, int s) {
+void print_data(int humi, int temp, int light, int soilhumi) {
   Serial.print("humidity : ");
-  Serial.println(h);
+  Serial.println(humi);
   Serial.print("temp : ");
-  Serial.println(t);
+  Serial.println(temp);
   Serial.print("light : ");
-  Serial.println(l);
+  Serial.println(light);
   Serial.print("soil : ");
-  Serial.println(s);
+  Serial.println(soilhumi);
 }
 
 
@@ -201,40 +201,45 @@ void database(String path, int sensordata) {
   real_push == false;
 }
 void fan_manual(int intfan) {
-  if (Firebase.RTDB.getInt(&fbdo, "/user/manual/device/fan") && fbdo.dataType() == "int") {
+  if (Firebase.RTDB.getInt(&fbdo, "/user/device/fan") && fbdo.dataType() == "int") {
     intfan = fbdo.intData();
     if (intfan == 1) {
+      
       Serial.println("motor on");
       digitalWrite(Dir1Pin_A, HIGH);         //모터가 시계 방향으로 회전
       digitalWrite(Dir2Pin_A, LOW);
       analogWrite(SpeedPin_A, 255); // 세기조절 가능
+      realOn("realFan");
     }
     else {
       Serial.println("Motor stopped");
       digitalWrite(Dir1Pin_A, LOW);
       digitalWrite(Dir2Pin_A, LOW);
+      realOff("realFan");
     }
   }
 }
 
-void pump_manual(int intpump, int s) {
-  if (Firebase.RTDB.getInt(&fbdo, "/user/manual/device/pump") && fbdo.dataType() == "int") {
+void pump_manual(int intpump, int soilhumi) {
+  if (Firebase.RTDB.getInt(&fbdo, "/user/device/pump") && fbdo.dataType() == "int") {
     intpump = fbdo.intData();
-    if (s > 500) {//물 넘치지 않은 상태
+    if (soilhumi > 500) {//물 넘치지 않은 상태
       if (intpump == 1) {
         Serial.println("pump on");
-        digitalWrite(Relaypin, HIGH);
+        digitalWrite(pumpRelaypin, HIGH);
+         realOn("realpump");
       }
       else {
         Serial.println("pump stopped");
-        digitalWrite(Relaypin, LOW);
+        digitalWrite(pumpRelaypin, LOW);
+         realOff("realpump");
       }
     }
     else {//물넘침 감지
       Serial.println("over water");
-      digitalWrite(Relaypin, LOW);
-
-      if (Firebase.RTDB.setInt(&fbdo, "/user/manual/exception", 1)) {
+      digitalWrite(pumpRelaypin, LOW);
+      realOff("realpump");
+      if (Firebase.RTDB.setInt(&fbdo, "/user/exception", 1)) {
 
         Serial.println("EXCEPTION OCCUR");
         Serial.println("PATH: " + fbdo.dataPath());
@@ -246,26 +251,38 @@ void pump_manual(int intpump, int s) {
   }
 }
 
+void realOn(String real) {
+  if (Firebase.RTDB.setBool(&fbdo, "/user/device/" + real) && fbdo.dataType() == "bool") {
+    true = fbdo.boolData();
+  }
+}
+void realOff(String real) {
+  if (Firebase.RTDB.setBool(&fbdo, "/user/device/" + real) && fbdo.dataType() == "bool") {
+    false = fbdo.boolData();
+  }
+}
 void led_manual(int intled) {
-  if (Firebase.RTDB.getInt(&fbdo, "/user/manual/device/led") && fbdo.dataType() == "int") {
+  if (Firebase.RTDB.getInt(&fbdo, "/user/device/led") && fbdo.dataType() == "int") {
     intled = fbdo.intData();
     if (intled == 1) {
       Serial.println("led on");
-      digitalWrite(Relaypin2, HIGH);
+      digitalWrite(ledRelaypin, HIGH);
+      realOn("led");
     }
     else {
       Serial.println("led off");
-      digitalWrite(Relaypin2, LOW);
+      digitalWrite(ledRelaypin, LOW);
+      realOff("led");
     }
   }
 }
 
-void fan_auto(int inttemp, int t) {
-  if (Firebase.RTDB.getInt(&fbdo, "/user/auto/userdata/temp") && fbdo.dataType() == "int") {
+void fan_auto(int inttemp, int temp) {
+  if (Firebase.RTDB.getInt(&fbdo, "/user/userdata/temp") && fbdo.dataType() == "int") {
     inttemp = fbdo.intData();
-    if (inttemp < t) {
+    if (inttemp < temp) {
       Serial.println(inttemp);
-      Serial.println(t);
+      Serial.println(temp);
       Serial.println("motor on");
       digitalWrite(Dir1Pin_A, HIGH);         //모터가 시계 방향으로 회전
       digitalWrite(Dir2Pin_A, LOW);
@@ -279,37 +296,37 @@ void fan_auto(int inttemp, int t) {
   }
 }
 
-void pump_auto(int inthumi, int s) {
-  if (Firebase.RTDB.getInt(&fbdo, "/user/auto/userdata/soil_humi") && fbdo.dataType() == "int") {
+void pump_auto(int inthumi, int soilhumi) {
+  if (Firebase.RTDB.getInt(&fbdo, "/user/userdata/soil_humi") && fbdo.dataType() == "int") {
     inthumi = fbdo.intData();
     Serial.println(inthumi);
-    if ( inthumi < s) {                             //센서값받아보고 비교필요
+    if ( inthumi < soilhumi) {                             //센서값받아보고 비교필요
       Serial.println(inthumi);
       Serial.println("pump on");
-      digitalWrite(Relaypin, HIGH);
+      digitalWrite(pumpRelaypin, HIGH);
       delay(5000);
-      digitalWrite(Relaypin, LOW);
+      digitalWrite(pumpRelaypin, LOW);
       delay(5000);
       Serial.println("pump off");
     }
-    else if (inthumi > s) {
+    else if (inthumi > soilhumi) {
       Serial.println("pump stopped");
-      digitalWrite(Relaypin, LOW);
+      digitalWrite(pumpRelaypin, LOW);
     }
   }
 }
 
-void led_auto(int intled, int l) {
-  if (Firebase.RTDB.getInt(&fbdo, "/user/auto/userdata/light") && fbdo.dataType() == "int") {        //차후 센서값보면서 수정필요
+void led_auto(int intled, int light) {
+  if (Firebase.RTDB.getInt(&fbdo, "/user/userdata/light") && fbdo.dataType() == "int") {        //차후 센서값보면서 수정필요
     intlight = fbdo.intData();
     Serial.println(intValue);
-    if (intlight > l && isday()) {
+    if (intlight > light && isday()) {
       Serial.println("led on");
-      digitalWrite(Relaypin2, HIGH);
+      digitalWrite(ledRelaypin, HIGH);
     }
     else {
       Serial.println("led off");
-      digitalWrite(Relaypin2, LOW);
+      digitalWrite(ledRelaypin, LOW);
     }
   }
 }
