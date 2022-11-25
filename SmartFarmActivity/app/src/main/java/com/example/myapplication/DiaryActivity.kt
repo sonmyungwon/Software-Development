@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.graphics.BitmapFactory
 import android.graphics.Color
@@ -27,7 +28,6 @@ import java.util.GregorianCalendar
 
 class DiaryActivity : AppCompatActivity() {
 
-    private val TAG = this.javaClass.simpleName
     lateinit var lineChart: LineChart
     private val chartData_humidity = ArrayList<ChartData>()
     private val chartData_soil_humi = ArrayList<ChartData>()
@@ -52,7 +52,8 @@ class DiaryActivity : AppCompatActivity() {
 
             val dlg = DatePickerDialog(this, object : DatePickerDialog.OnDateSetListener {
 
-                override fun onDateSet(view: DatePicker?,year: Int, month: Int, dayOfMonth: Int)
+                @SuppressLint("SetTextI18n")
+                override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int)
                 {
                     Log.d("MAIN", "${year}. ${month + 1}. $dayOfMonth")
                     textDay.text = "${year}. ${month + 1}. $dayOfMonth"
@@ -155,43 +156,6 @@ class DiaryActivity : AppCompatActivity() {
             }
         })
 
-        //차트 만들기
-        /*chartData_humidity.clear()
-        addChartItem("12.5", 7.9,chartData_humidity)
-        addChartItem("13.00", 8.2,chartData_humidity)
-        addChartItem("13.5", 8.3,chartData_humidity)
-        addChartItem("14.00", 8.5,chartData_humidity)
-        addChartItem("14.5", 7.3,chartData_humidity)
-
-        LineChart(chartData_humidity,"humidity")
-
-        addChartItem("12.5", 5.9,chartData_soil_humi)
-        addChartItem("13.00", 6.2,chartData_soil_humi)
-        addChartItem("13.5", 7.3,chartData_soil_humi)
-        addChartItem("14.00", 8.5,chartData_soil_humi)
-        addChartItem("14.5", 3.3,chartData_soil_humi)
-
-        // 그래프 그릴 자료 넘기기
-        LineChart(chartData_soil_humi,"soil_humi")
-
-        addChartItem("12.5", 5.9,chartData_temp)
-        addChartItem("13.00", 5.3,chartData_temp)
-        addChartItem("13.5", 8.6,chartData_temp)
-        addChartItem("14.00", 6.2,chartData_temp)
-        addChartItem("14.5", 3.9,chartData_temp)
-
-        // 그래프 그릴 자료 넘기기
-        LineChart(chartData_temp,"temp")
-
-        addChartItem("12.5", 7.0,chartData_light)
-        addChartItem("13.00", 5.2,chartData_light)
-        addChartItem("13.5", 5.3,chartData_light)
-        addChartItem("14.00", 8.5,chartData_light)
-        addChartItem("14.5", 7.3,chartData_light)
-
-        // 그래프 그릴 자료 넘기기
-        LineChart(chartData_light,"light")*/
-
     }
 
     private fun addChartItem(lableitem: String, dataitem: Double,chartData: ArrayList<ChartData>) {
@@ -241,12 +205,12 @@ class DiaryActivity : AppCompatActivity() {
 
         // set data
         lineChart.setData(data)
-        lineChart.setDescription(null); //차트에서 Description 설정 삭제
+        lineChart.setDescription(null) //차트에서 Description 설정 삭제
         //XAxis.XAxisPosition.BOTTOM // 라벨 위치 설정
         val xAxis = lineChart.xAxis
         xAxis.position = XAxis.XAxisPosition.BOTTOM
 
-        lineChart.invalidate();
+        lineChart.invalidate()
     }
 
 }
