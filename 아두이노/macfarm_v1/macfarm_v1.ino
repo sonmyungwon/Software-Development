@@ -22,7 +22,7 @@
 #define API_KEY "YOURAPI"
 
 // Insert RTDB URLefine the RTDB URL */
-#define DATABASE_URL "YOURURL"
+const String DATABASE_URL = "YOURURL"
 
 //Define Firebase Data object
 #define DHTPIN 15        // GPIO23
@@ -30,21 +30,19 @@
 
 unsigned long sendDataPrevMillis = 0;
 bool signupOK = false;
-int intValue;
-int intmode;
-int intfan;
-int intpump;
-int intled;
-int inttemp;
-int inthumi;
-int intlight;
-float floatValue;
-bool real_push = false;
+int intmode;      //설정 모드
+int fan_signal;     //사용자가 명령한 fan on/off 신호
+int pump_signal;      //사용자가 명령한 pump on/off 신호
+int led_signal;       //사용자가 명령한 led on/off 신호
+int temp_user_setting;    //사용자가 설정한 온도 값
+int shumi_user_setting;   //사용자가 설정한 토양습도 값
+int light_user_setting;   //사용자가 설정한 조도 값
+bool real_push = false;     //실제 데이터베이스 push 여부 확인
+String date;              //날짜 변수
 const char* ntpServer = "pool.ntp.org";
 uint8_t timeZone = 9;
 uint8_t summerTime = 0; // 3600
 struct tm timeinfo;
-String date;
 FirebaseData fbdo;
 FirebaseAuth auth;
 FirebaseConfig config;
@@ -52,19 +50,13 @@ BH1750 lightMeter;
 
 DHT dht(DHTPIN, DHTTYPE);
 
-////////motor code add/////////////
 
-
-int Dir1Pin_A = 27;      // 제어신호 1핀
-int Dir2Pin_A = 26;      // 제어신호 2핀
-int SpeedPin_A = 14;    // PWM제어를 위한 핀
-
-int pumpRelaypin = 12;  // pump 릴레이 핀
-int ledRelaypin = 13;   // led 릴레이 핀 
-
-int soil_humi = 32;   // 토양습도센서 핀
-
-
+int dir1Pin = 27;      // 제어신호 1핀
+int dir2Pin = 26;      // 제어신호 2핀
+int speedPin = 14;    // PWM제어를 위한 핀
+int pumpRelayPin = 12;  // pump 릴레이 핀
+int ledRelayPin = 13;   // led 릴레이 핀 
+int soilhumiPin = 32;   // 토양습도센서 핀
 
 void setup() {
   Serial.begin(115200);
@@ -105,9 +97,9 @@ void setup() {
   Firebase.begin(&config, &auth);
   Firebase.reconnectWiFi(true);
 
-  pinMode(Dir1Pin_A, OUTPUT);     // 제어 1번핀 출력모드 설정
-  pinMode(Dir2Pin_A, OUTPUT);     // 제어 2번핀 출력모드 설정
-  pinMode(SpeedPin_A, OUTPUT);    // PWM제어핀 출력모드 설정
+  pinMode(dir1Pin, OUTPUT);     // 제어 1번핀 출력모드 설정
+  pinMode(dir2Pin, OUTPUT);     // 제어 2번핀 출력모드 설정
+  pinMode(speedPin, OUTPUT);    // PWM제어핀 출력모드 설정
 
   pinMode(pumpRelaypin, OUTPUT);  // pump 릴레이핀 출력모드 설정
   pinMode(ledRelaypin, OUTPUT);   // led 릴레이핀 출력모드 설정
@@ -123,7 +115,7 @@ void loop() {
   int humi = dht.readHumidity();  // 읽은 습도 데이터 값
   int temp = dht.readTemperature();   // 읽은 온도 데이터 값
   int light = lightMeter.readLightLevel();   // 읽은 빛 데이터 값
-  int s0 = analogRead(soil_humi);
+  int s0 = analogRead(soilhumiPin);
   int soilhumi = s0 / 4;   // 읽은 토양습도 데이터 값
 
   check(humi, temp);
@@ -133,25 +125,25 @@ void loop() {
   // 센서 데이터 값 3초 마다 데이터베이스로 옮김
   if (Firebase.ready() && signupOK && (millis() - sendDataPrevMillis > 3000 || sendDataPrevMillis == 0)) {
     sendDataPrevMillis = millis();
-    date = get_push_path();
-    dataBase("/user/sensor/" + date + "/temp", temp);
-    dataBase("/user/sensor/" + date + "/humi", humi);
-    dataBase("/user/sensor/" + date + "/soilhumi", soilhumi);
-    dataBase("/user/sensor/" + date + "/light", light);
+    date = getDate();
+    pushData("/user/sensor/" + date + "/temp", temp);
+    pushData("/user/sensor/" + date + "/humi", humi);
+    pushData("/user/sensor/" + date + "/soilhumi", soilhumi);
+    pushData("/user/sensor/" + date + "/light", light);
   }
 
   // 데이터베이스에서 mode를 받음
   if (Firebase.RTDB.getInt(&fbdo, "/user/mode") && fbdo.dataType() == "int") {
     intmode = fbdo.intData();
     if (intmode == 1) {
-      fanManual(intfan);
-      pumpManual(intpump, soilhumi);
-      ledManual(intled);
+      retrieveFan(fan_signal);
+      retrievePump(pump_signal, soilhumi);
+      retrieveLed(led_signal);
     }
     else if (intmode==2){
-      fanAuto(inttemp, temp);
-      pumpAuto(inthumi, soilhumi);
-      compareLedauto(intled, light);
+      compareFan(temp_user_setting, temp);
+      comparePump(shumi_user_setting, soilhumi);
+      compareLed(led_signal, light);
     }
     else{
       Serial.println("mode error");
@@ -180,8 +172,8 @@ void printData(int humi, int temp, int light, int soilhumi) {
   Serial.println(soilhumi);
 }
 
-// 데이터값을 데이터베이스로 옮기는 함수
-void dataBase(String path, int sensordata) {
+// 데이터 값을 데이터베이스로 옮기는 함수
+void pushData(String path, int sensordata) {
   getLocalTime(&timeinfo);
   while (real_push == false) {
     if (String(timeinfo.tm_min) == "0" || String(timeinfo.tm_min) == "30" ) {
@@ -207,16 +199,16 @@ void realCheck(String path, int num) {
 // fan on 함수
 void fanOn(){
   Serial.println("motor on");
-  digitalWrite(Dir1Pin_A, HIGH);         //모터가 시계 방향으로 회전
-  digitalWrite(Dir2Pin_A, LOW);
-  analogWrite(SpeedPin_A, 255); // 세기조절 가능
+  digitalWrite(dir1Pin, HIGH);         //모터가 시계 방향으로 회전
+  digitalWrite(dir2Pin, LOW);
+  analogWrite(speedPin, 255); // 세기조절 가능
 }
 
 // fan off 함수
 void fanOff(){
   Serial.println("Motor stopped");
-  digitalWrite(Dir1Pin_A, LOW);
-  digitalWrite(Dir2Pin_A, LOW);
+  digitalWrite(dir1Pin, LOW);
+  digitalWrite(dir2Pin, LOW);
 }
 
 // pump on 함수
@@ -244,10 +236,10 @@ void ledOff(){
 }
 
 // fan 수동제어 함수
-void fanManual(int intfan) {
+void retrieveFan(int fan_signal) {
   if (Firebase.RTDB.getInt(&fbdo, "/user/device/fan") && fbdo.dataType() == "int") {
-    intfan = fbdo.intData();
-    if (intfan == 1) {
+    fan_signal = fbdo.intData();
+    if (fan_signal == 1) {
       fanOn();
       realCheck("/user/device/real_fan_on",1);
     }
@@ -259,13 +251,14 @@ void fanManual(int intfan) {
 }
 
 // pump 수동제어 함수
-void pumpManual(int intpump, int soilhumi) {
+void retrievePump(int pump_signal, int soilhumi) {
+  //Firebase로부터 사용자의 onoff 신호를 받는 부분
   if (Firebase.RTDB.getInt(&fbdo, "/user/device/pump") && fbdo.dataType() == "int") {
-    intpump = fbdo.intData();
+    pump_signal = fbdo.intData();
     if (soilhumi > 500) {//물 넘치지 않은 상태
-      if (intpump == 1) {
+      if (pump_signal == 1) {
         pumpOn();
-        realOn("realpump");
+        realCheck("/user/device/real_pump_on",1);
       }
       else {
         pumpOff();
@@ -287,10 +280,10 @@ void pumpManual(int intpump, int soilhumi) {
 }
 
 // led 수동제어 함수
-void ledManual(int intled) {
+void retrieveLed(int led_signal) {
   if (Firebase.RTDB.getInt(&fbdo, "/user/device/led") && fbdo.dataType() == "int") {
-    intled = fbdo.intData();
-    if (intled == 1) {
+    led_signal = fbdo.intData();
+    if (led_signal == 1) {
       ledOn();
       realCheck("/user/device/real_led_on",1);
     }
@@ -302,11 +295,11 @@ void ledManual(int intled) {
 }
 
 // fan 자동제어 함수
-void fanAuto(int inttemp, int temp) {
+void compareFan(int temp_user_setting, int temp) {
   if (Firebase.RTDB.getInt(&fbdo, "/user/userdata/temp") && fbdo.dataType() == "int") {
-    inttemp = fbdo.intData();
-    if (inttemp < temp) {
-      Serial.println(inttemp);
+    temp_user_setting = fbdo.intData();
+    if (temp_user_setting < temp) {
+      Serial.println(temp_user_setting);
       Serial.println(temp);
       fanOn();
     }
@@ -317,29 +310,29 @@ void fanAuto(int inttemp, int temp) {
 }
 
 // pump 자동제어 함수
-void pumpAuto(int inthumi, int soilhumi) {
+void comparePump(int shumi_user_setting, int soilhumi) {
   if (Firebase.RTDB.getInt(&fbdo, "/user/userdata/soil_humi") && fbdo.dataType() == "int") {
-    inthumi = fbdo.intData();
-    Serial.println(inthumi);
-    if ( inthumi < soilhumi) {                             //센서값받아보고 비교필요
-      Serial.println(inthumi);
+    shumi_user_setting = fbdo.intData();
+    Serial.println(shumi_user_setting);
+    if ( shumi_user_setting < soilhumi) {                             //센서값받아보고 비교필요
+      Serial.println(shumi_user_setting);
       pumpOn();
       delay(2500);
       pumpOff();
       delay(5000);
     }
-    else if (inthumi > soilhumi) {
+    else if (shumi_user_setting > soilhumi) {
       pumpOff();
     }
   }
 }
 
 // led 자동제어 함수
-void compareLedauto(int intled, int light) {
+void compareLed(int light_user_setting, int light) {
   if (Firebase.RTDB.getInt(&fbdo, "/user/userdata/light") && fbdo.dataType() == "int") {        //차후 센서값보면서 수정필요
-    intlight = fbdo.intData();
-    Serial.println(intlight);
-    if (intlight > light && isday()) {
+    light_user_setting = fbdo.intData();
+    Serial.println(light_user_setting);
+    if (light_user_setting > light && isDay()) {
       ledOn();
     }
     else {
@@ -360,7 +353,7 @@ void printLocalTime() {
 }
 
 // 날짜 구하는 함수
-String get_push_path() {
+String getDate() {
   getLocalTime(&timeinfo);
   String path;
   path = String(timeinfo.tm_year + 1900 - 2000) + String(timeinfo.tm_mon + 1) + String(timeinfo.tm_mday);  //2022년 11월 16일 -> 221116
@@ -368,7 +361,7 @@ String get_push_path() {
 }
 
 //현재 낮인지 판단하는 함수
-bool isday() {
+bool isDay() {
   getLocalTime(&timeinfo);
   if (timeinfo.tm_hour < 18 || timeinfo.tm_hour > 6) {
     return true;
