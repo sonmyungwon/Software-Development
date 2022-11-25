@@ -105,12 +105,12 @@ void setup() {
   Firebase.begin(&config, &auth);
   Firebase.reconnectWiFi(true);
 
-  pinMode(Dir1Pin_A, OUTPUT);             // 제어 1번핀 출력모드 설정
-  pinMode(Dir2Pin_A, OUTPUT);             // 제어 2번핀 출력모드 설정
-  pinMode(SpeedPin_A, OUTPUT);            // PWM제어핀 출력모드 설정
+  pinMode(Dir1Pin_A, OUTPUT);     // 제어 1번핀 출력모드 설정
+  pinMode(Dir2Pin_A, OUTPUT);     // 제어 2번핀 출력모드 설정
+  pinMode(SpeedPin_A, OUTPUT);    // PWM제어핀 출력모드 설정
 
-  pinMode(pumpRelaypin, OUTPUT);
-  pinMode(ledRelaypin, OUTPUT);
+  pinMode(pumpRelaypin, OUTPUT);  // pump 릴레이핀 출력모드 설정
+  pinMode(ledRelaypin, OUTPUT);   // led 릴레이핀 출력모드 설정
 
   Wire.begin();
 
