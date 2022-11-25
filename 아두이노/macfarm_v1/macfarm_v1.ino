@@ -352,7 +352,7 @@ void comparePump(int shumi_user_setting, int soilhumi) {
 
 // led 자동제어 함수
 void compareLed(int light_user_setting, int light) {
-  if (Firebase.RTDB.getInt(&fbdo, "/user/userdata/light") && fbdo.dataType() == "int") {        //차후 센서값보면서 수정필요
+  if (Firebase.RTDB.getInt(&fbdo, "/user/userdata/light") && fbdo.dataType() == "int") {        
     light_user_setting = fbdo.intData();
     Serial.println(light_user_setting);
 
