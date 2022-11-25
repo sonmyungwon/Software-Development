@@ -317,6 +317,8 @@ void retrieveLed(int led_signal) {
 void compareFan(int temp_user_setting, int temp) {
   if (Firebase.RTDB.getInt(&fbdo, "/user/userdata/temp") && fbdo.dataType() == "int") {
     temp_user_setting = fbdo.intData();
+
+    //센서값 temp 와 사용자가 설정한 값 temp_user_setting 을 비교 후 장치 제어 결정 
     if (temp_user_setting < temp) {
       Serial.println(temp_user_setting);
       Serial.println(temp);
@@ -333,7 +335,9 @@ void comparePump(int shumi_user_setting, int soilhumi) {
   if (Firebase.RTDB.getInt(&fbdo, "/user/userdata/soil_humi") && fbdo.dataType() == "int") {
     shumi_user_setting = fbdo.intData();
     Serial.println(shumi_user_setting);
-    if ( shumi_user_setting < soilhumi) {                             //센서값받아보고 비교필요
+
+    //센서값 soilhumi 와 사용자가 설정한 값 shumi_user_setting 을 비교 후 장치 제어 결정 
+    if ( shumi_user_setting < soilhumi) {                            
       Serial.println(shumi_user_setting);
       pumpOn();
       delay(2500);
@@ -351,6 +355,8 @@ void compareLed(int light_user_setting, int light) {
   if (Firebase.RTDB.getInt(&fbdo, "/user/userdata/light") && fbdo.dataType() == "int") {        //차후 센서값보면서 수정필요
     light_user_setting = fbdo.intData();
     Serial.println(light_user_setting);
+
+    //센서값 light 와 사용자가 설정한 값 light_user_setting 을 비교 후 장치 제어 결정
     if (light_user_setting > light && isDay()) {
       ledOn();
     }
