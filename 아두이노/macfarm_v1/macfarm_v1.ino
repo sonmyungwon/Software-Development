@@ -1,3 +1,23 @@
+/*
+    smarfarm
+
+    센서값을 읽어서 데이터 베이스에 올리고 사용자의 제어값을 읽어와 장치를 제어한다.
+ 
+
+    The circuit:
+    * input 
+    * DHT-11,FC-28,BH1750
+    * output
+    * 2A L298N,RELAY MODULE,LED,PUMP,FAN
+
+    Created day month year
+    By author's name
+    Modified day month year
+    By author's name
+
+    https://randomnerdtutorials.com/esp32-firebase-realtime-database/
+
+*/
 #include "DHT.h"
 #include <Arduino.h>
 #if defined(ESP32)
@@ -9,14 +29,14 @@
 #include <Wire.h>
 #include <BH1750.h>
 
-//Provide the token generation process info..
+
 #include "addons/TokenHelper.h"
 //Provide the RTDB payload printing info and other helper functions.
 #include "addons/RTDBHelper.h"
 
 // Insert your network credentials
-const String  WIFI_SSID = "YOURWIFI";
-const String WIFI_PASSWORD = "YOURPASSWORD";
+const char *WIFI_SSID = "YOURWIFI";
+const char *WIFI_PASSWORD = "YOURPASSWORD";
 
 // Insert Firebase project API Key
 const String API_KEY = "YOURAPI";
@@ -25,7 +45,7 @@ const String API_KEY = "YOURAPI";
 const String DATABASE_URL = "YOURURL";
 
 //Define Firebase Data object
-const int DHTPIN = 15        // GPIO23
+const int DHTPIN = 15;        // GPIO23
 
 unsigned long sendDataPrevMillis = 0;
 bool signupOK = false;
@@ -100,8 +120,8 @@ void setup() {
   pinMode(dir2Pin, OUTPUT);     // 제어 2번핀 출력모드 설정
   pinMode(speedPin, OUTPUT);    // PWM제어핀 출력모드 설정
 
-  pinMode(pumpRelaypin, OUTPUT);  // pump 릴레이핀 출력모드 설정
-  pinMode(ledRelaypin, OUTPUT);   // led 릴레이핀 출력모드 설정
+  pinMode(pumpRelayPin, OUTPUT);  // pump 릴레이핀 출력모드 설정
+  pinMode(ledRelayPin, OUTPUT);   // led 릴레이핀 출력모드 설정
 
   Wire.begin();
 
@@ -119,7 +139,7 @@ void loop() {
 
   check(humi, temp);
 
-  printData(humi, temp, light, sdilHumi);
+  printData(humi, temp, light, soilhumi);
 
   // 센서 데이터 값 3초 마다 데이터베이스로 옮김
   if (Firebase.ready() && signupOK && (millis() - sendDataPrevMillis > 3000 || sendDataPrevMillis == 0)) {
@@ -192,7 +212,7 @@ void pushData(String path, int sensordata) {
 
 // 장치가 실제 작동 여부 신호를 데이터베이스로 전달
 void realCheck(String path, int num) {
-  Firebase.RTDB.setInt(&fbdo, path, num)
+  Firebase.RTDB.setInt(&fbdo, path, num);
 }
 
 // fan on 함수
@@ -213,25 +233,25 @@ void fanOff(){
 // pump on 함수
 void pumpOn(){
   Serial.println("pump on");
-  digitalWrite(pumpRelaypin, HIGH);
+  digitalWrite(pumpRelayPin, HIGH);
 }
 
 // pump off 함수
 void pumpOff(){
   Serial.println("pump off");
-  digitalWrite(pumpRelaypin, LOW);
+  digitalWrite(pumpRelayPin, LOW);
 }
 
 // led on 함수
 void ledOn(){
   Serial.println("led on");
-  digitalWrite(ledRelaypin, HIGH);
+  digitalWrite(ledRelayPin, HIGH);
 }
 
 // led off 함수
 void ledOff(){
   Serial.println("led on");
-  digitalWrite(ledRelaypin, HIGH);
+  digitalWrite(ledRelayPin, HIGH);
 }
 
 // fan 수동제어 함수
