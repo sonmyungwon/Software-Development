@@ -338,6 +338,7 @@ bool isday() {//현재 낮인지 판단하는 함수
   if (timeinfo.tm_hour < 18 || timeinfo.tm_hour > 6) {
     return true;
   }
+  
   else {
     return false;
   }
