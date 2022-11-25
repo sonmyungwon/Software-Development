@@ -17,11 +17,6 @@
 // Insert your network credentials
 #define WIFI_SSID "YOURWIFI"
 #define WIFI_PASSWORD "YOURPASSWORD"
-const char* ntpServer = "pool.ntp.org";
-uint8_t timeZone = 9;
-uint8_t summerTime = 0; // 3600
-struct tm timeinfo;
-String date;
 
 // Insert Firebase project API Key
 #define API_KEY "YOURAPI"
@@ -30,19 +25,8 @@ String date;
 #define DATABASE_URL "YOURURL"
 
 //Define Firebase Data object
-FirebaseData fbdo;
-
-FirebaseAuth auth;
-
-FirebaseConfig config;
-BH1750 lightMeter;
 #define DHTPIN 15        // GPIO23
-
-
-
-
 #define DHTTYPE DHT11   // DHT 22  (AM2302), AM2321
-
 
 unsigned long sendDataPrevMillis = 0;
 bool signupOK = false;
@@ -56,6 +40,16 @@ int inthumi;
 int intlight;
 float floatValue;
 bool real_push = false;
+const char* ntpServer = "pool.ntp.org";
+uint8_t timeZone = 9;
+uint8_t summerTime = 0; // 3600
+struct tm timeinfo;
+String date;
+FirebaseData fbdo;
+FirebaseAuth auth;
+FirebaseConfig config;
+BH1750 lightMeter;
+
 DHT dht(DHTPIN, DHTTYPE);
 
 ////////motor code add/////////////
@@ -152,10 +146,13 @@ void loop() {
       pump_manual(intpump, soilhumi);
       led_manual(intled);
     }
-    else {
+    else if (intmode==2){
       fan_auto(inttemp, temp);
       pump_auto(inthumi, soilhumi);
       led_auto(intled, light);
+    }
+    else{
+      Serial.println("mode error");
     }
   }
 
@@ -187,9 +184,7 @@ void database(String path, int sensordata) {
     if (String(timeinfo.tm_min) == "0" || String(timeinfo.tm_min) == "30" ) {
       if (Firebase.RTDB.pushInt(&fbdo, path, sensordata)) {
         Serial.println(sensordata);
-        Serial.println("PASSED");
-        Serial.println("PATH: " + fbdo.dataPath());
-        Serial.println("TYPE: " + fbdo.dataType());
+        Serial.println(path + ": PASSED");
         real_push = true; //loop 시작하자마자 false로 고치는거 필요할듯
       }
       else {
@@ -204,18 +199,17 @@ void fan_manual(int intfan) {
   if (Firebase.RTDB.getInt(&fbdo, "/user/device/fan") && fbdo.dataType() == "int") {
     intfan = fbdo.intData();
     if (intfan == 1) {
-      
       Serial.println("motor on");
       digitalWrite(Dir1Pin_A, HIGH);         //모터가 시계 방향으로 회전
       digitalWrite(Dir2Pin_A, LOW);
       analogWrite(SpeedPin_A, 255); // 세기조절 가능
-      realOn("realFan");
+      realCheck("/user/device/real_fan_on",1);
     }
     else {
       Serial.println("Motor stopped");
       digitalWrite(Dir1Pin_A, LOW);
       digitalWrite(Dir2Pin_A, LOW);
-      realOff("realFan");
+      realCheck("/user/device/real_fan_on",0);
     }
   }
 }
@@ -232,47 +226,39 @@ void pump_manual(int intpump, int soilhumi) {
       else {
         Serial.println("pump stopped");
         digitalWrite(pumpRelaypin, LOW);
-         realOff("realpump");
+        realCheck("/user/device/real_pump_on",0);
       }
     }
     else {//물넘침 감지
       Serial.println("over water");
       digitalWrite(pumpRelaypin, LOW);
-      realOff("realpump");
+      realCheck("/user/device/real_pump_on",0);
       if (Firebase.RTDB.setInt(&fbdo, "/user/exception", 1)) {
 
         Serial.println("EXCEPTION OCCUR");
         Serial.println("PATH: " + fbdo.dataPath());
         Serial.println("TYPE: " + fbdo.dataType());
-
       }
-
     }
   }
 }
 
-void realOn(String real) {
-  if (Firebase.RTDB.setBool(&fbdo, "/user/device/" + real) && fbdo.dataType() == "bool") {
-    true = fbdo.boolData();
-  }
+void realCheck(String path, int num) {
+  Firebase.RTDB.setInt(&fbdo, path, num)
 }
-void realOff(String real) {
-  if (Firebase.RTDB.setBool(&fbdo, "/user/device/" + real) && fbdo.dataType() == "bool") {
-    false = fbdo.boolData();
-  }
-}
+
 void led_manual(int intled) {
   if (Firebase.RTDB.getInt(&fbdo, "/user/device/led") && fbdo.dataType() == "int") {
     intled = fbdo.intData();
     if (intled == 1) {
       Serial.println("led on");
       digitalWrite(ledRelaypin, HIGH);
-      realOn("led");
+      realCheck("/user/device/real_led_on",1);
     }
     else {
       Serial.println("led off");
       digitalWrite(ledRelaypin, LOW);
-      realOff("led");
+      realCheck("/user/device/real_led_on",0);
     }
   }
 }
@@ -304,7 +290,7 @@ void pump_auto(int inthumi, int soilhumi) {
       Serial.println(inthumi);
       Serial.println("pump on");
       digitalWrite(pumpRelaypin, HIGH);
-      delay(5000);
+      delay(2500);
       digitalWrite(pumpRelaypin, LOW);
       delay(5000);
       Serial.println("pump off");
@@ -316,10 +302,10 @@ void pump_auto(int inthumi, int soilhumi) {
   }
 }
 
-void led_auto(int intled, int light) {
+void compareLedauto(int intled, int light) {
   if (Firebase.RTDB.getInt(&fbdo, "/user/userdata/light") && fbdo.dataType() == "int") {        //차후 센서값보면서 수정필요
     intlight = fbdo.intData();
-    Serial.println(intValue);
+    Serial.println(intlight);
     if (intlight > light && isday()) {
       Serial.println("led on");
       digitalWrite(ledRelaypin, HIGH);
@@ -356,29 +342,3 @@ bool isday() {//현재 낮인지 판단하는 함수
     return false;
   }
 }
-
-
-/*
-  bool real_push false; 선언해두고
-
-
-
-  void database(char pass[], int data){
-   getLocalTime(&timeinfo);
-
-  if((String(timeinfo.min) =="1" || String(timeinfo.min) == "31" )&& real_push = false){
-   if (Firebase.RTDB.pushInt(&fbdo, pass[], data)) {
-      Serial.println(data);
-      Serial.println("PASSED");
-      Serial.println("PATH: " + fbdo.dataPath());
-      Serial.println("TYPE: " + fbdo.dataType());
-      real_push = true; //loop 시작하자마자 false로 고치는거 필요할듯
-  }
-  else {
-    Serial.println("FAILED");
-    Serial.println("REASON: " + fbdo.errorReason());
-  }
-  }
-  }
-
-*/
