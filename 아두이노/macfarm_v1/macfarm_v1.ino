@@ -15,18 +15,17 @@
 #include "addons/RTDBHelper.h"
 
 // Insert your network credentials
-#define WIFI_SSID "YOURWIFI"
-#define WIFI_PASSWORD "YOURPASSWORD"
+const String  WIFI_SSID = "YOURWIFI";
+const String WIFI_PASSWORD = "YOURPASSWORD";
 
 // Insert Firebase project API Key
-#define API_KEY "YOURAPI"
+const String API_KEY = "YOURAPI";
 
 // Insert RTDB URLefine the RTDB URL */
-const String DATABASE_URL = "YOURURL"
+const String DATABASE_URL = "YOURURL";
 
 //Define Firebase Data object
-#define DHTPIN 15        // GPIO23
-#define DHTTYPE DHT11   // DHT 22  (AM2302), AM2321
+const int DHTPIN = 15        // GPIO23
 
 unsigned long sendDataPrevMillis = 0;
 bool signupOK = false;
@@ -48,7 +47,7 @@ FirebaseAuth auth;
 FirebaseConfig config;
 BH1750 lightMeter;
 
-DHT dht(DHTPIN, DHTTYPE);
+DHT dht(DHTPIN, DHT11);
 
 
 int dir1Pin = 27;      // 제어신호 1핀
