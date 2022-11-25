@@ -57,7 +57,7 @@ class AutoControlActivity : AppCompatActivity() {
         var humidNumber: Int = humidView.text.toString().toInt()
         var lightNumber: Int = lightView.text.toString().toInt()
 
-        //사용자 설정 데이터 파이어베이스로부터 불러오기
+        //사용자 설정 데이터 파이어베이스로부터 불러오기 myRef, myRef2, myRef3
         myRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 Log.d("@@@@@ tempView @@@@@@", snapshot.value.toString())
@@ -89,9 +89,7 @@ class AutoControlActivity : AppCompatActivity() {
                 TODO("Not yet implemented")
             }
         })
-
-        Log.d("@@@@@ tempNumber @@@@@@", tempNumber.toString())
-
+        //플러스 마이너스 버튼 클릭시 프로그래스 바 작동
         tempMinusBtn.setOnClickListener{
             tempNumber -= 5
 
@@ -121,8 +119,6 @@ class AutoControlActivity : AppCompatActivity() {
 
             }
         }
-
-
         humidMinusBtn.setOnClickListener{
             humidNumber -= 5
 
@@ -154,7 +150,6 @@ class AutoControlActivity : AppCompatActivity() {
 
             }
         }
-
         lightMinusBtn.setOnClickListener{
             lightNumber -= 5
 
@@ -186,7 +181,7 @@ class AutoControlActivity : AppCompatActivity() {
 
             }
         }
-
+        //저장버튼 클릭시 알림창 및 파이어베이스 userdata에 값 저장
         saveBtn.setOnClickListener{
 
             val database = Firebase.database
@@ -218,7 +213,7 @@ class AutoControlActivity : AppCompatActivity() {
             builder.show()
         }
     }
-
+    //프로그래스 바 옆 상태 텍스트로 나타내기
     private fun showState(num: Int, textview: TextView){
         if (num>=80) {
             textview.text = "아주 높음"
@@ -241,7 +236,7 @@ class AutoControlActivity : AppCompatActivity() {
             textview.setTextColor(Color.GRAY)
         }
     }
-
+    //사용자 값을 센서 값으로 변환
     private fun convertData(min: Double, max: Double, num: Int, textview: TextView){
         val rate : Double = (max - min)/100
         val convertNum : Double = min + rate * num
