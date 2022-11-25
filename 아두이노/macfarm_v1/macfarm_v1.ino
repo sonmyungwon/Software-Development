@@ -349,7 +349,6 @@ void printLocalTime() {
     return;
   }
   Serial.println(&timeinfo, "%A, %B %d %Y %H:%M:%S");
-
 }
 
 // 날짜 구하는 함수
