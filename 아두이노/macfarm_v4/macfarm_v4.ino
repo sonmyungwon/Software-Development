@@ -16,14 +16,14 @@
 #include "Device_Ctrl.h"
 
 // Insert your network credentials
-const String  WIFI_SSID = "YOURWIFI";
-const String WIFI_PASSWORD = "YOURPASSWORD";
+const char *WIFI_SSID = "son";
+const char *WIFI_PASSWORD = "123456789";
 
 // Insert Firebase project API Key
-const String API_KEY = "YOURAPI";
+const String API_KEY = "AIzaSyDqFzxgzics8NUugrOKBHB1lemosv32QUM";
 
 // Insert RTDB URLefine the RTDB URL */
-const String DATABASE_URL = "YOURURL";
+const String DATABASE_URL = "https://smartfarmactivity-default-rtdb.firebaseio.com/";
 
 //Define Firebase Data object
 const int DHTPIN = 15;        // GPIO23
@@ -56,6 +56,7 @@ int speedPin = 14;    // PWM제어를 위한 핀
 int pumpRelayPin = 12;  // pump 릴레이 핀
 int ledRelayPin = 13;   // led 릴레이 핀 
 int soilhumiPin = 32;   // 토양습도센서 핀
+Device_Ctrl devicectrl;
 
 void setup() {
   Serial.begin(115200);
@@ -107,8 +108,6 @@ void setup() {
 
   lightMeter.begin();
 
-  Device_Ctrl devicectrl;
-
 }
 
 void loop() {
@@ -121,18 +120,20 @@ void loop() {
 
   check(humi, temp);
 
-  printData(humi, temp, light, sdilHumi);
-
+  printData(humi, temp, light, soilhumi);
+  Serial.println("1");
   // 센서 데이터 값 3초 마다 데이터베이스로 옮김
   if (Firebase.ready() && signupOK && (millis() - sendDataPrevMillis > 3000 || sendDataPrevMillis == 0)) {
     sendDataPrevMillis = millis();
+    Serial.println("1-1");
     date = getDate();
     pushData("/user/sensor/" + date + "/temp", temp);
     pushData("/user/sensor/" + date + "/humi", humi);
     pushData("/user/sensor/" + date + "/soilhumi", soilhumi);
     pushData("/user/sensor/" + date + "/light", light);
+    Serial.println("1-2");
   }
-
+  Serial.println("2");
   // 데이터베이스에서 mode를 받음
   if (Firebase.RTDB.getInt(&fbdo, "/user/mode") && fbdo.dataType() == "int") {
     intmode = fbdo.intData();
@@ -150,6 +151,7 @@ void loop() {
       Serial.println("mode error");
     }
   }
+  Serial.println("3");
 
 }
 
@@ -194,7 +196,7 @@ void pushData(String path, int sensordata) {
 
 // 장치가 실제 작동 여부 신호를 데이터베이스로 전달
 void realCheck(String path, int num) {
-  Firebase.RTDB.setInt(&fbdo, path, num)
+  Firebase.RTDB.setInt(&fbdo, path, num);
 }
 
 
