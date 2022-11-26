@@ -1,28 +1,3 @@
-/*
-    SmarFarm
-
-    센서값을 읽어서 데이터 베이스에 올리고 사용자의 제어값을 읽어와 장치를 제어한다.
- 
-
-    The circuit:
-    * input 
-    * DHT-11,FC-28,BH1750
-    * output
-    * 2A L298N,RELAY MODULE,LED,PUMP,FAN
-
-    Created day month year
-    By author's name
-    Modified day month year
-    By author's name
-
-    (ESP32 데이터베이스 연결)https://randomnerdtutorials.com/esp32-firebase-realtime-database/
-    (토양습도센서)https://happyguy81.tistory.com/m/65
-    (조도센서)https://www.instructables.com/BH1750-Digital-Light-Sensor/
-    (온습도센서)http://jujc.yonam.ac.kr/lecture/ans_ict/aduino/5._dht11_senser.htm
-    (ESP32 데이터)https://randomnerdtutorials.com/esp32-date-time-ntp-client-server-arduino/
-
-*/
-//checktiesensor,getusersetting,retrieveData
 #include "DHT.h"
 #include <Arduino.h>
 #if defined(ESP32)
@@ -34,14 +9,14 @@
 #include <Wire.h>
 #include <BH1750.h>
 
-
+//Provide the token generation process info..
 #include "addons/TokenHelper.h"
 //Provide the RTDB payload printing info and other helper functions.
 #include "addons/RTDBHelper.h"
 
 // Insert your network credentials
-const char *WIFI_SSID = "YOURWIFI";
-const char *WIFI_PASSWORD = "YOURPASSWORD";
+const String  WIFI_SSID = "YOURWIFI";
+const String WIFI_PASSWORD = "YOURPASSWORD";
 
 // Insert Firebase project API Key
 const String API_KEY = "YOURAPI";
@@ -50,7 +25,7 @@ const String API_KEY = "YOURAPI";
 const String DATABASE_URL = "YOURURL";
 
 //Define Firebase Data object
-const int DHTPIN = 15;        // GPIO23
+const int DHTPIN = 15        // GPIO23
 
 unsigned long sendDataPrevMillis = 0;
 bool signupOK = false;
@@ -75,11 +50,6 @@ BH1750 lightMeter;
 DHT dht(DHTPIN, DHT11);
 
 
-int dir1Pin = 27;      // 제어신호 1핀
-int dir2Pin = 26;      // 제어신호 2핀
-int speedPin = 14;    // PWM제어를 위한 핀
-int pumpRelayPin = 12;  // pump 릴레이 핀
-int ledRelayPin = 13;   // led 릴레이 핀 
 int soilhumiPin = 32;   // 토양습도센서 핀
 
 void setup() {
@@ -125,12 +95,14 @@ void setup() {
   pinMode(dir2Pin, OUTPUT);     // 제어 2번핀 출력모드 설정
   pinMode(speedPin, OUTPUT);    // PWM제어핀 출력모드 설정
 
-  pinMode(pumpRelayPin, OUTPUT);  // pump 릴레이핀 출력모드 설정
-  pinMode(ledRelayPin, OUTPUT);   // led 릴레이핀 출력모드 설정
+  pinMode(pumpRelaypin, OUTPUT);  // pump 릴레이핀 출력모드 설정
+  pinMode(ledRelaypin, OUTPUT);   // led 릴레이핀 출력모드 설정
 
   Wire.begin();
 
   lightMeter.begin();
+
+  Device_Ctrl devicectrl;
 
 }
 
@@ -144,7 +116,7 @@ void loop() {
 
   check(humi, temp);
 
-  printData(humi, temp, light, soilhumi);
+  printData(humi, temp, light, sdilHumi);
 
   // 센서 데이터 값 3초 마다 데이터베이스로 옮김
   if (Firebase.ready() && signupOK && (millis() - sendDataPrevMillis > 3000 || sendDataPrevMillis == 0)) {
@@ -196,7 +168,6 @@ void printData(int humi, int temp, int light, int soilhumi) {
   Serial.println(soilhumi);
 }
 
-checkTimeSensor
 // 데이터 값을 데이터베이스로 옮기는 함수
 void pushData(String path, int sensordata) {
   getLocalTime(&timeinfo);
@@ -218,58 +189,20 @@ void pushData(String path, int sensordata) {
 
 // 장치가 실제 작동 여부 신호를 데이터베이스로 전달
 void realCheck(String path, int num) {
-  Firebase.RTDB.setInt(&fbdo, path, num);
+  Firebase.RTDB.setInt(&fbdo, path, num)
 }
 
-// fan on 함수
-void fanOn(){
-  Serial.println("motor on");
-  digitalWrite(dir1Pin, HIGH);         //모터가 시계 방향으로 회전
-  digitalWrite(dir2Pin, LOW);
-  analogWrite(speedPin, 255); // 세기조절 가능
-}
-
-// fan off 함수
-void fanOff(){
-  Serial.println("Motor stopped");
-  digitalWrite(dir1Pin, LOW);
-  digitalWrite(dir2Pin, LOW);
-}
-
-// pump on 함수
-void pumpOn(){
-  Serial.println("pump on");
-  digitalWrite(pumpRelayPin, HIGH);
-}
-
-// pump off 함수
-void pumpOff(){
-  Serial.println("pump off");
-  digitalWrite(pumpRelayPin, LOW);
-}
-
-// led on 함수
-void ledOn(){
-  Serial.println("led on");
-  digitalWrite(ledRelayPin, HIGH);
-}
-
-// led off 함수
-void ledOff(){
-  Serial.println("led on");
-  digitalWrite(ledRelayPin, HIGH);
-}
 
 // fan 수동제어 함수
 void retrieveFan(int fan_signal) {
   if (Firebase.RTDB.getInt(&fbdo, "/user/device/fan") && fbdo.dataType() == "int") {
     fan_signal = fbdo.intData();
     if (fan_signal == 1) {
-      fanOn();
+      devicectrl.fanOn();
       realCheck("/user/device/real_fan_on",1);
     }
     else {
-      fanOff();
+      devicectrl.fanOff();
       realCheck("/user/device/real_fan_on",0);
     }
   }
@@ -282,17 +215,17 @@ void retrievePump(int pump_signal, int soilhumi) {
     pump_signal = fbdo.intData();
     if (soilhumi > 500) {//물 넘치지 않은 상태
       if (pump_signal == 1) {
-        pumpOn();
+        devicectrl.pumpOn();
         realCheck("/user/device/real_pump_on",1);
       }
       else {
-        pumpOff();
+        devicectrl.pumpOff();
         realCheck("/user/device/real_pump_on",0);
       }
     }
     else {//물넘침 감지
       Serial.println("over water");
-      pumpOff();
+      devicectrl.pumpOff();
       realCheck("/user/device/real_pump_on",0);
       if (Firebase.RTDB.setInt(&fbdo, "/user/exception", 1)) {
 
@@ -309,11 +242,11 @@ void retrieveLed(int led_signal) {
   if (Firebase.RTDB.getInt(&fbdo, "/user/device/led") && fbdo.dataType() == "int") {
     led_signal = fbdo.intData();
     if (led_signal == 1) {
-      ledOn();
+      devicectrl.ledOn();
       realCheck("/user/device/real_led_on",1);
     }
     else {
-      ledOff();
+      devicectrl.ledOff();
       realCheck("/user/device/real_led_on",0);
     }
   }
@@ -323,15 +256,13 @@ void retrieveLed(int led_signal) {
 void compareFan(int temp_user_setting, int temp) {
   if (Firebase.RTDB.getInt(&fbdo, "/user/userdata/temp") && fbdo.dataType() == "int") {
     temp_user_setting = fbdo.intData();
-
-    //센서값 temp 와 사용자가 설정한 값 temp_user_setting 을 비교 후 장치 제어 결정 
     if (temp_user_setting < temp) {
       Serial.println(temp_user_setting);
       Serial.println(temp);
-      fanOn();
+      devicectrl.fanOn();
     }
     else {
-      fanOff();
+      devicectrl.fanOff();
     }
   }
 }
@@ -341,33 +272,29 @@ void comparePump(int shumi_user_setting, int soilhumi) {
   if (Firebase.RTDB.getInt(&fbdo, "/user/userdata/soil_humi") && fbdo.dataType() == "int") {
     shumi_user_setting = fbdo.intData();
     Serial.println(shumi_user_setting);
-
-    //센서값 soilhumi 와 사용자가 설정한 값 shumi_user_setting 을 비교 후 장치 제어 결정 
-    if ( shumi_user_setting < soilhumi) {                            
+    if ( shumi_user_setting < soilhumi) {                             //센서값받아보고 비교필요
       Serial.println(shumi_user_setting);
-      pumpOn();
+      devicectrl.pumpOn();
       delay(2500);
-      pumpOff();
+      devicectrl.pumpOff();
       delay(5000);
     }
     else if (shumi_user_setting > soilhumi) {
-      pumpOff();
+      devicectrl.pumpOff();
     }
   }
 }
 
 // led 자동제어 함수
 void compareLed(int light_user_setting, int light) {
-  if (Firebase.RTDB.getInt(&fbdo, "/user/userdata/light") && fbdo.dataType() == "int") {        
+  if (Firebase.RTDB.getInt(&fbdo, "/user/userdata/light") && fbdo.dataType() == "int") {        //차후 센서값보면서 수정필요
     light_user_setting = fbdo.intData();
     Serial.println(light_user_setting);
-
-    //센서값 light 와 사용자가 설정한 값 light_user_setting 을 비교 후 장치 제어 결정
     if (light_user_setting > light && isDay()) {
-      ledOn();
+      devicectrl.ledOn();
     }
     else {
-      ledOff();
+      devicectrl.ledOff();
     }
   }
 }
@@ -389,7 +316,6 @@ String getDate() {
   path = String(timeinfo.tm_year + 1900 - 2000) + String(timeinfo.tm_mon + 1) + String(timeinfo.tm_mday);  //2022년 11월 16일 -> 221116
   return path;
 }
-
 
 //현재 낮인지 판단하는 함수
 bool isDay() {
