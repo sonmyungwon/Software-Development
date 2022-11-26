@@ -8,7 +8,6 @@ const int pumpRelayPin = 12;  // pump 릴레이 핀
 const int ledRelayPin = 13;   // led 릴레이 핀 
 
 
-
 void Device_Ctrl::fanOn()
 {
   Serial.println("motor on");
@@ -17,7 +16,7 @@ void Device_Ctrl::fanOn()
   analogWrite(speedPin, 255); // 세기조절 가능
 }
 
-void Device_Ctrl::fanOff()
+void Device_Ctrl::fanOn()
 {
   Serial.println("Motor stopped");
   digitalWrite(dir1Pin, LOW);
@@ -27,23 +26,23 @@ void Device_Ctrl::fanOff()
 void Device_Ctrl::pumpOn()
 {
   Serial.println("pump on");
-  digitalWrite(pumpRelayPin, HIGH);
+  digitalWrite(pumpRelaypin, HIGH);
 }
 
 void Device_Ctrl::pumpOff()
 {
   Serial.println("pump off");
-  digitalWrite(pumpRelayPin, LOW);
+  digitalWrite(pumpRelaypin, LOW);
 }
 
 void Device_Ctrl::ledOn()
 {
   Serial.println("led on");
-  digitalWrite(ledRelayPin, HIGH);
+  digitalWrite(ledRelaypin, HIGH);
 }
 
 void Device_Ctrl::ledOff()
 {
   Serial.println("led on");
-  digitalWrite(ledRelayPin, HIGH);
+  digitalWrite(ledRelaypin, HIGH);
 }
