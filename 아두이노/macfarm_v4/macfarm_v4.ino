@@ -127,10 +127,12 @@ void loop() {
     sendDataPrevMillis = millis();
     Serial.println("1-1");
     date = getDate();
-    pushData("/user/sensor/" + date + "/temp", temp);
-    pushData("/user/sensor/" + date + "/humi", humi);
-    pushData("/user/sensor/" + date + "/soilhumi", soilhumi);
-    pushData("/user/sensor/" + date + "/light", light);
+    Serial.println("1-2");
+
+//    pushData("/user/sensor/" + date + "/temp", temp);
+//    pushData("/user/sensor/" + date + "/humi", humi);
+//    pushData("/user/sensor/" + date + "/soilhumi", soilhumi);
+//    pushData("/user/sensor/" + date + "/light", light);
     Serial.println("1-2");
   }
   Serial.println("2");
@@ -177,7 +179,11 @@ void printData(int humi, int temp, int light, int soilhumi) {
 
 // 데이터 값을 데이터베이스로 옮기는 함수
 void pushData(String path, int sensordata) {
+  Serial.println("pushdata start");
+
   getLocalTime(&timeinfo);
+  Serial.println("getlocaltime done1");
+
   while (real_push == false) {
     if (String(timeinfo.tm_min) == "0" || String(timeinfo.tm_min) == "30" ) {
       if (Firebase.RTDB.pushInt(&fbdo, path, sensordata)) {
