@@ -14,8 +14,6 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
 
 class AutoControlActivity : AppCompatActivity() {
 
@@ -50,9 +48,10 @@ class AutoControlActivity : AppCompatActivity() {
 
         //파이어 베이스 데이터 트리 경로의 값을 저장합니다.
         val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference("user/userdata/temp")
-        val myRef2 = database.getReference("user/userdata/soil_humi")
-        val myRef3 = database.getReference("user/userdata/light")
+        val tempRef = database.getReference("user/userdata/temp")
+        val soilHumidityRef = database.getReference("user/userdata/soil_humi")
+        val lightRef = database.getReference("user/userdata/light")
+        val modeRef = database.getReference("user/mode")
 
         var tempNumber: Int = tempView.text.toString().toInt()
         var humidNumber: Int = humidView.text.toString().toInt()
@@ -60,7 +59,7 @@ class AutoControlActivity : AppCompatActivity() {
 
         //자동 제어 화면으로 들어오면 프로그래스 바는 이전 사용자 설정 데이터를 파이어베이스로부터 불러옵니다
         //myRef, myRef2, myRef3는 3개의 프로그래스 바의 이전 상태로 설정 합니다.
-        myRef.addValueEventListener(object : ValueEventListener{
+        tempRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 Log.d("@@@@@ tempView @@@@@@", snapshot.value.toString())
                 tempView.text = snapshot.value.toString()
@@ -71,7 +70,7 @@ class AutoControlActivity : AppCompatActivity() {
                 TODO("Not yet implemented")
             }
         })
-        myRef2.addValueEventListener(object : ValueEventListener{
+        soilHumidityRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 humidView.text = snapshot.value.toString()
                 humidNumber = humidView.text.toString().toInt()
@@ -81,7 +80,7 @@ class AutoControlActivity : AppCompatActivity() {
                 TODO("Not yet implemented")
             }
         })
-        myRef3.addValueEventListener(object : ValueEventListener{
+        lightRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 lightView.text = snapshot.value.toString()
                 lightNumber = lightView.text.toString().toInt()
@@ -104,7 +103,6 @@ class AutoControlActivity : AppCompatActivity() {
             else {
                 Toast.makeText(this@AutoControlActivity, "범위 초과", Toast.LENGTH_SHORT).show()
                 tempNumber += 5
-
             }
         }
         tempPlusBtn.setOnClickListener {
@@ -118,7 +116,6 @@ class AutoControlActivity : AppCompatActivity() {
             else {
                 Toast.makeText(this@AutoControlActivity, "범위 초과", Toast.LENGTH_SHORT).show()
                 tempNumber -= 5
-
             }
         }
         humidMinusBtn.setOnClickListener{
@@ -132,7 +129,6 @@ class AutoControlActivity : AppCompatActivity() {
             else {
                 Toast.makeText(this@AutoControlActivity, "범위 초과", Toast.LENGTH_SHORT).show()
                 humidNumber += 5
-
             }
         }
         humidPlusBtn.setOnClickListener {
@@ -146,7 +142,6 @@ class AutoControlActivity : AppCompatActivity() {
             else {
                 Toast.makeText(this@AutoControlActivity, "범위 초과", Toast.LENGTH_SHORT).show()
                 humidNumber -= 5
-
             }
         }
         lightMinusBtn.setOnClickListener{
@@ -173,19 +168,11 @@ class AutoControlActivity : AppCompatActivity() {
             else {
                 Toast.makeText(this@AutoControlActivity, "범위 초과", Toast.LENGTH_SHORT).show()
                 lightNumber -= 5
-
             }
         }
         //저장버튼 클릭시 사용자 알림창을 띄우고,
         //파이어베이스 데이터베이스 트리 노드 userdata에 값을 저장합니다.
         saveBtn.setOnClickListener{
-
-            val database = Firebase.database
-            val myRef1 = database.getReference("user/userdata/temp")
-            val myRef2 = database.getReference("user/userdata/soil_humi")
-            val myRef3 = database.getReference("user/userdata/light")
-            val myRef4 = database.getReference("user/mode")
-
             val builder = AlertDialog.Builder(this)
             builder
                 .setTitle("알림")
@@ -194,17 +181,15 @@ class AutoControlActivity : AppCompatActivity() {
                         "                토양 습도 : $humidNumber\n" +
                         "                밝기 : $lightNumber")
                 .setCancelable(false)
-
                 .setPositiveButton("확인") { _, _ ->
-                    myRef1.setValue(tempNumber)
-                    myRef2.setValue(humidNumber)
-                    myRef3.setValue(lightNumber)
-                    myRef4.setValue(2)
+                    tempRef.setValue(tempNumber)
+                    soilHumidityRef.setValue(humidNumber)
+                    lightRef.setValue(lightNumber)
+                    modeRef.setValue(2)
                     Toast.makeText(baseContext, "확인 버튼 클릭!", Toast.LENGTH_SHORT).show()
                 }
                 .setNegativeButton("취소"
                 ) { _, _ -> Toast.makeText(baseContext, "취소 버튼 클릭!", Toast.LENGTH_SHORT).show() }
-
                 .create()
             builder.show()
         }
