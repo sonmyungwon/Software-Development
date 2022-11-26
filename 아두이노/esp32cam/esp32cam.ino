@@ -23,26 +23,26 @@
 
 
 //Replace with your network credentials
-const char* ssid = "YOURWIFI";
-const char* password = "YOURPASSWORD";
+const char* ssid = "YOURWIFIID";
+const char* password = "YOURWIFIPASSWORD";
 const char* ntpServer = "pool.ntp.org";
 uint8_t timeZone = 9;
 uint8_t summerTime = 0; // 3600
 struct tm timeinfo;
 // Insert Firebase project API Key
-#define API_KEY "AIzaSyDBoYq6INOz0Ye96-bM0FYMgY8T5Huoy6s"
+#define API_KEY "YOURAPIKEY"
 
 // Insert Authorized Email and Corresponding Password
-#define USER_EMAIL "NAVER"
+#define USER_EMAIL "YOUREMAIL"
 #define USER_PASSWORD "YOURPASSWORD"
 
 // Insert Firebase storage bucket ID e.g bucket-name.appspot.com
-#define STORAGE_BUCKET_ID "esptest-c420f.appspot.com"
+#define STORAGE_BUCKET_ID "YOURBUCKETID"
 
 // Photo File Name to save in SPIFFS
 //#define FILE_PHOTO "/data/photo2.jpg"
 String FILE_PHOTO = "";       //사진이 저장될 path
-String settingtime ="05750";      //사진을 촬영할 시간 hhmmss 시간 00시인 경우 0으로 표현
+String settingtime ="131010";      //사진을 촬영할 시간 hhmmss 시간 00시인 경우 0으로 표현
 String realtime = "";
 // OV2640 camera module pins (CAMERA_MODEL_AI_THINKER)
 #define PWDN_GPIO_NUM     32
@@ -69,7 +69,7 @@ FirebaseData fbdo;
 FirebaseAuth auth;
 FirebaseConfig configF;
 
-bool taskCompleted = false;
+bool taskCompleted = false;     //사진찍기를 완료했는지 확인하기 위한 변수
 
 
 void setup() {
@@ -99,7 +99,11 @@ void setup() {
 
 void loop() {
   getLocalTime(&timeinfo);
+  takeNewPhoto = true;
+  taskCompleted = false;
+  
   realtime = String(timeinfo.tm_hour)+String(timeinfo.tm_min)+String(timeinfo.tm_sec);    //현재 시간을 hhmmss 형식으로 나타냄
+  Serial.println(realtime);
   if(realtime == settingtime){
     if (takeNewPhoto) {
       capturePhotoSaveSpiffs();
@@ -121,9 +125,6 @@ void loop() {
     }
   }
 }
-
-
-
 
 
 // Check if photo capture was successful
