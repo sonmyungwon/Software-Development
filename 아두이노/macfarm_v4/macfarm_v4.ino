@@ -273,7 +273,7 @@ void comparePump(int shumi_user_setting, int soilhumi, int pumpRelayPin) {
   if (Firebase.RTDB.getInt(&fbdo, "/user/userdata/soil_humi") && fbdo.dataType() == "int") {
     shumi_user_setting = fbdo.intData();
     Serial.println(shumi_user_setting);
-    if ( shumi_user_setting < soilhumi) {                             //센서값받아보고 비교필요
+    if ( shumi_user_setting < soilhumi) {                          
       Serial.println(shumi_user_setting);
       devicectrl.pumpOn(pumpRelayPin);
       delay(2500);
