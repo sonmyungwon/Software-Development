@@ -20,6 +20,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.getValue
 import com.google.firebase.storage.FirebaseStorage
 import java.io.File
 import java.util.Calendar
@@ -76,19 +77,15 @@ class DiaryActivity : AppCompatActivity() {
         }
 
         val database = FirebaseDatabase.getInstance()
-        val humidityRef = database.getReference("user/auto/sensor/${textDay.text}/humi")
-        val soilHumidityRef = database.getReference("user/auto/sensor/20221112/soil_humi")
-        val tempRef = database.getReference("user/auto/sensor/20221112/temp")
-        val lightRef = database.getReference("user/auto/sensor/221116/light")
+        val humidityRef = database.getReference("user/sensor/221123/humi")
+        val soilHumidityRef = database.getReference("user/sensor/221123/soil_humi")
+        val tempRef = database.getReference("user/sensor/221123/temp")
+        val lightRef = database.getReference("user/sensor/221123/light")
 
         //각 센서값의 그래프 그리기 humidityRef, soilHumidityRef, tempRef, lightRef
         humidityRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val split = snapshot.value.toString().split("=", ", ", "}")
-                for (i:Int in 0 until split.size/2) {
-                    addChartItem("$i", split[i*2+1].toDouble()+0 , chartDataHumidity)
-                }
-                lineChart(chartDataHumidity,"humidity")
+                makeGraph(snapshot, chartDataHumidity, "humidity")
             }
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
@@ -96,11 +93,7 @@ class DiaryActivity : AppCompatActivity() {
         })
         soilHumidityRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val split = snapshot.value.toString().split("=", ", ", "}")
-                for (i:Int in 0 until split.size/2-1) {
-                    addChartItem("$i", split[i*2+1].toDouble()+0 , chartDataSoilHumid)
-                }
-                lineChart(chartDataSoilHumid,"soil_humi")
+                makeGraph(snapshot,chartDataSoilHumid,"soil_humidity")
             }
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
@@ -108,11 +101,7 @@ class DiaryActivity : AppCompatActivity() {
         })
         tempRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val split = snapshot.value.toString().split("=", ", ", "}")
-                for (i:Int in 0 until split.size/2-1) {
-                    addChartItem("$i", split[i*2+1].toDouble()+0 , chartDataTemp)
-                }
-                lineChart(chartDataTemp,"temp")
+                makeGraph(snapshot,chartDataTemp,"temperature")
             }
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
@@ -120,17 +109,12 @@ class DiaryActivity : AppCompatActivity() {
         })
         lightRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val split = snapshot.value.toString().split("=", ", ", "}")
-                for (i:Int in 0 until split.size/2-1) {
-                    addChartItem("$i", split[i*2+1].toDouble()+0 , chartDataLight)
-                }
-                lineChart(chartDataLight,"light")
+                makeGraph(snapshot,chartDataLight,"light")
             }
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
         })
-        println("배열 출력 : $chartDataHumidity")
     }
     //그래프의 값을 chartData배열에 저장합니다.
     private fun addChartItem(lableItem: String, dataItem: Double, chartData: ArrayList<ChartData>) {
@@ -143,9 +127,9 @@ class DiaryActivity : AppCompatActivity() {
     private fun lineChart(chartData: ArrayList<ChartData>, name : String) {
         when (name) {
             "humidity" -> lineChart = findViewById(R.id.linechart_humidity)
-            "soil_humi" -> lineChart = findViewById(R.id.linechart_soil_humi)
+            "soil_humidity" -> lineChart = findViewById(R.id.linechart_soil_humi)
             "light" -> lineChart = findViewById(R.id.linechart_light)
-            "temp" -> lineChart = findViewById(R.id.linechart_temp)
+            "temperature" -> lineChart = findViewById(R.id.linechart_temp)
         }
 
         val entries = mutableListOf<Entry>()  //차트 데이터 셋에 담겨질 데이터
@@ -159,9 +143,9 @@ class DiaryActivity : AppCompatActivity() {
 
         when (name) {//LineChart에서 Line Color 설정
             "humidity" -> lineDataSet.color = Color.BLUE
-            "soil_humi" -> lineDataSet.color = Color.RED
+            "soil_humidity" -> lineDataSet.color = Color.RED
             "light" -> lineDataSet.color = Color.GREEN
-            "temp" -> lineDataSet.color = Color.YELLOW
+            "temperature" -> lineDataSet.color = Color.YELLOW
         }
 
         lineDataSet.circleHoleColor = Color.TRANSPARENT  // LineChart에서 Line Circle Color 설정
@@ -180,6 +164,14 @@ class DiaryActivity : AppCompatActivity() {
         xAxis.position = XAxis.XAxisPosition.BOTTOM
 
         lineChart.invalidate()
+    }
+
+    fun makeGraph(snapshot: DataSnapshot, arrayList: ArrayList<ChartData>,name:String){
+        var array = snapshot.value.toString().split("{" , ", " , "}").sorted()
+        for (i:Int in 2 until array.size) {
+            addChartItem("${((i).toDouble()-2)/2}", array[i].split("=")[1].toDouble()+0 , arrayList)
+        }
+        lineChart(arrayList,name)
     }
 }
 //그래프의 값이 저장되는 배열에 저장될 데이터 클래스

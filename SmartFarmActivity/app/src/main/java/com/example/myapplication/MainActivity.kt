@@ -31,10 +31,6 @@ class MainActivity : AppCompatActivity() {
     private val fanRef = database.getReference("user/device/fan")
     private val pumpRef = database.getReference("user/device/pump")
     private val exceptRef = database.getReference("user/exception")
-    private val realLedRef = database.getReference("user/device/real_led_on")
-    private val realFanRef = database.getReference("user/device/real_fan_on")
-    private val realPumpRef = database.getReference("user/device/real_pump_on")
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         auth = Firebase.auth
@@ -99,35 +95,35 @@ class MainActivity : AppCompatActivity() {
                 if(onSwitch){
                     modeRef.setValue(1)
                     ledRef.setValue(1)
-                    progressScreen(1)
+                    progressScreen(1,"user/device/real_led_on")
                 }
                 else {
                     ledRef.setValue(0)
                     modeRef.setValue(1)
-                    progressScreen(2)
+                    progressScreen(2, "user/device/real_led_on")
                 }
             }
             mAlertDialog.findViewById<Switch>(R.id.fanSwitch)?.setOnCheckedChangeListener{_, onSwitch->
                 if(onSwitch){
                     fanRef.setValue(1)
                     modeRef.setValue(1)
-                    progressScreen(3)
+                    progressScreen(1, "user/device/real_fan_on")
                 }else{
                     fanRef.setValue(0)
                     modeRef.setValue(1)
-                    progressScreen(4)
+                    progressScreen(2, "user/device/real_fan_on")
                 }
             }
             mAlertDialog.findViewById<Switch>(R.id.pumpSwitch)?.setOnCheckedChangeListener { _, onSwitch->
                 if(onSwitch){
                     pumpRef.setValue(1)
                     modeRef.setValue(1)
-                    progressScreen(5)
+                    progressScreen(1, "user/device/real_pump_on")
 
                 }else{
                     pumpRef.setValue(0)
                     modeRef.setValue(1)
-                    progressScreen(6)
+                    progressScreen(2, "user/device/real_pump_on")
                 }
             }
 
@@ -168,14 +164,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
     //수동제어 중 아두이노 장치가 켜지거나 꺼졌는지 확인하고 로딩창을 종료하는 메서드입니다.
-    private fun progressScreen(progressMode:Int): Int{
+    private fun progressScreen(progressMode:Int, path: String): Int{
+        val realRef = database.getReference("$path")
         val progressDialog = ProgressDialog(this)
         progressDialog.setMessage("Fetching")
         progressDialog.setCancelable(false)
         progressDialog.show()
         when (progressMode) {
             1 -> {
-                realLedRef.addValueEventListener(object : ValueEventListener{
+                realRef.addValueEventListener(object : ValueEventListener{
                     override fun onDataChange(snapshot: DataSnapshot) {
                         if(snapshot.value.toString().toInt() == 1){
                             progressDialog.dismiss()
@@ -187,55 +184,7 @@ class MainActivity : AppCompatActivity() {
                 })
             }
             2 -> {
-                realLedRef.addValueEventListener(object : ValueEventListener{
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        if(snapshot.value.toString().toInt() == 0){
-                            progressDialog.dismiss()
-                        }
-                    }
-                    override fun onCancelled(error: DatabaseError) {
-                        TODO("Not yet implemented")
-                    }
-                })
-            }
-            3 -> {
-                realFanRef.addValueEventListener(object : ValueEventListener{
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        if(snapshot.value.toString().toInt() == 1){
-                            progressDialog.dismiss()
-                        }
-                    }
-                    override fun onCancelled(error: DatabaseError) {
-                        TODO("Not yet implemented")
-                    }
-                })
-            }
-            4 -> {
-                realFanRef.addValueEventListener(object : ValueEventListener{
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        if(snapshot.value.toString().toInt() == 0){
-                            progressDialog.dismiss()
-                        }
-                    }
-                    override fun onCancelled(error: DatabaseError) {
-                        TODO("Not yet implemented")
-                    }
-                })
-            }
-            5 -> {
-                realPumpRef.addValueEventListener(object : ValueEventListener{
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        if(snapshot.value.toString().toInt() == 1){
-                            progressDialog.dismiss()
-                        }
-                    }
-                    override fun onCancelled(error: DatabaseError) {
-                        TODO("Not yet implemented")
-                    }
-                })
-            }
-            6 -> {
-                realPumpRef.addValueEventListener(object : ValueEventListener{
+                realRef.addValueEventListener(object : ValueEventListener{
                     override fun onDataChange(snapshot: DataSnapshot) {
                         if(snapshot.value.toString().toInt() == 0){
                             progressDialog.dismiss()
@@ -248,9 +197,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        if(progressMode == 1 || progressMode == 3 || progressMode == 5){
+        if (progressMode == 1) {
             Toast.makeText(this, "switch on", Toast.LENGTH_SHORT).show()
-        }else if(progressMode == 2 || progressMode == 4 || progressMode == 6){
+        } else if (progressMode == 2) {
             Toast.makeText(this, "switch off", Toast.LENGTH_SHORT).show()
         }
         return 1
