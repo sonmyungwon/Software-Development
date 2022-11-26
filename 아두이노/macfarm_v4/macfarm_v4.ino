@@ -119,23 +119,17 @@ void loop() {
   int soilhumi = s0 / 4;   // 읽은 토양습도 데이터 값
 
   check(humi, temp);
-
   printData(humi, temp, light, soilhumi);
-  Serial.println("1");
+  
   // 센서 데이터 값 3초 마다 데이터베이스로 옮김
   if (Firebase.ready() && signupOK && (millis() - sendDataPrevMillis > 3000 || sendDataPrevMillis == 0)) {
     sendDataPrevMillis = millis();
-    Serial.println("1-1");
     date = getDate();
-    Serial.println("1-2");
-
 //    pushData("/user/sensor/" + date + "/temp", temp);
 //    pushData("/user/sensor/" + date + "/humi", humi);
 //    pushData("/user/sensor/" + date + "/soilhumi", soilhumi);
 //    pushData("/user/sensor/" + date + "/light", light);
-    Serial.println("1-2");
-  }
-  Serial.println("2");
+}
   // 데이터베이스에서 mode를 받음
   if (Firebase.RTDB.getInt(&fbdo, "/user/mode") && fbdo.dataType() == "int") {
     intmode = fbdo.intData();
@@ -153,7 +147,6 @@ void loop() {
       Serial.println("mode error");
     }
   }
-  Serial.println("3");
 
 }
 
@@ -179,18 +172,13 @@ void printData(int humi, int temp, int light, int soilhumi) {
 
 // 데이터 값을 데이터베이스로 옮기는 함수
 void pushData(String path, int sensordata) {
-  Serial.println("pushdata start");
-
   getLocalTime(&timeinfo);
-  Serial.println("getlocaltime done1");
-
   while (real_push == false) {
     if (String(timeinfo.tm_min) == "0" || String(timeinfo.tm_min) == "30" ) {
       if (Firebase.RTDB.pushInt(&fbdo, path, sensordata)) {
         Serial.println(sensordata);
         Serial.println(path + ": PASSED");
-        real_push = true; //loop 시작하자마자 false로 고치는거 필요할듯
-      }
+        real_push = true;                                          
       else {
         Serial.println("FAILED");
         Serial.println("REASON: " + fbdo.errorReason());
