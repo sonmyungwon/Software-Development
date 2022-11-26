@@ -43,11 +43,12 @@ class AutoControlActivity : AppCompatActivity() {
         val dataLightText : TextView = findViewById(R.id.data_light)
 
         val saveBtn: Button = findViewById(R.id.save_btn)
-
+        //프로그래스 바
         val tempProgressBar: ProgressBar = findViewById(R.id.temp_progress_bar)
         val soilProgressBar: ProgressBar = findViewById(R.id.soil_progress_bar)
         val lightProgressBar: ProgressBar = findViewById(R.id.light_progress_bar)
 
+        //파이어 베이스 데이터 트리 경로의 값을 저장합니다.
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference("user/userdata/temp")
         val myRef2 = database.getReference("user/userdata/soil_humi")
@@ -57,7 +58,8 @@ class AutoControlActivity : AppCompatActivity() {
         var humidNumber: Int = humidView.text.toString().toInt()
         var lightNumber: Int = lightView.text.toString().toInt()
 
-        //사용자 설정 데이터 파이어베이스로부터 불러오기 myRef, myRef2, myRef3
+        //자동 제어 화면으로 들어오면 프로그래스 바는 이전 사용자 설정 데이터를 파이어베이스로부터 불러옵니다
+        //myRef, myRef2, myRef3는 3개의 프로그래스 바의 이전 상태로 설정 합니다.
         myRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 Log.d("@@@@@ tempView @@@@@@", snapshot.value.toString())
@@ -89,10 +91,10 @@ class AutoControlActivity : AppCompatActivity() {
                 TODO("Not yet implemented")
             }
         })
-        //플러스 마이너스 버튼 클릭시 프로그래스 바 작동
+        //플러스 마이너스 버튼 클릭시 프로그래스 바 작동, 상태 텍스트(ex. 적당, 매우 많음, 등,,) 변환,
+        //그리고 사용자 데이터 변환 후 실제 데이터 단위를 텍스르로 나타냅니다.
         tempMinusBtn.setOnClickListener{
             tempNumber -= 5
-
             if (tempNumber in 0..100) {
                 tempView.text = "$tempNumber"
                 tempProgressBar.incrementProgressBy(-5)
@@ -121,9 +123,7 @@ class AutoControlActivity : AppCompatActivity() {
         }
         humidMinusBtn.setOnClickListener{
             humidNumber -= 5
-
             if (humidNumber in 0..100) {
-
                 humidView.text = "$humidNumber"
                 soilProgressBar.incrementProgressBy(-5)
                 showState(humidNumber, stateSoilHumidText)
@@ -137,7 +137,6 @@ class AutoControlActivity : AppCompatActivity() {
         }
         humidPlusBtn.setOnClickListener {
             humidNumber += 5
-
             if (humidNumber in 0..100) {
                 humidView.text = "$humidNumber"
                 soilProgressBar.incrementProgressBy(5)
@@ -152,9 +151,7 @@ class AutoControlActivity : AppCompatActivity() {
         }
         lightMinusBtn.setOnClickListener{
             lightNumber -= 5
-
             if (lightNumber in 0..100) {
-
                 lightView.text = "$lightNumber"
                 lightProgressBar.incrementProgressBy(-5)
                 showState(lightNumber, stateLightText)
@@ -167,9 +164,7 @@ class AutoControlActivity : AppCompatActivity() {
         }
         lightPlusBtn.setOnClickListener {
             lightNumber += 5
-
             if (lightNumber in 0..100) {
-
                 lightView.text = "$lightNumber"
                 lightProgressBar.incrementProgressBy(5)
                 showState(lightNumber, stateLightText)
@@ -181,7 +176,8 @@ class AutoControlActivity : AppCompatActivity() {
 
             }
         }
-        //저장버튼 클릭시 알림창 및 파이어베이스 userdata에 값 저장
+        //저장버튼 클릭시 사용자 알림창을 띄우고,
+        //파이어베이스 데이터베이스 트리 노드 userdata에 값을 저장합니다.
         saveBtn.setOnClickListener{
 
             val database = Firebase.database
@@ -213,7 +209,7 @@ class AutoControlActivity : AppCompatActivity() {
             builder.show()
         }
     }
-    //프로그래스 바 옆 상태 텍스트로 나타내기
+    //프로그래스 바 옆 상태를 텍스트로 나타내는 메서드 입니다.
     private fun showState(num: Int, textview: TextView){
         if (num>=80) {
             textview.text = "아주 높음"
@@ -236,7 +232,7 @@ class AutoControlActivity : AppCompatActivity() {
             textview.setTextColor(Color.GRAY)
         }
     }
-    //사용자 값을 센서 값으로 변환
+    //사용자 값을 센서 값 단위로 변환하는 메서드입니다.
     private fun convertData(min: Double, max: Double, num: Int, textview: TextView){
         val rate : Double = (max - min)/100
         val convertNum : Double = min + rate * num

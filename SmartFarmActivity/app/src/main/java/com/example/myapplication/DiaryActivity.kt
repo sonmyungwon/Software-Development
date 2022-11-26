@@ -7,7 +7,6 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.DatePicker
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -28,16 +27,15 @@ import java.util.GregorianCalendar
 
 class DiaryActivity : AppCompatActivity() {
 
-    lateinit var lineChart: LineChart
+    private lateinit var lineChart: LineChart
     private val chartDataHumidity = ArrayList<ChartData>()
     private val chartDataSoilHumid = ArrayList<ChartData>()
     private val chartDataLight = ArrayList<ChartData>()
     private val chartDataTemp = ArrayList<ChartData>()
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_diary)
 
         val dateBtn = findViewById<ImageView>(R.id.dateBtn)
@@ -47,146 +45,136 @@ class DiaryActivity : AppCompatActivity() {
         val year : Int = today.get(Calendar.YEAR)
         val month : Int = today.get(Calendar.MONTH)
         val date : Int = today.get(Calendar.DATE)
-        //달력 아이콘을 클릭시 날짜 설정
+        //달력 아이콘을 클릭시 날짜를 설정하고 텍스트로 나타냅니다.
         dateBtn?.setOnClickListener{
 
-            val dlg = DatePickerDialog(this, object : DatePickerDialog.OnDateSetListener {
-
-                @SuppressLint("SetTextI18n")
-                override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int)
-                {
+            val dlg = DatePickerDialog(this,
+                { _, year, month, dayOfMonth ->
                     Log.d("MAIN", "${year}. ${month + 1}. $dayOfMonth")
                     textDay.text = "${year}. ${month + 1}. $dayOfMonth"
-                }
-
-            },year,month, date)
+                },year,month, date)
 
             dlg.show()
         }
 
+
         val getImage = findViewById<ImageView>(R.id.getImage)
         val imageView = findViewById<ImageView>(R.id.storageImage)
-        //적용 버튼 클릭 시 파이어스토어 스토리지에서 사진 가져오기
+        //적용 버튼 클릭 시 파이어스토어 스토리지에서 해당 날짜의 사진을 가져옵니다.
         getImage.setOnClickListener{
             val imageName = textDay.text.toString()
             val storageRef = FirebaseStorage.getInstance().reference.child("images/$imageName.png")
             val localFile = File.createTempFile("tempImage", "png")
 
             storageRef.getFile(localFile).addOnSuccessListener {
-
                 val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
                 imageView.setImageBitmap(bitmap)
 
             }.addOnFailureListener{
-
                 Toast.makeText(this, "Failed ", Toast.LENGTH_SHORT).show()
             }
         }
 
         val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference("user/auto/sensor/20221112/humi")
-        val myRef1 = database.getReference("user/auto/sensor/20221112/soil_humi")
-        val myRef2 = database.getReference("user/auto/sensor/20221112/temp")
-        val myRef3 = database.getReference("user/auto/sensor/221116/light")
-        //각 센서값의 하루 그래프 그리기 myRef, myRef1, myRef2, myRef3
-        myRef.addValueEventListener(object : ValueEventListener {
+        val humidityRef = database.getReference("user/auto/sensor/${textDay.text}/humi")
+        val soilHumidityRef = database.getReference("user/auto/sensor/20221112/soil_humi")
+        val tempRef = database.getReference("user/auto/sensor/20221112/temp")
+        val lightRef = database.getReference("user/auto/sensor/221116/light")
+
+        //각 센서값의 그래프 그리기 humidityRef, soilHumidityRef, tempRef, lightRef
+        humidityRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val split = snapshot.value.toString().split("=", ", ", "}")
                 for (i:Int in 0 until split.size/2) {
                     addChartItem("$i", split[i*2+1].toDouble()+0 , chartDataHumidity)
                 }
-                LineChart(chartDataHumidity,"humidity")
+                lineChart(chartDataHumidity,"humidity")
             }
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
         })
-        myRef1.addValueEventListener(object : ValueEventListener {
+        soilHumidityRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val split = snapshot.value.toString().split("=", ", ", "}")
                 for (i:Int in 0 until split.size/2-1) {
                     addChartItem("$i", split[i*2+1].toDouble()+0 , chartDataSoilHumid)
                 }
-                LineChart(chartDataSoilHumid,"soil_humi")
+                lineChart(chartDataSoilHumid,"soil_humi")
             }
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
         })
-        myRef2.addValueEventListener(object : ValueEventListener {
+        tempRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val split = snapshot.value.toString().split("=", ", ", "}")
                 for (i:Int in 0 until split.size/2-1) {
                     addChartItem("$i", split[i*2+1].toDouble()+0 , chartDataTemp)
                 }
-                LineChart(chartDataTemp,"temp")
+                lineChart(chartDataTemp,"temp")
             }
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
         })
-        myRef3.addValueEventListener(object : ValueEventListener {
+        lightRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val split = snapshot.value.toString().split("=", ", ", "}")
                 for (i:Int in 0 until split.size/2-1) {
                     addChartItem("$i", split[i*2+1].toDouble()+0 , chartDataLight)
                 }
-                LineChart(chartDataLight,"light")
+                lineChart(chartDataLight,"light")
             }
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
         })
+        println("배열 출력 : $chartDataHumidity")
     }
-
+    //그래프의 값을 chartData배열에 저장합니다.
     private fun addChartItem(lableItem: String, dataItem: Double, chartData: ArrayList<ChartData>) {
         val item = ChartData()
-        item.lableData = lableItem
+        item.lable = lableItem
         item.lineData = dataItem
         chartData.add(item)
     }
-
-    private fun LineChart(chartData: ArrayList<ChartData>, name : String) {
-        if (name == "humidity")
-            lineChart = findViewById(R.id.linechart_humidity)
-        else if (name == "soil_humi")
-            lineChart = findViewById(R.id.linechart_soil_humi)
-        else if (name == "light")
-            lineChart = findViewById(R.id.linechart_light)
-        else if (name == "temp")
-            lineChart = findViewById(R.id.linechart_temp)
-        //  lineChart = findViewById(R.id.linechart_temp)
+    //저장되어있는 배열을 이용하여 그래프를 작성합니다.
+    private fun lineChart(chartData: ArrayList<ChartData>, name : String) {
+        when (name) {
+            "humidity" -> lineChart = findViewById(R.id.linechart_humidity)
+            "soil_humi" -> lineChart = findViewById(R.id.linechart_soil_humi)
+            "light" -> lineChart = findViewById(R.id.linechart_light)
+            "temp" -> lineChart = findViewById(R.id.linechart_temp)
+        }
 
         val entries = mutableListOf<Entry>()  //차트 데이터 셋에 담겨질 데이터
 
         for (item in chartData) {
-            entries.add(Entry(item.lableData.replace(("[^\\d.]").toRegex(), "").toFloat(), item.lineData.toFloat()))
+            entries.add(Entry(item.lable.replace(("[^\\d.]").toRegex(), "").toFloat(), item.lineData.toFloat()))
         }
 
         //LineDataSet 선언
-        val lineDataSet: LineDataSet
-        lineDataSet = LineDataSet(entries, name)
-        if (name == "humidity")
-            lineDataSet.color = Color.BLUE  //LineChart에서 Line Color 설정
-        else if (name == "soil_humi")
-            lineDataSet.color = Color.RED
-        else if (name == "light")
-            lineDataSet.color = Color.GREEN
-        else if (name == "temp")
-            lineDataSet.color = Color.YELLOW
+        val lineDataSet = LineDataSet(entries, name)
 
-        lineDataSet.setCircleColor(Color.TRANSPARENT)  // LineChart에서 Line Circle Color 설정
-        lineDataSet.setCircleHoleColor(Color.TRANSPARENT) // LineChart에서 Line Hole Circle Color 설정
+        when (name) {//LineChart에서 Line Color 설정
+            "humidity" -> lineDataSet.color = Color.BLUE
+            "soil_humi" -> lineDataSet.color = Color.RED
+            "light" -> lineDataSet.color = Color.GREEN
+            "temp" -> lineDataSet.color = Color.YELLOW
+        }
+
+        lineDataSet.circleHoleColor = Color.TRANSPARENT  // LineChart에서 Line Circle Color 설정
+        lineDataSet.circleHoleColor = Color.TRANSPARENT // LineChart에서 Line Hole Circle Color 설정
 
         val dataSets = ArrayList<ILineDataSet>()
-        dataSets.add(lineDataSet) // add the data sets
+        dataSets.add(lineDataSet) // 데이터 셋 추가
 
-        // create a data object with the data sets
         val data = LineData(dataSets)
 
-        // set data
-        lineChart.setData(data)
-        lineChart.setDescription(null) //차트에서 Description 설정 삭제
+        // 데이터 설정
+        lineChart.data = data
+        lineChart.description = null //차트에서 Description 설정 삭제
         //XAxis.XAxisPosition.BOTTOM // 라벨 위치 설정
         val xAxis = lineChart.xAxis
         xAxis.position = XAxis.XAxisPosition.BOTTOM
@@ -194,8 +182,9 @@ class DiaryActivity : AppCompatActivity() {
         lineChart.invalidate()
     }
 }
+//그래프의 값이 저장되는 배열에 저장될 데이터 클래스
 data class ChartData(
-    var lableData: String = "",
+    var lable: String = "",
     var valData: Double = 0.0,
     var lineData: Double = 0.0
 )
