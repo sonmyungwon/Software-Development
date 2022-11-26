@@ -216,7 +216,7 @@ void retrievePump(int pump_signal, int soilhumi, int pumpRelayPin) {
   //Firebase로부터 사용자의 onoff 신호를 받는 부분
   if (Firebase.RTDB.getInt(&fbdo, "/user/device/pump") && fbdo.dataType() == "int") {
     pump_signal = fbdo.intData();
-    if (soilhumi > 500) {//물 넘치지 않은 상태
+    if (soilhumi > 700) {//물 넘치지 않은 상태
       if (pump_signal == 1) {
         devicectrl.pumpOn(pumpRelayPin);
         realCheck("/user/device/real_pump_on", 1);
