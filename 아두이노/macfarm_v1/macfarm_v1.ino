@@ -1,5 +1,5 @@
 /*
-    smarfarm
+    SmarFarm
 
     센서값을 읽어서 데이터 베이스에 올리고 사용자의 제어값을 읽어와 장치를 제어한다.
  
@@ -15,9 +15,14 @@
     Modified day month year
     By author's name
 
-    https://randomnerdtutorials.com/esp32-firebase-realtime-database/
+    (ESP32 데이터베이스 연결)https://randomnerdtutorials.com/esp32-firebase-realtime-database/
+    (토양습도센서)https://happyguy81.tistory.com/m/65
+    (조도센서)https://www.instructables.com/BH1750-Digital-Light-Sensor/
+    (온습도센서)http://jujc.yonam.ac.kr/lecture/ans_ict/aduino/5._dht11_senser.htm
+    (ESP32 데이터)https://randomnerdtutorials.com/esp32-date-time-ntp-client-server-arduino/
 
 */
+//checktiesensor,getusersetting,retrieveData
 #include "DHT.h"
 #include <Arduino.h>
 #if defined(ESP32)
@@ -191,6 +196,7 @@ void printData(int humi, int temp, int light, int soilhumi) {
   Serial.println(soilhumi);
 }
 
+checkTimeSensor
 // 데이터 값을 데이터베이스로 옮기는 함수
 void pushData(String path, int sensordata) {
   getLocalTime(&timeinfo);
