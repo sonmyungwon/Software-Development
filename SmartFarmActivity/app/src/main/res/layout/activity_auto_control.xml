@@ -76,15 +76,24 @@
 
     <Button
         android:id="@+id/humid_plus_btn"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginStart="36dp"
         android:layout_marginTop="28dp"
         android:text="+"
+        android:background="#00ff0000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.764"
         app:layout_constraintStart_toEndOf="@+id/humidText"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/plus_btn"
+        app:layout_constraintBottom_toBottomOf="@+id/humid_plus_btn"
+        app:layout_constraintEnd_toEndOf="@+id/humid_plus_btn"
+        app:layout_constraintTop_toTopOf="@+id/humid_plus_btn"
+        app:layout_constraintStart_toStartOf="@+id/humid_plus_btn"/>
 
     <TextView
         android:id="@+id/textView18"
@@ -126,27 +135,46 @@
 
     <Button
         android:id="@+id/illum_plus_btn"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginStart="48dp"
         android:layout_marginTop="32dp"
         android:text="+"
+        android:background="#00ff0000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.673"
         app:layout_constraintStart_toEndOf="@+id/illumText"
         app:layout_constraintTop_toBottomOf="@+id/textView18" />
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/plus_btn"
+        app:layout_constraintBottom_toBottomOf="@+id/illum_plus_btn"
+        app:layout_constraintEnd_toEndOf="@+id/illum_plus_btn"
+        app:layout_constraintTop_toTopOf="@+id/illum_plus_btn"
+        app:layout_constraintStart_toStartOf="@+id/illum_plus_btn"/>
 
     <Button
         android:id="@+id/illum_minus_btn"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="40dp"
         android:text="-"
+        android:background="#00ff0000"
         app:layout_constraintEnd_toStartOf="@+id/illumText"
         app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/minus_btn"
+        app:layout_constraintBottom_toBottomOf="@+id/illum_minus_btn"
+        app:layout_constraintEnd_toEndOf="@+id/illum_minus_btn"
+        app:layout_constraintTop_toTopOf="@+id/illum_minus_btn"
+        app:layout_constraintStart_toStartOf="@+id/illum_minus_btn"/>
 
     <TextView
         android:id="@+id/textView16"
@@ -207,52 +235,91 @@
 
     <Button
         android:id="@+id/humid_minus_btn"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="24dp"
         android:text="-"
+        android:background="#00ff0000"
         app:layout_constraintEnd_toStartOf="@+id/humidText"
         app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
-    <Button
-        android:id="@+id/temp_plus_btn"
+    <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:src="@drawable/minus_btn"
+        app:layout_constraintBottom_toBottomOf="@+id/humid_minus_btn"
+        app:layout_constraintEnd_toEndOf="@+id/humid_minus_btn"
+        app:layout_constraintTop_toTopOf="@+id/humid_minus_btn"
+        app:layout_constraintStart_toStartOf="@+id/humid_minus_btn"/>
+
+    <Button
+        android:id="@+id/temp_plus_btn"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginStart="52dp"
         android:layout_marginTop="20dp"
         android:text="+"
+        android:background="#00ff0000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.715"
         app:layout_constraintStart_toEndOf="@+id/tempText"
         app:layout_constraintTop_toBottomOf="@+id/textView20" />
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/plus_btn"
+        app:layout_constraintBottom_toBottomOf="@+id/temp_plus_btn"
+        app:layout_constraintEnd_toEndOf="@+id/temp_plus_btn"
+        app:layout_constraintTop_toTopOf="@+id/temp_plus_btn"
+        app:layout_constraintStart_toStartOf="@+id/temp_plus_btn"/>
 
     <Button
         android:id="@+id/temp_minus_btn"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
         android:text="-"
+        android:background="#00ff0000"
         app:layout_constraintEnd_toStartOf="@+id/tempText"
         app:layout_constraintHorizontal_bias="0.46"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/minus_btn"
+        app:layout_constraintBottom_toBottomOf="@+id/temp_minus_btn"
+        app:layout_constraintEnd_toEndOf="@+id/temp_minus_btn"
+        app:layout_constraintTop_toTopOf="@+id/temp_minus_btn"
+        app:layout_constraintStart_toStartOf="@+id/temp_minus_btn"/>
+
     <Button
         android:id="@+id/save_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="235dp"
+        android:layout_height="43dp"
         android:layout_marginBottom="104dp"
+        android:background="#00ff0000"
         android:text="save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.545"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/illumText"
-        app:layout_constraintVertical_bias="0.954" />
+        app:layout_constraintVertical_bias="0.949" />
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="45dp"
+        android:src="@drawable/login_btn"
+        app:layout_constraintBottom_toBottomOf="@+id/save_btn"
+        app:layout_constraintEnd_toEndOf="@+id/save_btn"
+        app:layout_constraintStart_toStartOf="@+id/save_btn"
+        app:layout_constraintTop_toTopOf="@+id/save_btn" />
 
     <TextView
         android:layout_width="wrap_content"

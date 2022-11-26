@@ -14,6 +14,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import kotlin.math.roundToInt
 
 class AutoControlActivity : AppCompatActivity() {
     val database = FirebaseDatabase.getInstance()
@@ -124,7 +125,7 @@ class AutoControlActivity : AppCompatActivity() {
                 humidView.text = "$humidNumber"
                 soilProgressBar.incrementProgressBy(-5)
                 showState(humidNumber, stateSoilHumidText)
-                convertData(10.0, 30.0, humidNumber, dataSoilHumidText)
+                convertData(1023.0, 500.0, humidNumber, dataSoilHumidText)
             }
             else {
                 Toast.makeText(this@AutoControlActivity, "범위 초과", Toast.LENGTH_SHORT).show()
@@ -137,7 +138,7 @@ class AutoControlActivity : AppCompatActivity() {
                 humidView.text = "$humidNumber"
                 soilProgressBar.incrementProgressBy(5)
                 showState(humidNumber, stateSoilHumidText)
-                convertData(10.0, 30.0, humidNumber, dataSoilHumidText)
+                convertData(1023.0, 500.0, humidNumber, dataSoilHumidText)
             }
             else {
                 Toast.makeText(this@AutoControlActivity, "범위 초과", Toast.LENGTH_SHORT).show()
@@ -171,7 +172,6 @@ class AutoControlActivity : AppCompatActivity() {
             }
         }
         //저장버튼 클릭시 사용자 알림창을 띄우고,
-
         saveBtn.setOnClickListener{
             val builder = AlertDialog.Builder(this)
             builder
@@ -192,7 +192,7 @@ class AutoControlActivity : AppCompatActivity() {
         }
     }
     //파이어베이스 데이터베이스 트리 노드 userdata에 값을 저장합니다.
-    private fun sendUserSetting(tempNumber:Int, humidNumber: Int, lightNumber:Int){
+    private fun sendUserSetting(tempNumber: Int, humidNumber: Int, lightNumber: Int){
         tempRef.setValue(tempNumber)
         soilHumidityRef.setValue(humidNumber)
         lightRef.setValue(lightNumber)
@@ -224,7 +224,7 @@ class AutoControlActivity : AppCompatActivity() {
     //사용자 값을 센서 값 단위로 변환하는 메서드입니다.
     private fun convertData(min: Double, max: Double, num: Int, textview: TextView){
         val rate : Double = (max - min)/100
-        val convertNum : Double = min + rate * num
+        val convertNum : Double = ((min + rate * num)*100).roundToInt()/100.0
         textview.text = "$convertNum"
     }
 }
