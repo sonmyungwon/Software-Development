@@ -13,7 +13,7 @@
 #include "addons/TokenHelper.h"
 //Provide the RTDB payload printing info and other helper functions.
 #include "addons/RTDBHelper.h"
-#include "Device_Ctrl.h"
+#include "Device_Ctrl_child.h"
 
 // Insert your network credentials
 const char *WIFI_SSID = "son";
