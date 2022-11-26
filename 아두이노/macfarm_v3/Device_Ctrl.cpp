@@ -1,14 +1,8 @@
 // file: NewClass.cpp
 #include "Device_Ctrl.h"
 
-const int dir1Pin = 27;      // 제어신호 1핀
-const int dir2Pin = 26;      // 제어신호 2핀
-const int speedPin = 14;    // PWM제어를 위한 핀
-const int pumpRelayPin = 12;  // pump 릴레이 핀
-const int ledRelayPin = 13;   // led 릴레이 핀 
 
-
-void Device_Ctrl::fanOn()
+void Device_Ctrl::fanOn(int dir1Pin, int dir2Pin, int speedPin)
 {
   Serial.println("motor on");
   digitalWrite(dir1Pin, HIGH);         //모터가 시계 방향으로 회전
@@ -16,33 +10,33 @@ void Device_Ctrl::fanOn()
   analogWrite(speedPin, 255); // 세기조절 가능
 }
 
-void Device_Ctrl::fanOn()
+void Device_Ctrl::fanOff(int dir1Pin, int dir2Pin)
 {
   Serial.println("Motor stopped");
   digitalWrite(dir1Pin, LOW);
   digitalWrite(dir2Pin, LOW);
 }
 
-void Device_Ctrl::pumpOn()
+void Device_Ctrl::pumpOn(int pumpRelayPin)
 {
   Serial.println("pump on");
-  digitalWrite(pumpRelaypin, HIGH);
+  digitalWrite(pumpRelayPin, HIGH);
 }
 
-void Device_Ctrl::pumpOff()
+void Device_Ctrl::pumpOff(int pumpRelayPin)
 {
   Serial.println("pump off");
-  digitalWrite(pumpRelaypin, LOW);
+  digitalWrite(pumpRelayPin, LOW);
 }
 
-void Device_Ctrl::ledOn()
+void Device_Ctrl::ledOn(int ledRelayPin)
 {
   Serial.println("led on");
-  digitalWrite(ledRelaypin, HIGH);
+  digitalWrite(ledRelayPin, HIGH);
 }
 
-void Device_Ctrl::ledOff()
+void Device_Ctrl::ledOff(int ledRelayPin)
 {
-  Serial.println("led on");
-  digitalWrite(ledRelaypin, HIGH);
+  Serial.println("led off");
+  digitalWrite(ledRelayPin, LOW);
 }

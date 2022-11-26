@@ -13,6 +13,7 @@
 #include "addons/TokenHelper.h"
 //Provide the RTDB payload printing info and other helper functions.
 #include "addons/RTDBHelper.h"
+#include "Device_Ctrl.h"
 
 // Insert your network credentials
 const String  WIFI_SSID = "YOURWIFI";
@@ -25,7 +26,7 @@ const String API_KEY = "YOURAPI";
 const String DATABASE_URL = "YOURURL";
 
 //Define Firebase Data object
-const int DHTPIN = 15        // GPIO23
+const int DHTPIN = 15;        // GPIO23
 
 unsigned long sendDataPrevMillis = 0;
 bool signupOK = false;
@@ -49,7 +50,11 @@ BH1750 lightMeter;
 
 DHT dht(DHTPIN, DHT11);
 
-
+int dir1Pin = 27;      // 제어신호 1핀
+int dir2Pin = 26;      // 제어신호 2핀
+int speedPin = 14;    // PWM제어를 위한 핀
+int pumpRelayPin = 12;  // pump 릴레이 핀
+int ledRelayPin = 13;   // led 릴레이 핀 
 int soilhumiPin = 32;   // 토양습도센서 핀
 
 void setup() {
@@ -95,8 +100,8 @@ void setup() {
   pinMode(dir2Pin, OUTPUT);     // 제어 2번핀 출력모드 설정
   pinMode(speedPin, OUTPUT);    // PWM제어핀 출력모드 설정
 
-  pinMode(pumpRelaypin, OUTPUT);  // pump 릴레이핀 출력모드 설정
-  pinMode(ledRelaypin, OUTPUT);   // led 릴레이핀 출력모드 설정
+  pinMode(pumpRelayPin, OUTPUT);  // pump 릴레이핀 출력모드 설정
+  pinMode(ledRelayPin, OUTPUT);   // led 릴레이핀 출력모드 설정
 
   Wire.begin();
 
@@ -132,14 +137,14 @@ void loop() {
   if (Firebase.RTDB.getInt(&fbdo, "/user/mode") && fbdo.dataType() == "int") {
     intmode = fbdo.intData();
     if (intmode == 1) {
-      retrieveFan(fan_signal);
-      retrievePump(pump_signal, soilhumi);
-      retrieveLed(led_signal);
+      retrieveFan(fan_signal, dir1Pin, dir2Pin, speedPin);
+      retrievePump(pump_signal, soilhumi, pumpRelayPin);
+      retrieveLed(led_signal, ledRelayPin);
     }
     else if (intmode==2){
-      compareFan(temp_user_setting, temp);
-      comparePump(shumi_user_setting, soilhumi);
-      compareLed(led_signal, light);
+      compareFan(temp_user_setting, temp, dir1Pin, dir2Pin, speedPin);
+      comparePump(shumi_user_setting, soilhumi, pumpRelayPin);
+      compareLed(led_signal, light, ledRelayPin);
     }
     else{
       Serial.println("mode error");
@@ -194,38 +199,38 @@ void realCheck(String path, int num) {
 
 
 // fan 수동제어 함수
-void retrieveFan(int fan_signal) {
+void retrieveFan(int fan_signal, int dir1Pin, int dir2Pin, int speedPin) {
   if (Firebase.RTDB.getInt(&fbdo, "/user/device/fan") && fbdo.dataType() == "int") {
     fan_signal = fbdo.intData();
     if (fan_signal == 1) {
-      devicectrl.fanOn();
+      devicectrl.fanOn(dir1Pin, dir2Pin, speedPin);
       realCheck("/user/device/real_fan_on",1);
     }
     else {
-      devicectrl.fanOff();
+      devicectrl.fanOff(dir1Pin, dir2Pin);
       realCheck("/user/device/real_fan_on",0);
     }
   }
 }
 
 // pump 수동제어 함수
-void retrievePump(int pump_signal, int soilhumi) {
+void retrievePump(int pump_signal, int soilhumi, int pumpRelayPin) {
   //Firebase로부터 사용자의 onoff 신호를 받는 부분
   if (Firebase.RTDB.getInt(&fbdo, "/user/device/pump") && fbdo.dataType() == "int") {
     pump_signal = fbdo.intData();
     if (soilhumi > 500) {//물 넘치지 않은 상태
       if (pump_signal == 1) {
-        devicectrl.pumpOn();
+        devicectrl.pumpOn(pumpRelayPin);
         realCheck("/user/device/real_pump_on",1);
       }
       else {
-        devicectrl.pumpOff();
+        devicectrl.pumpOff(pumpRelayPin);
         realCheck("/user/device/real_pump_on",0);
       }
     }
     else {//물넘침 감지
       Serial.println("over water");
-      devicectrl.pumpOff();
+      devicectrl.pumpOff(pumpRelayPin);
       realCheck("/user/device/real_pump_on",0);
       if (Firebase.RTDB.setInt(&fbdo, "/user/exception", 1)) {
 
@@ -238,63 +243,63 @@ void retrievePump(int pump_signal, int soilhumi) {
 }
 
 // led 수동제어 함수
-void retrieveLed(int led_signal) {
+void retrieveLed(int led_signal, int ledRelayPin) {
   if (Firebase.RTDB.getInt(&fbdo, "/user/device/led") && fbdo.dataType() == "int") {
     led_signal = fbdo.intData();
     if (led_signal == 1) {
-      devicectrl.ledOn();
+      devicectrl.ledOn(ledRelayPin);
       realCheck("/user/device/real_led_on",1);
     }
     else {
-      devicectrl.ledOff();
+      devicectrl.ledOff(ledRelayPin);
       realCheck("/user/device/real_led_on",0);
     }
   }
 }
 
 // fan 자동제어 함수
-void compareFan(int temp_user_setting, int temp) {
+void compareFan(int temp_user_setting, int temp, int dir1Pin, int dir2Pin, int speedPin) {
   if (Firebase.RTDB.getInt(&fbdo, "/user/userdata/temp") && fbdo.dataType() == "int") {
     temp_user_setting = fbdo.intData();
     if (temp_user_setting < temp) {
       Serial.println(temp_user_setting);
       Serial.println(temp);
-      devicectrl.fanOn();
+      devicectrl.fanOn(dir1Pin, dir2Pin, speedPin);
     }
     else {
-      devicectrl.fanOff();
+      devicectrl.fanOff(dir1Pin, dir2Pin);
     }
   }
 }
 
 // pump 자동제어 함수
-void comparePump(int shumi_user_setting, int soilhumi) {
+void comparePump(int shumi_user_setting, int soilhumi, int pumpRelayPin) {
   if (Firebase.RTDB.getInt(&fbdo, "/user/userdata/soil_humi") && fbdo.dataType() == "int") {
     shumi_user_setting = fbdo.intData();
     Serial.println(shumi_user_setting);
     if ( shumi_user_setting < soilhumi) {                             //센서값받아보고 비교필요
       Serial.println(shumi_user_setting);
-      devicectrl.pumpOn();
+      devicectrl.pumpOn(pumpRelayPin);
       delay(2500);
-      devicectrl.pumpOff();
+      devicectrl.pumpOff(pumpRelayPin);
       delay(5000);
     }
     else if (shumi_user_setting > soilhumi) {
-      devicectrl.pumpOff();
+      devicectrl.pumpOff(pumpRelayPin);
     }
   }
 }
 
 // led 자동제어 함수
-void compareLed(int light_user_setting, int light) {
+void compareLed(int light_user_setting, int light, int ledRelayPin) {
   if (Firebase.RTDB.getInt(&fbdo, "/user/userdata/light") && fbdo.dataType() == "int") {        //차후 센서값보면서 수정필요
     light_user_setting = fbdo.intData();
     Serial.println(light_user_setting);
     if (light_user_setting > light && isDay()) {
-      devicectrl.ledOn();
+      devicectrl.ledOn(ledRelayPin);
     }
     else {
-      devicectrl.ledOff();
+      devicectrl.ledOff(ledRelayPin);
     }
   }
 }
