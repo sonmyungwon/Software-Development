@@ -16,6 +16,11 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 class AutoControlActivity : AppCompatActivity() {
+    val database = FirebaseDatabase.getInstance()
+    val tempRef = database.getReference("user/userdata/temp")
+    val soilHumidityRef = database.getReference("user/userdata/soil_humi")
+    val lightRef = database.getReference("user/userdata/light")
+    val modeRef = database.getReference("user/mode")
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,11 +52,7 @@ class AutoControlActivity : AppCompatActivity() {
         val lightProgressBar: ProgressBar = findViewById(R.id.light_progress_bar)
 
         //파이어 베이스 데이터 트리 경로의 값을 저장합니다.
-        val database = FirebaseDatabase.getInstance()
-        val tempRef = database.getReference("user/userdata/temp")
-        val soilHumidityRef = database.getReference("user/userdata/soil_humi")
-        val lightRef = database.getReference("user/userdata/light")
-        val modeRef = database.getReference("user/mode")
+
 
         var tempNumber: Int = tempView.text.toString().toInt()
         var humidNumber: Int = humidView.text.toString().toInt()
@@ -61,7 +62,6 @@ class AutoControlActivity : AppCompatActivity() {
         //myRef, myRef2, myRef3는 3개의 프로그래스 바의 이전 상태로 설정 합니다.
         tempRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-                Log.d("@@@@@ tempView @@@@@@", snapshot.value.toString())
                 tempView.text = snapshot.value.toString()
                 tempNumber = tempView.text.toString().toInt()
                 tempProgressBar.incrementProgressBy(snapshot.value.toString().toInt())
@@ -171,7 +171,7 @@ class AutoControlActivity : AppCompatActivity() {
             }
         }
         //저장버튼 클릭시 사용자 알림창을 띄우고,
-        //파이어베이스 데이터베이스 트리 노드 userdata에 값을 저장합니다.
+
         saveBtn.setOnClickListener{
             val builder = AlertDialog.Builder(this)
             builder
@@ -182,10 +182,7 @@ class AutoControlActivity : AppCompatActivity() {
                         "                밝기 : $lightNumber")
                 .setCancelable(false)
                 .setPositiveButton("확인") { _, _ ->
-                    tempRef.setValue(tempNumber)
-                    soilHumidityRef.setValue(humidNumber)
-                    lightRef.setValue(lightNumber)
-                    modeRef.setValue(2)
+                    sendUserSetting(tempNumber, humidNumber, lightNumber)
                     Toast.makeText(baseContext, "확인 버튼 클릭!", Toast.LENGTH_SHORT).show()
                 }
                 .setNegativeButton("취소"
@@ -193,6 +190,13 @@ class AutoControlActivity : AppCompatActivity() {
                 .create()
             builder.show()
         }
+    }
+    //파이어베이스 데이터베이스 트리 노드 userdata에 값을 저장합니다.
+    private fun sendUserSetting(tempNumber:Int, humidNumber: Int, lightNumber:Int){
+        tempRef.setValue(tempNumber)
+        soilHumidityRef.setValue(humidNumber)
+        lightRef.setValue(lightNumber)
+        modeRef.setValue(2)
     }
     //프로그래스 바 옆 상태를 텍스트로 나타내는 메서드 입니다.
     private fun showState(num: Int, textview: TextView){
