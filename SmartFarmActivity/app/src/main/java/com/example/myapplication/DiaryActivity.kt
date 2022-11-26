@@ -29,15 +29,15 @@ import java.util.GregorianCalendar
 class DiaryActivity : AppCompatActivity() {
 
     private lateinit var lineChart: LineChart
-    private val chartDataHumidity = ArrayList<ChartData>()
-    private val chartDataSoilHumid = ArrayList<ChartData>()
-    private val chartDataLight = ArrayList<ChartData>()
-    private val chartDataTemp = ArrayList<ChartData>()
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_diary)
+
+        val database = FirebaseDatabase.getInstance()
+        val getImage = findViewById<ImageView>(R.id.getImage)
+        val imageView = findViewById<ImageView>(R.id.storageImage)
 
         val dateBtn = findViewById<ImageView>(R.id.dateBtn)
         val textDay = findViewById<TextView>(R.id.dayText)
@@ -52,20 +52,21 @@ class DiaryActivity : AppCompatActivity() {
             val dlg = DatePickerDialog(this,
                 { _, year, month, dayOfMonth ->
                     Log.d("MAIN", "${year}. ${month + 1}. $dayOfMonth")
-                    textDay.text = "${year}. ${month + 1}. $dayOfMonth"
+                    textDay.text = "${year-2000}${month + 1}$dayOfMonth"
                 },year,month, date)
 
             dlg.show()
         }
-
-
-        val getImage = findViewById<ImageView>(R.id.getImage)
-        val imageView = findViewById<ImageView>(R.id.storageImage)
         //적용 버튼 클릭 시 파이어스토어 스토리지에서 해당 날짜의 사진을 가져옵니다.
+        //그래프 메서드를 호출하여 그래프를 작성합니다.
         getImage.setOnClickListener{
-            val imageName = textDay.text.toString()
-            val storageRef = FirebaseStorage.getInstance().reference.child("images/$imageName.png")
-            val localFile = File.createTempFile("tempImage", "png")
+            val humidityRef = database.getReference("user/sensor/${textDay.text}/humi")
+            val soilHumidityRef = database.getReference("user/sensor/${textDay.text}/soil_humi")
+            val tempRef = database.getReference("user/sensor/${textDay.text}/temp")
+            val lightRef = database.getReference("user/sensor/${textDay.text}/light")
+
+            val storageRef = FirebaseStorage.getInstance().reference.child("${textDay.text}/photo22.jpg")
+            val localFile = File.createTempFile("photo22", "jpg")
 
             storageRef.getFile(localFile).addOnSuccessListener {
                 val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
@@ -74,47 +75,44 @@ class DiaryActivity : AppCompatActivity() {
             }.addOnFailureListener{
                 Toast.makeText(this, "Failed ", Toast.LENGTH_SHORT).show()
             }
+            //각 센서값의 그래프 그리기 humidityRef, soilHumidityRef, tempRef, lightRef
+            humidityRef.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val chartDataHumidity = ArrayList<ChartData>()
+                    makeGraph(snapshot, chartDataHumidity, "humidity")
+                }
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
+            soilHumidityRef.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val chartDataSoilHumid = ArrayList<ChartData>()
+                    makeGraph(snapshot,chartDataSoilHumid,"soil_humidity")
+                }
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
+            tempRef.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val chartDataTemp = ArrayList<ChartData>()
+                    makeGraph(snapshot,chartDataTemp,"temperature")
+                }
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
+            lightRef.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val chartDataLight = ArrayList<ChartData>()
+                    makeGraph(snapshot,chartDataLight,"light")
+                }
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
         }
-
-        val database = FirebaseDatabase.getInstance()
-        val humidityRef = database.getReference("user/sensor/221123/humi")
-        val soilHumidityRef = database.getReference("user/sensor/221123/soil_humi")
-        val tempRef = database.getReference("user/sensor/221123/temp")
-        val lightRef = database.getReference("user/sensor/221123/light")
-
-        //각 센서값의 그래프 그리기 humidityRef, soilHumidityRef, tempRef, lightRef
-        humidityRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                makeGraph(snapshot, chartDataHumidity, "humidity")
-            }
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        })
-        soilHumidityRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                makeGraph(snapshot,chartDataSoilHumid,"soil_humidity")
-            }
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        })
-        tempRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                makeGraph(snapshot,chartDataTemp,"temperature")
-            }
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        })
-        lightRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                makeGraph(snapshot,chartDataLight,"light")
-            }
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        })
     }
     //그래프의 값을 chartData배열에 저장합니다.
     private fun addChartItem(lableItem: String, dataItem: Double, chartData: ArrayList<ChartData>) {
