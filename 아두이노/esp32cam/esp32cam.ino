@@ -101,6 +101,7 @@ void loop() {
   getLocalTime(&timeinfo);
   takeNewPhoto = true;
   taskCompleted = false;
+  
   realtime = String(timeinfo.tm_hour)+String(timeinfo.tm_min)+String(timeinfo.tm_sec);    //현재 시간을 hhmmss 형식으로 나타냄
   if(realtime == settingtime){
     if (takeNewPhoto) {
