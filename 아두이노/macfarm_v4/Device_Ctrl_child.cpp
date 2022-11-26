@@ -1,5 +1,5 @@
 // file: NewClass.cpp
-#include "Device_Ctrl.h"
+#include "Device_Ctrl_child.h"
 
 
 void Device_Ctrl::fanOn(int dir1Pin, int dir2Pin, int speedPin)

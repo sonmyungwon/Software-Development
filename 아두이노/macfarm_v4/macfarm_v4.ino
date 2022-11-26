@@ -40,6 +40,7 @@ int light_user_setting;   //사용자가 설정한 조도 값
 bool real_push = false;     //실제 데이터베이스 push 여부 확인
 String date;              //날짜 변수
 const char* ntpServer = "pool.ntp.org";
+int cnt = 0;
 uint8_t timeZone = 9;
 uint8_t summerTime = 0; // 3600
 struct tm timeinfo;
@@ -54,7 +55,7 @@ int dir1Pin = 27;      // 제어신호 1핀
 int dir2Pin = 26;      // 제어신호 2핀
 int speedPin = 14;    // PWM제어를 위한 핀
 int pumpRelayPin = 12;  // pump 릴레이 핀
-int ledRelayPin = 13;   // led 릴레이 핀 
+int ledRelayPin = 13;   // led 릴레이 핀
 int soilhumiPin = 32;   // 토양습도센서 핀
 Device_Ctrl devicectrl;
 
@@ -120,16 +121,16 @@ void loop() {
 
   check(humi, temp);
   printData(humi, temp, light, soilhumi);
-  
+
   // 센서 데이터 값 3초 마다 데이터베이스로 옮김
   if (Firebase.ready() && signupOK && (millis() - sendDataPrevMillis > 3000 || sendDataPrevMillis == 0)) {
     sendDataPrevMillis = millis();
     date = getDate();
-//    pushData("/user/sensor/" + date + "/temp", temp);
-//    pushData("/user/sensor/" + date + "/humi", humi);
-//    pushData("/user/sensor/" + date + "/soilhumi", soilhumi);
-//    pushData("/user/sensor/" + date + "/light", light);
-}
+    //    pushData("/user/sensor/" + date + "/temp", temp);
+    //    pushData("/user/sensor/" + date + "/humi", humi);
+    //    pushData("/user/sensor/" + date + "/soilhumi", soilhumi);
+    //    pushData("/user/sensor/" + date + "/light", light);
+  }
   // 데이터베이스에서 mode를 받음
   if (Firebase.RTDB.getInt(&fbdo, "/user/mode") && fbdo.dataType() == "int") {
     intmode = fbdo.intData();
@@ -138,12 +139,12 @@ void loop() {
       retrievePump(pump_signal, soilhumi, pumpRelayPin);
       retrieveLed(led_signal, ledRelayPin);
     }
-    else if (intmode==2){
+    else if (intmode == 2) {
       compareFan(temp_user_setting, temp, dir1Pin, dir2Pin, speedPin);
       comparePump(shumi_user_setting, soilhumi, pumpRelayPin);
       compareLed(led_signal, light, ledRelayPin);
     }
-    else{
+    else {
       Serial.println("mode error");
     }
   }
@@ -173,19 +174,20 @@ void printData(int humi, int temp, int light, int soilhumi) {
 // 데이터 값을 데이터베이스로 옮기는 함수
 void pushData(String path, int sensordata) {
   getLocalTime(&timeinfo);
-  while (real_push == false) {
-    if (String(timeinfo.tm_min) == "0" || String(timeinfo.tm_min) == "30" ) {
-      if (Firebase.RTDB.pushInt(&fbdo, path, sensordata)) {
-        Serial.println(sensordata);
-        Serial.println(path + ": PASSED");
-        real_push = true;                                          
-      else {
-        Serial.println("FAILED");
-        Serial.println("REASON: " + fbdo.errorReason());
-      }
+  if ((String(timeinfo.tm_min) == "0" || String(timeinfo.tm_min) == "30" ) && cnt < 4) {
+    if (Firebase.RTDB.pushInt(&fbdo, path, sensordata)) {
+      Serial.println(sensordata);
+      Serial.println(path + ": PASSED");
+      cnt++;
+    }
+    else {
+      Serial.println("FAILED");
+      Serial.println("REASON: " + fbdo.errorReason());
     }
   }
-  real_push == false;
+  else if (String(timeinfo.tm_min) == "1" || String(timeinfo.tm_min) == "31" ) {
+    cnt = 0;
+  }
 }
 
 // 장치가 실제 작동 여부 신호를 데이터베이스로 전달
@@ -200,11 +202,11 @@ void retrieveFan(int fan_signal, int dir1Pin, int dir2Pin, int speedPin) {
     fan_signal = fbdo.intData();
     if (fan_signal == 1) {
       devicectrl.fanOn(dir1Pin, dir2Pin, speedPin);
-      realCheck("/user/device/real_fan_on",1);
+      realCheck("/user/device/real_fan_on", 1);
     }
     else {
       devicectrl.fanOff(dir1Pin, dir2Pin);
-      realCheck("/user/device/real_fan_on",0);
+      realCheck("/user/device/real_fan_on", 0);
     }
   }
 }
@@ -217,17 +219,17 @@ void retrievePump(int pump_signal, int soilhumi, int pumpRelayPin) {
     if (soilhumi > 500) {//물 넘치지 않은 상태
       if (pump_signal == 1) {
         devicectrl.pumpOn(pumpRelayPin);
-        realCheck("/user/device/real_pump_on",1);
+        realCheck("/user/device/real_pump_on", 1);
       }
       else {
         devicectrl.pumpOff(pumpRelayPin);
-        realCheck("/user/device/real_pump_on",0);
+        realCheck("/user/device/real_pump_on", 0);
       }
     }
     else {//물넘침 감지
       Serial.println("over water");
       devicectrl.pumpOff(pumpRelayPin);
-      realCheck("/user/device/real_pump_on",0);
+      realCheck("/user/device/real_pump_on", 0);
       if (Firebase.RTDB.setInt(&fbdo, "/user/exception", 1)) {
 
         Serial.println("EXCEPTION OCCUR");
@@ -244,11 +246,11 @@ void retrieveLed(int led_signal, int ledRelayPin) {
     led_signal = fbdo.intData();
     if (led_signal == 1) {
       devicectrl.ledOn(ledRelayPin);
-      realCheck("/user/device/real_led_on",1);
+      realCheck("/user/device/real_led_on", 1);
     }
     else {
       devicectrl.ledOff(ledRelayPin);
-      realCheck("/user/device/real_led_on",0);
+      realCheck("/user/device/real_led_on", 0);
     }
   }
 }
@@ -273,7 +275,7 @@ void comparePump(int shumi_user_setting, int soilhumi, int pumpRelayPin) {
   if (Firebase.RTDB.getInt(&fbdo, "/user/userdata/soil_humi") && fbdo.dataType() == "int") {
     shumi_user_setting = fbdo.intData();
     Serial.println(shumi_user_setting);
-    if ( shumi_user_setting < soilhumi) {                          
+    if ( shumi_user_setting < soilhumi) {
       Serial.println(shumi_user_setting);
       devicectrl.pumpOn(pumpRelayPin);
       delay(2500);
@@ -324,7 +326,7 @@ bool isDay() {
   if (timeinfo.tm_hour < 18 || timeinfo.tm_hour > 6) {
     return true;
   }
-  
+
   else {
     return false;
   }
