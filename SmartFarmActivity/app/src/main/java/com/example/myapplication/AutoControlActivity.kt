@@ -3,7 +3,6 @@ package com.example.myapplication
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -60,12 +59,14 @@ class AutoControlActivity : AppCompatActivity() {
         var lightNumber: Int = lightView.text.toString().toInt()
 
         //자동 제어 화면으로 들어오면 프로그래스 바는 이전 사용자 설정 데이터를 파이어베이스로부터 불러옵니다
-        //myRef, myRef2, myRef3는 3개의 프로그래스 바의 이전 상태로 설정 합니다.
+        //tempRef, soilHumidityRef, lightRef는 3개의 프로그래스 바를 이전의 설정 상태로 설정 합니다.
         tempRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 tempView.text = snapshot.value.toString()
                 tempNumber = tempView.text.toString().toInt()
                 tempProgressBar.incrementProgressBy(snapshot.value.toString().toInt())
+                showState(tempNumber, stateTempText)
+                convertData(10.0, 30.0, tempNumber, dataTempText)
             }
             override fun onCancelled(error: DatabaseError) {
             }
@@ -75,6 +76,8 @@ class AutoControlActivity : AppCompatActivity() {
                 humidView.text = snapshot.value.toString()
                 humidNumber = humidView.text.toString().toInt()
                 soilProgressBar.incrementProgressBy(snapshot.value.toString().toInt())
+                showState(humidNumber, stateSoilHumidText)
+                convertData(1023.0, 500.0, humidNumber, dataSoilHumidText)
             }
             override fun onCancelled(error: DatabaseError) {
             }
@@ -84,6 +87,8 @@ class AutoControlActivity : AppCompatActivity() {
                 lightView.text = snapshot.value.toString()
                 lightNumber = lightView.text.toString().toInt()
                 lightProgressBar.incrementProgressBy(snapshot.value.toString().toInt())
+                showState(lightNumber, stateLightText)
+                convertData(10.0, 30.0, lightNumber, dataLightText)
             }
             override fun onCancelled(error: DatabaseError) {
             }
@@ -199,19 +204,19 @@ class AutoControlActivity : AppCompatActivity() {
     private fun showState(num: Int, textview: TextView){
         if (num>=80) {
             textview.text = "아주 높음"
-            textview.setTextColor(Color.RED)
+            textview.setTextColor(Color.parseColor("#FD0000"))
         }
         else if (num>=60) {
             textview.text = "조금 높음"
-            textview.setTextColor(Color.MAGENTA)
+            textview.setTextColor(Color.parseColor("#C16161"))
         }
         else if (num>=40) {
             textview.text = "적당"
-            textview.setTextColor(Color.GREEN)
+            textview.setTextColor(Color.parseColor("#04B470"))
         }
         else if (num>=20) {
             textview.text = "조금 낮음"
-            textview.setTextColor(Color.BLUE)
+            textview.setTextColor(Color.parseColor("#00462B"))
         }
         else if (num>=0) {
             textview.text = "아주 낮음"
