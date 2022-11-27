@@ -16,14 +16,14 @@
 #include "Device_Ctrl_child.h"
 
 // Insert your network credentials
-const char *WIFI_SSID = "son";
-const char *WIFI_PASSWORD = "123456789";
+const char *WIFI_SSID = "YOURWIFI";
+const char *WIFI_PASSWORD = "YOURPASSWORD";
 
 // Insert Firebase project API Key
-const String API_KEY = "AIzaSyDqFzxgzics8NUugrOKBHB1lemosv32QUM";
+const String API_KEY = "YOURAPI";
 
 // Insert RTDB URLefine the RTDB URL */
-const String DATABASE_URL = "https://smartfarmactivity-default-rtdb.firebaseio.com/";
+const String DATABASE_URL = "YOURURL";
 
 //Define Firebase Data object
 const int DHTPIN = 15;        // GPIO23
