@@ -68,7 +68,6 @@ class AutoControlActivity : AppCompatActivity() {
                 tempProgressBar.incrementProgressBy(snapshot.value.toString().toInt())
             }
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
             }
         })
         soilHumidityRef.addValueEventListener(object : ValueEventListener{
@@ -78,7 +77,6 @@ class AutoControlActivity : AppCompatActivity() {
                 soilProgressBar.incrementProgressBy(snapshot.value.toString().toInt())
             }
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
             }
         })
         lightRef.addValueEventListener(object : ValueEventListener{
@@ -88,7 +86,6 @@ class AutoControlActivity : AppCompatActivity() {
                 lightProgressBar.incrementProgressBy(snapshot.value.toString().toInt())
             }
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
             }
         })
         //플러스 마이너스 버튼 클릭시 프로그래스 바 작동, 상태 텍스트(ex. 적당, 매우 많음, 등,,) 변환,
