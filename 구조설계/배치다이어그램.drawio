@@ -1,0 +1,91 @@
+<mxfile host="app.diagrams.net" modified="2022-11-20T12:04:55.569Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="vGstC_5RRqmZMxGMx7-V" version="20.5.3" type="github">
+  <diagram id="HNZRuX7kstUMs6-PcHcm" name="페이지-1">
+    <mxGraphModel dx="1038" dy="5252" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="4681" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="MpsCWGdp1KRCKXTL6OQV-17" value="TCP/IP" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=0;entryDy=190;entryPerimeter=0;fontStyle=1" parent="1" source="MpsCWGdp1KRCKXTL6OQV-1" target="MpsCWGdp1KRCKXTL6OQV-4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="MpsCWGdp1KRCKXTL6OQV-1" value="Firebase_camera_server" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=5;html=1;" parent="1" vertex="1">
+          <mxGeometry x="390" y="-30" width="180" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="MpsCWGdp1KRCKXTL6OQV-19" value="WIFI" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;startFill=1;fontStyle=1" parent="1" source="MpsCWGdp1KRCKXTL6OQV-2" target="MpsCWGdp1KRCKXTL6OQV-3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="MpsCWGdp1KRCKXTL6OQV-18" value="TCP/IP" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;startFill=1;fontStyle=1" parent="1" source="MpsCWGdp1KRCKXTL6OQV-3" target="MpsCWGdp1KRCKXTL6OQV-4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="MpsCWGdp1KRCKXTL6OQV-3" value="Firebase_server" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=5;html=1;" parent="1" vertex="1">
+          <mxGeometry x="380" y="150" width="390" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="MpsCWGdp1KRCKXTL6OQV-6" value="WIFI" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontStyle=1" parent="1" source="MpsCWGdp1KRCKXTL6OQV-5" target="MpsCWGdp1KRCKXTL6OQV-1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="MpsCWGdp1KRCKXTL6OQV-5" value="ESP32_CAMERA" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=5;html=1;" parent="1" vertex="1">
+          <mxGeometry x="130" y="-30" width="180" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="MpsCWGdp1KRCKXTL6OQV-14" value="&lt;&lt;Computation 계층&gt;&gt;&#xa;&#xa;카메라 사진 업로드" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=top;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="397.5" y="10" width="145" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="MpsCWGdp1KRCKXTL6OQV-15" value="&lt;&lt;Computation 계층&gt;&gt;&#xa;&#xa;Device_ctrl" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=top;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="390" y="190" width="145" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="MpsCWGdp1KRCKXTL6OQV-16" value="&lt;&lt;Computation 계층&gt;&gt;&#xa;&#xa;Sensor_data" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=top;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="550" y="190" width="145" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="MpsCWGdp1KRCKXTL6OQV-27" value="" style="group;fontStyle=1" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="30" y="135" width="260" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="MpsCWGdp1KRCKXTL6OQV-2" value="ESP32" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=5;html=1;" parent="MpsCWGdp1KRCKXTL6OQV-27" vertex="1">
+          <mxGeometry width="260" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="MpsCWGdp1KRCKXTL6OQV-20" value="팬" style="html=1;fontStyle=1" parent="MpsCWGdp1KRCKXTL6OQV-27" vertex="1">
+          <mxGeometry x="10" y="40" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="MpsCWGdp1KRCKXTL6OQV-21" value="물펌프&lt;span style=&quot;color: rgba(0, 0, 0, 0); font-family: monospace; font-size: 0px; text-align: start;&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20value%3D%22%ED%8C%AC%22%20style%3D%22html%3D1%3B%22%20vertex%3D%221%22%20parent%3D%221%22%3E%3CmxGeometry%20x%3D%2260%22%20y%3D%22160%22%20width%3D%2270%22%20height%3D%2240%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E&lt;/span&gt;" style="html=1;fontStyle=1" parent="MpsCWGdp1KRCKXTL6OQV-27" vertex="1">
+          <mxGeometry x="90" y="40" width="75" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="MpsCWGdp1KRCKXTL6OQV-22" value="온습도 센서" style="html=1;fontStyle=1" parent="MpsCWGdp1KRCKXTL6OQV-27" vertex="1">
+          <mxGeometry x="10" y="90" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="MpsCWGdp1KRCKXTL6OQV-23" value="토양습도센서" style="html=1;fontStyle=1" parent="MpsCWGdp1KRCKXTL6OQV-27" vertex="1">
+          <mxGeometry x="90" y="90" width="75" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="MpsCWGdp1KRCKXTL6OQV-24" value="LED 조명" style="html=1;fontStyle=1" parent="MpsCWGdp1KRCKXTL6OQV-27" vertex="1">
+          <mxGeometry x="170" y="40" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="MpsCWGdp1KRCKXTL6OQV-26" value="조도센서" style="html=1;fontStyle=1" parent="MpsCWGdp1KRCKXTL6OQV-27" vertex="1">
+          <mxGeometry x="170" y="90" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="MpsCWGdp1KRCKXTL6OQV-29" value="CAMERA" style="html=1;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="170" y="20" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="MpsCWGdp1KRCKXTL6OQV-31" value="" style="group;fontStyle=1" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="850" y="125" width="390" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="MpsCWGdp1KRCKXTL6OQV-4" value="personal_phone" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=5;html=1;" parent="MpsCWGdp1KRCKXTL6OQV-31" vertex="1">
+          <mxGeometry y="-20" width="390" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="7i1k90xJVQUFtiI0VoIS-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=0;dashed=1;" edge="1" parent="MpsCWGdp1KRCKXTL6OQV-31" source="MpsCWGdp1KRCKXTL6OQV-11" target="7i1k90xJVQUFtiI0VoIS-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="MpsCWGdp1KRCKXTL6OQV-11" value="&lt;&lt;HCI 계층&gt;&gt;&#xa;수동조절 &#xa;인터페이스" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=top;fontStyle=1" parent="MpsCWGdp1KRCKXTL6OQV-31" vertex="1">
+          <mxGeometry x="10" y="25" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7i1k90xJVQUFtiI0VoIS-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;endArrow=block;endFill=0;" edge="1" parent="MpsCWGdp1KRCKXTL6OQV-31" source="MpsCWGdp1KRCKXTL6OQV-12" target="7i1k90xJVQUFtiI0VoIS-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="MpsCWGdp1KRCKXTL6OQV-12" value="&lt;&lt;HCI 계층&gt;&gt;&#xa;자동조절 &#xa;인터페이스" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=top;fontStyle=1" parent="MpsCWGdp1KRCKXTL6OQV-31" vertex="1">
+          <mxGeometry x="130" y="25" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="MpsCWGdp1KRCKXTL6OQV-13" value="&lt;&lt;HCI 계층&gt;&gt;&#xa;관찰일지&#xa;인터페이스" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=top;fontStyle=1" parent="MpsCWGdp1KRCKXTL6OQV-31" vertex="1">
+          <mxGeometry x="260" y="25" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7i1k90xJVQUFtiI0VoIS-1" value="&lt;&lt;HCI 계층&gt;&gt;&#xa;&lt;&lt;인터페이스&gt;&gt;&#xa;모드" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=top;fontStyle=1" vertex="1" parent="MpsCWGdp1KRCKXTL6OQV-31">
+          <mxGeometry x="70" y="125" width="110" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
