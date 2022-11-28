@@ -1,0 +1,76 @@
+<mxfile host="app.diagrams.net" modified="2022-10-30T07:26:11.695Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" etag="gqOBAY1TW5np79_Xi_PY" version="20.5.1" type="github">
+  <diagram id="DvrNMaAghwejmyIPOo6w" name="페이지-1">
+    <mxGraphModel dx="1038" dy="571" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="pE_VgGDCzT0UjinREo-9-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="pE_VgGDCzT0UjinREo-9-8" target="pE_VgGDCzT0UjinREo-9-9" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pE_VgGDCzT0UjinREo-9-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="pE_VgGDCzT0UjinREo-9-8" target="pE_VgGDCzT0UjinREo-9-11" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="414" y="130" />
+              <mxPoint x="480" y="130" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pE_VgGDCzT0UjinREo-9-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="pE_VgGDCzT0UjinREo-9-8" target="pE_VgGDCzT0UjinREo-9-10" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="414" y="130" />
+              <mxPoint x="297" y="130" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pE_VgGDCzT0UjinREo-9-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="pE_VgGDCzT0UjinREo-9-8" target="pE_VgGDCzT0UjinREo-9-14" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="414" y="130" />
+              <mxPoint x="670" y="130" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pE_VgGDCzT0UjinREo-9-8" value="2차 스프린트" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fontSize=16;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
+          <mxGeometry x="337" y="30" width="130" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="pE_VgGDCzT0UjinREo-9-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="pE_VgGDCzT0UjinREo-9-9" target="pE_VgGDCzT0UjinREo-9-18" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pE_VgGDCzT0UjinREo-9-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="pE_VgGDCzT0UjinREo-9-9" target="pE_VgGDCzT0UjinREo-9-20" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pE_VgGDCzT0UjinREo-9-9" value="아두이노&lt;br&gt;자동 제어" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="70" y="160" width="80" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="pE_VgGDCzT0UjinREo-9-10" value="esp 웹 서버&lt;br&gt;구축" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="257" y="160" width="80" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="pE_VgGDCzT0UjinREo-9-11" value="IP&lt;br&gt;포트포워딩" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="440" y="160" width="80" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="pE_VgGDCzT0UjinREo-9-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="pE_VgGDCzT0UjinREo-9-14" target="pE_VgGDCzT0UjinREo-9-22" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pE_VgGDCzT0UjinREo-9-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="pE_VgGDCzT0UjinREo-9-14" target="pE_VgGDCzT0UjinREo-9-24" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pE_VgGDCzT0UjinREo-9-14" value="관찰 일지" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="630" y="160" width="80" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="pE_VgGDCzT0UjinREo-9-18" value="토양습도센서&lt;br&gt;및 물펌프&lt;br&gt;알고리즘" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="18" y="300" width="80" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="pE_VgGDCzT0UjinREo-9-20" value="조도센서 및&lt;br&gt;led 알고리즘" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="118" y="300" width="80" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="pE_VgGDCzT0UjinREo-9-22" value="관찰 일지&lt;br&gt;UI" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="550" y="255" width="80" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="pE_VgGDCzT0UjinREo-9-24" value="관찰 일지&lt;br&gt;DB 구축" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="710" y="255" width="80" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,141 @@
+<mxfile host="app.diagrams.net" modified="2022-11-20T09:23:18.541Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="hpFJuY56eLri1XL93e7g" version="20.5.3" type="github">
+  <diagram id="7VTsDJ_XSaAIJs9YWt-o" name="페이지-1">
+    <mxGraphModel dx="1038" dy="571" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="4681" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="J3Kr5sSDvwF1lpIXGCPc-1" value="" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;" parent="1" vertex="1">
+          <mxGeometry x="120" y="70" width="30" height="500" as="geometry" />
+        </mxCell>
+        <mxCell id="J3Kr5sSDvwF1lpIXGCPc-2" value="" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;" parent="1" vertex="1">
+          <mxGeometry x="190" y="70" width="30" height="500" as="geometry" />
+        </mxCell>
+        <mxCell id="J3Kr5sSDvwF1lpIXGCPc-3" value="" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;" parent="1" vertex="1">
+          <mxGeometry x="260" y="70" width="30" height="500" as="geometry" />
+        </mxCell>
+        <mxCell id="J3Kr5sSDvwF1lpIXGCPc-4" value="" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;" parent="1" vertex="1">
+          <mxGeometry x="340" y="70" width="30" height="500" as="geometry" />
+        </mxCell>
+        <mxCell id="J3Kr5sSDvwF1lpIXGCPc-5" value="카메라" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="325" y="40" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="J3Kr5sSDvwF1lpIXGCPc-6" value="조도센서" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="235" y="35" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="J3Kr5sSDvwF1lpIXGCPc-7" value="토양습도&lt;br&gt;센서" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="170" y="35" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="J3Kr5sSDvwF1lpIXGCPc-8" value="온습도센서" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="90" y="35" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="J3Kr5sSDvwF1lpIXGCPc-9" value="센서 데이터" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" parent="1" vertex="1">
+          <mxGeometry x="430" y="70" width="100" height="500" as="geometry" />
+        </mxCell>
+        <mxCell id="J3Kr5sSDvwF1lpIXGCPc-21" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" parent="J3Kr5sSDvwF1lpIXGCPc-9" vertex="1">
+          <mxGeometry x="50" y="245" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="J3Kr5sSDvwF1lpIXGCPc-22" value="1. 현재 시간이 정각이거나 &lt;br&gt;30분인지 확인한다." style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;entryX=1;entryY=0;" parent="J3Kr5sSDvwF1lpIXGCPc-9" target="J3Kr5sSDvwF1lpIXGCPc-21" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="55" y="225" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="85" y="225" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="J3Kr5sSDvwF1lpIXGCPc-10" value="" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;" parent="1" vertex="1">
+          <mxGeometry x="790" y="75" width="30" height="500" as="geometry" />
+        </mxCell>
+        <mxCell id="J3Kr5sSDvwF1lpIXGCPc-11" value="파이어베이스" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="750" y="45" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="J3Kr5sSDvwF1lpIXGCPc-12" value="온습도 센서 값 전송" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" source="J3Kr5sSDvwF1lpIXGCPc-1" target="J3Kr5sSDvwF1lpIXGCPc-9" edge="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="490" y="310" as="sourcePoint" />
+            <mxPoint x="570" y="310" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="310" y="180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="J3Kr5sSDvwF1lpIXGCPc-13" value="토양습도 센서 값 전송" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" source="J3Kr5sSDvwF1lpIXGCPc-2" target="J3Kr5sSDvwF1lpIXGCPc-9" edge="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="144.5" y="190" as="sourcePoint" />
+            <mxPoint x="489.5" y="190" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="320" y="230" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="J3Kr5sSDvwF1lpIXGCPc-14" value="조도센서 값 전송" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" source="J3Kr5sSDvwF1lpIXGCPc-3" target="J3Kr5sSDvwF1lpIXGCPc-9" edge="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="214.5" y="200" as="sourcePoint" />
+            <mxPoint x="489.5" y="200" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="330" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="J3Kr5sSDvwF1lpIXGCPc-15" value="카메라 사진 &lt;br&gt;업로드" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" parent="1" vertex="1">
+          <mxGeometry x="600" y="70" width="100" height="500" as="geometry" />
+        </mxCell>
+        <mxCell id="J3Kr5sSDvwF1lpIXGCPc-23" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" parent="J3Kr5sSDvwF1lpIXGCPc-15" vertex="1">
+          <mxGeometry x="45" y="430" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="J3Kr5sSDvwF1lpIXGCPc-24" value="5. 현재 시간이 12:00 인지 확인한다." style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;entryX=1;entryY=0;" parent="J3Kr5sSDvwF1lpIXGCPc-15" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="51" y="430" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="81" y="430" />
+            </Array>
+            <mxPoint x="56" y="450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="J3Kr5sSDvwF1lpIXGCPc-16" value="사진 촬영" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="354.5" y="493" as="sourcePoint" />
+            <mxPoint x="649.5" y="493" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="520" y="493" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="J3Kr5sSDvwF1lpIXGCPc-17" value="6. 사진 저장" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" source="J3Kr5sSDvwF1lpIXGCPc-15" target="J3Kr5sSDvwF1lpIXGCPc-10" edge="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="649.5" y="523" as="sourcePoint" />
+            <mxPoint x="804.5" y="523" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="710" y="550" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="J3Kr5sSDvwF1lpIXGCPc-18" value="2. 온습도 센서 값 저장" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="479.5" y="373" as="sourcePoint" />
+            <mxPoint x="804.5" y="373" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="640" y="373" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="J3Kr5sSDvwF1lpIXGCPc-19" value="3. 토양습도 센서 값 저장" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="479.5" y="413" as="sourcePoint" />
+            <mxPoint x="804.5" y="413" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="660" y="413" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="J3Kr5sSDvwF1lpIXGCPc-20" value="4. 조도 센서 값 저장" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="479.5" y="463" as="sourcePoint" />
+            <mxPoint x="804.5" y="463" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="670" y="463" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
