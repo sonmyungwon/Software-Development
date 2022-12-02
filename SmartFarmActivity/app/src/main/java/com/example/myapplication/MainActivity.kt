@@ -151,7 +151,6 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
                 override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
                 }
             })
         }
@@ -164,7 +163,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
     //수동제어 중 아두이노 장치가 켜지거나 꺼졌는지 확인하고 로딩창을 종료하는 메서드입니다.
-    private fun progressScreen(progressMode:Int, path: String): Int{
+    private fun progressScreen(progressMode:Int, path: String){
         val realRef = database.getReference("$path")
         val progressDialog = ProgressDialog(this)
         progressDialog.setMessage("Fetching")
@@ -176,6 +175,7 @@ class MainActivity : AppCompatActivity() {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         if(snapshot.value.toString().toInt() == 1){
                             progressDialog.dismiss()
+                            Toast.makeText(this@MainActivity, "switch on", Toast.LENGTH_SHORT).show()
                         }
                     }
                     override fun onCancelled(error: DatabaseError) {
@@ -188,20 +188,14 @@ class MainActivity : AppCompatActivity() {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         if(snapshot.value.toString().toInt() == 0){
                             progressDialog.dismiss()
+                            Toast.makeText(this@MainActivity, "switch off", Toast.LENGTH_SHORT).show()
                         }
                     }
                     override fun onCancelled(error: DatabaseError) {
-                        TODO("Not yet implemented")
                     }
                 })
             }
         }
 
-        if (progressMode == 1) {
-            Toast.makeText(this, "switch on", Toast.LENGTH_SHORT).show()
-        } else if (progressMode == 2) {
-            Toast.makeText(this, "switch off", Toast.LENGTH_SHORT).show()
-        }
-        return 1
     }
 }
