@@ -122,14 +122,14 @@ void loop() {
   check(humi, temp);
   printData(humi, temp, light, soilhumi);
 
-  // 센서 데이터 값 3초 마다 데이터베이스로 옮김
+  // 센서 데이터 값 3초 마다 데이터베이스값을 가져옴
   if (Firebase.ready() && signupOK && (millis() - sendDataPrevMillis > 3000 || sendDataPrevMillis == 0)) {
     sendDataPrevMillis = millis();
     date = getDate();
-    //    pushData("/user/sensor/" + date + "/temp", temp);
-    //    pushData("/user/sensor/" + date + "/humi", humi);
-    //    pushData("/user/sensor/" + date + "/soilhumi", soilhumi);
-    //    pushData("/user/sensor/" + date + "/light", light);
+    pushData("/user/sensor/" + date + "/temp", temp);
+    pushData("/user/sensor/" + date + "/humi", humi);
+    pushData("/user/sensor/" + date + "/soilhumi", soilhumi);
+    pushData("/user/sensor/" + date + "/light", light);
   }
   // 데이터베이스에서 mode를 받음
   if (Firebase.RTDB.getInt(&fbdo, "/user/mode") && fbdo.dataType() == "int") {
