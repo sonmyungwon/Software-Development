@@ -3,9 +3,9 @@
 package com.example.myapplication
 
 import android.app.ProgressDialog
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Button
@@ -61,7 +61,6 @@ class MainActivity : AppCompatActivity() {
             //ledRef, fanRef, pumpRef 동일합니다
             ledRef.addValueEventListener(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    Log.d("led@@@@@@@@@@", snapshot.value.toString())
                     if (snapshot.value.toString().toInt() == 1) {
                         mAlertDialog.findViewById<Switch>(R.id.ledSwitch)?.isChecked = true
                     }
@@ -71,7 +70,6 @@ class MainActivity : AppCompatActivity() {
             })
             fanRef.addValueEventListener(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    Log.d("fan@@@@@@@@@@", snapshot.value.toString())
                     if(snapshot.value.toString().toInt() == 1){
                         mAlertDialog.findViewById<Switch>(R.id.fanSwitch)?.isChecked = true
                     }
@@ -81,7 +79,6 @@ class MainActivity : AppCompatActivity() {
             })
             pumpRef.addValueEventListener(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    Log.d("pump@@@@@@@@@@", snapshot.value.toString())
                     if(snapshot.value.toString().toInt() == 1){
                         mAlertDialog.findViewById<Switch>(R.id.pumpSwitch)?.isChecked = true
                     }
@@ -134,18 +131,22 @@ class MainActivity : AppCompatActivity() {
                     Log.d("Data", snapshot.value.toString())
 
                     if(snapshot.value.toString().toInt() == 1){
+                        mAlertDialog.findViewById<Switch>(R.id.pumpSwitch)?.isEnabled = false//버튼 비활성화
+                        Handler().postDelayed({
+                            mAlertDialog.findViewById<Switch>(R.id.pumpSwitch)?.isEnabled = true //버튼 활성화
+                        }, 60000) //60초 뒤에
                         val builder = AlertDialog.Builder(this@MainActivity)
                         builder
                             .setTitle("알림")
                             .setMessage("exception! \n과다수분공급으로 인해 물펌프가 정지되었습니다.")
-                            .setCancelable(false)
+                            .setCancelable(true)
 
-                            .setPositiveButton("확인", object : DialogInterface.OnClickListener{
-                                override fun onClick(p0: DialogInterface?, p1: Int) {
-                                    exceptRef.setValue(0)
-                                    Toast.makeText(baseContext, "확인", Toast.LENGTH_SHORT).show()
-                                }
-                            })
+                            .setPositiveButton("확인"
+                            ) { _, _ ->
+                                pumpRef.setValue(0)
+                                exceptRef.setValue(0)
+                                Toast.makeText(baseContext, "확인", Toast.LENGTH_SHORT).show()
+                            }
                             .create()
                         builder.show()
                     }
@@ -164,10 +165,13 @@ class MainActivity : AppCompatActivity() {
     }
     //수동제어 중 아두이노 장치가 켜지거나 꺼졌는지 확인하고 로딩창을 종료하는 메서드입니다.
     private fun progressScreen(progressMode:Int, path: String){
-        val realRef = database.getReference("$path")
+        val realRef = database.getReference(path)
         val progressDialog = ProgressDialog(this)
         progressDialog.setMessage("Fetching")
         progressDialog.setCancelable(false)
+        Handler().postDelayed({
+            progressDialog.setCancelable(true) //버튼 활성화
+        }, 5000) //5초 뒤에
         progressDialog.show()
         when (progressMode) {
             1 -> {
@@ -175,7 +179,7 @@ class MainActivity : AppCompatActivity() {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         if(snapshot.value.toString().toInt() == 1){
                             progressDialog.dismiss()
-                            Toast.makeText(this@MainActivity, "switch on", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@MainActivity, "장치가 켜졌습니다.", Toast.LENGTH_SHORT).show()
                         }
                     }
                     override fun onCancelled(error: DatabaseError) {
@@ -188,7 +192,7 @@ class MainActivity : AppCompatActivity() {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         if(snapshot.value.toString().toInt() == 0){
                             progressDialog.dismiss()
-                            Toast.makeText(this@MainActivity, "switch off", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@MainActivity, "장치가 꺼졌습니다.", Toast.LENGTH_SHORT).show()
                         }
                     }
                     override fun onCancelled(error: DatabaseError) {

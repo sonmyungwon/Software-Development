@@ -53,42 +53,48 @@ class AutoControlActivity : AppCompatActivity() {
 
         //파이어 베이스 데이터 트리 경로의 값을 저장합니다.
 
-
         var tempNumber: Int = tempView.text.toString().toInt()
         var humidNumber: Int = humidView.text.toString().toInt()
         var lightNumber: Int = lightView.text.toString().toInt()
 
+        var dataTempNumber: Double = dataTempText.text.toString().toDouble()
+        var dataHumidNumber: Double = dataSoilHumidText.text.toString().toDouble()
+        var dataLightNumber: Double = dataLightText.text.toString().toDouble()
+
         //자동 제어 화면으로 들어오면 프로그래스 바는 이전 사용자 설정 데이터를 파이어베이스로부터 불러옵니다
-        //tempRef, soilHumidityRef, lightRef는 3개의 프로그래스 바를 이전의 설정 상태로 설정 합니다.
+        //tempRef, soilHumidityRef, lightRef는 3개의 프로그래스 바를 이전의 설정 상태로 설정 합니다. cnum변수는 파이어베이스의 값을 퍼센티지로 변환
         tempRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-                tempView.text = snapshot.value.toString()
+                var cnum: Int = (snapshot.value.toString().toInt() - 10)*5
+                tempView.text = cnum.toString()
                 tempNumber = tempView.text.toString().toInt()
-                tempProgressBar.incrementProgressBy(snapshot.value.toString().toInt())
+                tempProgressBar.incrementProgressBy(cnum.toString().toInt())
                 showState(tempNumber, stateTempText)
-                convertData(10.0, 30.0, tempNumber, dataTempText)
+                dataTempNumber = convertData(10.0, 30.0, tempNumber, dataTempText)
             }
             override fun onCancelled(error: DatabaseError) {
             }
         })
         soilHumidityRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-                humidView.text = snapshot.value.toString()
+                var cnum: Int = ((snapshot.value.toString().toDouble().roundToInt() - 1023)*100/-523)+1
+                humidView.text = cnum.toString()
                 humidNumber = humidView.text.toString().toInt()
-                soilProgressBar.incrementProgressBy(snapshot.value.toString().toInt())
+                soilProgressBar.incrementProgressBy(cnum.toString().toInt())
                 showState(humidNumber, stateSoilHumidText)
-                convertData(1023.0, 500.0, humidNumber, dataSoilHumidText)
+                dataHumidNumber = convertData(1023.0, 500.0, humidNumber, dataSoilHumidText)
             }
             override fun onCancelled(error: DatabaseError) {
             }
         })
         lightRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-                lightView.text = snapshot.value.toString()
+                var cnum: Int = (snapshot.value.toString().toInt() - 300)*100/600
+                lightView.text = cnum.toString()
                 lightNumber = lightView.text.toString().toInt()
-                lightProgressBar.incrementProgressBy(snapshot.value.toString().toInt())
+                lightProgressBar.incrementProgressBy(cnum.toString().toInt())
                 showState(lightNumber, stateLightText)
-                convertData(10.0, 30.0, lightNumber, dataLightText)
+                dataLightNumber = convertData(300.0, 900.0, lightNumber, dataLightText)
             }
             override fun onCancelled(error: DatabaseError) {
             }
@@ -101,7 +107,7 @@ class AutoControlActivity : AppCompatActivity() {
                 tempView.text = "$tempNumber"
                 tempProgressBar.incrementProgressBy(-5)
                 showState(tempNumber, stateTempText)
-                convertData(10.0, 30.0, tempNumber, dataTempText)
+                dataTempNumber = convertData(10.0, 30.0, tempNumber, dataTempText)
             }
             else {
                 Toast.makeText(this@AutoControlActivity, "범위 초과", Toast.LENGTH_SHORT).show()
@@ -114,7 +120,7 @@ class AutoControlActivity : AppCompatActivity() {
                 tempView.text = "$tempNumber"
                 tempProgressBar.incrementProgressBy(5)
                 showState(tempNumber, stateTempText)
-                convertData(10.0, 30.0, tempNumber, dataTempText)
+                dataTempNumber = convertData(10.0, 30.0, tempNumber, dataTempText)
             }
             else {
                 Toast.makeText(this@AutoControlActivity, "범위 초과", Toast.LENGTH_SHORT).show()
@@ -127,7 +133,7 @@ class AutoControlActivity : AppCompatActivity() {
                 humidView.text = "$humidNumber"
                 soilProgressBar.incrementProgressBy(-5)
                 showState(humidNumber, stateSoilHumidText)
-                convertData(1023.0, 500.0, humidNumber, dataSoilHumidText)
+                dataHumidNumber = convertData(1023.0, 500.0, humidNumber, dataSoilHumidText)
             }
             else {
                 Toast.makeText(this@AutoControlActivity, "범위 초과", Toast.LENGTH_SHORT).show()
@@ -140,7 +146,7 @@ class AutoControlActivity : AppCompatActivity() {
                 humidView.text = "$humidNumber"
                 soilProgressBar.incrementProgressBy(5)
                 showState(humidNumber, stateSoilHumidText)
-                convertData(1023.0, 500.0, humidNumber, dataSoilHumidText)
+                dataHumidNumber = convertData(1023.0, 500.0, humidNumber, dataSoilHumidText)
             }
             else {
                 Toast.makeText(this@AutoControlActivity, "범위 초과", Toast.LENGTH_SHORT).show()
@@ -153,7 +159,7 @@ class AutoControlActivity : AppCompatActivity() {
                 lightView.text = "$lightNumber"
                 lightProgressBar.incrementProgressBy(-5)
                 showState(lightNumber, stateLightText)
-                convertData(10.0, 30.0, lightNumber, dataLightText)
+                dataLightNumber = convertData(300.0, 900.0, lightNumber, dataLightText)
             }
             else {
                 Toast.makeText(this@AutoControlActivity, "범위 초과", Toast.LENGTH_SHORT).show()
@@ -166,7 +172,7 @@ class AutoControlActivity : AppCompatActivity() {
                 lightView.text = "$lightNumber"
                 lightProgressBar.incrementProgressBy(5)
                 showState(lightNumber, stateLightText)
-                convertData(10.0, 30.0, lightNumber, dataLightText)
+                dataLightNumber = convertData(300.0, 900.0, lightNumber, dataLightText)
             }
             else {
                 Toast.makeText(this@AutoControlActivity, "범위 초과", Toast.LENGTH_SHORT).show()
@@ -179,12 +185,12 @@ class AutoControlActivity : AppCompatActivity() {
             builder
                 .setTitle("알림")
                 .setMessage("설정 값을 바꾸시겠습니까? \n" +
-                        "                온도 : $tempNumber\n" +
-                        "                토양 습도 : $humidNumber\n" +
-                        "                밝기 : $lightNumber")
+                        "                온도 : $dataTempNumber\n" +
+                        "                토양 습도 : $dataHumidNumber\n" +
+                        "                밝기 : $dataLightNumber")
                 .setCancelable(false)
                 .setPositiveButton("확인") { _, _ ->
-                    sendUserSetting(tempNumber, humidNumber, lightNumber)
+                    sendUserSetting(dataTempNumber, dataHumidNumber, dataLightNumber)
                     Toast.makeText(baseContext, "확인 버튼 클릭!", Toast.LENGTH_SHORT).show()
                 }
                 .setNegativeButton("취소"
@@ -194,7 +200,7 @@ class AutoControlActivity : AppCompatActivity() {
         }
     }
     //파이어베이스 데이터베이스 트리 노드 userdata에 값을 저장합니다.
-    private fun sendUserSetting(tempNumber: Int, humidNumber: Int, lightNumber: Int){
+    private fun sendUserSetting(tempNumber: Double, humidNumber: Double, lightNumber: Double){
         tempRef.setValue(tempNumber)
         soilHumidityRef.setValue(humidNumber)
         lightRef.setValue(lightNumber)
@@ -224,9 +230,10 @@ class AutoControlActivity : AppCompatActivity() {
         }
     }
     //사용자 값을 센서 값 단위로 변환하는 메서드입니다.
-    private fun convertData(min: Double, max: Double, num: Int, textview: TextView){
+    private fun convertData(min: Double, max: Double, num: Int, textview: TextView): Double {
         val rate : Double = (max - min)/100
         val convertNum : Double = ((min + rate * num)*100).roundToInt()/100.0
         textview.text = "$convertNum"
+        return convertNum
     }
 }

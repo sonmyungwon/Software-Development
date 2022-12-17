@@ -68,6 +68,7 @@ class DiaryActivity : AppCompatActivity() {
             val storageRef = FirebaseStorage.getInstance().reference.child("${textDay.text}/photo22.jpg")
             val localFile = File.createTempFile("photo22", "jpg")
 
+            imageView.setImageResource(0)
             storageRef.getFile(localFile).addOnSuccessListener {
                 val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
                 imageView.setImageBitmap(bitmap)
