@@ -148,6 +148,7 @@ class MainActivity : AppCompatActivity() {
                                 Toast.makeText(baseContext, "확인", Toast.LENGTH_SHORT).show()
                             }
                             .create()
+
                         builder.show()
                     }
                 }

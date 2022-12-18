@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -68,7 +69,7 @@ class AutoControlActivity : AppCompatActivity() {
                 var cnum: Int = (snapshot.value.toString().toInt() - 10)*5
                 tempView.text = cnum.toString()
                 tempNumber = tempView.text.toString().toInt()
-                tempProgressBar.incrementProgressBy(cnum.toString().toInt())
+                tempProgressBar.progress = cnum.toString().toInt()
                 showState(tempNumber, stateTempText)
                 dataTempNumber = convertData(10.0, 30.0, tempNumber, dataTempText)
             }
@@ -77,12 +78,12 @@ class AutoControlActivity : AppCompatActivity() {
         })
         soilHumidityRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-                var cnum: Int = ((snapshot.value.toString().toDouble().roundToInt() - 1023)*100/-523)+1
+                var cnum: Int = ((snapshot.value.toString().toDouble().roundToInt() - 1020)*100/-520)
                 humidView.text = cnum.toString()
                 humidNumber = humidView.text.toString().toInt()
-                soilProgressBar.incrementProgressBy(cnum.toString().toInt())
+                soilProgressBar.progress = cnum.toString().toInt()
                 showState(humidNumber, stateSoilHumidText)
-                dataHumidNumber = convertData(1023.0, 500.0, humidNumber, dataSoilHumidText)
+                dataHumidNumber = convertData(1020.0, 500.0, humidNumber, dataSoilHumidText)
             }
             override fun onCancelled(error: DatabaseError) {
             }
@@ -92,7 +93,7 @@ class AutoControlActivity : AppCompatActivity() {
                 var cnum: Int = (snapshot.value.toString().toInt() - 300)*100/600
                 lightView.text = cnum.toString()
                 lightNumber = lightView.text.toString().toInt()
-                lightProgressBar.incrementProgressBy(cnum.toString().toInt())
+                lightProgressBar.progress = cnum.toString().toInt()
                 showState(lightNumber, stateLightText)
                 dataLightNumber = convertData(300.0, 900.0, lightNumber, dataLightText)
             }
@@ -133,7 +134,7 @@ class AutoControlActivity : AppCompatActivity() {
                 humidView.text = "$humidNumber"
                 soilProgressBar.incrementProgressBy(-5)
                 showState(humidNumber, stateSoilHumidText)
-                dataHumidNumber = convertData(1023.0, 500.0, humidNumber, dataSoilHumidText)
+                dataHumidNumber = convertData(1020.0, 500.0, humidNumber, dataSoilHumidText)
             }
             else {
                 Toast.makeText(this@AutoControlActivity, "범위 초과", Toast.LENGTH_SHORT).show()
@@ -146,7 +147,7 @@ class AutoControlActivity : AppCompatActivity() {
                 humidView.text = "$humidNumber"
                 soilProgressBar.incrementProgressBy(5)
                 showState(humidNumber, stateSoilHumidText)
-                dataHumidNumber = convertData(1023.0, 500.0, humidNumber, dataSoilHumidText)
+                dataHumidNumber = convertData(1020.0, 500.0, humidNumber, dataSoilHumidText)
             }
             else {
                 Toast.makeText(this@AutoControlActivity, "범위 초과", Toast.LENGTH_SHORT).show()
@@ -181,13 +182,14 @@ class AutoControlActivity : AppCompatActivity() {
         }
         //저장버튼 클릭시 사용자 알림창을 띄우고,
         saveBtn.setOnClickListener{
+
             val builder = AlertDialog.Builder(this)
             builder
                 .setTitle("알림")
                 .setMessage("설정 값을 바꾸시겠습니까? \n" +
-                        "                온도 : $dataTempNumber\n" +
-                        "                토양 습도 : $dataHumidNumber\n" +
-                        "                밝기 : $dataLightNumber")
+                        " 온도      : $dataTempNumber\n" +
+                        " 토양 습도  : $dataHumidNumber\n" +
+                        " 밝기      : $dataLightNumber")
                 .setCancelable(false)
                 .setPositiveButton("확인") { _, _ ->
                     sendUserSetting(dataTempNumber, dataHumidNumber, dataLightNumber)
