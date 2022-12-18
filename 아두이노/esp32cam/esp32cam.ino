@@ -23,26 +23,27 @@
 
 
 //Replace with your network credentials
-const char* ssid = "YOURWIFIID";
-const char* password = "YOURWIFIPASSWORD";
+const char* ssid = "Galaxy S22+15822";
+const char* password = "ms951753";
 const char* ntpServer = "pool.ntp.org";
 uint8_t timeZone = 9;
 uint8_t summerTime = 0; // 3600
 struct tm timeinfo;
 // Insert Firebase project API Key
-#define API_KEY "YOURAPIKEY"
+#define API_KEY "AIzaSyDqFzxgzics8NUugrOKBHB1lemosv32QUM"
 
 // Insert Authorized Email and Corresponding Password
-#define USER_EMAIL "YOUREMAIL"
-#define USER_PASSWORD "YOURPASSWORD"
+#define USER_EMAIL "asdfasdf@gmail.com"
+#define USER_PASSWORD "asdfasdf"
 
 // Insert Firebase storage bucket ID e.g bucket-name.appspot.com
-#define STORAGE_BUCKET_ID "YOURBUCKETID"
+#define STORAGE_BUCKET_ID "smartfarmactivity.appspot.com"
 
 // Photo File Name to save in SPIFFS
 //#define FILE_PHOTO "/data/photo2.jpg"
 String FILE_PHOTO = "";       //사진이 저장될 path
-String settingtime ="131010";      //사진을 촬영할 시간 hhmmss 시간 00시인 경우 0으로 표현
+String settingtime1 ="223310";//사진을 촬영할 시간 hhmmss 시간 00시인 경우 0으로 표현
+String settingtime2 ="225010";
 String realtime = "";
 // OV2640 camera module pins (CAMERA_MODEL_AI_THINKER)
 #define PWDN_GPIO_NUM     32
@@ -104,7 +105,7 @@ void loop() {
   
   realtime = String(timeinfo.tm_hour)+String(timeinfo.tm_min)+String(timeinfo.tm_sec);    //현재 시간을 hhmmss 형식으로 나타냄
   Serial.println(realtime);
-  if(realtime == settingtime){
+  if(realtime == settingtime1 || realtime == settingtime2){
     if (takeNewPhoto) {
       capturePhotoSaveSpiffs();
       takeNewPhoto = false;
