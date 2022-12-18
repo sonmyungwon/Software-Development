@@ -326,7 +326,7 @@ bool isDay() {
   printLocalTime();
   struct tm timeinfo;
   getLocalTime(&timeinfo);
-  if (timeinfo.tm_hour < 23 || timeinfo.tm_hour > 6) {
+  if (timeinfo.tm_hour < 18 || timeinfo.tm_hour > 6) {
     return true;
   }
 
