@@ -323,6 +323,8 @@ String getDate() {
 
 //현재 낮인지 판단하는 함수
 bool isDay() {
+  printLocalTime();
+  struct tm timeinfo;
   getLocalTime(&timeinfo);
   if (timeinfo.tm_hour < 18 || timeinfo.tm_hour > 6) {
     return true;
