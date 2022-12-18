@@ -61,12 +61,12 @@ class DiaryActivity : AppCompatActivity() {
         //그래프 메서드를 호출하여 그래프를 작성합니다.
         getImage.setOnClickListener{
             val humidityRef = database.getReference("user/sensor/${textDay.text}/humi")
-            val soilHumidityRef = database.getReference("user/sensor/${textDay.text}/soil_humi")
+            val soilHumidityRef = database.getReference("user/sensor/${textDay.text}/soilhumi")
             val tempRef = database.getReference("user/sensor/${textDay.text}/temp")
             val lightRef = database.getReference("user/sensor/${textDay.text}/light")
 
-            val storageRef = FirebaseStorage.getInstance().reference.child("${textDay.text}/photo22.jpg")
-            val localFile = File.createTempFile("photo22", "jpg")
+            val storageRef = FirebaseStorage.getInstance().reference.child("${textDay.text}/photo.jpg")
+            val localFile = File.createTempFile("photo", "jpg")
 
             imageView.setImageResource(0)
             storageRef.getFile(localFile).addOnSuccessListener {
@@ -144,11 +144,10 @@ class DiaryActivity : AppCompatActivity() {
             "humidity" -> lineDataSet.color = Color.BLUE
             "soil_humidity" -> lineDataSet.color = Color.RED
             "light" -> lineDataSet.color = Color.GREEN
-            "temperature" -> lineDataSet.color = Color.YELLOW
+            "temperature" -> lineDataSet.color = Color.BLACK
         }
-
-        lineDataSet.circleHoleColor = Color.TRANSPARENT  // LineChart에서 Line Circle Color 설정
-        lineDataSet.circleHoleColor = Color.TRANSPARENT // LineChart에서 Line Hole Circle Color 설정
+        lineDataSet.setDrawCircles(false)
+        lineDataSet.setDrawValues(false)
 
         val dataSets = ArrayList<ILineDataSet>()
         dataSets.add(lineDataSet) // 데이터 셋 추가
