@@ -1,1 +1,49 @@
-<mxfile host="app.diagrams.net" modified="2023-01-10T05:21:44.516Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36" version="20.5.3" etag="TvoP5P5jJIc0FBBUfLY6" type="github"><diagram id="BPUWHW1fypjAkqIF5soi">UzV2zq1wL0osyPDNT0nNUTV2VTV2LsrPL4GwciucU3NyVI0MMlNUjV1UjYwMgFjVyA2HrCFY1qAgsSg1rwSLBiADYTaQg2Y1AA==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2023-01-10T05:29:13.550Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36" etag="rDU9tjA09QAbaRbiPjci" version="20.5.3" type="github">
+  <diagram id="BPUWHW1fypjAkqIF5soi" name="페이지-1">
+    <mxGraphModel dx="1278" dy="579" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="G-FiUflrU5_sRGjbSIZ_-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="G-FiUflrU5_sRGjbSIZ_-1" target="G-FiUflrU5_sRGjbSIZ_-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="G-FiUflrU5_sRGjbSIZ_-1" value="시작" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="220" y="10" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="G-FiUflrU5_sRGjbSIZ_-2" value="종료" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="220" y="490" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="G-FiUflrU5_sRGjbSIZ_-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="G-FiUflrU5_sRGjbSIZ_-3" target="G-FiUflrU5_sRGjbSIZ_-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="G-FiUflrU5_sRGjbSIZ_-3" value="온습도 데이터&amp;nbsp; RGB값인 0~255로 변환(온도 -10~30도, 습도 0~100%)" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="220" y="180" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="G-FiUflrU5_sRGjbSIZ_-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="G-FiUflrU5_sRGjbSIZ_-4" target="G-FiUflrU5_sRGjbSIZ_-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="G-FiUflrU5_sRGjbSIZ_-4" value="R = 변환된 온도, G= 255- R, B= 변환된 습도 설정" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="220" y="260" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="G-FiUflrU5_sRGjbSIZ_-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="G-FiUflrU5_sRGjbSIZ_-5" target="G-FiUflrU5_sRGjbSIZ_-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="G-FiUflrU5_sRGjbSIZ_-5" value="RGB값에 맞게 LED On&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="220" y="340" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="G-FiUflrU5_sRGjbSIZ_-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="G-FiUflrU5_sRGjbSIZ_-6" target="G-FiUflrU5_sRGjbSIZ_-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="G-FiUflrU5_sRGjbSIZ_-6" value="delay(1000)" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="220" y="420" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="G-FiUflrU5_sRGjbSIZ_-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="G-FiUflrU5_sRGjbSIZ_-7" target="G-FiUflrU5_sRGjbSIZ_-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="G-FiUflrU5_sRGjbSIZ_-7" value="온습도 입력" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="220" y="90" width="180" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
