@@ -1,22 +1,22 @@
-<mxfile host="app.diagrams.net" modified="2023-03-10T06:41:00.044Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36" version="20.8.5" etag="qZn124bXVAl1rAanCnee" type="github">
+<mxfile host="app.diagrams.net" modified="2023-03-10T06:51:53.503Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36" version="20.8.5" etag="oJZliEwofZKdOiTCA5I_" type="github">
   <diagram id="fs-_spG-frdkBoH3tqDM" name="페이지-1">
-    <mxGraphModel dx="875" dy="484" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1702" dy="484" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="izT6cz3H3vApSNEq5OCO-1" value="&lt;span id=&quot;docs-internal-guid-bed329dd-7fff-1d76-994e-44ff57ea13fc&quot;&gt;&lt;/span&gt;&lt;span id=&quot;docs-internal-guid-bed329dd-7fff-1d76-994e-44ff57ea13fc&quot;&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="izT6cz3H3vApSNEq5OCO-1" value="카메라로 드론 &lt;br&gt;인식 및 추적" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="50" y="200" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="izT6cz3H3vApSNEq5OCO-2" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="izT6cz3H3vApSNEq5OCO-2" value="짐벌을 이용한 &lt;br&gt;각도 계산" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="200" y="200" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="izT6cz3H3vApSNEq5OCO-3" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="izT6cz3H3vApSNEq5OCO-3" value="콜드런칭을 이용한 &lt;br&gt;1차 발사" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="354" y="200" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="izT6cz3H3vApSNEq5OCO-4" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="izT6cz3H3vApSNEq5OCO-4" value="측추력기를 이용해 초기 자세 제어" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="510" y="200" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="izT6cz3H3vApSNEq5OCO-5" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="izT6cz3H3vApSNEq5OCO-5" value="주엔진 점화" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="660" y="200" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="izT6cz3H3vApSNEq5OCO-6" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;width=3.571428571428571;endSize=2.6538961038961038;endWidth=5.871985157699443;" edge="1" parent="1">
@@ -57,12 +57,39 @@
         </mxCell>
         <mxCell id="izT6cz3H3vApSNEq5OCO-10" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;width=3.571428571428571;endSize=2.6538961038961038;endWidth=5.871985157699443;" edge="1" parent="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="310" y="149.99999999999994" as="sourcePoint" />
-            <mxPoint x="340" y="149.99999999999994" as="targetPoint" />
+            <mxPoint x="930" y="229.57999999999993" as="sourcePoint" />
+            <mxPoint x="960" y="229.57999999999993" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="330" y="150" />
+              <mxPoint x="950" y="229.57999999999998" />
             </Array>
           </mxGeometry>
+        </mxCell>
+        <mxCell id="izT6cz3H3vApSNEq5OCO-14" value="제어법칙을 이용한 미사일 방향 제어" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="810" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="izT6cz3H3vApSNEq5OCO-15" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;width=3.571428571428571;endSize=2.6538961038961038;endWidth=5.871985157699443;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="780" y="229.76" as="sourcePoint" />
+            <mxPoint x="810" y="229.76" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="800" y="229.76" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="izT6cz3H3vApSNEq5OCO-16" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;width=3.571428571428571;endSize=2.6538961038961038;endWidth=5.871985157699443;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="20" y="229.57999999999998" as="sourcePoint" />
+            <mxPoint x="50" y="229.57999999999998" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="40" y="229.57999999999998" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="izT6cz3H3vApSNEq5OCO-17" value="드론 격추" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="960" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="izT6cz3H3vApSNEq5OCO-18" value="드론 감지" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-100" y="200" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
