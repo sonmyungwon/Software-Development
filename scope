@@ -1,25 +1,19 @@
-<mxfile host="app.diagrams.net" modified="2023-03-10T06:56:06.782Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36" version="20.8.5" etag="HRUzn6N1Kr5RPI3TJEDO" type="github">
+<mxfile host="app.diagrams.net" modified="2023-03-11T11:57:55.889Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36" etag="vHU3bx207gHONWqDxrpN" version="20.8.5" type="github">
   <diagram id="fs-_spG-frdkBoH3tqDM" name="페이지-1">
-    <mxGraphModel dx="1702" dy="484" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1877" dy="573" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="izT6cz3H3vApSNEq5OCO-1" value="카메라로 드론 인식" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" vertex="1" parent="1">
+        <mxCell id="izT6cz3H3vApSNEq5OCO-1" value="발사" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="50" y="200" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="izT6cz3H3vApSNEq5OCO-2" value="짐벌을 이용한 &lt;br&gt;각도 계산" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" vertex="1" parent="1">
+        <mxCell id="izT6cz3H3vApSNEq5OCO-2" value="짐벌을 이용한 &lt;br&gt;비행체 추적" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="200" y="200" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="izT6cz3H3vApSNEq5OCO-3" value="콜드런칭을 이용한 &lt;br&gt;1차 발사" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="354" y="200" width="120" height="60" as="geometry" />
+        <mxCell id="izT6cz3H3vApSNEq5OCO-3" value="엑추에이터 &lt;br&gt;변위 값 계산" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="-100" y="290" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="izT6cz3H3vApSNEq5OCO-4" value="측추력기를 이용해 초기 자세 제어" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="-96" y="300" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="izT6cz3H3vApSNEq5OCO-5" value="주엔진 점화" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="54" y="300" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="izT6cz3H3vApSNEq5OCO-6" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;width=3.571428571428571;endSize=2.6538961038961038;endWidth=5.871985157699443;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" edge="1" parent="1">
+        <mxCell id="izT6cz3H3vApSNEq5OCO-6" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;width=3.571428571428571;endSize=2.6538961038961038;endWidth=5.871985157699443;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="170" y="229.86" as="sourcePoint" />
             <mxPoint x="200" y="229.86" as="targetPoint" />
@@ -28,55 +22,28 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="izT6cz3H3vApSNEq5OCO-7" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;width=3.571428571428571;endSize=2.6538961038961038;endWidth=5.871985157699443;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" edge="1" parent="1" target="izT6cz3H3vApSNEq5OCO-3">
+        <mxCell id="izT6cz3H3vApSNEq5OCO-10" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;width=3.571428571428571;endSize=2.6538961038961038;endWidth=5.871985157699443;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="320" y="229.85999999999996" as="sourcePoint" />
-            <mxPoint x="350" y="229.85999999999996" as="targetPoint" />
+            <mxPoint x="170" y="319.5799999999999" as="sourcePoint" />
+            <mxPoint x="200" y="319.5799999999999" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="340" y="229.86" />
+              <mxPoint x="190" y="319.58" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="izT6cz3H3vApSNEq5OCO-8" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;width=3.571428571428571;endSize=2.6538961038961038;endWidth=5.871985157699443;entryX=-0.015;entryY=0.496;entryDx=0;entryDy=0;entryPerimeter=0;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" edge="1" parent="1" target="izT6cz3H3vApSNEq5OCO-4">
+        <mxCell id="izT6cz3H3vApSNEq5OCO-14" value="유도 법칙을 이용한 &lt;br&gt;미사일 방향 제어" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="50" y="290" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="izT6cz3H3vApSNEq5OCO-15" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;width=3.571428571428571;endSize=2.6538961038961038;endWidth=5.871985157699443;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="-132" y="329.85999999999996" as="sourcePoint" />
-            <mxPoint x="-102" y="329.85999999999996" as="targetPoint" />
+            <mxPoint x="20" y="319.76" as="sourcePoint" />
+            <mxPoint x="50" y="319.76" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="-112" y="329.86" />
+              <mxPoint x="40" y="319.76" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="izT6cz3H3vApSNEq5OCO-9" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;width=3.571428571428571;endSize=2.6538961038961038;endWidth=5.871985157699443;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" edge="1" parent="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="24" y="329.75999999999993" as="sourcePoint" />
-            <mxPoint x="54" y="329.75999999999993" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="44" y="329.76" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="izT6cz3H3vApSNEq5OCO-10" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;width=3.571428571428571;endSize=2.6538961038961038;endWidth=5.871985157699443;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" edge="1" parent="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="324" y="329.5799999999999" as="sourcePoint" />
-            <mxPoint x="354" y="329.5799999999999" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="344" y="329.58" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="izT6cz3H3vApSNEq5OCO-14" value="제어법칙을 이용한 &lt;br&gt;미사일 방향 제어" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="204" y="300" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="izT6cz3H3vApSNEq5OCO-15" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;width=3.571428571428571;endSize=2.6538961038961038;endWidth=5.871985157699443;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" edge="1" parent="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="174" y="329.76" as="sourcePoint" />
-            <mxPoint x="204" y="329.76" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="194" y="329.76" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="izT6cz3H3vApSNEq5OCO-16" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;width=3.571428571428571;endSize=2.6538961038961038;endWidth=5.871985157699443;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" edge="1" parent="1">
+        <mxCell id="izT6cz3H3vApSNEq5OCO-16" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;width=3.571428571428571;endSize=2.6538961038961038;endWidth=5.871985157699443;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="20" y="229.57999999999998" as="sourcePoint" />
             <mxPoint x="50" y="229.57999999999998" as="targetPoint" />
@@ -85,23 +52,23 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="izT6cz3H3vApSNEq5OCO-17" value="드론 격추" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="354" y="300" width="120" height="60" as="geometry" />
+        <mxCell id="izT6cz3H3vApSNEq5OCO-17" value="비행체 격추" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="200" y="290" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="izT6cz3H3vApSNEq5OCO-18" value="드론 감지" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1" vertex="1" parent="1">
+        <mxCell id="izT6cz3H3vApSNEq5OCO-18" value="비행체 감지" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="-100" y="200" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="izT6cz3H3vApSNEq5OCO-19" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.frame;dx=4.6;whiteSpace=wrap;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="40" y="190" width="290" height="80" as="geometry" />
+        <mxCell id="izT6cz3H3vApSNEq5OCO-19" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.frame;dx=4.6;whiteSpace=wrap;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="184" y="190" width="146" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="izT6cz3H3vApSNEq5OCO-20" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.frame;dx=4.6;whiteSpace=wrap;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="-110" y="290" width="150" height="80" as="geometry" />
+        <mxCell id="izT6cz3H3vApSNEq5OCO-21" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.rect;fillColor2=none;strokeWidth=1;size=20;indent=5;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="170" y="370" width="56" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="izT6cz3H3vApSNEq5OCO-21" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.rect;fillColor2=none;strokeWidth=1;size=20;indent=5;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="324" y="380" width="56" height="10" as="geometry" />
+        <mxCell id="izT6cz3H3vApSNEq5OCO-22" value="&lt;span&gt;진행할 프로세스&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="226" y="360" width="110" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="izT6cz3H3vApSNEq5OCO-22" value="&lt;span&gt;진행할 프로세스&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="380" y="370" width="110" height="30" as="geometry" />
+        <mxCell id="S6dG98ONx76f8Bguvvig-1" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.frame;dx=4.6;whiteSpace=wrap;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="-113" y="280" width="146" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
