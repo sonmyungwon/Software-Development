@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-03-11T11:57:55.889Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36" etag="vHU3bx207gHONWqDxrpN" version="20.8.5" type="github">
+<mxfile host="app.diagrams.net" modified="2023-03-12T12:35:56.544Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" etag="qInLTTwqoWqVKJYErKUc" version="21.0.6" type="github">
   <diagram id="fs-_spG-frdkBoH3tqDM" name="페이지-1">
-    <mxGraphModel dx="1877" dy="573" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1877" dy="581" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -67,8 +67,11 @@
         <mxCell id="izT6cz3H3vApSNEq5OCO-22" value="&lt;span&gt;진행할 프로세스&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="226" y="360" width="110" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="S6dG98ONx76f8Bguvvig-1" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.frame;dx=4.6;whiteSpace=wrap;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1" vertex="1" parent="1">
+        <mxCell id="S6dG98ONx76f8Bguvvig-1" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.frame;dx=4.6;whiteSpace=wrap;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="-113" y="280" width="146" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="C5yZc5_AevrDEaxYhyJu-1" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.frame;dx=4.6;whiteSpace=wrap;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="-113" y="190" width="146" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
