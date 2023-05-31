@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-05-31T14:36:15.061Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="_UfEus3hf6i8ulGNDPll" version="21.3.0" type="github">
+<mxfile host="app.diagrams.net" modified="2023-05-31T14:37:31.304Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="hY2ehEoMdwcyQ5gfjMMf" version="21.3.0" type="github">
   <diagram name="페이지-1" id="W1JDAVFgyBiUxEhswn6q">
     <mxGraphModel dx="875" dy="478" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="4681" math="0" shadow="0">
       <root>
@@ -119,6 +119,24 @@
         </mxCell>
         <mxCell id="6Gq8IHYd5kMkQ4ZqI7SI-43" value="각도 전송" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="525" y="420" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="6Gq8IHYd5kMkQ4ZqI7SI-44" value="동작" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="650" y="475" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="6Gq8IHYd5kMkQ4ZqI7SI-45" value="동작" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="650" y="380" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="6Gq8IHYd5kMkQ4ZqI7SI-46" value="동작" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="760" y="475" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="6Gq8IHYd5kMkQ4ZqI7SI-47" value="동작" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="550" y="375" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="6Gq8IHYd5kMkQ4ZqI7SI-48" value="정지" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="550" y="475" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="6Gq8IHYd5kMkQ4ZqI7SI-49" value="정지" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="760" y="375" width="50" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
