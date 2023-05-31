@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-05-31T14:21:53.681Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="qev5SMNuSVy-hwWlAHVs" version="21.3.0" type="github">
+<mxfile host="app.diagrams.net" modified="2023-05-31T14:24:35.324Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="6AiJ8wsAVF9vECbqe8kK" version="21.3.0" type="github">
   <diagram name="페이지-1" id="W1JDAVFgyBiUxEhswn6q">
     <mxGraphModel dx="1050" dy="573" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="4681" math="0" shadow="0">
       <root>
@@ -11,7 +11,7 @@
           <mxGeometry x="200" y="140" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="6Gq8IHYd5kMkQ4ZqI7SI-2" value="Yolov5s + MOSSE Tracker" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="570" y="140" width="120" height="60" as="geometry" />
+          <mxGeometry x="570" y="130" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="6Gq8IHYd5kMkQ4ZqI7SI-3" value="Search Mode" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="480" y="250" width="90" height="50" as="geometry" />
@@ -27,6 +27,12 @@
             <mxPoint x="510" y="320" as="sourcePoint" />
             <mxPoint x="560" y="270" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="6Gq8IHYd5kMkQ4ZqI7SI-11" value="각도 전송" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="630" y="200" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="6Gq8IHYd5kMkQ4ZqI7SI-12" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="330" width="40" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
